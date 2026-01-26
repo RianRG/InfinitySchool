@@ -1,30 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://diduvyyrdvo3l"]
+[gd_scene load_steps=12 format=3 uid="uid://diduvyyrdvo3l"]
 
-[ext_resource type="Texture2D" uid="uid://b746iihmaeh2w" path="res://assets/Mecha-stone Golem 0.1/weapon PNG/arm_projectile_glowing.png" id="1_v7oki"]
-[ext_resource type="Script" uid="uid://dsg6hrxit1hid" path="res://scripts/bullet.gd" id="1_v8qja"]
+[ext_resource type="Script" uid="uid://dsg6hrxit1hid" path="res://enemies/golemBoss/scripts/bullet.gd" id="1_xl8am"]
+[ext_resource type="Texture2D" uid="uid://b746iihmaeh2w" path="res://assets/Mecha-stone Golem 0.1/weapon PNG/arm_projectile_glowing.png" id="2_o2u0a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xl8am"]
+radius = 17.21
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v8qja"]
-atlas = ExtResource("1_v7oki")
+atlas = ExtResource("2_o2u0a")
 region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4vbm"]
-atlas = ExtResource("1_v7oki")
+atlas = ExtResource("2_o2u0a")
 region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2b2rl"]
-atlas = ExtResource("1_v7oki")
+atlas = ExtResource("2_o2u0a")
 region = Rect2(200, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b7duk"]
-atlas = ExtResource("1_v7oki")
+atlas = ExtResource("2_o2u0a")
 region = Rect2(0, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t2bd8"]
-atlas = ExtResource("1_v7oki")
+atlas = ExtResource("2_o2u0a")
 region = Rect2(100, 100, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0pa3"]
-atlas = ExtResource("1_v7oki")
+atlas = ExtResource("2_o2u0a")
 region = Rect2(200, 100, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ol1o"]
@@ -59,18 +62,21 @@ size = Vector2(33, 10)
 [node name="bullet" type="Area2D"]
 light_mask = 2
 visibility_layer = 2
-script = ExtResource("1_v8qja")
+scale = Vector2(2, 2)
+script = ExtResource("1_xl8am")
+
+[node name="detection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detection"]
+position = Vector2(27.5, -12)
+shape = SubResource("CircleShape2D_xl8am")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-light_mask = 3
-visibility_layer = 3
 sprite_frames = SubResource("SpriteFrames_6ol1o")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 2
-visibility_layer = 2
 position = Vector2(27.5, -12)
 shape = SubResource("RectangleShape2D_v7oki")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="detection" to="." method="_on_detection_body_entered"]

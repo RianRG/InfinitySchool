@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var player = get_parent().find_child("player")
-
 var direction: Vector2
 var DEF=0
 
@@ -49,11 +48,11 @@ func _process(delta):
 
 func _physics_process(delta):
 	var move_velocity = direction.normalized()*40
-	velocity = move_velocity + knockback_velocity
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
-	move_and_collide(velocity*delta)
+	velocity = move_velocity + knockback_velocity
+	move_and_slide()
 	
-func take_damage():
+func takeDamage():
 	# Reduz a vida
 	health -= 10 - DEF
 	

@@ -1,13 +1,52 @@
-[gd_scene load_steps=79 format=3 uid="uid://b25qg3uermyxk"]
+[gd_scene load_steps=90 format=3 uid="uid://b25qg3uermyxk"]
 
-[ext_resource type="Script" uid="uid://cvrhht6eg21nd" path="res://scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://cvrhht6eg21nd" path="res://characters/scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://c2334ypqda5so" path="res://player_bullet.tscn" id="2_1jxqw"]
+[ext_resource type="Script" uid="uid://merathi55onx" path="res://characters/scripts/circle.gd" id="3_i3pqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
 size = Vector2(20, 14.2857)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_onrkg"]
 load_path = "res://.godot/imported/prota.png-79b7fdd39d49169ba66129e206c37793.ctex"
+
+[sub_resource type="Animation" id="Animation_efrwb"]
+resource_name = "deathAnimation"
+length = 10.0
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 7),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(100, 100)]
+}
+
+[sub_resource type="Animation" id="Animation_hiqhm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hiqhm"]
+_data = {
+&"RESET": SubResource("Animation_hiqhm"),
+&"deathAnimation": SubResource("Animation_efrwb")
+}
 
 [sub_resource type="Animation" id="Animation_hqtel"]
 length = 0.001
@@ -512,6 +551,23 @@ tracks/0/keys = {
 "values": [130, 131, 132, 133, 134]
 }
 
+[sub_resource type="Animation" id="Animation_634y6"]
+resource_name = "death"
+length = 0.875013
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [280, 281, 282, 283, 284, 285, 286]
+}
+
 [sub_resource type="Animation" id="Animation_dw050"]
 resource_name = "idleDown"
 length = 0.9091
@@ -747,6 +803,7 @@ _data = {
 &"dashUp": SubResource("Animation_5tmop"),
 &"dashUpLeft": SubResource("Animation_pylmc"),
 &"dashUpRight": SubResource("Animation_op7ga"),
+&"death": SubResource("Animation_634y6"),
 &"idleDown": SubResource("Animation_dw050"),
 &"idleLeft": SubResource("Animation_nvl01"),
 &"idleRight": SubResource("Animation_n7ghd"),
@@ -850,6 +907,29 @@ blend_point_7/node = SubResource("AnimationNodeAnimation_7hik5")
 blend_point_7/pos = Vector2(0.4, -0.6)
 blend_point_8/node = SubResource("AnimationNodeAnimation_qtqh7")
 blend_point_8/pos = Vector2(0.4, -0.6)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pgbbb"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_331ug"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ny14h"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ibah8"]
+animation = &"death"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3iwfv"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_pgbbb")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_331ug")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_ny14h")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_ibah8")
+blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i3pqv"]
@@ -968,6 +1048,8 @@ states/attack/node = SubResource("AnimationNodeBlendSpace2D_pgbbb")
 states/attack/position = Vector2(873, 339)
 states/dash/node = SubResource("AnimationNodeBlendSpace2D_qtqh7")
 states/dash/position = Vector2(873, 255)
+states/death/node = SubResource("AnimationNodeBlendSpace2D_3iwfv")
+states/death/position = Vector2(873, 402)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_1jxqw")
 states/idle/position = Vector2(873, 57)
 states/run/node = SubResource("AnimationNodeBlendSpace2D_dw050")
@@ -977,6 +1059,10 @@ states/walk/position = Vector2(873, 117)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(1, 1)
+
+[sub_resource type="Curve" id="Curve_onrkg"]
+_data = [Vector2(0, 0.353181), 0.0, 0.0628193, 0, 0, Vector2(1, 0), 0.0762495, 0.0, 0, 0]
+point_count = 2
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_animationTree") groups=["character"]]
 scale = Vector2(1.4, 1.4)
@@ -992,7 +1078,18 @@ shape = SubResource("RectangleShape2D_sh265")
 position = Vector2(0, -27.8571)
 texture = SubResource("CompressedTexture2D_onrkg")
 hframes = 10
-vframes = 28
+vframes = 29
+
+[node name="circle" type="Node2D" parent="."]
+z_index = 100
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("3_i3pqv")
+
+[node name="animationCircle" type="AnimationPlayer" parent="."]
+root_node = NodePath("../circle")
+libraries = {
+&"": SubResource("AnimationLibrary_hiqhm")
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1004,6 +1101,7 @@ tree_root = SubResource("AnimationNodeStateMachine_i3pqv")
 anim_player = NodePath("../AnimationPlayer")
 parameters/attack/blend_position = Vector2(0, 0)
 parameters/dash/blend_position = Vector2(0, 0)
+parameters/death/blend_position = Vector2(0, 0)
 parameters/idle/blend_position = Vector2(0, 0)
 parameters/run/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
@@ -1015,6 +1113,18 @@ position = Vector2(40, -60)
 scale = Vector2(40, 40)
 shape = SubResource("RectangleShape2D_i3pqv")
 disabled = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -20)
+emitting = false
+amount = 500
+emission_shape = 1
+emission_sphere_radius = 21.08
+gravity = Vector2(0, 0)
+linear_accel_max = 5.15
+scale_amount_min = 7.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_onrkg")
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

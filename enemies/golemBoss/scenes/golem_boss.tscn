@@ -1,18 +1,18 @@
 [gd_scene load_steps=27 format=3 uid="uid://bnv7aepn7xn53"]
 
-[ext_resource type="Script" uid="uid://q83a8nh11d3q" path="res://scripts/golem_boss.gd" id="1_e7bep"]
+[ext_resource type="Script" uid="uid://q83a8nh11d3q" path="res://enemies/golemBoss/scripts/golem_boss.gd" id="1_e7bep"]
 [ext_resource type="Texture2D" uid="uid://y3bcja5kkov1" path="res://assets/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png" id="1_o8j3a"]
 [ext_resource type="Texture2D" uid="uid://ub4b2c7tnvvg" path="res://assets/Mecha-stone Golem 0.1/weapon PNG/Laser_sheet.png" id="2_s54pl"]
-[ext_resource type="Script" uid="uid://d0klc8snmldon" path="res://scripts/finite_state_machine.gd" id="3_mwilj"]
-[ext_resource type="Script" uid="uid://ryclq002fty6" path="res://scripts/idle.gd" id="4_t6gaq"]
-[ext_resource type="Script" uid="uid://cf3lit66lbf0k" path="res://scripts/follow.gd" id="5_iq77x"]
-[ext_resource type="Script" uid="uid://blnmhmfw2cnre" path="res://scripts/melee_attack.gd" id="7_u8b2w"]
-[ext_resource type="Script" uid="uid://bmrr111nj877q" path="res://scripts/homing_missile.gd" id="8_p6t1k"]
-[ext_resource type="PackedScene" uid="uid://diduvyyrdvo3l" path="res://bullet.tscn" id="9_0garv"]
-[ext_resource type="Script" uid="uid://cc0od0wdux7qe" path="res://scripts/laser.gd" id="10_iit6d"]
-[ext_resource type="Script" uid="uid://vae5sm5llhic" path="res://scripts/dash.gd" id="11_8s186"]
-[ext_resource type="Script" uid="uid://bxudf3007fhqp" path="res://scripts/armor_buff.gd" id="11_bsmvf"]
-[ext_resource type="Script" uid="uid://ct5d81okbeomc" path="res://scripts/death.gd" id="13_bsmvf"]
+[ext_resource type="Script" uid="uid://d0klc8snmldon" path="res://enemies/golemBoss/scripts/finite_state_machine.gd" id="3_mwilj"]
+[ext_resource type="Script" uid="uid://ryclq002fty6" path="res://enemies/golemBoss/scripts/idle.gd" id="4_t6gaq"]
+[ext_resource type="Script" uid="uid://cf3lit66lbf0k" path="res://enemies/golemBoss/scripts/follow.gd" id="5_iq77x"]
+[ext_resource type="Script" uid="uid://blnmhmfw2cnre" path="res://enemies/golemBoss/scripts/melee_attack.gd" id="7_u8b2w"]
+[ext_resource type="Script" uid="uid://bmrr111nj877q" path="res://enemies/golemBoss/scripts/homing_missile.gd" id="8_p6t1k"]
+[ext_resource type="PackedScene" uid="uid://diduvyyrdvo3l" path="res://enemies/golemBoss/scenes/bullet.tscn" id="9_0garv"]
+[ext_resource type="Script" uid="uid://cc0od0wdux7qe" path="res://enemies/golemBoss/scripts/laser.gd" id="10_iit6d"]
+[ext_resource type="Script" uid="uid://vae5sm5llhic" path="res://enemies/golemBoss/scripts/dash.gd" id="11_8s186"]
+[ext_resource type="Script" uid="uid://bxudf3007fhqp" path="res://enemies/golemBoss/scripts/armor_buff.gd" id="11_bsmvf"]
+[ext_resource type="Script" uid="uid://ct5d81okbeomc" path="res://enemies/golemBoss/scripts/death.gd" id="13_bsmvf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s54pl"]
 radius = 13.0
@@ -302,6 +302,20 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FiniteStateMachine/meleeAttack")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attackPlayer"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_iq77x"]
 resource_name = "rangedAttack"
@@ -443,4 +457,5 @@ script = ExtResource("11_8s186")
 scale = Vector2(1.4, 1.4)
 script = ExtResource("13_bsmvf")
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="playerDetection" to="FiniteStateMachine/idle" method="_on_player_detection_body_entered"]
