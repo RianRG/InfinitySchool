@@ -102,7 +102,7 @@ func move(delta):
 	if Input.is_action_just_released("run"):
 		isRunning = false
 	if isRunning:
-		SPEED=200.0
+		SPEED=140.0
 	else:
 		SPEED=80.0
 		

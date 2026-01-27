@@ -366,7 +366,6 @@ radius = 50.0
 [node name="GolemBoss" type="CharacterBody2D" groups=["enemy"]]
 light_mask = 2
 visibility_layer = 2
-scale = Vector2(1.4, 1.4)
 script = ExtResource("1_e7bep")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
