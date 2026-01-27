@@ -53,6 +53,10 @@ var canAttack=true
 var isAttacking=false
 
 func _physics_process(delta: float) -> void:
+	if knockback_velocity.length() > 1:
+		velocity += knockback_velocity
+		knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 0.2)
+	
 	if isDashing || isAttacking:
 		move_and_slide()
 	else:
@@ -176,12 +180,22 @@ func attack():
 		await get_tree().create_timer(0.4).timeout
 		canAttack=true
 	
-
+func apply_knockback(from_position):
+	var knockback_strenght = 100.0
+	if isRunning:	
+		knockback_strenght = 250.0
+	
+	var dir = (global_position - from_position).normalized()
+	knockback_velocity = dir * knockback_strenght * 0.9
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.takeDamage()
+		isRunning = false
+		apply_knockback(body.global_position)
 		camera.screenShake(4, 0.3)
+		await get_tree().create_timer(0.5).timeout
+		
 	pass # Replace with function body.
 
 
