@@ -1,14 +1,29 @@
-[gd_scene load_steps=90 format=3 uid="uid://b25qg3uermyxk"]
+[gd_scene load_steps=91 format=3 uid="uid://b25qg3uermyxk"]
 
 [ext_resource type="Script" uid="uid://cvrhht6eg21nd" path="res://characters/scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://c2334ypqda5so" path="res://player_bullet.tscn" id="2_1jxqw"]
 [ext_resource type="Script" uid="uid://merathi55onx" path="res://characters/scripts/circle.gd" id="3_i3pqv"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sh265"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(20, 14.2857)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_onrkg"]
 load_path = "res://.godot/imported/prota.png-79b7fdd39d49169ba66129e206c37793.ctex"
+
+[sub_resource type="Animation" id="Animation_hiqhm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
 
 [sub_resource type="Animation" id="Animation_efrwb"]
 resource_name = "deathAnimation"
@@ -25,21 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2, 2),
 "update": 0,
 "values": [Vector2(1e-05, 1e-05), Vector2(100, 100)]
-}
-
-[sub_resource type="Animation" id="Animation_hiqhm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hiqhm"]
@@ -146,7 +146,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("AttackArea/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -1056,6 +1056,7 @@ states/run/node = SubResource("AnimationNodeBlendSpace2D_dw050")
 states/run/position = Vector2(873, 182)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_b26j0")
 states/walk/position = Vector2(873, 117)
+graph_offset = Vector2(0, -108.198)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(1, 1)
@@ -1064,6 +1065,9 @@ size = Vector2(1, 1)
 _data = [Vector2(0, 0.353181), 0.0, 0.0628193, 0, 0, Vector2(1, 0), 0.0762495, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="TileSet" id="TileSet_2hs0m"]
+resource_local_to_scene = true
+
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_animationTree") groups=["character"]]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("1_4flbx")
@@ -1071,8 +1075,9 @@ bulletNode = ExtResource("2_1jxqw")
 _animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3.57142)
-shape = SubResource("RectangleShape2D_sh265")
+position = Vector2(0, -3.57143)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_hqtel")
 
 [node name="texture" type="Sprite2D" parent="."]
 position = Vector2(0, -27.8571)
@@ -1082,6 +1087,7 @@ vframes = 29
 
 [node name="circle" type="Node2D" parent="."]
 z_index = 100
+position = Vector2(0, -40)
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("3_i3pqv")
 
@@ -1125,6 +1131,10 @@ linear_accel_max = 5.15
 scale_amount_min = 7.0
 scale_amount_max = 15.0
 scale_amount_curve = SubResource("Curve_onrkg")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_2hs0m")
+format = 2
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

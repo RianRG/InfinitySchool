@@ -154,7 +154,7 @@ func dash():
 		particles.emitting=false
 		isDashing=false
 		
-		await get_tree().create_timer(0.8).timeout
+		await get_tree().create_timer(0.6).timeout
 		canDash=true
 	
 func attack():

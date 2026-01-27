@@ -10,6 +10,7 @@ func enter():
 
 func dash():
 	var tween = create_tween()
+	owner.set_physics_process(true)
 	tween.tween_property(owner, "position", player.position, 0.8)
 	await tween.finished
 
