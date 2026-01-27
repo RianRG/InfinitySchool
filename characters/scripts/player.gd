@@ -21,7 +21,7 @@ var lastDirection = Vector2.LEFT
 
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0 # quanto maior, mais rápido para
-# akjdkajdakjdkajdakjdkjakj
+
 func _ready():
 	_stateMachine = _animationTree["parameters/playback"]
 	
