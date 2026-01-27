@@ -47,7 +47,7 @@ func _process(delta):
 		sprite.flip_h=false
 
 func _physics_process(delta):
-	var move_velocity = direction.normalized()*40
+	var move_velocity = direction.normalized()*100
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 	velocity = move_velocity + knockback_velocity
 	move_and_slide()

@@ -7,7 +7,7 @@ func enter():
 
 func exit():
 	super.exit()
-	owner.set_physics_process(false)
+	owner.set_physics_process(true)
 
 func transition():
 	var distance = owner.direction.length()
