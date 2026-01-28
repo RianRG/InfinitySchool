@@ -1,0 +1,19 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dbm1n8yoyk1vv"]
+
+[ext_resource type="Texture2D" uid="uid://c7jkh75ulaf3r" path="res://terrains/firstScene/Deco.png" id="1_if0jj"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5m7lr"]
+texture = ExtResource("1_if0jj")
+0:0/size_in_atlas = Vector2i(2, 4)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-8, 24)
+0:0/0/z_index = 1
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -44, 24, -44, 24, -4, -8, -4)
+3:0/size_in_atlas = Vector2i(1, 6)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -24)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.66667, -13.3333, 2.66667, -13.3333, 2.66667, 56, -2.66667, 56)
+
+[resource]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_5m7lr")
