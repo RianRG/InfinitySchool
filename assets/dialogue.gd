@@ -10,9 +10,16 @@ var typing_id := 0
 @onready var _name: Label = $Background/HContainer/VContainer/Name
 @onready var _dialog: RichTextLabel = $Background/HContainer/VContainer/RichTextLabel
 
+@onready var tween: Tween = get_tree().create_tween()
+
 func start(dialog_data: Dictionary) -> void:
 	data = dialog_data
 	id = 0
+	
+	pivot_offset = size/2
+	self.scale = Vector2.ZERO
+	tween.tween_property(self, "scale", Vector2.ONE, 0.3).set_trans(Tween.TRANS_BACK)
+	
 	_show_dialog()
 
 func _process(delta):
