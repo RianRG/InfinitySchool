@@ -6,13 +6,15 @@ var id := 0
 var data: Dictionary = {}
 var typing := false
 var typing_id := 0
-
+var player = null
 @onready var _name: Label = $Background/HContainer/VContainer/Name
 @onready var _dialog: RichTextLabel = $Background/HContainer/VContainer/RichTextLabel
 
 @onready var tween: Tween = get_tree().create_tween()
 
-func start(dialog_data: Dictionary) -> void:
+func start(dialog_data: Dictionary, pPlayer: Player) -> void:
+	player=pPlayer
+	player.set_physics_process(false)
 	data = dialog_data
 	id = 0
 	
@@ -32,6 +34,7 @@ func _process(delta):
 		id+=1
 		if id==data.size():
 			queue_free()
+			player.set_physics_process(true)
 			return
 		_show_dialog()
 		

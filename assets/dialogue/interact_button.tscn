@@ -1,6 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsm7lf61fjqgi"]
+[gd_scene load_steps=6 format=3 uid="uid://bsm7lf61fjqgi"]
 
+[ext_resource type="Script" uid="uid://dg8jw3ghh4mof" path="res://assets/dialogue/interact_button.gd" id="1_1t5vk"]
 [ext_resource type="Texture2D" uid="uid://b7toig6ko72uc" path="res://assets/dialogue/interactButton-Sheet.png" id="1_i1by4"]
+
+[sub_resource type="Animation" id="Animation_1t5vk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InteractButtonSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_i1by4"]
 resource_name = "interactButtonAnimation"
@@ -20,21 +36,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_1t5vk"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("InteractButtonSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1t5vk"]
 _data = {
 &"RESET": SubResource("Animation_1t5vk"),
@@ -42,6 +43,8 @@ _data = {
 }
 
 [node name="InteractButton" type="Node2D"]
+scale = Vector2(1e-05, 1e-05)
+script = ExtResource("1_1t5vk")
 
 [node name="InteractButtonSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_i1by4")
