@@ -22,5 +22,5 @@ var dialogData: Dictionary = {
 func _process(delta: float):
 	if Input.is_action_just_pressed("ui_select"):
 		var newDialog: DialogueScreen = dialogScreen.instantiate()
-		newDialog.data = dialogData
 		hud.add_child(newDialog)
+		newDialog.start(dialogData)
