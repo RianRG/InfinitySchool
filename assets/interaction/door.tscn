@@ -59,10 +59,12 @@ _data = {
 }
 
 [node name="Door" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_0cotw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(8, 30)
+y_sort_enabled = true
+position = Vector2(12, 1)
 texture = ExtResource("2_qjfpb")
 hframes = 5
 vframes = 2
@@ -75,3 +77,8 @@ libraries = {
 
 [node name="InteractButton" parent="." instance=ExtResource("1_7jweo")]
 position = Vector2(0, -40)
+
+[node name="CollisionShape2D" parent="InteractButton/Area2D" index="0"]
+scale = Vector2(0.4, 0.4)
+
+[editable path="InteractButton"]

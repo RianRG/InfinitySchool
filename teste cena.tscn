@@ -29,7 +29,7 @@ y_sort_enabled = true
 
 [node name="player" parent="." instance=ExtResource("4_nhcia")]
 z_index = 1
-position = Vector2(128, -48)
+position = Vector2(298, 144)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 offset = Vector2(0, -20)
@@ -90,4 +90,4 @@ tile_map_data = PackedByteArray("AAAWAA4AAAAAAAAAAAAWAA8AAAAAAAEAAAAWABAAAAACAAE
 tile_set = ExtResource("9_0le84")
 
 [node name="Door" parent="." instance=ExtResource("12_5m7lr")]
-position = Vector2(448, 231)
+position = Vector2(444, 260)
