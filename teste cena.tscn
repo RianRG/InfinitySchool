@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b8kas6yhuo3au"]
+[gd_scene load_steps=10 format=4 uid="uid://b8kas6yhuo3au"]
 
 [ext_resource type="TileSet" uid="uid://dxj02uipe2fmp" path="res://Chao.tres" id="1_11sws"]
 [ext_resource type="TileSet" uid="uid://jcxa0sn1lcmm" path="res://Paredes.tres" id="2_k7v17"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://cfrrfjiye5bnj" path="res://ParedesTopo.tres" id="3_vejse"]
 [ext_resource type="PackedScene" uid="uid://b25qg3uermyxk" path="res://player.tscn" id="4_nhcia"]
 [ext_resource type="Script" uid="uid://jv6gjg2kg87i" path="res://assets/Mecha-stone Golem 0.1/level.gd" id="7_nhcia"]
+[ext_resource type="PackedScene" uid="uid://bnv7aepn7xn53" path="res://enemies/golemBoss/scenes/golem_boss.tscn" id="7_vtu6y"]
 
 [sub_resource type="Gradient" id="Gradient_k7v17"]
 offsets = PackedFloat32Array(0, 0.649351, 1)
@@ -64,3 +65,5 @@ tile_set = ExtResource("3_vejse")
 script = ExtResource("7_nhcia")
 
 [node name="HUD" type="CanvasLayer" parent="Level"]
+
+[node name="GolemBoss" parent="." instance=ExtResource("7_vtu6y")]

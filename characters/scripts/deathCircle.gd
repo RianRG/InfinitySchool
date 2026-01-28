@@ -1,5 +1,5 @@
 @tool
-extends Node2D
+extends Sprite2D
 
 var alphaCircle: float = 100.0
 

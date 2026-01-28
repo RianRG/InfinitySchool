@@ -121,7 +121,7 @@ func animate():
 	if isDead:
 		_stateMachine.travel("death")
 		set_physics_process(false)
-		animationCircle.play("deathAnimation")
+		animationCircle.play("circleDeathAnimation")
 		return
 	
 	if isDashing:

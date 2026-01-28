@@ -18,9 +18,9 @@ var dialogData: Dictionary = {
 
 @export_category("Objects")
 @onready var hud: CanvasLayer = $HUD
-
+var newDialog: DialogueScreen=null
 func _process(delta: float):
-	if Input.is_action_just_pressed("ui_select"):
-		var newDialog: DialogueScreen = dialogScreen.instantiate()
+	if Input.is_action_just_pressed("ui_select") and newDialog==null:
+		newDialog = dialogScreen.instantiate()
 		hud.add_child(newDialog)
 		newDialog.start(dialogData)

@@ -16,30 +16,24 @@ func start(dialog_data: Dictionary) -> void:
 	_show_dialog()
 
 func _process(delta):
+	if Input.is_action_pressed("ui_accept") and _dialog.visible_ratio<1:
+		step = 0.01
+		return
+	step=0.05
 	if Input.is_action_just_pressed("ui_accept"):
-		if typing:
-			_dialog.visible_characters = _dialog.text.length()
-			typing = false
-		else:
-			id += 1
-			if id >= data.size():
-				queue_free()
-				return
-			_show_dialog()
-
+		id+=1
+		if id==data.size():
+			queue_free()
+			return
+		_show_dialog()
+		
 func _show_dialog():
-	typing_id += 1
-	var local_id = typing_id
-	typing = true
-
 	_name.text = data[id]["title"]
 	_dialog.text = data[id]["dialog"]
 	_dialog.visible_characters = 0
-
-	while _dialog.visible_characters < _dialog.text.length():
-		if local_id != typing_id:
-			return
+	
+	while _dialog.visible_ratio < 1:
 		await get_tree().create_timer(step).timeout
-		_dialog.visible_characters += 1
-
-	typing = false
+		_dialog.visible_characters+=1
+		
+	
