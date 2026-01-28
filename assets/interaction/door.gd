@@ -5,7 +5,8 @@ class_name Door
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var interactButton = $InteractButton
 
-var is_open := false
+var is_open := true
+
 
 func _input(event):
 	if event.is_action_pressed("interact") and interactButton.canStartDialog:

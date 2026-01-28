@@ -108,7 +108,7 @@ func move(delta):
 	if isRunning:
 		SPEED=140.0
 	else:
-		SPEED=80.0
+		SPEED=100.0
 		
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 	velocity += knockback_velocity

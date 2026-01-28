@@ -1,8 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5mue5nm0cxdt"]
+[gd_scene load_steps=9 format=3 uid="uid://b5mue5nm0cxdt"]
 
 [ext_resource type="Script" uid="uid://eq8s83c4v80q" path="res://assets/interaction/door.gd" id="1_0cotw"]
 [ext_resource type="PackedScene" uid="uid://o08f2kqjkjfm" path="res://assets/dialogue/interactButton.tscn" id="1_7jweo"]
 [ext_resource type="Texture2D" uid="uid://bmqun6rbdu0mj" path="res://assets/interaction/doors.png" id="2_qjfpb"]
+
+[sub_resource type="Animation" id="Animation_tp573"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
 
 [sub_resource type="Animation" id="Animation_qjfpb"]
 resource_name = "closed"
@@ -18,21 +33,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_tp573"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_amge4"]
@@ -58,11 +58,16 @@ _data = {
 &"open": SubResource("Animation_amge4")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfpb"]
+size = Vector2(75, 112.5)
+
 [node name="Door" type="Node2D"]
+z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_0cotw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
 y_sort_enabled = true
 position = Vector2(12, 1)
 texture = ExtResource("2_qjfpb")
@@ -79,6 +84,10 @@ libraries = {
 position = Vector2(0, -40)
 
 [node name="CollisionShape2D" parent="InteractButton/Area2D" index="0"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(4, -15.5)
 scale = Vector2(0.4, 0.4)
+shape = SubResource("RectangleShape2D_qjfpb")
 
 [editable path="InteractButton"]
