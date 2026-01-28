@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dbm1n8yoyk1vv"]
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://68qd85suddui"]
 
 [ext_resource type="Texture2D" uid="uid://c7jkh75ulaf3r" path="res://terrains/firstScene/Deco.png" id="1_if0jj"]
 
@@ -12,6 +12,7 @@ texture = ExtResource("1_if0jj")
 3:0/size_in_atlas = Vector2i(1, 6)
 3:0/0 = 0
 3:0/0/texture_origin = Vector2i(0, -24)
+3:0/0/y_sort_origin = 43
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2.66667, -13.3333, 2.66667, -13.3333, 2.66667, 56, -2.66667, 56)
 
 [resource]

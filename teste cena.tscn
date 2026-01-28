@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://b25qg3uermyxk" path="res://player.tscn" id="4_nhcia"]
 [ext_resource type="Script" uid="uid://jv6gjg2kg87i" path="res://assets/Mecha-stone Golem 0.1/level.gd" id="7_nhcia"]
 [ext_resource type="PackedScene" uid="uid://bnv7aepn7xn53" path="res://enemies/golemBoss/scenes/golem_boss.tscn" id="7_vtu6y"]
-[ext_resource type="TileSet" uid="uid://ceeda1uwphsmi" path="res://Paredes1.tres" id="8_jiu5r"]
-[ext_resource type="TileSet" uid="uid://b6miog7m0wbwd" path="res://ParedeT1.tres" id="9_0le84"]
-[ext_resource type="TileSet" uid="uid://dbm1n8yoyk1vv" path="res://Decoteste.tres" id="10_0le84"]
+[ext_resource type="TileSet" uid="uid://bkdajd8o1sltv" path="res://Paredes1.tres" id="8_jiu5r"]
+[ext_resource type="TileSet" uid="uid://bi14j2e5v68ni" path="res://ParedeT1.tres" id="9_0le84"]
+[ext_resource type="TileSet" uid="uid://68qd85suddui" path="res://Decoteste.tres" id="10_0le84"]
 
 [sub_resource type="Gradient" id="Gradient_k7v17"]
 offsets = PackedFloat32Array(0, 0.649351, 1)
@@ -71,6 +71,7 @@ script = ExtResource("7_nhcia")
 
 [node name="GolemBoss" parent="." instance=ExtResource("7_vtu6y")]
 z_index = 1
+position = Vector2(401, -90)
 
 [node name="TileMapLayer4" type="TileMapLayer" parent="."]
 z_index = 1

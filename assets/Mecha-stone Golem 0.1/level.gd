@@ -12,7 +12,7 @@ var dialogData: Dictionary = {
 	},
 	2: {
 		"title": "O Grilo",
-		"dialog": "Sou eu, sou eu, sou eu"
+		"dialog": "Sou eu, sou eu, sou eu, que quando falo fico surdo. Eu sei, eu sei, eu seeeei"
 	}
 }
 
