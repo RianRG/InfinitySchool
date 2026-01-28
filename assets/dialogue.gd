@@ -16,6 +16,7 @@ func start(dialog_data: Dictionary) -> void:
 	data = dialog_data
 	id = 0
 	
+	# efeito de zoom
 	pivot_offset = size/2
 	self.scale = Vector2.ZERO
 	tween.tween_property(self, "scale", Vector2.ONE, 0.3).set_trans(Tween.TRANS_BACK)
