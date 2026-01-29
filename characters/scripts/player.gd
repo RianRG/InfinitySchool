@@ -9,7 +9,7 @@ class_name Player
 
 var _stateMachine
 
-var SPEED = 80.0
+var SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 var lastDirection = Vector2.LEFT
 @export var friction = 0.2

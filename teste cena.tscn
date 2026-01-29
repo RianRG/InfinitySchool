@@ -10,7 +10,7 @@
 [ext_resource type="TileSet" uid="uid://bkdajd8o1sltv" path="res://Paredes1.tres" id="8_jiu5r"]
 [ext_resource type="PackedScene" uid="uid://o08f2kqjkjfm" path="res://assets/dialogue/interactButton.tscn" id="8_qv1my"]
 [ext_resource type="TileSet" uid="uid://bi14j2e5v68ni" path="res://ParedeT1.tres" id="9_0le84"]
-[ext_resource type="PackedScene" uid="uid://b5mue5nm0cxdt" path="res://assets/interaction/door.tscn" id="12_5m7lr"]
+[ext_resource type="PackedScene" uid="uid://b2k78m46nbgoa" path="res://assets/interaction/door.tscn" id="12_5m7lr"]
 
 [sub_resource type="Gradient" id="Gradient_k7v17"]
 offsets = PackedFloat32Array(0, 0.649351, 1)
@@ -91,4 +91,5 @@ tile_map_data = PackedByteArray("AAAWAA4AAAAAAAAAAAAWAA8AAAAAAAEAAAAWABAAAAACAAE
 tile_set = ExtResource("9_0le84")
 
 [node name="Door" parent="." instance=ExtResource("12_5m7lr")]
-position = Vector2(444, 282)
+position = Vector2(448, 283)
+isOpen = true

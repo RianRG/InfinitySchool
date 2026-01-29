@@ -1,27 +1,36 @@
 extends Node2D
 class_name Door
+@onready var collisionClosed: CollisionShape2D = $CollisionClosed
+@onready var collisionOpen: CollisionShape2D = $CollisionOpen
 
-#@onready var collision: CollisionShape2D = $CollisionShape2D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var interactButton = $InteractButton
 
-var is_open := true
+
+@export var isOpen := false
 
 
 func _input(event):
 	if event.is_action_pressed("interact") and interactButton.canStartDialog:
 		toggle()
 
+func _ready():
+	if isOpen:
+		animation.play("open")
+		collisionClosed.disabled = !collisionClosed.disabled
+		collisionOpen.disabled=!collisionOpen.disabled
 
 func toggle():
 	if not interactButton.canStartDialog:
 		return
 
-	is_open = !is_open
+	isOpen = !isOpen
 
-	if is_open:
+	if isOpen:
 		animation.play("open")
-		#collision.disabled = true
+		collisionClosed.disabled = !collisionClosed.disabled
+		collisionOpen.disabled=!collisionOpen.disabled
 	else:
 		animation.play("closed")
-		#collision.disabled = false
+		collisionClosed.disabled = !collisionClosed.disabled
+		collisionOpen.disabled=!collisionOpen.disabled

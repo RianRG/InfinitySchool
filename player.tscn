@@ -1133,14 +1133,14 @@ hframes = 10
 vframes = 29
 
 [node name="solidCircle" type="Sprite2D" parent="."]
-z_index = 5
+z_index = 11
 position = Vector2(0, -40)
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("3_hqtel")
 
 [node name="circleDeath" type="Sprite2D" parent="."]
 visible = false
-z_index = 4
+z_index = 10
 position = Vector2(0, -35.52)
 scale = Vector2(2, 2)
 texture = ExtResource("3_i3pqv")

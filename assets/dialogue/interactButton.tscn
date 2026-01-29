@@ -8,6 +8,7 @@
 radius = 88.1419
 
 [node name="InteractButton" type="Node2D"]
+z_index = 3
 script = ExtResource("1_p3yka")
 
 [node name="buttonSprite" parent="." instance=ExtResource("1_7u4fi")]
