@@ -151,14 +151,14 @@ func dash():
 		
 		if dashDirection==Vector2.ZERO:
 			dashDirection=lastDirection
-		velocity = dashDirection.normalized()*300
+		velocity = dashDirection.normalized()*450
 		
 		particles.emitting=true
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.25).timeout
 		particles.emitting=false
 		isDashing=false
 		
-		await get_tree().create_timer(0.6).timeout
+		await get_tree().create_timer(0.45).timeout
 		canDash=true
 	
 func attack():
@@ -171,13 +171,13 @@ func attack():
 		var attackDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		if attackDirection==Vector2.ZERO:
 			attackDirection=lastDirection
-		velocity = attackDirection.normalized()*200
+		velocity = attackDirection.normalized()*250
 	
 		if isRunning:
 			isRunning=false
 		await get_tree().create_timer(0.2).timeout
 		isAttacking=false
-		await get_tree().create_timer(0.4).timeout
+		await get_tree().create_timer(0.3).timeout
 		canAttack=true
 	
 func apply_knockback(from_position):

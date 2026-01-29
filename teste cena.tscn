@@ -34,9 +34,9 @@ position = Vector2(298, 144)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 offset = Vector2(0, -20)
-zoom = Vector2(3, 3)
+zoom = Vector2(1.9, 1.9)
 position_smoothing_enabled = true
-position_smoothing_speed = 3.0
+position_smoothing_speed = 2.0
 script = ExtResource("2_vejse")
 
 [node name="PointLight2D" type="PointLight2D" parent="player"]

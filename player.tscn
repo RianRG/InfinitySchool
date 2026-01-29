@@ -1,15 +1,13 @@
-[gd_scene load_steps=92 format=3 uid="uid://b25qg3uermyxk"]
+[gd_scene load_steps=93 format=3 uid="uid://b25qg3uermyxk"]
 
 [ext_resource type="Script" uid="uid://cvrhht6eg21nd" path="res://characters/scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://c2334ypqda5so" path="res://player_bullet.tscn" id="2_1jxqw"]
 [ext_resource type="Script" uid="uid://bkwndishye0dr" path="res://characters/scripts/deathCircle.gd" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://da7l7rmg66drp" path="res://assets/new prota/Morte1.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://roy16npomyee" path="res://assets/new prota/prota.png" id="3_sweqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(20, 13.5714)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_onrkg"]
-load_path = "res://.godot/imported/prota.png-79b7fdd39d49169ba66129e206c37793.ctex"
 
 [sub_resource type="Animation" id="Animation_hiqhm"]
 length = 0.001
@@ -1110,8 +1108,12 @@ graph_offset = Vector2(0, -108.198)
 size = Vector2(1.48214, 1.44643)
 
 [sub_resource type="Curve" id="Curve_onrkg"]
-_data = [Vector2(0, 0.353181), 0.0, 0.0628193, 0, 0, Vector2(1, 0), 0.0762495, 0.0, 0, 0]
+_data = [Vector2(0, 0.595506), 0.0, 0.0628193, 0, 0, Vector2(0.852273, 0), 0.0762495, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hqtel"]
+offsets = PackedFloat32Array(0.0858896, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.0941176, 0, 0.796078, 1)
 
 [sub_resource type="TileSet" id="TileSet_2hs0m"]
 resource_local_to_scene = true
@@ -1129,7 +1131,7 @@ shape = SubResource("RectangleShape2D_hqtel")
 
 [node name="texture" type="Sprite2D" parent="."]
 position = Vector2(0, -27.8571)
-texture = SubResource("CompressedTexture2D_onrkg")
+texture = ExtResource("3_sweqy")
 hframes = 10
 vframes = 29
 
@@ -1176,16 +1178,18 @@ shape = SubResource("RectangleShape2D_i3pqv")
 disabled = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, -20)
+position = Vector2(0, -25.2632)
 emitting = false
-amount = 500
+amount = 400
+lifetime = 0.59
 emission_shape = 1
-emission_sphere_radius = 21.08
+emission_sphere_radius = 14.5
 gravity = Vector2(0, 0)
 linear_accel_max = 5.15
 scale_amount_min = 2.0
 scale_amount_max = 8.0
 scale_amount_curve = SubResource("Curve_onrkg")
+color_initial_ramp = SubResource("Gradient_hqtel")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_2hs0m")
