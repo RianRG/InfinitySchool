@@ -92,4 +92,6 @@ tile_set = ExtResource("9_0le84")
 
 [node name="Door" parent="." instance=ExtResource("12_5m7lr")]
 position = Vector2(448, 283)
-isOpen = true
+PathImage = "res://terrains/Portas/porta2.png"
+
+[node name="Door2" parent="." instance=ExtResource("12_5m7lr")]

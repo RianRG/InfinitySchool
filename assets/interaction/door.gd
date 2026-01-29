@@ -8,6 +8,8 @@ class_name Door
 
 
 @export var isOpen := false
+@export var PathImage :="res://terrains/Portas/porta1.png"
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 
 func _input(event):
@@ -18,7 +20,9 @@ func _ready():
 	if isOpen:
 		animation.play("open")
 		collisionClosed.disabled = !collisionClosed.disabled
-		collisionOpen.disabled=!collisionOpen.disabled
+		collisionOpen.disabled=!collisionOpen.disable
+		
+	sprite_2d.texture = PathImage
 
 func toggle():
 	if not interactButton.canStartDialog:

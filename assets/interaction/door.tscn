@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://eq8s83c4v80q" path="res://assets/interaction/door.gd" id="1_0cotw"]
 [ext_resource type="PackedScene" uid="uid://o08f2kqjkjfm" path="res://assets/dialogue/interactButton.tscn" id="1_7jweo"]
-[ext_resource type="Texture2D" uid="uid://bmqun6rbdu0mj" path="res://assets/interaction/doors.png" id="2_qjfpb"]
+[ext_resource type="Texture2D" uid="uid://de3ogfjrkcsfo" path="res://terrains/Portas/porta1.png" id="2_qjfpb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfpb"]
 size = Vector2(34, 14)
@@ -71,13 +71,18 @@ radius = 130.0
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_0cotw")
+isOpen = null
+PathImage = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 1)
 texture = ExtResource("2_qjfpb")
-hframes = 5
+offset = Vector2(4, 0)
+hframes = 4
 vframes = 2
 frame = 1
+region_enabled = true
+region_rect = Rect2(0, 0, 240, 240)
 
 [node name="CollisionClosed" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
