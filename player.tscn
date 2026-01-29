@@ -1117,6 +1117,7 @@ point_count = 2
 resource_local_to_scene = true
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_animationTree") groups=["character"]]
+scale = Vector2(0.95, 0.95)
 script = ExtResource("1_4flbx")
 bulletNode = ExtResource("2_1jxqw")
 _animationTree = NodePath("AnimationTree")
