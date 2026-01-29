@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://xiciyy5pl2m7"]
+[gd_scene load_steps=5 format=3 uid="uid://xiciyy5pl2m7"]
 
 [ext_resource type="Script" uid="uid://dajkmk7y3lpyv" path="res://assets/dialogue.gd" id="1_kp46k"]
 [ext_resource type="Texture2D" uid="uid://dn7k7hok0bgcm" path="res://assets/ballontest1.png" id="2_758ep"]
-[ext_resource type="Texture2D" uid="uid://bsb5fmvj3llem" path="res://assets/new prota/protaDialogue.png" id="2_hoxo3"]
 [ext_resource type="FontFile" uid="uid://bofvopfjry1d6" path="res://assets/fonts/hf-free-complete/compass-pro-v1.1/CompassPro.otf" id="2_oi3j2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu684"]
@@ -26,12 +25,6 @@ offset_bottom = 0.175964
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_kp46k")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(98, -13.9999)
-scale = Vector2(1.496, 1.496)
-texture = ExtResource("2_hoxo3")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1

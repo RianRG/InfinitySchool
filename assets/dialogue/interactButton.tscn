@@ -14,7 +14,7 @@ script = ExtResource("1_p3yka")
 [node name="buttonSprite" parent="." instance=ExtResource("1_7u4fi")]
 
 [node name="Area2D" type="Area2D" parent="."]
-position = Vector2(0, 30)
+position = Vector2(0, 50)
 script = ExtResource("2_xci7l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]

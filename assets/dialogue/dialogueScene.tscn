@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2o0bewyiw868"]
+
+[ext_resource type="PackedScene" uid="uid://xiciyy5pl2m7" path="res://dialogue.tscn" id="1_w06oj"]
+[ext_resource type="Texture2D" uid="uid://bsb5fmvj3llem" path="res://assets/new prota/protaDialogue.png" id="2_aaajq"]
+
+[node name="DialogueScene" type="Node2D"]
+
+[node name="DialogueScreen" parent="." instance=ExtResource("1_w06oj")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-200, -94)
+scale = Vector2(1.496, 1.496)
+texture = ExtResource("2_aaajq")
+
+[editable path="DialogueScreen"]

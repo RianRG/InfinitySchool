@@ -71,8 +71,6 @@ radius = 130.0
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_0cotw")
-isOpen = null
-PathImage = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 1)
@@ -100,7 +98,7 @@ libraries = {
 autoplay = "closed"
 
 [node name="InteractButton" parent="." instance=ExtResource("1_7jweo")]
-position = Vector2(0, -53)
+position = Vector2(0, -61)
 
 [node name="buttonSprite" parent="InteractButton" index="0"]
 position = Vector2(0, -17)

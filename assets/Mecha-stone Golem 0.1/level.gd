@@ -4,7 +4,7 @@ class_name Level
 
 @onready var player: Player = $"../player"
 
-var dialogScreen: PackedScene = preload("res://dialogue.tscn")
+var dialogueScene: PackedScene = preload("res://assets/dialogue/dialogueScene.tscn")
 var canStartDialog: bool = false
 var dialogData: Dictionary = {
 	0: {
@@ -26,7 +26,7 @@ var dialogData: Dictionary = {
 var newDialog: DialogueScreen=null
 func _process(delta: float):
 	if Input.is_action_just_pressed("interact") and interactButton.canStartDialog and newDialog==null:
-		newDialog = dialogScreen.instantiate()
+		newDialog = dialogueScene.dialogueScreen.instantiate()
 		interactButton.disappear()
 		hud.add_child(newDialog)
 		newDialog.start(dialogData, player)
