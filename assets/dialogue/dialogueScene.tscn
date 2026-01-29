@@ -3,9 +3,28 @@
 [ext_resource type="PackedScene" uid="uid://xiciyy5pl2m7" path="res://dialogue.tscn" id="1_w06oj"]
 [ext_resource type="Texture2D" uid="uid://bsb5fmvj3llem" path="res://assets/new prota/protaDialogue.png" id="2_aaajq"]
 
-[node name="DialogueScene" type="Node2D"]
+[node name="DialogueScene" type="Control"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="DialogueScreen" parent="." instance=ExtResource("1_w06oj")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -170.0
+offset_right = 300.0
+offset_bottom = -90.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-200, -94)
