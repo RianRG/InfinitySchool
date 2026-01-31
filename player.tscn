@@ -1113,7 +1113,7 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_hqtel"]
 offsets = PackedFloat32Array(0.0858896, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.0941176, 0, 0.796078, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.0705882, 0, 0.447059, 1)
 
 [sub_resource type="TileSet" id="TileSet_2hs0m"]
 resource_local_to_scene = true
