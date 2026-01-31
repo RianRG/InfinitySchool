@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b8kas6yhuo3au"]
+[gd_scene load_steps=19 format=4 uid="uid://b8kas6yhuo3au"]
 
 [ext_resource type="TileSet" uid="uid://dxj02uipe2fmp" path="res://Chao.tres" id="1_11sws"]
 [ext_resource type="TileSet" uid="uid://jcxa0sn1lcmm" path="res://Paredes.tres" id="2_k7v17"]
@@ -12,6 +12,8 @@
 [ext_resource type="TileSet" uid="uid://bi14j2e5v68ni" path="res://ParedeT1.tres" id="9_0le84"]
 [ext_resource type="Texture2D" uid="uid://f1gvxsii243e" path="res://terrains/Portas/porta5.png" id="12_4qvnp"]
 [ext_resource type="PackedScene" uid="uid://b2k78m46nbgoa" path="res://assets/interaction/door.tscn" id="12_5m7lr"]
+[ext_resource type="TileSet" uid="uid://dm4dhxsbb66m7" path="res://Decoanimation.tres" id="13_6k8y5"]
+[ext_resource type="Texture2D" uid="uid://c7jkh75ulaf3r" path="res://terrains/Decoração/Deco.png" id="14_as6p8"]
 
 [sub_resource type="Gradient" id="Gradient_k7v17"]
 offsets = PackedFloat32Array(0, 0.649351, 1)
@@ -25,10 +27,88 @@ fill = 1
 fill_from = Vector2(0.5, 0.365)
 fill_to = Vector2(0, 0)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfqxu"]
+texture = ExtResource("14_as6p8")
+1:0/size_in_atlas = Vector2i(2, 1)
+1:0/0 = 0
+3:0/size_in_atlas = Vector2i(2, 2)
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(-8, 4)
+3:0/0/y_sort_origin = 8
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -14.8571, 19.4286, -14.8571, 19.4286, 26.2857, -8, 26.2857)
+5:0/size_in_atlas = Vector2i(2, 2)
+5:0/0 = 0
+5:0/0/texture_origin = Vector2i(-8, 4)
+5:0/0/y_sort_origin = 8
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -14.8571, 19.4286, -14.8571, 19.4286, 26.2857, -8, 26.2857)
+7:0/size_in_atlas = Vector2i(2, 1)
+7:0/0 = 0
+7:0/0/texture_origin = Vector2i(0, -4)
+7:0/0/y_sort_origin = 24
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14.8571, -3.42857, 14.8571, -3.42857, 14.8571, 12.5714, -14.8571, 12.5714)
+9:0/size_in_atlas = Vector2i(2, 1)
+9:0/0 = 0
+9:0/0/texture_origin = Vector2i(0, -4)
+9:0/0/y_sort_origin = 24
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14.8571, -3.42857, 14.8571, -3.42857, 14.8571, 12.5714, -14.8571, 12.5714)
+11:0/size_in_atlas = Vector2i(2, 2)
+11:0/0 = 0
+11:0/0/y_sort_origin = 4
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.71429, -8, 8, -8, 8, 8, 8, 8, -5.71429, 8)
+13:0/size_in_atlas = Vector2i(2, 2)
+13:0/0 = 0
+13:0/0/y_sort_origin = 4
+13:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2, -4.8, 11.2, -4.8, 11.2, 8, -11.2, 8)
+13:2/size_in_atlas = Vector2i(2, 2)
+13:2/0 = 0
+13:2/0/y_sort_origin = 4
+13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2, -4.8, 11.2, -4.8, 11.2, 8, -11.2, 8)
+11:2/size_in_atlas = Vector2i(2, 2)
+11:2/0 = 0
+11:2/0/y_sort_origin = 4
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 5.71429, -8, 5.71429, 8, 8, 8, -8, 8)
+11:4/size_in_atlas = Vector2i(2, 2)
+11:4/0 = 0
+11:4/0/y_sort_origin = 4
+11:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.71429, -8, 8, -8, 8, 8, 8, 8, -5.71429, 8)
+13:4/size_in_atlas = Vector2i(2, 2)
+13:4/0 = 0
+13:4/0/y_sort_origin = 4
+13:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2, -4.8, 11.2, -4.8, 11.2, 8, -11.2, 8)
+11:6/size_in_atlas = Vector2i(2, 2)
+11:6/0 = 0
+11:6/0/y_sort_origin = 4
+11:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 5.71429, -8, 5.71429, 8, 8, 8, -8, 8)
+13:6/size_in_atlas = Vector2i(2, 2)
+13:6/0 = 0
+13:6/0/y_sort_origin = 4
+13:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.2, -4.8, 11.2, -4.8, 11.2, 8, -11.2, 8)
+8:2/size_in_atlas = Vector2i(3, 2)
+8:2/0 = 0
+8:2/0/texture_origin = Vector2i(0, 4)
+8:2/0/y_sort_origin = 8
+8:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -8, 24, -8, 24, 20.8, -24, 20.8)
+5:2/size_in_atlas = Vector2i(3, 2)
+5:2/0 = 0
+5:2/0/texture_origin = Vector2i(0, 4)
+5:2/0/y_sort_origin = 8
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-24, -8, 24, -8, 24, 20.8, -24, 20.8)
+0:0/size_in_atlas = Vector2i(1, 3)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -4)
+0:0/0/y_sort_origin = 8
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.71429, -17.1429, 5.71429, -17.1429, 5.71429, 26.2857, -5.71429, 26.2857)
+
+[sub_resource type="TileSet" id="TileSet_3clbg"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_gfqxu")
+
 [node name="Node2D" type="Node2D"]
 y_sort_enabled = true
 
 [node name="player" parent="." instance=ExtResource("4_nhcia")]
+light_mask = 3
+visibility_layer = 3
 z_index = 1
 position = Vector2(298, 144)
 
@@ -82,7 +162,7 @@ position = Vector2(-1, -72)
 [node name="TileMapLayer4" type="TileMapLayer" parent="."]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAWABcAAAAAAAAAAAAWABYAAAAEAAAAAAAWABUAAAAEAAAAAAAWABQAAAAEAAAAAAAWABMAAAAEAAAAAAAWABIAAAAEAAAAAAAWABEAAAAEAAAAAAAWABAAAAAAAAAAAAAXABAAAAABAAAAAAAYABAAAAABAAAAAAAZABAAAAABAAAAAAAaABAAAAACAAAAAAAdABAAAAAAAAAAAAAeABAAAAABAAAAAAAfABAAAAABAAAAAAAgABAAAAABAAAAAAAhABAAAAACAAAAAAAhABEAAAAEAAAAAAAhABIAAAAEAAAAAAAhABMAAAAEAAAAAAAhABQAAAAEAAAAAAAhABUAAAAEAAAAAAAhABYAAAACAAAAAAAgABYAAAABAAAAAAAfABYAAAABAAAAAAAeABYAAAABAAAAAAAdABYAAAABAAAAAAAcABYAAAABAAAAAAAbABYAAAAAAAAAAAAbABcAAAACAAAAAAAaABcAAAABAAAAAAAZABcAAAABAAAAAAAYABcAAAABAAAAAAAXABcAAAABAAAAAAAjABEAAAAAAAQAAAAkABEAAAABAAQAAAAlABEAAAABAAQAAAAmABEAAAABAAQAAAAnABEAAAABAAQAAAAoABEAAAACAAQAAAAqABEAAAAAAAgAAAArABEAAAABAAgAAAAsABEAAAABAAgAAAAtABEAAAABAAgAAAAuABEAAAABAAgAAAAvABEAAAABAAgAAAAwABEAAAABAAgAAAAxABEAAAABAAgAAAAyABEAAAACAAgAAAA1ABEAAAAAAAwAAAA2ABEAAAABAAwAAAA3ABEAAAABAAwAAAA4ABEAAAABAAwAAAA5ABEAAAABAAwAAAA6ABEAAAABAAwAAAA7ABEAAAACAAwAAAA+ABEAAAAAABAAAAA/ABEAAAABABAAAABAABEAAAABABAAAABBABEAAAABABAAAABCABEAAAABABAAAABDABEAAAABABAAAABEABEAAAACABAAAAAtAAAAAAAAAAQAAAAuAAAAAAABAAQAAAAvAAAAAAABAAQAAAAwAAAAAAACAAQAAAAvAAQAAAABAAgAAAAwAAQAAAABAAgAAAAxAAQAAAABAAgAAAAyAAQAAAABAAgAAAAzAAQAAAABAAgAAAA0AAQAAAABAAgAAAA1AAQAAAACAAgAAAArAAQAAAAAAAgAAAAtAAQAAAABAAgAAAA=")
+tile_map_data = PackedByteArray("AAAWABcAAAAAAAAAAAAWABYAAAAEAAAAAAAWABUAAAAEAAAAAAAWABQAAAAEAAAAAAAWABMAAAAEAAAAAAAWABIAAAAEAAAAAAAWABEAAAAEAAAAAAAWABAAAAAAAAAAAAAXABAAAAABAAAAAAAYABAAAAABAAAAAAAZABAAAAABAAAAAAAaABAAAAACAAAAAAAdABAAAAAAAAAAAAAeABAAAAABAAAAAAAfABAAAAABAAAAAAAgABAAAAABAAAAAAAhABAAAAACAAAAAAAhABEAAAAEAAAAAAAhABIAAAAEAAAAAAAhABMAAAAEAAAAAAAhABQAAAAEAAAAAAAhABUAAAAEAAAAAAAhABYAAAACAAAAAAAgABYAAAABAAAAAAAfABYAAAABAAAAAAAeABYAAAABAAAAAAAdABYAAAABAAAAAAAcABYAAAABAAAAAAAbABYAAAAAAAAAAAAbABcAAAACAAAAAAAaABcAAAABAAAAAAAZABcAAAABAAAAAAAYABcAAAABAAAAAAAXABcAAAABAAAAAAAjABEAAAAAAAQAAAAkABEAAAABAAQAAAAlABEAAAABAAQAAAAmABEAAAABAAQAAAAnABEAAAABAAQAAAAoABEAAAACAAQAAAAqABEAAAAAAAgAAAArABEAAAABAAgAAAAsABEAAAABAAgAAAAtABEAAAABAAgAAAAuABEAAAABAAgAAAAvABEAAAABAAgAAAAwABEAAAABAAgAAAAxABEAAAABAAgAAAAyABEAAAACAAgAAAA1ABEAAAAAAAwAAAA2ABEAAAABAAwAAAA3ABEAAAABAAwAAAA4ABEAAAABAAwAAAA5ABEAAAABAAwAAAA6ABEAAAABAAwAAAA7ABEAAAACAAwAAAA+ABEAAAAAABAAAAA/ABEAAAABABAAAABAABEAAAABABAAAABBABEAAAABABAAAABCABEAAAABABAAAABDABEAAAABABAAAABEABEAAAACABAAAAAtAAAAAAAAAAQAAAAuAAAAAAABAAQAAAAvAAAAAAABAAQAAAAwAAAAAAACAAQAAAAvAAQAAAABAAgAAAAwAAQAAAABAAgAAAAxAAQAAAABAAgAAAAyAAQAAAABAAgAAAAzAAQAAAABAAgAAAA0AAQAAAABAAgAAAA1AAQAAAACAAgAAAAuAAQAAAABAAgAAAAtAAQAAAAAAAgAAAA=")
 tile_set = ExtResource("8_jiu5r")
 
 [node name="TileMapLayer5" type="TileMapLayer" parent="."]
@@ -94,3 +174,17 @@ tile_set = ExtResource("9_0le84")
 [node name="Door" parent="." instance=ExtResource("12_5m7lr")]
 position = Vector2(448, 285)
 spriteTexture = ExtResource("12_4qvnp")
+
+[node name="TileMapLayer6" type="TileMapLayer" parent="."]
+z_index = 1
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAKAAAAAAAAAAAAAAA=")
+tile_set = ExtResource("13_6k8y5")
+
+[node name="TileMapLayer7" type="TileMapLayer" parent="."]
+visibility_layer = 3
+z_index = 1
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAATAAAAAAAFAAIAAAAXAAAAAAAIAAIAAAAoAPn/AAALAAAAAAAoAPv/AAALAAAAAAAqAPv/AAALAAAAAAAqAPn/AAALAAAAAAAsAPn/AAANAAAAAAAuAPn/AAANAAAAAAAuAPv/AAANAAAAAAAsAPv/AAANAAAAAAAwAPn/AAALAAIAAAAyAPn/AAALAAIAAAAyAPv/AAALAAIAAAAwAPv/AAALAAIAAAA0APn/AAANAAQAAAA2APn/AAANAAQAAAA2APv/AAANAAQAAAA0APv/AAANAAQAAAAjABEAAAAAAAAAAAAlABEAAAADAAAAAAAHAAAAAAADAAAAAAAsAPT/AAAJAAAAAAA0APT/AAAJAAAAAAA=")
+tile_set = SubResource("TileSet_3clbg")
+y_sort_origin = 1
