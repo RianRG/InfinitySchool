@@ -17,16 +17,16 @@
 [ext_resource type="Texture2D" uid="uid://cvjupirqqf6ur" path="res://terrains/firstScene/Paredesfinas.png" id="15_as6p8"]
 
 [sub_resource type="Gradient" id="Gradient_k7v17"]
-offsets = PackedFloat32Array(0, 0.649351, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.169271, 0.169271, 0.169271, 1, 0, 0, 0, 1)
+offsets = PackedFloat32Array(0.188312, 0.532468)
+colors = PackedColorArray(1, 0.858286, 0.659725, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vejse"]
 gradient = SubResource("Gradient_k7v17")
-width = 255
-height = 255
+width = 400
+height = 400
 fill = 1
-fill_from = Vector2(0.5, 0.365)
-fill_to = Vector2(0, 0)
+fill_from = Vector2(0.5, 0.486239)
+fill_to = Vector2(0.12844, 0.146789)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfqxu"]
 texture = ExtResource("14_as6p8")
@@ -383,12 +383,10 @@ position_smoothing_speed = 2.0
 script = ExtResource("2_vejse")
 
 [node name="PointLight2D" type="PointLight2D" parent="player"]
-visible = false
 y_sort_enabled = true
-position = Vector2(-6.74999, 0)
+position = Vector2(-1.52588e-05, -15.7895)
 scale = Vector2(0.947059, 1)
-energy = 0.25
-shadow_enabled = true
+energy = 0.45
 shadow_color = Color(0, 0, 0, 1)
 shadow_filter = 1
 shadow_filter_smooth = 30.0
@@ -462,3 +460,6 @@ tile_set = SubResource("TileSet_2newn")
 position = Vector2(895, 351)
 scale = Vector2(0.95, 0.95)
 spriteTexture = ExtResource("12_6k8y5")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.108227, 0.128261, 0.207464, 1)
