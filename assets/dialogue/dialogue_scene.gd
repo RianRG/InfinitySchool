@@ -25,15 +25,15 @@ func start(dialog_data: Dictionary, pPlayer: Player) -> void:
 	_show_dialog()
 
 func _process(delta):
-	if Input.is_action_pressed("ui_accept") and _dialog.visible_ratio<1:
-		step = 0.01
+	if Input.is_action_pressed("ui_accept") and _dialog.visible_ratio<1 and _dialog.visible_characters>3:
+		_dialog.visible_characters = _dialog.text.length()
 		return
 	step=0.05
 	if Input.is_action_just_pressed("ui_accept"):
 		id+=1
 		if id==data.size():
-			queue_free()
 			player.set_physics_process(true)
+			queue_free()
 			return
 		_show_dialog()
 		

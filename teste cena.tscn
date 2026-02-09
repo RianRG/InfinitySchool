@@ -405,7 +405,7 @@ y_sort_enabled = true
 light_mask = 3
 visibility_layer = 3
 z_index = 1
-position = Vector2(298, 144)
+position = Vector2(227, -52)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 offset = Vector2(0, -20)

@@ -22,6 +22,7 @@ offset_left = -300.0
 offset_top = -38.3
 offset_right = 300.0
 offset_bottom = 39.24
+script = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-200, -94)

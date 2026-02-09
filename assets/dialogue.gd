@@ -32,8 +32,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		id+=1
 		if id>=data.size():
-			queue_free()
 			player.set_physics_process(true)
+			queue_free()
 			return
 		_show_dialog()
 		
