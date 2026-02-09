@@ -1,15 +1,65 @@
-[gd_scene load_steps=5 format=3 uid="uid://xiciyy5pl2m7"]
+[gd_scene load_steps=12 format=3 uid="uid://xiciyy5pl2m7"]
 
 [ext_resource type="Script" uid="uid://dajkmk7y3lpyv" path="res://assets/dialogue.gd" id="1_kp46k"]
-[ext_resource type="Texture2D" uid="uid://dn7k7hok0bgcm" path="res://assets/ballontest1.png" id="2_758ep"]
+[ext_resource type="Texture2D" uid="uid://bdtxq5u004lsu" path="res://assets/dialogue/1framet.png" id="2_iq77p"]
 [ext_resource type="FontFile" uid="uid://bofvopfjry1d6" path="res://assets/fonts/hf-free-complete/compass-pro-v1.1/CompassPro.otf" id="2_oi3j2"]
+[ext_resource type="Texture2D" uid="uid://baew0wpgygc0w" path="res://assets/dialogue/2framet.png" id="3_iqg0b"]
+[ext_resource type="Texture2D" uid="uid://bf3tl5agxnwlc" path="res://assets/dialogue/3frame.png" id="4_xvgdd"]
+[ext_resource type="Texture2D" uid="uid://dstdvug378m0v" path="res://assets/dialogue/4frame.png" id="5_cd3gt"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_x4m5d"]
+frames = 4
+frame_0/texture = ExtResource("2_iq77p")
+frame_0/duration = 0.4
+frame_1/texture = ExtResource("3_iqg0b")
+frame_1/duration = 0.4
+frame_2/texture = ExtResource("4_xvgdd")
+frame_2/duration = 0.4
+frame_3/texture = ExtResource("5_cd3gt")
+frame_3/duration = 0.4
 
 [sub_resource type="LabelSettings" id="LabelSettings_wu684"]
 line_spacing = 0.0
 font = ExtResource("2_oi3j2")
-font_size = 22
-font_color = Color(0, 0, 0, 1)
-shadow_color = Color(0, 0, 0, 0.756863)
+font_size = 20
+shadow_size = 0
+shadow_color = Color(1, 1, 1, 0.756863)
+
+[sub_resource type="Animation" id="Animation_iq77p"]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0666667, 0.433333),
+"transitions": PackedFloat32Array(0.535887, 0.535887),
+"update": 0,
+"values": [Vector2(-23, -150), Vector2(-23, -320)]
+}
+
+[sub_resource type="Animation" id="Animation_iqg0b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-23, -348)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvgdd"]
+_data = {
+&"RESET": SubResource("Animation_iqg0b"),
+&"enter": SubResource("Animation_iq77p")
+}
 
 [node name="DialogueScreen" type="Control"]
 custom_minimum_size = Vector2(600, 80)
@@ -18,41 +68,48 @@ anchor_left = 0.24
 anchor_top = 0.815
 anchor_right = 0.76
 anchor_bottom = 0.938
-offset_left = 139.52
-offset_top = -0.120056
-offset_right = -139.52
-offset_bottom = 0.175964
+offset_left = -133.6
+offset_top = 26.6
+offset_right = 133.6
+offset_bottom = 62.32
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_kp46k")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_top = -4.35
+anchor_right = 1.038
+anchor_bottom = 3.725
+offset_left = -23.0
+offset_top = 28.0
+offset_right = 0.199951
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_758ep")
-expand_mode = 1
-stretch_mode = 3
+texture = SubResource("AnimatedTexture_x4m5d")
+stretch_mode = 4
 
 [node name="HContainer" type="HBoxContainer" parent="Background"]
 custom_minimum_size = Vector2(300, 72)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.05
-anchor_right = 0.95
-anchor_bottom = 0.95
-offset_left = 114.0
-offset_top = 4.0
-offset_right = -114.0
+anchor_left = 0.5
+anchor_top = 0.444
+anchor_right = 0.732
+anchor_bottom = 0.556
+offset_left = -150.0
+offset_top = -36.824
+offset_right = 0.12796
+offset_bottom = -37.176
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VContainer" type="VBoxContainer" parent="Background/HContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 8
 
 [node name="Name" type="Label" parent="Background/HContainer/VContainer"]
 layout_mode = 2
@@ -62,17 +119,20 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Background/HContainer/VContainer"]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 1
 theme_override_constants/shadow_offset_x = 1
 theme_override_fonts/normal_font = ExtResource("2_oi3j2")
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 12
 text = "Sou eu, sou eu, sou eu, que quando falo fico surdo. Eu sei, eu sei, eu seeeei"
 fit_content = true
 scroll_active = false
 autowrap_mode = 2
 justification_flags = 171
 visible_characters_behavior = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xvgdd")
+}

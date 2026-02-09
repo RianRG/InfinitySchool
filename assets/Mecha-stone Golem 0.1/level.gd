@@ -27,6 +27,7 @@ var newDialog =null
 func _process(delta: float):
 	if Input.is_action_just_pressed("interact") and interactButton.canStartDialog and newDialog==null:
 		newDialog = dialogueScene.instantiate()
+		print(newDialog)
 		interactButton.disappear()
 		hud.add_child(newDialog)
-		newDialog.get_node("DialogueScreen").start(dialogData, player)
+		newDialog.start(dialogData, player)

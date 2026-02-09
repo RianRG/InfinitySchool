@@ -9,6 +9,7 @@ var typing_id := 0
 var player = null
 @onready var _name: Label = $Background/HContainer/VContainer/Name
 @onready var _dialog: RichTextLabel = $Background/HContainer/VContainer/RichTextLabel
+@onready var animation: AnimationPlayer = $AnimationPlayer
 
 @onready var tween: Tween = get_tree().create_tween()
 
@@ -19,9 +20,7 @@ func start(dialog_data: Dictionary, pPlayer: Player) -> void:
 	id = 0
 	
 	# efeito de zoom
-	pivot_offset = size/2
-	self.scale = Vector2.ZERO
-	tween.tween_property(self, "scale", Vector2.ONE, 0.3).set_trans(Tween.TRANS_BACK)
+	animation.play("enter")
 	
 	_show_dialog()
 
@@ -32,7 +31,7 @@ func _process(delta):
 	step=0.05
 	if Input.is_action_just_pressed("ui_accept"):
 		id+=1
-		if id==data.size():
+		if id>=data.size():
 			queue_free()
 			player.set_physics_process(true)
 			return

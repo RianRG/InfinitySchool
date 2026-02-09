@@ -1181,7 +1181,7 @@ disabled = true
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, -25.2632)
 emitting = false
-amount = 400
+amount = 200
 lifetime = 0.59
 emission_shape = 1
 emission_sphere_radius = 14.5

@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b2k78m46nbgoa" path="res://assets/interaction/door.tscn" id="12_5m7lr"]
 [ext_resource type="Texture2D" uid="uid://cmmm6q8a117my" path="res://terrains/Portas/Porta10.png" id="12_6k8y5"]
 [ext_resource type="Texture2D" uid="uid://q41niie1872s" path="res://terrains/Portas/porta4.png" id="12_gfqxu"]
-[ext_resource type="TileSet" uid="uid://dm4dhxsbb66m7" path="res://Decoanimation.tres" id="13_6k8y5"]
+[ext_resource type="TileSet" uid="uid://cyedxf338drpp" path="res://Decoanimation.tres" id="13_6k8y5"]
 [ext_resource type="Texture2D" uid="uid://c7jkh75ulaf3r" path="res://terrains/Decoração/Deco.png" id="14_as6p8"]
 [ext_resource type="Texture2D" uid="uid://cvjupirqqf6ur" path="res://terrains/firstScene/Paredesfinas.png" id="15_as6p8"]
 

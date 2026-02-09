@@ -151,10 +151,10 @@ func dash():
 		
 		if dashDirection==Vector2.ZERO:
 			dashDirection=lastDirection
-		velocity = dashDirection.normalized()*450
+		velocity = dashDirection.normalized()*350
 		
 		particles.emitting=true
-		await get_tree().create_timer(0.25).timeout
+		await get_tree().create_timer(0.17).timeout
 		particles.emitting=false
 		isDashing=false
 		
@@ -171,7 +171,7 @@ func attack():
 		var attackDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		if attackDirection==Vector2.ZERO:
 			attackDirection=lastDirection
-		velocity = attackDirection.normalized()*250
+		velocity = attackDirection.normalized()*150
 	
 		if isRunning:
 			isRunning=false
@@ -181,7 +181,7 @@ func attack():
 		canAttack=true
 	
 func apply_knockback(from_position):
-	var knockback_strenght = 100.0
+	var knockback_strenght = 80.0
 	if isRunning:	
 		knockback_strenght = 250.0
 	
@@ -193,7 +193,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		body.takeDamage()
 		isRunning = false
 		apply_knockback(body.global_position)
-		camera.screenShake(4, 0.3)
+		camera.screenShake(3, 0.3)
 		await get_tree().create_timer(0.5).timeout
 		
 	pass # Replace with function body.
@@ -210,4 +210,4 @@ func takeDamage(fromPosition):
 		mat.set_shader_parameter("hit_flash", true)
 		await get_tree().create_timer(0.1).timeout
 		mat.set_shader_parameter("hit_flash", false)
-	camera.screenShake(4, 0.3)
+	camera.screenShake(2, 0.3)

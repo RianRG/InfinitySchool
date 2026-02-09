@@ -5,6 +5,7 @@ extends CharacterBody2D
 var direction: Vector2
 var DEF=0
 
+var originalColor := Color.WHITE
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0 # quanto maior, mais rápido ele "freia"
 
@@ -19,26 +20,10 @@ var health=100:
 
 func _ready():
 	set_physics_process(false)
-	var shader_code = """
-		shader_type canvas_item;
-		uniform bool hit_flash = false;
-
-		void fragment() {
-			vec4 tex_color = texture(TEXTURE, UV);
-			if (hit_flash && tex_color.a > 0.0) {
-				COLOR = vec4(1.0, 1.0, 1.0, tex_color.a); // branco puro
-			} else {
-				COLOR = tex_color;
-			}
-		}
-	"""
-	var shader = Shader.new()
-	shader.code = shader_code
-	var shader_material = ShaderMaterial.new()
-	shader_material.shader = shader
-	sprite.material = shader_material
+	originalColor = sprite.modulate
 
 func _process(delta):
+	if player == null: return
 	direction = player.position-position
 	
 	if direction.x<0 && health>0:
@@ -51,7 +36,13 @@ func _physics_process(delta):
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 	velocity = move_velocity + knockback_velocity
 	move_and_slide()
-	
+
+func hitFlash():
+	sprite.modulate = Color(5, 5, 5, 5)
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = originalColor
+
+
 func takeDamage():
 	# Reduz a vida
 	health -= 10 - DEF
@@ -61,10 +52,5 @@ func takeDamage():
 	var direction_from_player = (global_position - player.position).normalized()
 	var knockback_strength = 300.0
 	knockback_velocity = direction_from_player * knockback_strength
-	
-	var mat = sprite.material as ShaderMaterial
-	if mat && health>0:
-		mat.set_shader_parameter("hit_flash", true)
-		await get_tree().create_timer(0.1).timeout # dura 0.1s
-		mat.set_shader_parameter("hit_flash", false)
+	hitFlash()
 	
