@@ -153,7 +153,7 @@ y_sort_enabled = true
 z_index = 1
 position = Vector2(936, 896)
 
-[node name="Camera2D" type="Camera2D" parent="YSort/player"]
+[node name="Camera2D2" type="Camera2D" parent="YSort/player"]
 zoom = Vector2(1.875, 1.875)
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
