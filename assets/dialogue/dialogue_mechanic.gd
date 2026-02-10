@@ -1,14 +1,13 @@
 extends Node2D
-class_name Level
-@onready var interactButton: Node2D = $"../GolemBoss/InteractButton"
+class_name DialogueMechanic
+@onready var interactButton: Node2D = $InteractButton
 
-@onready var player: Player = $"../player"
 
 @export var spriteTexture: Texture2D
 
 var dialogueScene = preload("res://assets/dialogue/dialogueScene.tscn")
 var canStartDialog: bool = false
-var dialogData: Dictionary = {
+@export var dialogData: Dictionary = {
 	0: {
 		"title": "O Grilo",
 		"dialog": "Sou eu, sou eu, sou eu"
@@ -35,4 +34,4 @@ func _process(delta: float):
 		print(newDialog)
 		interactButton.disappear()
 		hud.add_child(newDialog)
-		newDialog.start(dialogData, player)
+		newDialog.start(dialogData)

@@ -1,14 +1,12 @@
-[gd_scene load_steps=23 format=4 uid="uid://b8kas6yhuo3au"]
+[gd_scene load_steps=21 format=4 uid="uid://b8kas6yhuo3au"]
 
 [ext_resource type="TileSet" uid="uid://dxj02uipe2fmp" path="res://Chao.tres" id="1_11sws"]
 [ext_resource type="TileSet" uid="uid://jcxa0sn1lcmm" path="res://Paredes.tres" id="2_k7v17"]
-[ext_resource type="Script" uid="uid://ch6gilxo87qpn" path="res://characters/scripts/camera_2d.gd" id="2_vejse"]
 [ext_resource type="TileSet" uid="uid://cfrrfjiye5bnj" path="res://ParedesTopo.tres" id="3_vejse"]
 [ext_resource type="PackedScene" uid="uid://b25qg3uermyxk" path="res://player.tscn" id="4_nhcia"]
-[ext_resource type="Script" uid="uid://jv6gjg2kg87i" path="res://assets/Mecha-stone Golem 0.1/level.gd" id="7_nhcia"]
+[ext_resource type="PackedScene" uid="uid://e5f5w4xxhld7" path="res://assets/dialogue/dialogue_mechanic.tscn" id="6_6k8y5"]
 [ext_resource type="PackedScene" uid="uid://bnv7aepn7xn53" path="res://enemies/golemBoss/scenes/golem_boss.tscn" id="7_vtu6y"]
 [ext_resource type="TileSet" uid="uid://bkdajd8o1sltv" path="res://Paredes1.tres" id="8_jiu5r"]
-[ext_resource type="PackedScene" uid="uid://o08f2kqjkjfm" path="res://assets/dialogue/interactButton.tscn" id="8_qv1my"]
 [ext_resource type="TileSet" uid="uid://bi14j2e5v68ni" path="res://ParedeT1.tres" id="9_0le84"]
 [ext_resource type="PackedScene" uid="uid://b2k78m46nbgoa" path="res://assets/interaction/door.tscn" id="12_5m7lr"]
 [ext_resource type="Texture2D" uid="uid://cmmm6q8a117my" path="res://terrains/Portas/Porta10.png" id="12_6k8y5"]
@@ -406,13 +404,9 @@ light_mask = 3
 visibility_layer = 3
 z_index = 1
 position = Vector2(227, -52)
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-offset = Vector2(0, -20)
-zoom = Vector2(1.4, 1.4)
-position_smoothing_enabled = true
-position_smoothing_speed = 2.0
-script = ExtResource("2_vejse")
+friction = 0.2
+acc = 0.2
+health = 5
 
 [node name="PointLight2D" type="PointLight2D" parent="player"]
 y_sort_enabled = true
@@ -440,17 +434,12 @@ z_index = 2
 tile_map_data = PackedByteArray("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")
 tile_set = ExtResource("3_vejse")
 
-[node name="Level" type="Node2D" parent="."]
-script = ExtResource("7_nhcia")
-
-[node name="HUD" type="CanvasLayer" parent="Level"]
-
 [node name="GolemBoss" parent="." instance=ExtResource("7_vtu6y")]
 z_index = 1
 position = Vector2(401, -90)
 
-[node name="InteractButton" parent="GolemBoss" instance=ExtResource("8_qv1my")]
-position = Vector2(-1, -72)
+[node name="dialogueMechanic" parent="GolemBoss" instance=ExtResource("6_6k8y5")]
+position = Vector2(-1, -2)
 
 [node name="TileMapLayer4" type="TileMapLayer" parent="."]
 z_index = 1

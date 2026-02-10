@@ -9,13 +9,18 @@ var typing_id := 0
 var player = null
 @onready var _name: Label = $DialogueScreen/Background/HContainer/VContainer/Name
 @onready var _dialog: RichTextLabel = $DialogueScreen/Background/HContainer/VContainer/RichTextLabel
-@onready var animation: AnimationPlayer = $DialogueScreen/AnimationPlayer
+@onready var animation: AnimationPlayer = $AnimationPlayer
+
+@onready var sprite: Sprite2D = $sprite
+
+
 
 @onready var tween: Tween = get_tree().create_tween()
 
-func start(dialog_data: Dictionary, pPlayer: Player) -> void:
-	player=pPlayer
-	player.set_physics_process(false)
+func start(dialog_data: Dictionary) -> void:
+	Global.dialogueActive=true
+	#player=pPlayer
+	#player.set_physics_process(false)
 	data = dialog_data
 	id = 0
 	
@@ -32,7 +37,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		id+=1
 		if id==data.size():
-			player.set_physics_process(true)
+			Global.dialogueActive=false
 			queue_free()
 			return
 		_show_dialog()

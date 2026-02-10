@@ -19,31 +19,14 @@ var lastDirection = Vector2.LEFT
 @export_category("Objects")
 @export var _animationTree: AnimationTree = null
 
+var originalColor:= Color.WHITE
+
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0 # quanto maior, mais rápido para
 # n tira o texto n babaca
 func _ready():
 	_stateMachine = _animationTree["parameters/playback"]
-	
-	var shader_code = """
-		shader_type canvas_item;
-		uniform bool hit_flash = false;
-
-		void fragment() {
-			vec4 tex_color = texture(TEXTURE, UV);
-			if (hit_flash && tex_color.a > 0.0) {
-				COLOR = vec4(1.0, 1.0, 1.0, tex_color.a); // branco puro
-			} else {
-				COLOR = tex_color;
-			}
-		}
-	"""
-	var shader = Shader.new()
-	shader.code = shader_code
-	var shader_material = ShaderMaterial.new()
-	shader_material.shader = shader
-	sprite.material = shader_material
-
+	originalColor = sprite.modulate
 
 var isRunning = false
 var isDashing = false
@@ -53,6 +36,10 @@ var canAttack=true
 var isAttacking=false
 
 func _physics_process(delta: float) -> void:
+	if Global.dialogueActive:
+		_stateMachine.travel("idle")
+		return
+	
 	if knockback_velocity.length() > 1:
 		velocity += knockback_velocity
 		knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 0.2)
@@ -197,6 +184,12 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		await get_tree().create_timer(0.5).timeout
 		
 	pass # Replace with function body.
+
+
+func hitFlash():
+	sprite.modulate = Color(5, 5, 5, 5)
+	await get_tree().create_timer(0.1).timeout
+	sprite.modulate = originalColor
 
 
 func takeDamage(fromPosition):
