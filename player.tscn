@@ -1204,5 +1204,8 @@ color_initial_ramp = SubResource("Gradient_hqtel")
 tile_set = SubResource("TileSet_2hs0m")
 format = 2
 
+[node name="loseStreakTimer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="timeout" from="loseStreakTimer" to="." method="_on_lose_streak_timer_timeout"]

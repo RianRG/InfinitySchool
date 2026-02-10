@@ -5,7 +5,10 @@ class_name Player
 @onready var camera: Camera2D = $Camera2D
 @onready var animationCircle = $animationCircle
 @onready var particles = $CPUParticles2D
+@onready var loseStreak: Timer = $loseStreakTimer
 
+var attackCounter=0
+var attackCooldown=0.2
 
 var _stateMachine
 
@@ -155,16 +158,19 @@ func attack():
 			
 		isAttacking=true
 		canAttack=false
+		
 		var attackDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		if attackDirection==Vector2.ZERO:
 			attackDirection=lastDirection
 		velocity = attackDirection.normalized()*150
 	
+		
+	
 		if isRunning:
 			isRunning=false
 		await get_tree().create_timer(0.2).timeout
 		isAttacking=false
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(attackCooldown).timeout
 		canAttack=true
 	
 func apply_knockback(from_position):
@@ -178,9 +184,17 @@ func apply_knockback(from_position):
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.takeDamage()
+		attackCounter+=1
+		loseStreak.start()
+		if attackCounter==3:
+			attackCooldown=0.4
+			attackCounter=0
+		else:
+			attackCooldown=0.2
+		
 		isRunning = false
 		apply_knockback(body.global_position)
-		camera.screenShake(3, 0.3)
+		camera.screenShake(2, 0.3)
 		await get_tree().create_timer(0.5).timeout
 		
 	pass # Replace with function body.
@@ -204,3 +218,8 @@ func takeDamage(fromPosition):
 		await get_tree().create_timer(0.1).timeout
 		mat.set_shader_parameter("hit_flash", false)
 	camera.screenShake(2, 0.3)
+
+
+func _on_lose_streak_timer_timeout() -> void:
+	attackCounter=0
+	pass # Replace with function body.
