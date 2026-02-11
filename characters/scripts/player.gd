@@ -37,6 +37,7 @@ var isDead = false
 var canDash=true
 var canAttack=true
 var isAttacking=false
+var isKokusen = false
 
 func _physics_process(delta: float) -> void:
 	if Global.dialogueActive:
@@ -47,12 +48,13 @@ func _physics_process(delta: float) -> void:
 		velocity += knockback_velocity
 		knockback_velocity = knockback_velocity.lerp(Vector2.ZERO, 0.2)
 	
-	if isDashing || isAttacking:
+	if isDashing || isAttacking || isKokusen:
 		move_and_slide()
 	else:
 		move(delta)
 		attack()
 		dash()
+		kokusen()
 		animate()
 		move_and_slide()
 
@@ -75,6 +77,7 @@ func move(delta):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if direction != Vector2.ZERO:
 		lastDirection = direction
+		_animationTree["parameters/kokusen/blend_position"] = direction
 		_animationTree["parameters/idle/blend_position"] = direction  
 		_animationTree["parameters/walk/blend_position"] = direction
 		_animationTree["parameters/run/blend_position"] = direction
@@ -121,6 +124,10 @@ func animate():
 	if isAttacking:
 		_stateMachine.travel("attack")
 		return
+		
+	if isKokusen:
+		_stateMachine.travel("kokusen")
+		return
 	
 	if velocity.length()>1:
 		if isRunning && !isDashing:
@@ -129,6 +136,19 @@ func animate():
 			_stateMachine.travel("walk")	
 		return
 	_stateMachine.travel("idle")
+	
+	
+func kokusen():
+	if Input.is_action_just_pressed("kokusen"):
+		if isKokusen: return
+		
+		isKokusen=true
+		
+		set_physics_process(false)
+		await get_tree().create_timer(1.5).timeout
+		set_physics_process(true)
+		isKokusen=false
+		z_index=1
 	
 func dash():
 	if Input.is_action_just_pressed("dash"):
@@ -174,7 +194,8 @@ func attack():
 		canAttack=true
 	
 func apply_knockback(from_position):
-	var knockback_strenght = 80.0
+	var knockback_strenght = 60.0
+	if attackCounter == 3: knockback_strenght = 100.0
 	if isRunning:	
 		knockback_strenght = 250.0
 	
@@ -184,13 +205,13 @@ func apply_knockback(from_position):
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.takeDamage()
-		attackCounter+=1
-		loseStreak.start()
 		if attackCounter==3:
 			attackCooldown=0.4
 			attackCounter=0
 		else:
 			attackCooldown=0.2
+		attackCounter+=1
+		loseStreak.start()
 		
 		isRunning = false
 		apply_knockback(body.global_position)
@@ -208,6 +229,7 @@ func hitFlash():
 
 func takeDamage(fromPosition):
 	health-=1
+	hitFlash()
 	var knockback_strength = 80.0
 	var dir = (global_position - fromPosition).normalized()
 	knockback_velocity = dir * knockback_strength

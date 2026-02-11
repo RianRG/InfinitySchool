@@ -13,10 +13,12 @@ func transition():
 	var distance = owner.direction.length()
 	if distance<=90 && owner.direction != Vector2.ZERO:
 		get_parent().change_state("meleeAttack")
-	elif distance>130:
-		var chance = randi()%2
-		match chance:
-			0:
-				get_parent().change_state("homingMissile")
-			1: 
-				get_parent().change_state("laser")
+		
+	# ataque a distância
+	#elif distance>130:
+		#var chance = randi()%2
+		#match chance:
+			#0:
+				#get_parent().change_state("homingMissile")
+			#1: 
+				#get_parent().change_state("laser")

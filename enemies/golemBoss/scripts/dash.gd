@@ -4,7 +4,8 @@ var canTransition = false
 
 func enter():
 	super.enter()
-	animationPlayer.play("glowing")
+	# animation for dash
+	#animationPlayer.play("glowing")
 	await dash()
 	canTransition=true
 
