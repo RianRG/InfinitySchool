@@ -145,10 +145,13 @@ func kokusen():
 		isKokusen=true
 		
 		set_physics_process(false)
-		await get_tree().create_timer(1.5).timeout
+		await get_tree().create_timer(0.8).timeout
+		camera.screenShake(4, 0.5)
+		
+		await get_tree().create_timer(0.7).timeout
 		set_physics_process(true)
 		isKokusen=false
-		z_index=1
+		
 	
 func dash():
 	if Input.is_action_just_pressed("dash"):

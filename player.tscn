@@ -145,6 +145,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, -27.8571)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("texture:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_onrkg"]
 resource_name = "attackDown"
@@ -859,6 +871,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [290, 291, 292, 293, 294, 295, 296, 297, 298, 299]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.312056, 0.75, 1.16098),
+"transitions": PackedFloat32Array(0.4, 0.1, 0.12),
+"update": 0,
+"values": [Vector2(0, -27.8571), Vector2(0, -90), Vector2(0, -27.857)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.75, 0.916667, 1.16667),
+"transitions": PackedFloat32Array(0.4, 0.4, 0.4),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.375), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_hl5qd"]
 resource_name = "kokusenUp"
@@ -875,6 +911,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [300, 301, 302, 303, 304, 305, 306, 307, 308, 309]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.312056, 0.75, 1.16098),
+"transitions": PackedFloat32Array(0.4, 0.1, 0.12),
+"update": 0,
+"values": [Vector2(0, -27.8571), Vector2(0, -90), Vector2(0, -27.857)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.75, 0.916667, 1.16667),
+"transitions": PackedFloat32Array(0.4, 0.4, 0.4),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.375), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ek41f"]
@@ -905,6 +965,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, -27.8571), Vector2(0, -90), Vector2(0, -27.857)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.75, 0.916667, 1.16667),
+"transitions": PackedFloat32Array(0.4, 0.4, 0.4),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.375), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_khis8"]
 resource_name = "kokusenLeft"
@@ -921,6 +993,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [320, 321, 322, 323, 324, 325, 326, 327, 328, 329]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.312056, 0.75, 1.16098),
+"transitions": PackedFloat32Array(0.4, 0.1, 0.12),
+"update": 0,
+"values": [Vector2(0, -27.8571), Vector2(0, -90), Vector2(0, -27.857)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.75, 0.916667, 1.16667),
+"transitions": PackedFloat32Array(0.4, 0.4, 0.4),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1.375), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sweqy"]
