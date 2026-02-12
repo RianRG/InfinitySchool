@@ -150,7 +150,6 @@ visibility_layer = 3
 y_sort_enabled = true
 
 [node name="player" parent="YSort" instance=ExtResource("4_ie2os")]
-z_index = 1
 position = Vector2(936, 896)
 
 [node name="Camera2D2" type="Camera2D" parent="YSort/player"]
