@@ -1345,7 +1345,7 @@ _animationTree = NodePath("AnimationTree")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -20)
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("3_2hs0m")
