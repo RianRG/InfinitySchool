@@ -43,6 +43,8 @@ func _process(delta):
 
 func _physics_process(delta):
 	var move_velocity = direction.normalized()*160
+	#var move_velocity = direction.normalized()*0
+	
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 	velocity = move_velocity + knockback_velocity
 	move_and_slide()
@@ -58,11 +60,16 @@ func takeDamage():
 	var attackScene = purpleAttackVfx.instantiate()
 	attackScene.position = position
 	get_parent().add_child(attackScene)
+	attackScene.scale = Vector2(1.5, 1.5)
+	
 	
 	
 	# --- Knockback ---
 	var direction_from_player = (global_position - player.position).normalized()
-	var knockback_strength = 300.0
+	attackScene.rotation = direction_from_player.angle() + 1.7
+	print(-direction_from_player.angle())
+	var knockback_strength = 200.0
 	knockback_velocity = direction_from_player * knockback_strength
+	
 	hitFlash()
 	

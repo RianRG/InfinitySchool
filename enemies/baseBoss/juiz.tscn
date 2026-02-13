@@ -58,6 +58,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_g27j6"]
 resource_name = "attackDown"
 length = 0.70001
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -111,6 +112,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_vfw3l"]
 resource_name = "attackLeft"
 length = 0.80001
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -164,6 +166,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_4opbf"]
 resource_name = "attackRight"
 length = 0.70001
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -217,6 +220,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_ouhby"]
 resource_name = "attackUp"
 length = 0.90001
+loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
