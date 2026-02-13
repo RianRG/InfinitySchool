@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://buwyrrjdyxq78"]
+[gd_resource type="TileSet" format=3 uid="uid://buwyrrjdyxq78"]
 
 [ext_resource type="Texture2D" uid="uid://ymsq5non60tp" path="res://terrains/firstScene/Paredenova3.png" id="1_f1l2j"]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=31 format=3 uid="uid://bfs5mfy6151e1"]
+[gd_scene format=3 uid="uid://bfs5mfy6151e1"]
 
 [ext_resource type="PackedScene" uid="uid://doa7ihxf5dd1j" path="res://enemies/baseBoss/base_boss.tscn" id="1_81oqq"]
 [ext_resource type="Texture2D" uid="uid://c3yakcr5ayv1b" path="res://enemies/juizBoss/ParentBoss.png" id="2_8bmxj"]
 [ext_resource type="Script" uid="uid://bw2aj2wp0y5o3" path="res://enemies/juizBoss/juiz.gd" id="2_ybu1o"]
+[ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://assets/Sombra.png" id="3_3ve6r"]
 
 [sub_resource type="Animation" id="Animation_ybu1o"]
 length = 0.001
@@ -256,7 +257,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -80)]
+"values": [Vector2(0, -50)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -490,7 +491,12 @@ size = Vector2(120, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybu1o"]
 
-[node name="Juiz" instance=ExtResource("1_81oqq")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3ve6r"]
+radius = 135.38
+
+[node name="Juiz" unique_id=644742827 groups=["enemy"] instance=ExtResource("1_81oqq")]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("2_ybu1o")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -499,29 +505,38 @@ hframes = 15
 vframes = 14
 frame = 15
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_3ve6r")
-}
-autoplay = "idleDown"
+[node name="shadow" type="Sprite2D" parent="." index="1" unique_id=1191370424]
+modulate = Color(1, 1, 1, 0.4627451)
+z_index = -1
+position = Vector2(2, 37)
+scale = Vector2(5, 5)
+texture = ExtResource("3_3ve6r")
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2" unique_id=985669107]
+libraries/ = SubResource("AnimationLibrary_3ve6r")
+autoplay = &"idleDown"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="3" unique_id=1729317031]
 tree_root = SubResource("AnimationNodeStateMachine_lx6jt")
 anim_player = NodePath("../AnimationPlayer")
 parameters/attack/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(-0.0015949, 0.043956)
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="4"]
 position = Vector2(0, 15)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3ve6r")
 
-[node name="attackArea" type="Area2D" parent="." index="4"]
+[node name="attackArea" type="Area2D" parent="." index="5" unique_id=256027374]
 
-[node name="hitbox" type="CollisionShape2D" parent="attackArea" index="0"]
+[node name="hitbox" type="CollisionShape2D" parent="attackArea" index="0" unique_id=1449932512]
 position = Vector2(0, 80)
 shape = SubResource("RectangleShape2D_ybu1o")
 disabled = true
+
+[node name="CollisionShape2D" parent="playerDetection" index="0"]
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_3ve6r")
 
 [connection signal="animation_started" from="AnimationTree" to="FiniteStateMachine/meleeAttack" method="_on_animation_tree_animation_started"]
 [connection signal="body_entered" from="attackArea" to="FiniteStateMachine/meleeAttack" method="_on_attack_area_body_entered"]

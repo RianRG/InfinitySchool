@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cfrrfjiye5bnj"]
+[gd_resource type="TileSet" format=3 uid="uid://cfrrfjiye5bnj"]
 
 [ext_resource type="Texture2D" uid="uid://cxnkwfrv06jkj" path="res://terrains/firstScene/tilemap parede1.png" id="1_s5wrp"]
 

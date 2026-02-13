@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://b25qg3uermyxk"]
+[gd_scene format=3 uid="uid://b25qg3uermyxk"]
 
 [ext_resource type="Script" uid="uid://cvrhht6eg21nd" path="res://characters/scripts/player.gd" id="1_4flbx"]
 [ext_resource type="PackedScene" uid="uid://c2334ypqda5so" path="res://player_bullet.tscn" id="2_1jxqw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bkwndishye0dr" path="res://characters/scripts/deathCircle.gd" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://da7l7rmg66drp" path="res://assets/new prota/Morte1.png" id="3_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://b1d65ug1fk5ir" path="res://assets/new prota/tudo4.png" id="4_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://assets/Sombra.png" id="5_1jxqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 13.5714)
@@ -1336,39 +1337,44 @@ colors = PackedColorArray(1, 1, 1, 1, 0.0705882, 0, 0.447059, 1)
 [sub_resource type="TileSet" id="TileSet_2hs0m"]
 resource_local_to_scene = true
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_animationTree") groups=["character"]]
+[node name="player" type="CharacterBody2D" unique_id=1149914169 node_paths=PackedStringArray("_animationTree") groups=["character"]]
 z_index = 1
 script = ExtResource("1_4flbx")
 bulletNode = ExtResource("2_1jxqw")
 _animationTree = NodePath("AnimationTree")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1542494063]
 offset = Vector2(0, -20)
 zoom = Vector2(0.9, 0.9)
 position_smoothing_enabled = true
 position_smoothing_speed = 2.0
 script = ExtResource("3_2hs0m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042372997]
 position = Vector2(6.27417e-08, -5.35714)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_hqtel")
 
-[node name="texture" type="Sprite2D" parent="."]
+[node name="texture" type="Sprite2D" parent="." unique_id=86597027]
 y_sort_enabled = true
 position = Vector2(0, -27.8571)
 texture = ExtResource("4_2hs0m")
 hframes = 10
 vframes = 33
 
-[node name="solidCircle" type="Sprite2D" parent="."]
+[node name="shadow" type="Sprite2D" parent="." unique_id=636522755]
+modulate = Color(1, 1, 1, 0.45490196)
+z_index = -1
+texture = ExtResource("5_1jxqw")
+
+[node name="solidCircle" type="Sprite2D" parent="." unique_id=804341214]
 visible = false
 z_index = 11
 position = Vector2(0, -40)
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("3_hqtel")
 
-[node name="circleDeath" type="Sprite2D" parent="."]
+[node name="circleDeath" type="Sprite2D" parent="." unique_id=1036490393]
 visible = false
 z_index = 10
 position = Vector2(0, -35.52)
@@ -1376,17 +1382,13 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_i3pqv")
 hframes = 16
 
-[node name="animationCircle" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tkwlq")
-}
+[node name="animationCircle" type="AnimationPlayer" parent="." unique_id=1360603613]
+libraries/ = SubResource("AnimationLibrary_tkwlq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_sweqy")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=891681292]
+libraries/ = SubResource("AnimationLibrary_sweqy")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=68963789]
 tree_root = SubResource("AnimationNodeStateMachine_i3pqv")
 anim_player = NodePath("../AnimationPlayer")
 parameters/attack/blend_position = Vector2(0, 0)
@@ -1397,15 +1399,15 @@ parameters/kokusen/blend_position = Vector2(0, 0.0403588)
 parameters/run/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(0, 0)
 
-[node name="AttackArea" type="Area2D" parent="."]
+[node name="AttackArea" type="Area2D" parent="." unique_id=1162090586]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea" unique_id=1283211724]
 position = Vector2(40, -60)
 scale = Vector2(40, 40)
 shape = SubResource("RectangleShape2D_i3pqv")
 disabled = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=305568012]
 position = Vector2(0, -25.2632)
 emitting = false
 amount = 200
@@ -1419,12 +1421,12 @@ scale_amount_max = 8.0
 scale_amount_curve = SubResource("Curve_onrkg")
 color_initial_ramp = SubResource("Gradient_hqtel")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." unique_id=1899201351]
 visible = false
 tile_set = SubResource("TileSet_2hs0m")
 format = 2
 
-[node name="loseStreakTimer" type="Timer" parent="."]
+[node name="loseStreakTimer" type="Timer" parent="." unique_id=1305586872]
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
