@@ -1,5 +1,5 @@
 extends State
-
+var stateMachine
 func enter():
 	super.enter()
 	animationPlayer.play("death")

@@ -18,7 +18,7 @@ var lastDirection = Vector2.LEFT
 @export var friction = 0.2
 @export var acc = 0.2
 @export var bulletNode: PackedScene
-@export var health = 5
+@export var health = 100
 @export_category("Objects")
 @export var _animationTree: AnimationTree = null
 
@@ -108,7 +108,7 @@ func move(delta):
 
 func animate():
 	
-	if health==0:
+	if health<0:
 		isDead=true
 	
 	if isDead:
@@ -233,16 +233,14 @@ func hitFlash():
 func takeDamage(fromPosition):
 	health-=1
 	hitFlash()
+	
 	var knockback_strength = 80.0
 	var dir = (global_position - fromPosition).normalized()
 	knockback_velocity = dir * knockback_strength
-	
-	var mat = sprite.material as ShaderMaterial
-	if mat && !isDead:
-		mat.set_shader_parameter("hit_flash", true)
-		await get_tree().create_timer(0.1).timeout
-		mat.set_shader_parameter("hit_flash", false)
 	camera.screenShake(2, 0.3)
+	#Engine.time_scale = 0.3  # câmera lenta
+	#await get_tree().create_timer(0.2).timeout  # 0.2s em slow-mo
+	#Engine.time_scale = 1.0  # volta ao normal
 
 
 func _on_lose_streak_timer_timeout() -> void:

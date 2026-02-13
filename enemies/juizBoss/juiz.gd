@@ -6,12 +6,13 @@ var direction: Vector2
 var DEF=0
 
 @onready var animationTree: AnimationTree = $AnimationTree
+
 var stateMachine
 
 var originalColor := Color.WHITE
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0 # quanto maior, mais rápido ele "freia"
-
+var onState = false
 var health=100:
 	set(value):
 		health=value
@@ -23,7 +24,8 @@ var health=100:
 			# possível 2 fase
 
 func _ready():
-	stateMachine = animationTree["paremeters/playback"]
+	stateMachine = animationTree["parameters/playback"]
+	
 	set_physics_process(false)
 	originalColor = sprite.modulate
 
@@ -32,6 +34,7 @@ func _process(delta):
 	direction = player.position-position
 	
 	animationTree["parameters/walk/blend_position"] = direction
+	animationTree["parameters/attack/blend_position"] = direction
 	
 	#if direction.x<0 && health>0:
 		#sprite.flip_h=true
@@ -39,7 +42,7 @@ func _process(delta):
 		#sprite.flip_h=false
 
 func _physics_process(delta):
-	var move_velocity = direction.normalized()*100
+	var move_velocity = direction.normalized()*160
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 	velocity = move_velocity + knockback_velocity
 	move_and_slide()
@@ -48,11 +51,13 @@ func hitFlash():
 	sprite.modulate = Color(5, 5, 5, 5)
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = originalColor
-
-
+const purpleAttackVfx = preload("res://assets/vfx/purpleAttackVfx.tscn")
 func takeDamage():
 	# Reduz a vida
 	health -= 10 - DEF
+	var attackScene = purpleAttackVfx.instantiate()
+	attackScene.position = position
+	get_parent().add_child(attackScene)
 	
 	
 	# --- Knockback ---

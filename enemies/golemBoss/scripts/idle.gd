@@ -1,6 +1,6 @@
 extends State
 @onready var collision: CollisionShape2D = $"../../playerDetection/CollisionShape2D"
-
+var stateMachine
 
 var playerEntered = false:
 	set(value):
@@ -13,4 +13,5 @@ func transition():
 
 
 func _on_player_detection_body_entered(body: Node2D) -> void:
-	playerEntered=true
+	if body.is_in_group("character"):
+		playerEntered=true

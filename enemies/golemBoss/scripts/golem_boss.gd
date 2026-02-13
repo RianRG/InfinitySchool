@@ -45,12 +45,10 @@ func hitFlash():
 
 func takeDamage():
 	# Reduz a vida
+	hitFlash()
 	health -= 10 - DEF
-	
-	
 	# --- Knockback ---
 	var direction_from_player = (global_position - player.position).normalized()
 	var knockback_strength = 300.0
 	knockback_velocity = direction_from_player * knockback_strength
-	hitFlash()
 	

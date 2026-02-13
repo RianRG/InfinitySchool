@@ -1,7 +1,6 @@
 extends State
 var canTransition = false
 
-
 func enter():
 	super.enter()
 	# animation for dash

@@ -1,9 +1,10 @@
 extends State
-
+@onready var animation: AnimationPlayer = $"../../AnimationPlayer"
 func enter():
 	super.enter()
+	
 	owner.set_physics_process(true)
-	animationPlayer.play("idle")
+	owner.stateMachine.travel("walk")
 
 func exit():
 	super.exit()
@@ -11,7 +12,7 @@ func exit():
 
 func transition():
 	var distance = owner.direction.length()
-	if distance<=90 && owner.direction != Vector2.ZERO:
+	if distance<=80 && owner.direction != Vector2.ZERO:
 		get_parent().change_state("meleeAttack")
 		
 	# ataque a distância
