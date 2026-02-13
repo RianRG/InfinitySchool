@@ -70,11 +70,6 @@ func dashAttack():
 	dash_direction = (player.position - global_position).normalized()
 	knockback_velocity = dash_direction * 400
 
-
-func endDashAttack():
-	stateMachine.travel("spinAttack")
-
-
 func spinAttack():
 	# Recalcula direção apenas no início do segundo dash
 	dash_direction = (player.position - global_position).normalized()
