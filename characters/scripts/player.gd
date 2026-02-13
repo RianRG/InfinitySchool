@@ -26,7 +26,7 @@ var originalColor:= Color.WHITE
 
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0 # quanto maior, mais rápido para
-# n tira o texto n babaca
+
 func _ready():
 	_stateMachine = _animationTree["parameters/playback"]
 	originalColor = sprite.modulate
@@ -230,14 +230,15 @@ func hitFlash():
 	sprite.modulate = originalColor
 
 
-func takeDamage(fromPosition):
+func takeDamage(fromPosition, knockback_strength):
 	health-=1
 	hitFlash()
-	
-	var knockback_strength = 80.0
+
 	var dir = (global_position - fromPosition).normalized()
 	knockback_velocity = dir * knockback_strength
 	camera.screenShake(2, 0.3)
+	
+	# ========== camera lenta efeito
 	#Engine.time_scale = 0.3  # câmera lenta
 	#await get_tree().create_timer(0.2).timeout  # 0.2s em slow-mo
 	#Engine.time_scale = 1.0  # volta ao normal

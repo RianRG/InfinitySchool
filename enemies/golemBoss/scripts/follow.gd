@@ -3,16 +3,16 @@ extends State
 func enter():
 	super.enter()
 	
-	owner.set_physics_process(true)
+	owner.onState=false
 	owner.stateMachine.travel("walk")
 
 func exit():
 	super.exit()
-	owner.set_physics_process(false)
+	#owner.set_physics_process(false)
 
 func transition():
 	var distance = owner.direction.length()
-	if distance<=80 && owner.direction != Vector2.ZERO:
+	if distance<=140 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown:
 		get_parent().change_state("meleeAttack")
 		
 	# ataque a distância

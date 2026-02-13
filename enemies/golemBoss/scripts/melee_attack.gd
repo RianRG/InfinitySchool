@@ -4,17 +4,15 @@ var stateMachine
 func enter():
 	super.enter()
 	owner.onState = true
-	owner.set_physics_process(false)
 	owner.stateMachine.travel("attack")
-	await get_tree().create_timer(0.8).timeout
-	owner.onState=false
 	
 func transition():
-	if owner.direction.length()>120:
+	var distance = owner.direction.length()
+	if distance>180 && !owner.onState:
 		get_parent().change_state("follow")
 
 func attackPlayer():
-	player.takeDamage(owner.position)
+	player.takeDamage(owner.position, 40.0)
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
