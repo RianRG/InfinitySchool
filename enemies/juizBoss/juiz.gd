@@ -23,7 +23,7 @@ var direction_update_interval := 0.25
 var direction_smoothness := 4.0
 
 
-var separation_strength := 300.0
+var separation_strength := 700.0
 
 
 # Zona mínima real
