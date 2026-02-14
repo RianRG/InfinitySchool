@@ -1,36 +1,49 @@
 extends State
+@onready var cooldownAttackTimer: Timer = $"../../cooldownAttack"
 var stateMachine
-
+enum attacksEnum{
+	MELEE,
+	SPIN
+}
+var currentAttack: attacksEnum
 func enter():
 	super.enter()
 	owner.onState = true
 	owner.stateMachine.travel("attack")
 	
 func transition():
-	var distance = owner.direction.length()
+	var distance = owner.position.distance_to(player.position)
 	if distance>180 && !owner.onState:
 		get_parent().change_state("follow")
 
 func attackPlayer():
-	player.takeDamage(owner.position, 40.0)
+	var knockback_strength = 400.0 if currentAttack == attacksEnum.SPIN else 100.0
+	player.takeDamage(owner.position, knockback_strength)
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character"):
 		attackPlayer()
 
+func startAttackCooldown():
+	await get_tree().create_timer(2).timeout
+	owner.speed = 160
+	owner.onAttackCooldown = false
+	owner.knockback_velocity = Vector2.ZERO
+	
 
 func dashAttack():
 	owner.onState = true
+	currentAttack = attacksEnum.MELEE
 	
-	# Calcula direção UMA VEZ
-	owner.dash_direction = (player.position - global_position).normalized()
-	owner.knockback_velocity = owner.dash_direction * 400
+	owner.target_direction = (player.position - global_position).normalized()
+	owner.knockback_velocity = owner.target_direction * 400
 
 func spinAttack():
-	# Recalcula direção apenas no início do segundo dash
-	owner.dash_direction = (player.position - global_position).normalized()
-	owner.knockback_velocity = owner.dash_direction * 800
+	currentAttack = attacksEnum.SPIN
+	
+	
+	owner.knockback_velocity = owner.target_direction * 800
 
 
 func endSpinAttack():
@@ -39,10 +52,5 @@ func endSpinAttack():
 	owner.onAttackCooldown = true
 	
 	startAttackCooldown()
-	find_child("FiniteStateMachine").change_state("follow")
-
-
-func startAttackCooldown():
-	await get_tree().create_timer(0.5).timeout
-	owner.speed = 160
-	owner.onAttackCooldown = false
+	cooldownAttackTimer.start()
+	get_parent().change_state("follow")

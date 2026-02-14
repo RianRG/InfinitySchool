@@ -218,10 +218,9 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		
 		isRunning = false
 		apply_knockback(body.global_position)
-		camera.screenShake(2, 0.3)
+		camera.screenShake(3, 0.3)
 		await get_tree().create_timer(0.5).timeout
 		
-	pass # Replace with function body.
 
 
 func hitFlash():
@@ -233,10 +232,14 @@ func hitFlash():
 func takeDamage(fromPosition, knockback_strength):
 	health-=1
 	hitFlash()
+	canDash=false
 
 	var dir = (global_position - fromPosition).normalized()
 	knockback_velocity = dir * knockback_strength
-	camera.screenShake(2, 0.3)
+	camera.screenShake(3, 0.3)
+	
+	await get_tree().create_timer(2).timeout
+	canDash=true
 	
 	# ========== camera lenta efeito
 	#Engine.time_scale = 0.3  # câmera lenta

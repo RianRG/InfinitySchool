@@ -1,5 +1,9 @@
 extends State
 @onready var animation: AnimationPlayer = $"../../AnimationPlayer"
+@onready var cooldownAttackTimer: Timer = $"../../cooldownAttack"
+
+var timerIsOut:=false
+
 func enter():
 	super.enter()
 	
@@ -11,8 +15,9 @@ func exit():
 	#owner.set_physics_process(false)
 
 func transition():
-	var distance = owner.direction.length()
-	if distance<=140 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown:
+	var distance = owner.position.distance_to(player.position)
+
+	if distance<=140 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
 		get_parent().change_state("meleeAttack")
 		
 	# ataque a distância
@@ -23,3 +28,7 @@ func transition():
 				#get_parent().change_state("homingMissile")
 			#1: 
 				#get_parent().change_state("laser")
+
+
+func _on_cooldown_attack_timeout() -> void:
+	timerIsOut=true
