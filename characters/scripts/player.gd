@@ -1,235 +1,417 @@
 extends CharacterBody2D
 class_name Player
 
+# ===============================
+# NODES
+# ===============================
 @onready var sprite: Sprite2D = $texture
 @onready var camera: Camera2D = $Camera2D
 @onready var animationCircle = $animationCircle
 @onready var particles = $CPUParticles2D
 @onready var loseStreak: Timer = $loseStreakTimer
 
-var attackCounter = 0
-var attackCooldown = 0.2
+# Timers gerenciados
+var dash_timer: Timer
+var dash_cooldown_timer: Timer
+var attack_cooldown_timer: Timer
+var kokusen_timer: Timer
+var spin_timer: Timer
+var spin_end_timer: Timer
 
-var _stateMachine
-
-var SPEED = 150.0
-const JUMP_VELOCITY = -400.0
-var lastDirection = Vector2.LEFT
-
+# ===============================
+# EXPORTS
+# ===============================
 @export var friction = 0.2
 @export var acc = 0.35
 @export var bulletNode: PackedScene
 @export var health = 100
 
+@export_category("Movement")
+@export var SPEED = 150.0
+@export var JUMP_VELOCITY = -400.0
+
 @export_category("Dash Settings")
 @export var dash_speed := 600.0
 @export var dash_time := 0.2
-@export var dash_cooldown := 1
+@export var dash_cooldown := 1.0
+
+@export_category("Attack Settings")
+@export var attack_cooldown := 0.2
+@export var attack_dash_speed := 150.0
+@export var attack_duration := 0.2
 
 @export_category("Knockback Settings")
 @export var knockback_decay := 900.0
 
+@export_category("Kokusen Settings")
+@export var kokusen_freeze_duration := 0.8
+@export var kokusen_end_duration := 0.7
+
+@export_category("Spin Settings")
+@export var spin_startup_duration := 0.6
+@export var spin_duration := 6.0
+@export var spin_end_duration := 0.8
+
 @export_category("Objects")
 @export var _animationTree: AnimationTree = null
 
-@export_category("Spin Settings")
-@export var spin_duration = 6 # seconds
-var spin_started=false
+# ===============================
+# STATE MACHINE
+# ===============================
+enum PlayerState {
+	IDLE,
+	MOVING,
+	DASHING,
+	ATTACKING,
+	KOKUSEN,
+	SPINNING_STARTUP,
+	SPINNING,
+	SPIN_END,
+	DEAD
+}
+
+var current_state: PlayerState = PlayerState.IDLE
+var _stateMachine
+
+# ===============================
+# MOVEMENT & COMBAT
+# ===============================
+var move_velocity: Vector2 = Vector2.ZERO
+var external_velocity: Vector2 = Vector2.ZERO
+var dash_velocity: Vector2 = Vector2.ZERO
+var lastDirection = Vector2.LEFT
+
+var attackCounter = 0
+var isRunning = false
+var canDash = true
+var canAttack = true
+var spin_started = false
 
 var originalColor := Color.WHITE
 
 # ===============================
-# VELOCIDADES SEPARADAS (IMPORTANTE)
+# READY
 # ===============================
-
-var move_velocity: Vector2 = Vector2.ZERO
-var external_velocity: Vector2 = Vector2.ZERO # knockback
-var dash_velocity: Vector2 = Vector2.ZERO
-
-# ===============================
-# ESTADOS
-# ===============================
-
-var isRunning = false
-var isDashing = false
-var isDead = false
-var canDash = true
-var canAttack = true
-var isAttacking = false
-var isKokusen = false
-var isSpinning = false
-var finishedSpin=false
-
-# ===============================
-
 func _ready():
 	_stateMachine = _animationTree["parameters/playback"]
 	originalColor = sprite.modulate
-	_animationTree.active=true
+	_animationTree.active = true
+	
+	_setup_timers()
 
+func _setup_timers():
+	# Dash timer
+	dash_timer = Timer.new()
+	dash_timer.one_shot = true
+	dash_timer.timeout.connect(_on_dash_timer_timeout)
+	add_child(dash_timer)
+	
+	# Dash cooldown
+	dash_cooldown_timer = Timer.new()
+	dash_cooldown_timer.one_shot = true
+	dash_cooldown_timer.timeout.connect(_on_dash_cooldown_timeout)
+	add_child(dash_cooldown_timer)
+	
+	# Attack cooldown
+	attack_cooldown_timer = Timer.new()
+	attack_cooldown_timer.one_shot = true
+	attack_cooldown_timer.timeout.connect(_on_attack_cooldown_timeout)
+	add_child(attack_cooldown_timer)
+	
+	# Kokusen timer
+	kokusen_timer = Timer.new()
+	kokusen_timer.one_shot = true
+	kokusen_timer.timeout.connect(_on_kokusen_timer_timeout)
+	add_child(kokusen_timer)
+	
+	# Spin timer
+	spin_timer = Timer.new()
+	spin_timer.one_shot = true
+	spin_timer.timeout.connect(_on_spin_timer_timeout)
+	add_child(spin_timer)
+	
+	# Spin end timer
+	spin_end_timer = Timer.new()
+	spin_end_timer.one_shot = true
+	spin_end_timer.timeout.connect(_on_spin_end_timer_timeout)
+	add_child(spin_end_timer)
 
 # ===============================
-# PHYSICS PROCESS LIMPO
+# PHYSICS PROCESS
 # ===============================
-
 func _physics_process(delta: float) -> void:
 	if Global.dialogueActive:
 		_stateMachine.travel("idle")
 		return
-
-	# Knockback decai suavemente
+	
+	# Decay knockback
 	external_velocity = external_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
-
-	if isDashing:
-		velocity = dash_velocity
-	else:
-		move(delta)
-		attack()
-		dash()
-		kokusen()
-		spin()
-		animate()
-		velocity = move_velocity + external_velocity
-
+	
+	# Process current state
+	_process_state(delta)
+	
+	# Handle input (unless locked)
+	if _can_handle_input():
+		_handle_input()
+	
+	# Update velocity and move
+	_update_velocity()
 	move_and_slide()
-
+	
+	# Update animation
+	_update_animation()
 
 # ===============================
-# MOVIMENTO
+# STATE MACHINE LOGIC
 # ===============================
+func _process_state(delta: float):
+	match current_state:
+		PlayerState.IDLE, PlayerState.MOVING:
+			_process_movement(delta)
+		
+		PlayerState.DASHING:
+			velocity = dash_velocity
+		
+		PlayerState.ATTACKING:
+			# Movement is set when entering attack state
+			pass
+		
+		PlayerState.KOKUSEN:
+			# Frozen during kokusen
+			velocity = Vector2.ZERO
+		
+		PlayerState.SPINNING_STARTUP:
+			velocity = Vector2.ZERO
+		
+		PlayerState.SPINNING:
+			_process_movement(delta)
+		
+		PlayerState.SPIN_END:
+			# PARADO durante recovery
+			velocity = Vector2.ZERO
+		
+		PlayerState.DEAD:
+			velocity = Vector2.ZERO
+func _can_handle_input() -> bool:
+	return current_state in [PlayerState.IDLE, PlayerState.MOVING, PlayerState.DASHING, ]
 
-func move(delta):
+func _handle_input():
+	if Input.is_action_just_pressed("dash"):
+		_try_dash()
+	
+	if Input.is_action_just_pressed("attack"):
+		_try_attack()
+	
+	if Input.is_action_just_pressed("kokusen"):
+		_try_kokusen()
+	
+	if Input.is_action_just_pressed("spin"):
+		_try_spin()
+
+# ===============================
+# MOVEMENT
+# ===============================
+func _process_movement(delta: float):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-
+	
 	if direction != Vector2.ZERO:
 		lastDirection = direction
-		
-		_animationTree["parameters/kokusen/blend_position"] = direction 
-		_animationTree["parameters/idle/blend_position"] = direction 
-		_animationTree["parameters/walk/blend_position"] = direction 
-		_animationTree["parameters/run/blend_position"] = direction 
-		_animationTree["parameters/dash/blend_position"] = direction 
-		_animationTree["parameters/attack/blend_position"] = direction
-		
-		
+		_update_animation_blend_positions(direction)
 		
 		move_velocity.x = lerp(move_velocity.x, direction.normalized().x * SPEED, acc)
 		move_velocity.y = lerp(move_velocity.y, direction.normalized().y * SPEED, acc)
+		
+		if current_state == PlayerState.IDLE:
+			_change_state(PlayerState.MOVING)
 	else:
 		move_velocity.x = lerp(move_velocity.x, 0.0, friction)
 		move_velocity.y = lerp(move_velocity.y, 0.0, friction)
-
-
-# ===============================
-# DASH PROFISSIONAL
-# ===============================
-
-func dash():
-	if Input.is_action_just_pressed("dash"):
-		if isDashing or !canDash or isSpinning:
-			return
-
-		isDashing = true
-		canDash = false
 		
-		var dashDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		if dashDirection == Vector2.ZERO:
-			dashDirection = lastDirection
+		if current_state == PlayerState.MOVING and move_velocity.length() < 1.0:
+			_change_state(PlayerState.IDLE)
 
-		dash_velocity = dashDirection.normalized() * dash_speed
-		
-		# Zera forças durante dash
-		external_velocity = Vector2.ZERO
-		move_velocity = Vector2.ZERO
-
-		particles.emitting = true
-		
-		await get_tree().create_timer(dash_time).timeout
-		
-		particles.emitting = false
-		isDashing = false
-		dash_velocity = Vector2.ZERO
-		
-		await get_tree().create_timer(dash_cooldown).timeout
-		canDash = true
-
+func _update_animation_blend_positions(direction: Vector2):
+	_animationTree["parameters/kokusen/blend_position"] = direction
+	_animationTree["parameters/idle/blend_position"] = direction
+	_animationTree["parameters/walk/blend_position"] = direction
+	_animationTree["parameters/run/blend_position"] = direction
+	_animationTree["parameters/dash/blend_position"] = direction
+	_animationTree["parameters/attack/blend_position"] = direction
 
 # ===============================
-# ATAQUE
+# DASH
 # ===============================
+func _try_dash():
+	if not canDash or current_state == PlayerState.SPINNING:
+		return
+	
+	_change_state(PlayerState.DASHING)
+	canDash = false
+	
+	var dashDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if dashDirection == Vector2.ZERO:
+		dashDirection = lastDirection
+	
+	dash_velocity = dashDirection.normalized() * dash_speed
+	external_velocity = Vector2.ZERO
+	move_velocity = Vector2.ZERO
+	
+	particles.emitting = true
+	dash_timer.start(dash_time)
+	dash_cooldown_timer.start(dash_time + dash_cooldown)
 
-func attack():
-	if Input.is_action_just_pressed("attack") and !isAttacking:
-		if !canAttack:
-			return
-			
-		isAttacking = true
-		canAttack = false
-		
-		var attackDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		if attackDirection == Vector2.ZERO:
-			attackDirection = lastDirection
-		
-		move_velocity = attackDirection.normalized() * 150
-		
-		if isRunning:
-			isRunning = false
-		
-		await get_tree().create_timer(0.2).timeout
-		isAttacking = false
-		
-		await get_tree().create_timer(attackCooldown).timeout
-		canAttack = true
+func _on_dash_timer_timeout():
+	particles.emitting = false
+	dash_velocity = Vector2.ZERO
+	_change_state(PlayerState.IDLE)
 
+func _on_dash_cooldown_timeout():
+	canDash = true
+
+# ===============================
+# ATTACK
+# ===============================
+func _try_attack():
+	if not canAttack or current_state not in [PlayerState.IDLE, PlayerState.MOVING]:
+		return
+	
+	_change_state(PlayerState.ATTACKING)
+	canAttack = false
+	
+	var attackDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if attackDirection == Vector2.ZERO:
+		attackDirection = lastDirection
+	
+	move_velocity = attackDirection.normalized() * attack_dash_speed
+	
+	if isRunning:
+		isRunning = false
+	
+	attack_cooldown_timer.start(attack_duration + attack_cooldown)
+
+func _on_attack_cooldown_timeout():
+	canAttack = true
+	if current_state == PlayerState.ATTACKING:
+		_change_state(PlayerState.IDLE)
 
 # ===============================
 # KOKUSEN
 # ===============================
+func _try_kokusen():
+	if current_state == PlayerState.KOKUSEN:
+		return
+	
+	_change_state(PlayerState.KOKUSEN)
+	kokusen_timer.start(kokusen_freeze_duration)
 
-func kokusen():
-	if Input.is_action_just_pressed("kokusen"):
-		if isKokusen:
-			return
-		
-		isKokusen = true
-		
-		set_physics_process(false)
-		await get_tree().create_timer(0.8).timeout
-		
-		camera.screenShake(4, 0.5)
-		
-		await get_tree().create_timer(0.7).timeout
-		set_physics_process(true)
-		isKokusen = false
+func _on_kokusen_timer_timeout():
+	camera.screenShake(4, 0.5)
+	
+	# Timer for end of kokusen
+	var end_timer = get_tree().create_timer(kokusen_end_duration)
+	end_timer.timeout.connect(_on_kokusen_end)
 
+func _on_kokusen_end():
+	_change_state(PlayerState.IDLE)
 
-# spin
-func spin():
-	if Input.is_action_just_pressed("spin"):
-		if isSpinning:
-			return
-		isSpinning=true
-		spin_started=false
-		set_physics_process(false)
-		await get_tree().create_timer(0.6).timeout
-		set_physics_process(true)
-		
-		await get_tree().create_timer(spin_duration).timeout
-		_animationTree.set("parameters/conditions/finishedSpin", true)
-		print(_animationTree.get("parameters/conditions/finishedSpin"))
-		set_physics_process(false)
-		await get_tree().create_timer(0.8).timeout
-		set_physics_process(true)
-		
-		
-		_animationTree.set("parameters/conditions/finishedSpin", false)
-		isSpinning=false
-		
 # ===============================
-# KNOCKBACK
+# SPIN ATTACK
 # ===============================
+func _try_spin():
+	if current_state == PlayerState.SPINNING or current_state == PlayerState.SPINNING_STARTUP:
+		return
+	
+	# Fase 1: STARTUP (parado)
+	_change_state(PlayerState.SPINNING_STARTUP)
+	spin_started = false
+	spin_timer.start(spin_startup_duration)  # 0.6s parado
 
-func apply_knockback(from_position):
+func _on_spin_timer_timeout():
+	# Fase 2: SPINNING (se move normalmente)
+	_change_state(PlayerState.SPINNING)
+	spin_end_timer.start(spin_duration)  # 6s girando
+
+func _on_spin_end_timer_timeout():
+	# Fase 3: RECOVERY (parado de novo)
+	_change_state(PlayerState.SPIN_END)
+	_animationTree.set("parameters/conditions/finishedSpin", true)
+	
+	# Timer final de recovery
+	var final_timer = get_tree().create_timer(spin_end_duration)  # 0.8s parado
+	final_timer.timeout.connect(_on_spin_complete)
+
+func _on_spin_complete():
+	_animationTree.set("parameters/conditions/finishedSpin", false)
+	_change_state(PlayerState.IDLE)
+# ===============================
+# STATE TRANSITIONS
+# ===============================
+func _change_state(new_state: PlayerState):
+	var old_state = current_state
+	current_state = new_state
+	
+	# Debug
+	# print("State changed: %s -> %s" % [PlayerState.keys()[old_state], PlayerState.keys()[new_state]])
+
+# ===============================
+# VELOCITY UPDATE
+# ===============================
+func _update_velocity():
+	match current_state:
+		PlayerState.DASHING:
+			velocity = dash_velocity
+		PlayerState.KOKUSEN, PlayerState.SPINNING_STARTUP, PlayerState.SPIN_END, PlayerState.DEAD:
+			velocity = Vector2.ZERO
+		PlayerState.SPINNING:  # ← ADICIONE CASO SEPARADO
+			velocity = move_velocity + external_velocity  # SE MOVE!
+		_:
+			velocity = move_velocity + external_velocity
+# ===============================
+# ANIMATION
+# ===============================
+func _update_animation():
+	if health <= 0 and current_state != PlayerState.DEAD:
+		_change_state(PlayerState.DEAD)
+	
+	match current_state:
+		PlayerState.DEAD:
+			_stateMachine.travel("death")
+			animationCircle.play("circleDeathAnimation")
+		
+		PlayerState.DASHING:
+			_stateMachine.travel("dash")
+		
+		PlayerState.SPINNING_STARTUP:  # ← ADICIONE
+			if not spin_started:
+				_stateMachine.travel("spinAttackStart")
+				spin_started = true
+		
+		PlayerState.SPINNING:  # ← MODIFIQUE
+			# Mantém a animação de spin
+			pass
+		
+		PlayerState.SPIN_END:  # ← ADICIONE
+			# Animação de recovery/finalização
+			pass
+		
+		PlayerState.ATTACKING:
+			_stateMachine.travel("attack")
+		
+		PlayerState.KOKUSEN:
+			_stateMachine.travel("kokusen")
+		
+		PlayerState.MOVING:
+			if isRunning:
+				_stateMachine.travel("run")
+			else:
+				_stateMachine.travel("walk")
+		
+		PlayerState.IDLE:
+			_stateMachine.travel("idle")
+# ===============================
+# KNOCKBACK & DAMAGE
+# ===============================
+func apply_knockback(from_position: Vector2):
 	var knockback_strength = 300.0
 	
 	if attackCounter == 3:
@@ -240,77 +422,33 @@ func apply_knockback(from_position):
 	var dir = (global_position - from_position).normalized()
 	external_velocity = dir * knockback_strength
 
-
-func takeDamage(fromPosition, knockback_strength):
+func takeDamage(fromPosition: Vector2, knockback_strength: float):
 	health -= 1
 	hitFlash()
-
-	# Cancela dash se tomar hit
-	if isDashing:
-		isDashing = false
+	
+	# Cancel dash on hit
+	if current_state == PlayerState.DASHING:
+		dash_timer.stop()
 		dash_velocity = Vector2.ZERO
-
+		_change_state(PlayerState.IDLE)
+	
 	var dir = (global_position - fromPosition).normalized()
 	external_velocity = dir * knockback_strength
 	
 	camera.screenShake(3, 0.3)
 
-
 # ===============================
-# ANIMAÇÃO
+# COMBAT
 # ===============================
-
-func animate():
-	if health != null and health < 0:
-		isDead = true
-	
-	if isDead:
-		_stateMachine.travel("death")
-		set_physics_process(false)
-		animationCircle.play("circleDeathAnimation")
-		return
-	
-	if isDashing:
-		_stateMachine.travel("dash")
-		return
-		
-	if isSpinning:
-		if !spin_started:
-			_stateMachine.travel("spinAttackStart")
-			spin_started=true
-		return
-	
-	if isAttacking:
-		_stateMachine.travel("attack")
-		return
-		
-	if isKokusen:
-		_stateMachine.travel("kokusen")
-		return
-	
-	if velocity.length() > 1:
-		if isRunning:
-			_stateMachine.travel("run")
-		else:
-			_stateMachine.travel("walk")
-		return
-	
-	_stateMachine.travel("idle")
-
-
-# ===============================
-# COMBATE
-# ===============================
-
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.takeDamage()
 		
 		if attackCounter == 3:
-			attackCooldown = 0.6
+			attack_cooldown = 0.6
 			attackCounter = 0
 		else:
-			attackCooldown = 0.2
+			attack_cooldown = 0.2
 		
 		attackCounter += 1
 		loseStreak.start()
@@ -319,25 +457,23 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		apply_knockback(body.global_position)
 		camera.screenShake(3, 0.3)
 
-
 func _on_lose_streak_timer_timeout() -> void:
 	attackCounter = 0
 
-
 # ===============================
-# EFEITOS
+# EFFECTS
 # ===============================
-
 func hitFlash():
 	sprite.modulate = Color(5, 5, 5, 5)
-	await get_tree().create_timer(0.1).timeout
+	var timer = get_tree().create_timer(0.1)
+	timer.timeout.connect(_reset_flash)
+
+func _reset_flash():
 	sprite.modulate = originalColor
 
-
 # ===============================
-# TIRO
+# SHOOTING
 # ===============================
-
 func shoot():
 	var bullet = bulletNode.instantiate()
 	bullet.position = global_position
