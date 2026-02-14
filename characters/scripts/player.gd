@@ -12,12 +12,12 @@ var attackCooldown = 0.2
 
 var _stateMachine
 
-var SPEED = 100.0
+var SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 var lastDirection = Vector2.LEFT
 
 @export var friction = 0.2
-@export var acc = 1
+@export var acc = 0.35
 @export var bulletNode: PackedScene
 @export var health = 100
 
@@ -110,13 +110,6 @@ func move(delta):
 		move_velocity.x = lerp(move_velocity.x, 0.0, friction)
 		move_velocity.y = lerp(move_velocity.y, 0.0, friction)
 
-	if Input.is_action_pressed("run"):
-		isRunning = true
-		SPEED = 140.0
-	else:
-		isRunning = false
-		SPEED = 100.0
-
 
 # ===============================
 # DASH PROFISSIONAL
@@ -206,7 +199,7 @@ func kokusen():
 # ===============================
 
 func apply_knockback(from_position):
-	var knockback_strength = 200.0
+	var knockback_strength = 300.0
 	
 	if attackCounter == 3:
 		knockback_strength = 400.0

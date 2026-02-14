@@ -419,7 +419,7 @@ tracks/1/path = NodePath("attackArea/hitbox:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0027192621, 0.24110791),
+"times": PackedFloat32Array(0.0027192621, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]

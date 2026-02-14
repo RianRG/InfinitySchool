@@ -17,7 +17,7 @@ func transition():
 		get_parent().change_state("follow")
 
 func attackPlayer():
-	var knockback_strength = 800.0 if currentAttack == attacksEnum.SPIN else 200.0
+	var knockback_strength = 500.0 if currentAttack == attacksEnum.SPIN else 200.0
 	player.takeDamage(owner.position, knockback_strength)
 
 
