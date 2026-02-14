@@ -44,6 +44,7 @@ func _ready():
 
 
 func _process(delta):
+	set_physics_process(false)
 	if player == null:
 		return
 	

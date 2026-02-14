@@ -407,6 +407,15 @@ y_sort_enabled = true
 [node name="Juiz" parent="." unique_id=644742827 instance=ExtResource("18_2newn")]
 position = Vector2(1236, -236)
 
+[node name="Juiz2" parent="." unique_id=1332554128 instance=ExtResource("18_2newn")]
+position = Vector2(1330, -145)
+
+[node name="Juiz3" parent="." unique_id=1192138592 instance=ExtResource("18_2newn")]
+position = Vector2(1134, -145)
+
+[node name="Juiz4" parent="." unique_id=895823434 instance=ExtResource("18_2newn")]
+position = Vector2(1231, -79)
+
 [node name="player" parent="." unique_id=1387394139 instance=ExtResource("4_nhcia")]
 light_mask = 3
 visibility_layer = 3

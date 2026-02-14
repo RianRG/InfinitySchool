@@ -96,6 +96,9 @@ _data = {
 &"circleDeathAnimation": SubResource("Animation_efrwb")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
+size = Vector2(0.7, 0.7)
+
 [sub_resource type="Animation" id="Animation_hqtel"]
 length = 0.001
 tracks/0/type = "value"
@@ -157,6 +160,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackArea/CollisionShape2D:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_i3pqv")]
 }
 
 [sub_resource type="Animation" id="Animation_onrkg"]
@@ -982,6 +997,42 @@ tracks/0/keys = {
 "update": 1,
 "values": [340, 341, 342, 343, 344]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AttackArea/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10787877, 0.21330576, 0.33957294),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -40), Vector2(25, -27), Vector2(0, -3), Vector2(-30, -20)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AttackArea/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/CollisionShape2D:shape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [SubResource("RectangleShape2D_i3pqv")]
+}
 
 [sub_resource type="Animation" id="Animation_b88wv"]
 resource_name = "spinAttackStart"
@@ -1403,9 +1454,6 @@ states/walk/position = Vector2(873, 117)
 transitions = ["spinAttackStart", "spinAttackLoop", SubResource("AnimationNodeStateMachineTransition_ieltc"), "spinAttackLoop", "spinAttackEnd", SubResource("AnimationNodeStateMachineTransition_fddr8")]
 graph_offset = Vector2(270.4786, -64.35802)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
-size = Vector2(1.48214, 1.44643)
-
 [sub_resource type="Curve" id="Curve_onrkg"]
 _data = [Vector2(0, 0.595506), 0.0, 0.0628193, 0, 0, Vector2(0.852273, 0), 0.0762495, 0.0, 0, 0]
 point_count = 2
@@ -1471,6 +1519,7 @@ libraries/ = SubResource("AnimationLibrary_tkwlq")
 libraries/ = SubResource("AnimationLibrary_sweqy")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=68963789]
+active = false
 tree_root = SubResource("AnimationNodeStateMachine_i3pqv")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/finishedSpin = false

@@ -33,7 +33,7 @@ var lastDirection = Vector2.LEFT
 @export var _animationTree: AnimationTree = null
 
 @export_category("Spin Settings")
-@export var spin_duration = 3
+@export var spin_duration = 6 # seconds
 var spin_started=false
 
 var originalColor := Color.WHITE
@@ -65,6 +65,7 @@ var finishedSpin=false
 func _ready():
 	_stateMachine = _animationTree["parameters/playback"]
 	originalColor = sprite.modulate
+	_animationTree.active=true
 
 
 # ===============================
