@@ -48,11 +48,11 @@ func dashAttack():
 func spinAttack():
 	currentAttack = attacksEnum.SPIN
 	owner.knockback_velocity = owner.target_direction * 800
-
+ 
 
 func endSpinAttack():
 	owner.onState = false
-	owner.speed = 60
+	owner.speed = 90
 	owner.onAttackCooldown = true
 	startAttackCooldown()
 	cooldownAttackTimer.start()

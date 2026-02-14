@@ -42,6 +42,7 @@ _data = {
 }
 
 [node name="purpleAttackVfx" type="Node2D" unique_id=318748201]
+z_index = 2
 script = ExtResource("1_f4is5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1710733406]

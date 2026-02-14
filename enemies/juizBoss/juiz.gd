@@ -23,7 +23,7 @@ var direction_update_interval := 0.25
 var direction_smoothness := 4.0
 
 # ✅ Mudança: agora empurra o PLAYER ao invés do boss
-var player_push_strength := 800.0
+var player_push_strength := 900.0
 
 # Zona mínima real
 var min_follow_distance := 60.0

@@ -948,6 +948,58 @@ tracks/0/keys = {
 "values": [90, 91, 92, 93, 94, 95]
 }
 
+[sub_resource type="Animation" id="Animation_331ug"]
+resource_name = "spinAttackEnd"
+length = 0.5714429
+step = 0.14285715
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857146),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [350, 351, 352, 353]
+}
+
+[sub_resource type="Animation" id="Animation_pgbbb"]
+resource_name = "spinAttackLoop"
+length = 0.35715002
+loop_mode = 1
+step = 0.071428575
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.071428575, 0.14285715, 0.21428572, 0.2857143),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [340, 341, 342, 343, 344]
+}
+
+[sub_resource type="Animation" id="Animation_b88wv"]
+resource_name = "spinAttackStart"
+length = 1.0000143
+step = 0.14285715
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857146, 0.5714286, 0.71428573, 0.8571429),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [330, 331, 332, 333, 334, 335, 336]
+}
+
 [sub_resource type="Animation" id="Animation_i3pqv"]
 resource_name = "walkDown"
 length = 0.461546
@@ -1052,11 +1104,16 @@ _data = {
 &"runLeft": SubResource("Animation_606se"),
 &"runRight": SubResource("Animation_bwjto"),
 &"runUp": SubResource("Animation_urp6f"),
+&"spinAttackEnd": SubResource("Animation_331ug"),
+&"spinAttackLoop": SubResource("Animation_pgbbb"),
+&"spinAttackStart": SubResource("Animation_b88wv"),
 &"walkDown": SubResource("Animation_i3pqv"),
 &"walkLeft": SubResource("Animation_1jxqw"),
 &"walkRight": SubResource("Animation_2hs0m"),
 &"walkUp": SubResource("Animation_sweqy")
 }
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1jxqw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_onrkg"]
 animation = &"attackDown"
@@ -1305,8 +1362,10 @@ blend_point_7/pos = Vector2(0.5, -0.5)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i3pqv"]
-states/End/position = Vector2(1086, 100)
-states/Start/position = Vector2(673, 100)
+states/BlendTree/node = SubResource("AnimationNodeBlendTree_1jxqw")
+states/BlendTree/position = Vector2(1008.47864, 70.97671)
+states/End/position = Vector2(1263, 100)
+states/Start/position = Vector2(508, 100)
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_pgbbb")
 states/attack/position = Vector2(873, 339)
 states/dash/node = SubResource("AnimationNodeBlendSpace2D_qtqh7")
@@ -1321,7 +1380,7 @@ states/run/node = SubResource("AnimationNodeBlendSpace2D_dw050")
 states/run/position = Vector2(873, 182)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_b26j0")
 states/walk/position = Vector2(873, 117)
-graph_offset = Vector2(0, 52.6127)
+graph_offset = Vector2(270.4786, -64.35802)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
 size = Vector2(1.48214, 1.44643)
