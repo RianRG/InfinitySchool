@@ -32,6 +32,10 @@ var lastDirection = Vector2.LEFT
 @export_category("Objects")
 @export var _animationTree: AnimationTree = null
 
+@export_category("Spin Settings")
+@export var spin_duration = 3
+var spin_started=false
+
 var originalColor := Color.WHITE
 
 # ===============================
@@ -53,6 +57,8 @@ var canDash = true
 var canAttack = true
 var isAttacking = false
 var isKokusen = false
+var isSpinning = false
+var finishedSpin=false
 
 # ===============================
 
@@ -80,6 +86,7 @@ func _physics_process(delta: float) -> void:
 		attack()
 		dash()
 		kokusen()
+		spin()
 		animate()
 		velocity = move_velocity + external_velocity
 
@@ -104,6 +111,7 @@ func move(delta):
 		_animationTree["parameters/attack/blend_position"] = direction
 		
 		
+		
 		move_velocity.x = lerp(move_velocity.x, direction.normalized().x * SPEED, acc)
 		move_velocity.y = lerp(move_velocity.y, direction.normalized().y * SPEED, acc)
 	else:
@@ -117,7 +125,7 @@ func move(delta):
 
 func dash():
 	if Input.is_action_just_pressed("dash"):
-		if isDashing or !canDash:
+		if isDashing or !canDash or isSpinning:
 			return
 
 		isDashing = true
@@ -194,6 +202,28 @@ func kokusen():
 		isKokusen = false
 
 
+# spin
+func spin():
+	if Input.is_action_just_pressed("spin"):
+		if isSpinning:
+			return
+		isSpinning=true
+		spin_started=false
+		set_physics_process(false)
+		await get_tree().create_timer(0.6).timeout
+		set_physics_process(true)
+		
+		await get_tree().create_timer(spin_duration).timeout
+		_animationTree.set("parameters/conditions/finishedSpin", true)
+		print(_animationTree.get("parameters/conditions/finishedSpin"))
+		set_physics_process(false)
+		await get_tree().create_timer(0.8).timeout
+		set_physics_process(true)
+		
+		
+		_animationTree.set("parameters/conditions/finishedSpin", false)
+		isSpinning=false
+		
 # ===============================
 # KNOCKBACK
 # ===============================
@@ -241,6 +271,12 @@ func animate():
 	
 	if isDashing:
 		_stateMachine.travel("dash")
+		return
+		
+	if isSpinning:
+		if !spin_started:
+			_stateMachine.travel("spinAttackStart")
+			spin_started=true
 		return
 	
 	if isAttacking:

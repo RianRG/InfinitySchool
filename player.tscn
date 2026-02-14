@@ -1316,6 +1316,15 @@ blend_point_7/node = SubResource("AnimationNodeAnimation_634y6")
 blend_point_7/pos = Vector2(0.5, -0.5)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8gr2b"]
+animation = &"spinAttackEnd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vl8ci"]
+animation = &"spinAttackLoop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ieltc"]
+animation = &"spinAttackStart"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1jxqw"]
 animation = &"walkDown"
 
@@ -1359,6 +1368,15 @@ blend_point_7/node = SubResource("AnimationNodeAnimation_bwjto")
 blend_point_7/pos = Vector2(0.5, -0.5)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ieltc"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fddr8"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"finishedSpin"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i3pqv"]
 states/End/position = Vector2(1263, 100)
 states/Start/position = Vector2(508, 100)
@@ -1374,8 +1392,15 @@ states/kokusen/node = SubResource("AnimationNodeBlendSpace2D_8gr2b")
 states/kokusen/position = Vector2(840, -13.0622)
 states/run/node = SubResource("AnimationNodeBlendSpace2D_dw050")
 states/run/position = Vector2(873, 182)
+states/spinAttackEnd/node = SubResource("AnimationNodeAnimation_8gr2b")
+states/spinAttackEnd/position = Vector2(1035.4786, 217.64198)
+states/spinAttackLoop/node = SubResource("AnimationNodeAnimation_vl8ci")
+states/spinAttackLoop/position = Vector2(1035.4786, 129.64198)
+states/spinAttackStart/node = SubResource("AnimationNodeAnimation_ieltc")
+states/spinAttackStart/position = Vector2(1035.4786, 57)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_b26j0")
 states/walk/position = Vector2(873, 117)
+transitions = ["spinAttackStart", "spinAttackLoop", SubResource("AnimationNodeStateMachineTransition_ieltc"), "spinAttackLoop", "spinAttackEnd", SubResource("AnimationNodeStateMachineTransition_fddr8")]
 graph_offset = Vector2(270.4786, -64.35802)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3pqv"]
@@ -1448,6 +1473,7 @@ libraries/ = SubResource("AnimationLibrary_sweqy")
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=68963789]
 tree_root = SubResource("AnimationNodeStateMachine_i3pqv")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/finishedSpin = false
 parameters/attack/blend_position = Vector2(0, 0)
 parameters/dash/blend_position = Vector2(0, 0)
 parameters/death/blend_position = Vector2(0, 0)

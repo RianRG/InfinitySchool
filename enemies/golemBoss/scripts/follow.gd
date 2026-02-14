@@ -17,7 +17,7 @@ func exit():
 func transition():
 	var distance = owner.position.distance_to(player.position)
 
-	if distance<=140 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
+	if distance<=100 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
 		get_parent().change_state("meleeAttack")
 		
 	# ataque a distância
