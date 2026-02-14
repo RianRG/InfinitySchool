@@ -1362,7 +1362,7 @@ y_sort_enabled = true
 position = Vector2(0, -27.8571)
 texture = ExtResource("4_2hs0m")
 hframes = 10
-vframes = 33
+vframes = 36
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=636522755]
 modulate = Color(1, 1, 1, 0.45490196)
