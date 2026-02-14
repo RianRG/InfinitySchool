@@ -270,7 +270,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		body.takeDamage()
 		
 		if attackCounter == 3:
-			attackCooldown = 0.4
+			attackCooldown = 0.6
 			attackCounter = 0
 		else:
 			attackCooldown = 0.2

@@ -640,6 +640,7 @@ wait_time = 4.0
 autostart = true
 
 [node name="Sprite2D" parent="." index="1"]
+y_sort_enabled = true
 texture = ExtResource("2_8bmxj")
 hframes = 15
 vframes = 18
