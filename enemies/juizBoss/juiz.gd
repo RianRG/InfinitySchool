@@ -101,8 +101,6 @@ func _physics_process(delta):
 	if not onState:
 		total_velocity += knockback_velocity
 
-	print("Frame: canMove=%s | direction=%s | speed=%d | knockback=%s | total=%s" % [canMove, direction, speed, knockback_velocity, total_velocity])
-
 	velocity = total_velocity
 	move_and_slide()
 
@@ -120,7 +118,7 @@ func takeDamage():
 	var attackScene = purpleAttackVfx.instantiate()
 	attackScene.position = global_position
 	get_parent().add_child(attackScene)
-	attackScene.scale = Vector2(1.5, 1.5)
+	attackScene.scale = Vector2(1, 1)
 	
 	var direction_from_player = (global_position - player.global_position).normalized()
 	attackScene.rotation = direction_from_player.angle() + 1.7

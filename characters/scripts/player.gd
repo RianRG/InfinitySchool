@@ -46,8 +46,8 @@ var spin_end_timer: Timer
 @export var knockback_decay := 900.0
 
 @export_category("Kokusen Settings")
-@export var kokusen_freeze_duration := 0.8
-@export var kokusen_end_duration := 0.7
+@export var kokusen_freeze_duration := 1
+@export var kokusen_end_duration := 0.3
 
 @export_category("Spin Settings")
 @export var spin_startup_duration := 0.6
@@ -226,8 +226,9 @@ func _process_movement(delta: float):
 		if current_state == PlayerState.IDLE:
 			_change_state(PlayerState.MOVING)
 	else:
-		move_velocity.x = lerp(move_velocity.x, 0.0, friction)
-		move_velocity.y = lerp(move_velocity.y, 0.0, friction)
+		move_velocity = Vector2.ZERO
+		#move_velocity.x = lerp(move_velocity.x, 0.0, friction)
+		#move_velocity.y = lerp(move_velocity.y, 0.0, friction)
 		
 		if current_state == PlayerState.MOVING and move_velocity.length() < 1.0:
 			_change_state(PlayerState.IDLE)
@@ -306,6 +307,7 @@ func _try_kokusen():
 func _on_kokusen_timer_timeout():
 	camera.screenShake(4, 0.5)
 	
+	
 	# Timer for end of kokusen
 	var end_timer = get_tree().create_timer(kokusen_end_duration)
 	end_timer.timeout.connect(_on_kokusen_end)
@@ -348,7 +350,8 @@ func _on_spin_complete():
 func _change_state(new_state: PlayerState):
 	var old_state = current_state
 	current_state = new_state
-	
+	if old_state == PlayerState.DASHING and new_state != PlayerState.DASHING:
+		particles.emitting = false
 	# Debug
 	# print("State changed: %s -> %s" % [PlayerState.keys()[old_state], PlayerState.keys()[new_state]])
 
@@ -434,6 +437,8 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.takeDamage()
 		attackCounter += 1
+		if current_state == PlayerState.KOKUSEN:
+			freezeFrame()
 		
 		# Reseta o timer a cada acerto
 		loseStreak.start(combo_window)
@@ -441,7 +446,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		# Lógica do 3º hit
 		if attackCounter == 3:
 			current_cooldown = combo_attack_cooldown # Cooldown maior
-			apply_knockback(body.global_position, 700)  # Knockback maior
+			apply_knockback(body.global_position, 600)  # Knockback maior
 			camera.screenShake(5, 0.5)  # Shake mais forte
 			attackCounter = 0  # Reseta combo
 			print("COMBO HIT 3!!")
@@ -465,11 +470,9 @@ func _on_lose_streak_timer_timeout() -> void:
 # ===============================
 func hitFlash():
 	sprite.modulate = Color(5, 5, 5, 5)
-	var timer = get_tree().create_timer(0.1)
-	timer.timeout.connect(_reset_flash)
-
-func _reset_flash():
+	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = originalColor
+
 
 # ===============================
 # SHOOTING
@@ -479,6 +482,15 @@ func shoot():
 	bullet.position = global_position
 	bullet.direction = (get_global_mouse_position() - global_position).normalized()
 	get_tree().current_scene.call_deferred("add_child", bullet)
+
+# Freeze frame
+func freezeFrame():
+	Engine.time_scale=0.3 # slow motion
+	#Engine.time_scale=0 freeze frame
+	
+	await get_tree().create_timer(0.5, true, false, true).timeout
+	
+	Engine.time_scale=1
 
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:

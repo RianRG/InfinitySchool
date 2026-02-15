@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6w6rj"]
 resource_name = "attack"
-length = 0.200004
+length = 0.16000399
 step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -29,10 +29,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qubet"]
@@ -47,7 +47,7 @@ script = ExtResource("1_f4is5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1710733406]
 texture = ExtResource("1_6w6rj")
-hframes = 5
+hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=804795073]
 libraries/ = SubResource("AnimationLibrary_qubet")
