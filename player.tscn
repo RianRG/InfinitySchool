@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://ch6gilxo87qpn" path="res://characters/scripts/camera_2d.gd" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://bkwndishye0dr" path="res://characters/scripts/deathCircle.gd" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://da7l7rmg66drp" path="res://assets/new prota/Morte1.png" id="3_i3pqv"]
-[ext_resource type="Texture2D" uid="uid://b1d65ug1fk5ir" path="res://assets/new prota/tudo4.png" id="4_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://s7mq1g5oj21a" path="res://assets/new prota/tudo3.png" id="4_1jxqw"]
 [ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://assets/Sombra.png" id="5_1jxqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
@@ -1488,7 +1488,7 @@ shape = SubResource("RectangleShape2D_hqtel")
 [node name="texture" type="Sprite2D" parent="." unique_id=86597027]
 y_sort_enabled = true
 position = Vector2(0, -27.8571)
-texture = ExtResource("4_2hs0m")
+texture = ExtResource("4_1jxqw")
 hframes = 10
 vframes = 36
 

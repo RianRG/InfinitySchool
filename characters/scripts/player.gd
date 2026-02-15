@@ -439,7 +439,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		attackCounter += 1
 		
 		if attackCounter == 2:
-			attack_cooldown = 2
+			attack_cooldown = 1.5
 			attackCounter = 0
 		else:
 			attack_cooldown = 0.4
