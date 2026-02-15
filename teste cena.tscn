@@ -393,7 +393,8 @@ texture = ExtResource("15_as6p8")
 6:4/0/terrains_peering_bit/left_side = 0
 
 [sub_resource type="TileSet" id="TileSet_2newn"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "BanheiroP"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
@@ -405,7 +406,7 @@ sources/0 = SubResource("TileSetAtlasSource_3clbg")
 y_sort_enabled = true
 
 [node name="Juiz" parent="." unique_id=644742827 instance=ExtResource("18_2newn")]
-position = Vector2(1236, -236)
+position = Vector2(1494, -292)
 
 [node name="player" parent="." unique_id=1387394139 instance=ExtResource("4_nhcia")]
 light_mask = 3
@@ -452,6 +453,7 @@ tile_set = ExtResource("9_0le84")
 
 [node name="Door" parent="." unique_id=804227107 instance=ExtResource("12_5m7lr")]
 position = Vector2(448, 285)
+collision_layer = 4
 spriteTexture = ExtResource("12_gfqxu")
 
 [node name="TileMapLayer6" type="TileMapLayer" parent="." unique_id=775477172]

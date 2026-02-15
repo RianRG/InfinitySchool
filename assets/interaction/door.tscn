@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2k78m46nbgoa"]
+[gd_scene format=3 uid="uid://b2k78m46nbgoa"]
 
 [ext_resource type="Script" uid="uid://eq8s83c4v80q" path="res://assets/interaction/door.gd" id="1_0cotw"]
 [ext_resource type="PackedScene" uid="uid://o08f2kqjkjfm" path="res://assets/dialogue/interactButton.tscn" id="1_7jweo"]
@@ -67,12 +67,16 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_qjfpb"]
 radius = 130.0
 
-[node name="Door" type="CharacterBody2D"]
+[node name="Door" type="CharacterBody2D" unique_id=241297043]
 z_index = 1
 y_sort_enabled = true
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_0cotw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=711038541]
+light_mask = 4
+visibility_layer = 3
 y_sort_enabled = true
 position = Vector2(8, 1)
 texture = ExtResource("2_qjfpb")
@@ -83,22 +87,22 @@ frame = 1
 region_enabled = true
 region_rect = Rect2(0, 0, 240, 240)
 
-[node name="CollisionClosed" type="CollisionShape2D" parent="."]
+[node name="CollisionClosed" type="CollisionShape2D" parent="." unique_id=783950894]
+visibility_layer = 3
 position = Vector2(0, -11.5)
 shape = SubResource("RectangleShape2D_qjfpb")
 
-[node name="CollisionOpen" type="CollisionShape2D" parent="."]
+[node name="CollisionOpen" type="CollisionShape2D" parent="." unique_id=85219722]
+visibility_layer = 3
 position = Vector2(-13, 7)
 shape = SubResource("RectangleShape2D_tp573")
 disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_amge4")
-}
-autoplay = "closed"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1359562227]
+libraries/ = SubResource("AnimationLibrary_amge4")
+autoplay = &"closed"
 
-[node name="InteractButton" parent="." instance=ExtResource("1_7jweo")]
+[node name="InteractButton" parent="." unique_id=257144103 instance=ExtResource("1_7jweo")]
 position = Vector2(0, -61)
 
 [node name="buttonSprite" parent="InteractButton" index="0"]
