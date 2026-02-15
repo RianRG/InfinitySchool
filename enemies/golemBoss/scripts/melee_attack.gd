@@ -8,6 +8,7 @@ var currentAttack: attacksEnum
 func enter():
 	super.enter()
 	owner.onState = true  # Bloqueia knockback durante ataque
+	owner.canMove=true
 	owner.stateMachine.travel("attack")
 
 func transition():

@@ -13,8 +13,20 @@ func _ready():
 func change_state(state):
 	if get_parent().onState:
 		return
-	current_state = find_child(state) as State
-	current_state.enter()
 	
-	previous_state.exit()
-	previous_state = current_state
+	# ← CORREÇÃO: salva referência ANTES de sobrescrever
+	var new_state = find_child(state) as State
+	
+	if new_state == null:
+		push_error("Estado '%s' não encontrado!" % state)
+		return
+	
+	if new_state == current_state:
+		return  # Já está nesse estado
+	
+	# Ordem correta:
+	previous_state = current_state  # Salva o estado atual como anterior
+	previous_state.exit()           # Chama exit no estado ANTIGO
+	
+	current_state = new_state       # Muda para o novo estado
+	current_state.enter()  

@@ -16,6 +16,7 @@ var originalColor := Color.WHITE
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0
 var onState = false
+var canMove:=false
 
 # Controle de atualização de direção
 var direction_update_timer := 0.0
@@ -45,29 +46,30 @@ func _ready():
 
 func _process(delta):
 	#set_physics_process(false)
-	if player == null:
+	if player == null || !canMove:
 		return
 	
 	var distance_to_player = global_position.distance_to(player.global_position)
 	
 	# Atualiza direção apenas em intervalos
-	direction_update_timer += delta
-	if direction_update_timer >= direction_update_interval:
-		direction_update_timer = 0.0
+	if !onState:
+		direction_update_timer += delta
+		if direction_update_timer >= direction_update_interval:
+			direction_update_timer = 0.0
+			
+			# Só recalcula se estiver fora da zona mínima
+			if distance_to_player > min_follow_distance:
+				target_direction = (player.global_position - global_position).normalized()
 		
-		# Só recalcula se estiver fora da zona mínima
-		if distance_to_player > min_follow_distance:
-			target_direction = (player.global_position - global_position).normalized()
-	
-	# Suavização profissional
-	direction = direction.move_toward(target_direction, direction_smoothness * delta)
+		# Suavização profissional
+		direction = direction.move_toward(target_direction, direction_smoothness * delta)
 	
 	animationTree["parameters/walk/blend_position"] = direction
 	animationTree["parameters/attack/blend_position"] = direction
 
 
 func _physics_process(delta):
-	if player == null:
+	if player == null || !canMove:
 		return
 	
 	var distance_to_player = global_position.distance_to(player.global_position)
@@ -98,6 +100,8 @@ func _physics_process(delta):
 	
 	if not onState:
 		total_velocity += knockback_velocity
+
+	print("Frame: canMove=%s | direction=%s | speed=%d | knockback=%s | total=%s" % [canMove, direction, speed, knockback_velocity, total_velocity])
 
 	velocity = total_velocity
 	move_and_slide()
