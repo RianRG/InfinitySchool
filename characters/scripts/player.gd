@@ -36,9 +36,9 @@ var spin_end_timer: Timer
 @export var dash_cooldown := 1.0
 
 @export_category("Attack Settings")
-@export var attack_cooldown := 0.2
+@export var attack_cooldown := 0.4
 @export var attack_dash_speed := 150.0
-@export var attack_duration := 0.2
+@export var attack_duration := 0.5
 
 @export_category("Knockback Settings")
 @export var knockback_decay := 900.0
@@ -271,6 +271,7 @@ func _on_dash_cooldown_timeout():
 # ===============================
 # ATTACK
 # ===============================
+
 func _try_attack():
 	if not canAttack or current_state not in [PlayerState.IDLE, PlayerState.MOVING]:
 		return
@@ -287,12 +288,10 @@ func _try_attack():
 	if isRunning:
 		isRunning = false
 	
-	attack_cooldown_timer.start(attack_duration + attack_cooldown)
+	attack_cooldown_timer.start(attack_cooldown)
 
 func _on_attack_cooldown_timeout():
 	canAttack = true
-	if current_state == PlayerState.ATTACKING:
-		_change_state(PlayerState.IDLE)
 
 # ===============================
 # KOKUSEN
@@ -411,13 +410,7 @@ func _update_animation():
 # ===============================
 # KNOCKBACK & DAMAGE
 # ===============================
-func apply_knockback(from_position: Vector2):
-	var knockback_strength = 300.0
-	
-	if attackCounter == 3:
-		knockback_strength = 400.0
-	if isRunning:
-		knockback_strength = 250.0
+func apply_knockback(from_position: Vector2, knockback_strength):
 	
 	var dir = (global_position - from_position).normalized()
 	external_velocity = dir * knockback_strength
@@ -443,18 +436,18 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float):
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body.takeDamage()
+		attackCounter += 1
 		
-		if attackCounter == 3:
-			attack_cooldown = 0.6
+		if attackCounter == 2:
+			attack_cooldown = 2
 			attackCounter = 0
 		else:
-			attack_cooldown = 0.2
+			attack_cooldown = 0.4
 		
-		attackCounter += 1
 		loseStreak.start()
 		
 		isRunning = false
-		apply_knockback(body.global_position)
+		apply_knockback(body.global_position, 400)
 		camera.screenShake(3, 0.3)
 
 func _on_lose_streak_timer_timeout() -> void:
@@ -479,3 +472,11 @@ func shoot():
 	bullet.position = global_position
 	bullet.direction = (get_global_mouse_position() - global_position).normalized()
 	get_tree().current_scene.call_deferred("add_child", bullet)
+
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if "attack" in anim_name:
+		if current_state == PlayerState.ATTACKING:
+			_change_state(PlayerState.IDLE)
+		
+	pass # Replace with function body.

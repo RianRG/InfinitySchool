@@ -1519,7 +1519,6 @@ libraries/ = SubResource("AnimationLibrary_tkwlq")
 libraries/ = SubResource("AnimationLibrary_sweqy")
 
 [node name="AnimationTree" type="AnimationTree" parent="." unique_id=68963789]
-active = false
 tree_root = SubResource("AnimationNodeStateMachine_i3pqv")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/finishedSpin = false
