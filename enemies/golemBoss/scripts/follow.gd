@@ -6,6 +6,7 @@ var timerIsOut:=false
 
 func enter():
 	super.enter()
+	owner.set_physics_process(true)
 	
 	owner.onState=false
 	owner.stateMachine.travel("walk")
