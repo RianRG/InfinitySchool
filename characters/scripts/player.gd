@@ -37,7 +37,7 @@ var spin_end_timer: Timer
 
 @export_category("Attack Settings")
 @export var base_attack_cooldown := 0.4
-@export var combo_attack_cooldown := 1.5
+@export var combo_attack_cooldown := 0.8
 @export var attack_dash_speed := 150.0
 @export var attack_duration := 0.5
 @export var combo_window := 1.0
