@@ -5,7 +5,7 @@ class_name Player
 # NODES
 # ===============================
 @onready var sprite: Sprite2D = $texture
-@onready var camera: Camera2D = $Camera2D
+@onready var camera = get_parent().get_node("Camera2D")
 @onready var animationCircle = $animationCircle
 @onready var particles = $CPUParticles2D
 @onready var loseStreak: Timer = $loseStreakTimer
@@ -413,6 +413,7 @@ func _update_animation():
 func apply_knockback(from_position: Vector2, knockback_strength):
 	
 	var dir = (global_position - from_position).normalized()
+	move_velocity = Vector2.ZERO
 	external_velocity = dir * knockback_strength
 
 func takeDamage(fromPosition: Vector2, knockback_strength: float):
@@ -446,13 +447,13 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		# Lógica do 3º hit
 		if attackCounter == 3:
 			current_cooldown = combo_attack_cooldown # Cooldown maior
-			apply_knockback(body.global_position, 600)  # Knockback maior
+			apply_knockback(body.global_position, 500)  # Knockback maior
 			camera.screenShake(5, 0.5)  # Shake mais forte
 			attackCounter = 0  # Reseta combo
 			print("COMBO HIT 3!!")
 		else:
 			current_cooldown = base_attack_cooldown  # Cooldown normal
-			apply_knockback(body.global_position, 400)  # Knockback normal
+			apply_knockback(body.global_position, 350)  # Knockback normal
 			camera.screenShake(3, 0.3)
 			print("Hit %d" % attackCounter)
 			

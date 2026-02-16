@@ -84,6 +84,7 @@ func _physics_process(delta):
 		var push_force = player_push_strength * overlap_ratio
 		
 		# ✅ Aplica knockback no player
+		
 		player.external_velocity = push_dir * push_force
 	
 	var move_velocity = Vector2.ZERO
