@@ -10,7 +10,7 @@ var target_direction: Vector2 = Vector2.ZERO
 var DEF = 0
 var onAttackCooldown := false
 var stateMachine
-var speed := 200
+var speed := 160
 var originalColor := Color.WHITE
 
 var knockback_velocity: Vector2 = Vector2.ZERO
@@ -42,6 +42,7 @@ func _ready():
 	animationTree.active = true
 	stateMachine = animationTree["parameters/playback"]
 	originalColor = sprite.modulate
+	
 
 
 func _process(delta):
@@ -77,6 +78,8 @@ func _physics_process(delta):
 	# Decaimento de knockback
 	knockback_velocity = knockback_velocity.move_toward(Vector2.ZERO, knockback_decay * delta)
 	
+	
+	
 	# ✅ Empurra o PLAYER ao invés do boss
 	if distance_to_player < min_follow_distance:
 		var push_dir = (player.global_position - global_position).normalized()
@@ -105,6 +108,7 @@ func _physics_process(delta):
 		total_velocity += knockback_velocity
 
 	velocity = total_velocity
+	
 	move_and_slide()
 
 

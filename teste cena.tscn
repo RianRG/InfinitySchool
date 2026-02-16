@@ -23,7 +23,7 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="20_pibik"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="21_m5ask"]
 
-[sub_resource type="TileSet" id="TileSet_2newn"]
+[sub_resource type="TileSet" id="TileSet_pibik"]
 resource_local_to_scene = true
 
 [sub_resource type="Gradient" id="Gradient_k7v17"]
@@ -214,7 +214,7 @@ visibility_layer = 3
 position = Vector2(1187, -30)
 
 [node name="TileMap" parent="player" index="10" unique_id=1899201351]
-tile_set = SubResource("TileSet_2newn")
+tile_set = SubResource("TileSet_pibik")
 
 [node name="PointLight2D" type="PointLight2D" parent="player" unique_id=129258925]
 y_sort_enabled = true

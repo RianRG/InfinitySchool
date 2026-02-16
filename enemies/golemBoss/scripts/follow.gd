@@ -10,7 +10,6 @@ func enter():
 	
 	owner.onState=false
 	
-	
 	owner.stateMachine.travel("walk")
 
 func exit():
