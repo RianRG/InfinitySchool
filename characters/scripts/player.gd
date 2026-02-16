@@ -413,7 +413,7 @@ func _update_animation():
 func apply_knockback(from_position: Vector2, knockback_strength):
 	
 	var dir = (global_position - from_position).normalized()
-	move_velocity = Vector2.ZERO
+	external_velocity = Vector2.ZERO
 	external_velocity = dir * knockback_strength
 
 func takeDamage(fromPosition: Vector2, knockback_strength: float):
@@ -448,6 +448,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		if attackCounter == 3:
 			current_cooldown = combo_attack_cooldown # Cooldown maior
 			apply_knockback(body.global_position, 500)  # Knockback maior
+			
 			camera.screenShake(5, 0.5)  # Shake mais forte
 			attackCounter = 0  # Reseta combo
 			print("COMBO HIT 3!!")

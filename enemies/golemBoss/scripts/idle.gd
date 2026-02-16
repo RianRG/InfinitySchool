@@ -14,9 +14,6 @@ func enter():
 	owner.direction = Vector2.ZERO
 	owner.target_direction = Vector2.ZERO
 
-func transition():
-	if playerEntered:
-		get_parent().change_state("follow")
 
 
 func _on_player_detection_body_entered(body: Node2D) -> void:

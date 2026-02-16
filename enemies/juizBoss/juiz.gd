@@ -82,10 +82,12 @@ func _physics_process(delta):
 		var push_dir = (player.global_position - global_position).normalized()
 		var overlap_ratio = 1.0 - (distance_to_player / min_follow_distance)
 		var push_force = player_push_strength * overlap_ratio
-		
-		# ✅ Aplica knockback no player
-		
-		player.external_velocity = push_dir * push_force
+	
+	# ✅ Aplica knockback no player
+		if (player.external_velocity.length() < push_force &&
+		player.current_state != player.PlayerState.DASHING):
+			player.external_velocity = push_dir * push_force
+			
 	
 	var move_velocity = Vector2.ZERO
 
