@@ -11,6 +11,7 @@ func _ready():
 	current_state.enter()
 
 func change_state(state):
+	
 	if get_parent().onState:
 		return
 	

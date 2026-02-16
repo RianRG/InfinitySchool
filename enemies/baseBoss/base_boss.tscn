@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://doa7ihxf5dd1j"]
+[gd_scene format=3 uid="uid://doa7ihxf5dd1j"]
 
 [ext_resource type="Texture2D" uid="uid://y3bcja5kkov1" path="res://assets/Mecha-stone Golem 0.1/PNG sheet/Character_sheet.png" id="1_j7f1n"]
 [ext_resource type="Script" uid="uid://blysk5ko1bii5" path="res://enemies/baseBoss/base_boss.gd" id="1_lmaw1"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ryclq002fty6" path="res://enemies/golemBoss/scripts/idle.gd" id="4_ih6ya"]
 [ext_resource type="Script" uid="uid://cf3lit66lbf0k" path="res://enemies/golemBoss/scripts/follow.gd" id="5_p35ua"]
 [ext_resource type="Script" uid="uid://blnmhmfw2cnre" path="res://enemies/golemBoss/scripts/melee_attack.gd" id="6_i3q4b"]
+[ext_resource type="Script" uid="uid://ccfvxsmlshfre" path="res://enemies/baseBoss/second_phase.gd" id="10_rve8w"]
 [ext_resource type="Script" uid="uid://vae5sm5llhic" path="res://enemies/golemBoss/scripts/dash.gd" id="11_ov4em"]
 [ext_resource type="Script" uid="uid://ct5d81okbeomc" path="res://enemies/golemBoss/scripts/death.gd" id="12_xjjhf"]
 
@@ -17,10 +18,10 @@ height = 75.7143
 [sub_resource type="CircleShape2D" id="CircleShape2D_75x3t"]
 radius = 52.2903
 
-[node name="BaseBoss" type="CharacterBody2D"]
+[node name="BaseBoss" type="CharacterBody2D" unique_id=877392946]
 script = ExtResource("1_lmaw1")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2097465531]
 light_mask = 3
 visibility_layer = 3
 scale = Vector2(1.4, 1.4)
@@ -29,50 +30,54 @@ hframes = 10
 vframes = 10
 frame = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=724335017]
 light_mask = 3
 visibility_layer = 3
 position = Vector2(0, -3)
 scale = Vector2(1.4, 1.4)
 shape = SubResource("CapsuleShape2D_s0s2n")
 
-[node name="pivot" type="Node2D" parent="."]
+[node name="pivot" type="Node2D" parent="." unique_id=1360603138]
 position = Vector2(1, -17)
 scale = Vector2(1.4, 1.4)
 
-[node name="Sprite2D" type="Sprite2D" parent="pivot"]
+[node name="Sprite2D" type="Sprite2D" parent="pivot" unique_id=738416054]
 position = Vector2(98, 16)
 texture = ExtResource("2_mocju")
 vframes = 15
 
-[node name="playerDetection" type="Area2D" parent="."]
+[node name="playerDetection" type="Area2D" parent="." unique_id=840287295]
 scale = Vector2(1.4, 1.4)
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetection"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="playerDetection" unique_id=1937697267]
 scale = Vector2(1.4, 1.4)
 shape = SubResource("CircleShape2D_75x3t")
 
-[node name="FiniteStateMachine" type="Node2D" parent="."]
+[node name="FiniteStateMachine" type="Node2D" parent="." unique_id=776770129]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("3_lijwk")
 
-[node name="idle" type="Node2D" parent="FiniteStateMachine"]
+[node name="idle" type="Node2D" parent="FiniteStateMachine" unique_id=891645013]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("4_ih6ya")
 
-[node name="follow" type="Node2D" parent="FiniteStateMachine"]
+[node name="follow" type="Node2D" parent="FiniteStateMachine" unique_id=871803042]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("5_p35ua")
 
-[node name="meleeAttack" type="Node2D" parent="FiniteStateMachine"]
+[node name="meleeAttack" type="Node2D" parent="FiniteStateMachine" unique_id=2063373111]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("6_i3q4b")
 
-[node name="dash" type="Node2D" parent="FiniteStateMachine"]
+[node name="dash" type="Node2D" parent="FiniteStateMachine" unique_id=341914808]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("11_ov4em")
 
-[node name="death" type="Node2D" parent="FiniteStateMachine"]
+[node name="death" type="Node2D" parent="FiniteStateMachine" unique_id=396024824]
 scale = Vector2(1.4, 1.4)
 script = ExtResource("12_xjjhf")
+
+[node name="secondPhase" type="Node2D" parent="FiniteStateMachine" unique_id=1991183885]
+script = ExtResource("10_rve8w")
+metadata/_custom_type_script = "uid://cwcijpfuwv840"

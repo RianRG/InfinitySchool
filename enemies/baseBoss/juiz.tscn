@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3yakcr5ayv1b" path="res://enemies/juizBoss/ParentBoss.png" id="2_8bmxj"]
 [ext_resource type="Script" uid="uid://bw2aj2wp0y5o3" path="res://enemies/juizBoss/juiz.gd" id="2_ybu1o"]
 [ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://assets/Sombra.png" id="3_3ve6r"]
+[ext_resource type="Script" uid="uid://ciexjgd7jrny7" path="res://enemies/baseBoss/bullet_phase.gd" id="5_wp1ov"]
 
 [sub_resource type="Animation" id="Animation_ybu1o"]
 length = 0.001
@@ -324,6 +325,70 @@ tracks/4/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_fevo3"]
+resource_name = "bulletPhaseEnd"
+step = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [255, 256, 257, 258, 259, 260]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FiniteStateMachine/bulletPhase")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"endBulletPhase"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_k7xjx"]
+resource_name = "bulletPhaseLoop"
+length = 0.36364546
+loop_mode = 1
+step = 0.09090909
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.09090909, 0.18181819, 0.27272728),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [240, 241, 242, 243]
+}
+
+[sub_resource type="Animation" id="Animation_qc5pr"]
+resource_name = "bulletPhaseStart"
+step = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [225, 226, 227, 228, 229, 230]
+}
+
 [sub_resource type="Animation" id="Animation_8bmxj"]
 resource_name = "idleDown"
 length = 1.33335
@@ -545,6 +610,9 @@ _data = {
 &"attackLeft": SubResource("Animation_vfw3l"),
 &"attackRight": SubResource("Animation_4opbf"),
 &"attackUp": SubResource("Animation_ouhby"),
+&"bulletPhaseEnd": SubResource("Animation_fevo3"),
+&"bulletPhaseLoop": SubResource("Animation_k7xjx"),
+&"bulletPhaseStart": SubResource("Animation_qc5pr"),
 &"idleDown": SubResource("Animation_8bmxj"),
 &"idleLeft": SubResource("Animation_xokln"),
 &"idleRight": SubResource("Animation_wp1ov"),
@@ -579,6 +647,15 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_msdht")
 blend_point_3/pos = Vector2(1, 0)
 blend_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g27j6"]
+animation = &"bulletPhaseEnd"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ouhby"]
+animation = &"bulletPhaseLoop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4opbf"]
+animation = &"bulletPhaseStart"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_82dab"]
 animation = &"spinAttack"
 
@@ -609,16 +686,31 @@ blend_mode = 1
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vfw3l"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ygmpx"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"timerIsOut"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lx6jt"]
-states/End/position = Vector2(668, 109)
+states/End/position = Vector2(873, 135)
 states/attack/node = SubResource("AnimationNodeBlendSpace2D_82dab")
 states/attack/position = Vector2(416, 135)
+states/bulletPhaseEnd/node = SubResource("AnimationNodeAnimation_g27j6")
+states/bulletPhaseEnd/position = Vector2(599, 194.50305)
+states/bulletPhaseLoop/node = SubResource("AnimationNodeAnimation_ouhby")
+states/bulletPhaseLoop/position = Vector2(590, 135)
+states/bulletPhaseStart/node = SubResource("AnimationNodeAnimation_4opbf")
+states/bulletPhaseStart/position = Vector2(582, 54.00306)
 states/spinAttack/node = SubResource("AnimationNodeAnimation_82dab")
-states/spinAttack/position = Vector2(668, 191.00305)
+states/spinAttack/position = Vector2(416, 214.00305)
 states/walk/node = SubResource("AnimationNodeBlendSpace2D_xokln")
 states/walk/position = Vector2(416, 71)
-transitions = ["attack", "spinAttack", SubResource("AnimationNodeStateMachineTransition_3ve6r")]
-graph_offset = Vector2(0, 23.00306)
+transitions = ["attack", "spinAttack", SubResource("AnimationNodeStateMachineTransition_3ve6r"), "bulletPhaseStart", "bulletPhaseLoop", SubResource("AnimationNodeStateMachineTransition_vfw3l"), "bulletPhaseLoop", "bulletPhaseEnd", SubResource("AnimationNodeStateMachineTransition_ygmpx")]
+graph_offset = Vector2(0, 45.75305)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ve6r"]
 size = Vector2(120, 80)
@@ -639,7 +731,7 @@ script = ExtResource("2_ybu1o")
 wait_time = 4.0
 autostart = true
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="1" unique_id=2097465531]
 y_sort_enabled = true
 texture = ExtResource("2_8bmxj")
 hframes = 15
@@ -658,13 +750,13 @@ libraries/ = SubResource("AnimationLibrary_3ve6r")
 autoplay = &"idleDown"
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="4" unique_id=1729317031]
-active = false
 tree_root = SubResource("AnimationNodeStateMachine_lx6jt")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/timerIsOut = false
 parameters/attack/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(-0.0015949, 0.043956)
 
-[node name="CollisionShape2D" parent="." index="5"]
+[node name="CollisionShape2D" parent="." index="5" unique_id=724335017]
 position = Vector2(0, 15)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_3ve6r")
@@ -677,10 +769,17 @@ position = Vector2(0, 80)
 shape = SubResource("RectangleShape2D_ybu1o")
 disabled = true
 
-[node name="CollisionShape2D" parent="playerDetection" index="0"]
+[node name="CollisionShape2D" parent="playerDetection" parent_id_path=PackedInt32Array(840287295) index="0" unique_id=1937697267]
 scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_3ve6r")
+
+[node name="bulletPhase" type="Node2D" parent="FiniteStateMachine" parent_id_path=PackedInt32Array(776770129) index="6" unique_id=1891180197]
+script = ExtResource("5_wp1ov")
+metadata/_custom_type_script = "uid://cwcijpfuwv840"
+
+[node name="endBulletPhase" type="Timer" parent="." index="10" unique_id=1077502534]
 
 [connection signal="timeout" from="cooldownAttack" to="FiniteStateMachine/follow" method="_on_cooldown_attack_timeout"]
 [connection signal="body_entered" from="attackArea" to="FiniteStateMachine/meleeAttack" method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="playerDetection" to="FiniteStateMachine/idle" method="_on_player_detection_body_entered"]
+[connection signal="timeout" from="endBulletPhase" to="FiniteStateMachine/bulletPhase" method="_on_end_bullet_phase_timeout"]

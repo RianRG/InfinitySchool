@@ -3,13 +3,15 @@ extends State
 @onready var cooldownAttackTimer: Timer = $"../../cooldownAttack"
 
 var timerIsOut:=false
-
+# phase
+var phaseDecided:=false
+var chosenPhase=0
 func enter():
 	super.enter()
 	owner.canMove=true
-	
+	phaseDecided=true
 	owner.onState=false
-	
+	phaseDecided=false
 	owner.stateMachine.travel("walk")
 
 func exit():
@@ -22,14 +24,12 @@ func transition():
 	if distance<=120 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
 		get_parent().change_state("meleeAttack")
 		
-	# ataque a distância
-	#elif distance>130:
-		#var chance = randi()%2
-		#match chance:
-			#0:
-				#get_parent().change_state("homingMissile")
-			#1: 
-				#get_parent().change_state("laser")
+	elif distance>130 && !phaseDecided:
+		var chosenPhase = randi()%3
+		phaseDecided=true
+		if chosenPhase==1:	
+			get_parent().change_state("bulletPhase")
+		
 
 
 func _on_cooldown_attack_timeout() -> void:

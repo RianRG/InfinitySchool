@@ -34,8 +34,6 @@ var health = 1000:
 		health = value
 		if value <= 0:
 			find_child("FiniteStateMachine").change_state("death")
-		elif value <= 50 and DEF == 0:
-			DEF = 5
 
 
 func _ready():
@@ -71,6 +69,8 @@ func _process(delta):
 
 func _physics_process(delta):
 	if player == null || !canMove:
+		velocity=Vector2.ZERO
+		knockback_velocity=Vector2.ZERO
 		return
 	
 	var distance_to_player = global_position.distance_to(player.global_position)
