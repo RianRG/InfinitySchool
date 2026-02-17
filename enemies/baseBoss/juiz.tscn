@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://doa7ihxf5dd1j" path="res://enemies/baseBoss/base_boss.tscn" id="1_81oqq"]
 [ext_resource type="Texture2D" uid="uid://c3yakcr5ayv1b" path="res://enemies/juizBoss/ParentBoss.png" id="2_8bmxj"]
 [ext_resource type="Script" uid="uid://bw2aj2wp0y5o3" path="res://enemies/juizBoss/juiz.gd" id="2_ybu1o"]
-[ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://assets/Sombra.png" id="3_3ve6r"]
+[ext_resource type="Texture2D" uid="uid://oh3usg2ebodi" path="res://assets/Sombra1.png" id="4_wp1ov"]
 [ext_resource type="Script" uid="uid://ciexjgd7jrny7" path="res://enemies/baseBoss/bullet_phase.gd" id="5_wp1ov"]
 
 [sub_resource type="Animation" id="Animation_ybu1o"]
@@ -742,8 +742,8 @@ frame = 15
 modulate = Color(1, 1, 1, 0.4627451)
 z_index = -1
 position = Vector2(2, 37)
-scale = Vector2(5, 5)
-texture = ExtResource("3_3ve6r")
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("4_wp1ov")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=985669107]
 libraries/ = SubResource("AnimationLibrary_3ve6r")
