@@ -6,9 +6,9 @@ class_name Player
 # ===============================
 @onready var sprite: Sprite2D = $texture
 @onready var camera = get_parent().get_node("Camera2D")
-@onready var animationCircle = $animationCircle
 @onready var particles = $CPUParticles2D
 @onready var loseStreak: Timer = $loseStreakTimer
+@onready var canvasModulate: CanvasModulate = $"../CanvasModulate"
 
 # TTimers gerenciados
 var dash_timer: Timer
@@ -427,7 +427,9 @@ func _update_animation():
 	match current_state:
 		PlayerState.DEAD:
 			_stateMachine.travel("death")
-			animationCircle.play("circleDeathAnimation")
+
+			whiteout(2)			
+			
 			set_physics_process(false)
 			set_process(false)
 		
@@ -550,3 +552,24 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 			_change_state(PlayerState.IDLE)
 		
 	pass # Replace with function body.
+
+
+func whiteout(duration := 2.0):
+	# cria CanvasLayer acima de tudo
+	var layer = CanvasLayer.new()
+	layer.layer = 999  # maior que qualquer outro
+	
+	get_tree().root.add_child(layer)
+	
+	# cria retângulo branco fullscreen
+	var rect = ColorRect.new()
+	rect.color = Color(1, 1, 1, 0) # começa transparente
+	
+	# fullscreen garantido
+	rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	
+	layer.add_child(rect)
+	
+	# fade para branco
+	var tween = create_tween()
+	tween.tween_property(rect, "color", Color(1,1,1,1), duration)
