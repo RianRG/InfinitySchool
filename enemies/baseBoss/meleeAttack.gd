@@ -2,8 +2,12 @@ extends State
 
 @onready var cooldownAttackTimer: Timer = $"../../cooldownAttack"
 var stateMachine
-enum attacksEnum { MELEE }
-var currentAttack: attacksEnum
+
+enum attacksEnum {
+	MELEE
+}
+
+var currentAttack = attacksEnum.MELEE
 
 func enter():
 	super.enter()

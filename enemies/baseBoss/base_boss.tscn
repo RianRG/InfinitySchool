@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://d0klc8snmldon" path="res://enemies/golemBoss/scripts/finite_state_machine.gd" id="3_lijwk"]
 [ext_resource type="Script" uid="uid://ryclq002fty6" path="res://enemies/golemBoss/scripts/idle.gd" id="4_ih6ya"]
 [ext_resource type="Script" uid="uid://cf3lit66lbf0k" path="res://enemies/golemBoss/scripts/follow.gd" id="5_p35ua"]
-[ext_resource type="Script" uid="uid://blnmhmfw2cnre" path="res://enemies/golemBoss/scripts/melee_attack.gd" id="6_i3q4b"]
+[ext_resource type="Script" uid="uid://c6anhfym87bo2" path="res://enemies/baseBoss/meleeAttack.gd" id="7_rve8w"]
+[ext_resource type="Script" uid="uid://du0dvyhpir7p1" path="res://enemies/baseBoss/death.gd" id="9_4s7ay"]
 [ext_resource type="Script" uid="uid://ccfvxsmlshfre" path="res://enemies/baseBoss/second_phase.gd" id="10_rve8w"]
 [ext_resource type="Script" uid="uid://vae5sm5llhic" path="res://enemies/golemBoss/scripts/dash.gd" id="11_ov4em"]
-[ext_resource type="Script" uid="uid://ct5d81okbeomc" path="res://enemies/golemBoss/scripts/death.gd" id="12_xjjhf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s0s2n"]
 radius = 32.8571
@@ -68,7 +68,7 @@ script = ExtResource("5_p35ua")
 
 [node name="meleeAttack" type="Node2D" parent="FiniteStateMachine" unique_id=2063373111]
 scale = Vector2(1.4, 1.4)
-script = ExtResource("6_i3q4b")
+script = ExtResource("7_rve8w")
 
 [node name="dash" type="Node2D" parent="FiniteStateMachine" unique_id=341914808]
 scale = Vector2(1.4, 1.4)
@@ -76,7 +76,7 @@ script = ExtResource("11_ov4em")
 
 [node name="death" type="Node2D" parent="FiniteStateMachine" unique_id=396024824]
 scale = Vector2(1.4, 1.4)
-script = ExtResource("12_xjjhf")
+script = ExtResource("9_4s7ay")
 
 [node name="secondPhase" type="Node2D" parent="FiniteStateMachine" unique_id=1991183885]
 script = ExtResource("10_rve8w")

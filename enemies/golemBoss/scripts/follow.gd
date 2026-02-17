@@ -10,7 +10,7 @@ func enter():
 	super.enter()
 	owner.canMove=true
 	phaseDecided=true
-	owner.onState=false
+	owner.cannotTakeKnockback=false
 	phaseDecided=false
 	owner.stateMachine.travel("walk")
 

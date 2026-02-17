@@ -8,7 +8,7 @@ func enter():
 	super.enter()
 	_animationTree.set("parameters/conditions/timerIsOut", false)
 	bulletPhaseTimer.start(4)
-	owner.onState=true
+	owner.cannotTakeKnockback=true
 	owner.stateMachine.travel("bulletPhaseStart")
 
 func exit():
@@ -25,5 +25,5 @@ func _on_end_bullet_phase_timeout() -> void:
 func endBulletPhase():
 	print("=== END BULLET PHASE CHAMADO ===")
 	_animationTree.set("parameters/conditions/timerIsOut", false)
-	owner.onState=false
+	owner.cannotTakeKnockback=false
 	get_parent().change_state("follow")

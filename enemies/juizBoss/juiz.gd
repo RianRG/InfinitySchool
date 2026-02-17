@@ -15,7 +15,7 @@ var originalColor := Color.WHITE
 
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0
-var onState = false
+var cannotTakeKnockback = false
 var canMove:=false
 
 # Controle de atualização de direção
@@ -51,7 +51,7 @@ func _process(delta):
 	var distance_to_player = global_position.distance_to(player.global_position)
 	
 	# Atualiza direção apenas em intervalos
-	if !onState:
+	if !cannotTakeKnockback:
 		direction_update_timer += delta
 		if direction_update_timer >= direction_update_interval:
 			direction_update_timer = 0.0
@@ -94,7 +94,7 @@ func _physics_process(delta):
 	
 	var move_velocity = Vector2.ZERO
 
-	if onState:
+	if cannotTakeKnockback:
 		# Durante dash/ataque, mantém a velocidade do ataque
 		move_velocity = knockback_velocity
 	else:
@@ -104,7 +104,7 @@ func _physics_process(delta):
 	# ✅ Agora não precisa mais de separation_velocity, só knockback de dano
 	var total_velocity = move_velocity
 	
-	if not onState:
+	if not cannotTakeKnockback:
 		total_velocity += knockback_velocity
 
 	velocity = total_velocity
@@ -131,7 +131,7 @@ func takeDamage():
 	attackScene.rotation = direction_from_player.angle() + 1.7
 	
 	# Só aplica knockback se o boss NÃO estiver atacando/dash
-	if not onState:
+	if not cannotTakeKnockback:
 		var knockback_strength = 200.0
 		knockback_velocity = direction_from_player * knockback_strength
 	else:

@@ -12,7 +12,7 @@ func _ready():
 
 func change_state(state):
 	
-	if get_parent().onState:
+	if get_parent().cannotTakeKnockback:
 		return
 	
 	# ← CORREÇÃO: salva referência ANTES de sobrescrever
