@@ -42,7 +42,6 @@ _data = {
 }
 
 [node name="healVFX" type="Node2D" unique_id=441159757]
-z_index = -1
 script = ExtResource("1_2tdir")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1664649805]

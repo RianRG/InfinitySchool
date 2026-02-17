@@ -252,6 +252,8 @@ func _update_animation_blend_positions(direction: Vector2):
 	_animationTree["parameters/run/blend_position"] = direction
 	_animationTree["parameters/dash/blend_position"] = direction
 	_animationTree["parameters/attack/blend_position"] = direction
+	_animationTree["parameters/combo/blend_position"] = direction
+	
 
 # ===============================
 # DASH
@@ -297,6 +299,12 @@ func _try_attack():
 	var attackDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if attackDirection == Vector2.ZERO:
 		attackDirection = lastDirection
+	
+	
+	if attackCounter == 2:  # 2 porque ainda não incrementou
+		_stateMachine.travel("combo")
+	else:
+		_stateMachine.travel("attack")
 	
 	move_velocity = attackDirection.normalized() * attack_dash_speed
 	
@@ -438,8 +446,7 @@ func _update_animation():
 			pass
 		
 		PlayerState.ATTACKING:
-			_stateMachine.travel("attack")
-		
+			pass
 		PlayerState.KOKUSEN:
 			_stateMachine.travel("kokusen")
 		
@@ -489,7 +496,6 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		if attackCounter == 3:
 			current_cooldown = combo_attack_cooldown # Cooldown maior
 			apply_knockback(body.global_position, 500)  # Knockback maior
-			
 			camera.screenShake(5, 0.5)  # Shake mais forte
 			attackCounter = 0  # Reseta combo
 			print("COMBO HIT 3!!")
@@ -537,7 +543,7 @@ func freezeFrame(timeScale: float, time: float):
 
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if "attack" in anim_name:
+	if "attack" in anim_name || "combo" in anim_name:
 		if current_state == PlayerState.ATTACKING:
 			_change_state(PlayerState.IDLE)
 		
