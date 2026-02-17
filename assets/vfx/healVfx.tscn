@@ -46,6 +46,9 @@ z_index = -1
 script = ExtResource("1_2tdir")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1664649805]
+z_index = 1
+y_sort_enabled = true
+rotation = 0.7853982
 texture = ExtResource("1_gg7us")
 hframes = 12
 

@@ -331,7 +331,7 @@ func _try_heal():
 	
 	var healVfx = healVfxScene.instantiate() 
 	add_child(healVfx)
-	healVfx.position = Vector2(0, -20)
+	healVfx.position = Vector2(0,-20)
 		
 	
 func _on_heal_timer_timeout():
