@@ -1994,6 +1994,7 @@ z_index = 1
 collision_mask = 4
 script = ExtResource("1_4flbx")
 bulletNode = ExtResource("2_1jxqw")
+health = 10
 _animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042372997]
