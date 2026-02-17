@@ -12,6 +12,7 @@ var onAttackCooldown := false
 var stateMachine
 var speed := 160
 var originalColor := Color.WHITE
+var isDead:=false
 
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0
@@ -33,6 +34,8 @@ var health = 1000:
 	set(value):
 		health = value
 		if value <= 0:
+			if !isDead: player.freezeFrame(0.4, 3)
+			isDead=true
 			find_child("FiniteStateMachine").change_state("death")
 
 
@@ -97,6 +100,8 @@ func _physics_process(delta):
 	if cannotTakeKnockback:
 		# Durante dash/ataque, mantém a velocidade do ataque
 		move_velocity = knockback_velocity
+	elif knockback_velocity.length() > 2.0:
+		move_velocity = Vector2.ZERO
 	else:
 		# Movimento normal + direção suavizada
 		move_velocity = direction * speed
@@ -132,7 +137,7 @@ func takeDamage():
 	
 	# Só aplica knockback se o boss NÃO estiver atacando/dash
 	if not cannotTakeKnockback:
-		var knockback_strength = 200.0
+		var knockback_strength = 400.0
 		knockback_velocity = direction_from_player * knockback_strength
 	else:
 		# Feedback visual para mostrar que ele levou hit no dash
