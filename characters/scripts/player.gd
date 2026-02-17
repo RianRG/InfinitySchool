@@ -10,13 +10,14 @@ class_name Player
 @onready var particles = $CPUParticles2D
 @onready var loseStreak: Timer = $loseStreakTimer
 
-# Timers gerenciados
+# TTimers gerenciados
 var dash_timer: Timer
 var dash_cooldown_timer: Timer
 var attack_cooldown_timer: Timer
 var kokusen_timer: Timer
 var spin_timer: Timer
 var spin_end_timer: Timer
+var heal_timer: Timer
 
 # ===============================
 # EXPORTS
@@ -69,6 +70,7 @@ enum PlayerState {
 	SPINNING_STARTUP,
 	SPINNING,
 	SPIN_END,
+	HEALING,
 	DEAD
 }
 
@@ -88,6 +90,7 @@ var isRunning = false
 var canDash = true
 var canAttack = true
 var spin_started = false
+var canHeal=true
 
 var originalColor := Color.WHITE
 
@@ -137,6 +140,12 @@ func _setup_timers():
 	spin_end_timer.one_shot = true
 	spin_end_timer.timeout.connect(_on_spin_end_timer_timeout)
 	add_child(spin_end_timer)
+	
+	# Heal timer
+	heal_timer = Timer.new()
+	heal_timer.one_shot=true
+	heal_timer.timeout.connect(_on_heal_timer_timeout)
+	add_child(heal_timer)
 
 # ===============================
 # PHYSICS PROCESS
@@ -168,7 +177,7 @@ func _physics_process(delta: float) -> void:
 # ===============================
 func _process_state(delta: float):
 	match current_state:
-		PlayerState.IDLE, PlayerState.MOVING:
+		PlayerState.IDLE, PlayerState.MOVING, PlayerState.HEALING:
 			_process_movement(delta)
 		
 		PlayerState.DASHING:
@@ -195,7 +204,7 @@ func _process_state(delta: float):
 		PlayerState.DEAD:
 			velocity = Vector2.ZERO
 func _can_handle_input() -> bool:
-	return current_state in [PlayerState.IDLE, PlayerState.MOVING, PlayerState.DASHING, ]
+	return current_state in [PlayerState.IDLE, PlayerState.MOVING ]
 
 func _handle_input():
 	if Input.is_action_just_pressed("dash"):
@@ -209,6 +218,9 @@ func _handle_input():
 	
 	if Input.is_action_just_pressed("spin"):
 		_try_spin()
+		
+	if Input.is_action_just_pressed("heal"):
+		_try_heal()
 
 # ===============================
 # MOVEMENT
@@ -245,7 +257,7 @@ func _update_animation_blend_positions(direction: Vector2):
 # DASH
 # ===============================
 func _try_dash():
-	if not canDash or current_state == PlayerState.SPINNING:
+	if not canDash or current_state in [PlayerState.SPINNING || PlayerState.HEALING]:
 		return
 	
 	_change_state(PlayerState.DASHING)
@@ -294,6 +306,30 @@ func _try_attack():
 func _on_attack_cooldown_timeout():
 	canAttack = true
 
+
+# =======
+# HEAL
+# =======
+const healVfxScene: PackedScene = preload("res://assets/vfx/healVfx.tscn")
+func _try_heal():
+	if !canHeal || current_state in [PlayerState.DASHING, PlayerState.ATTACKING]:
+		return
+		
+	_change_state(PlayerState.HEALING)
+	heal_timer.start(0.6)
+	freezeFrame(0.5, 0.5)
+	canHeal=false
+	
+	
+	var healVfx = healVfxScene.instantiate() 
+	add_child(healVfx)
+	healVfx.position = Vector2(0, -20)
+		
+	
+func _on_heal_timer_timeout():
+	canHeal=true	
+	_change_state(PlayerState.IDLE)
+
 # ===============================
 # KOKUSEN
 # ===============================
@@ -325,6 +361,7 @@ func _try_spin():
 	# Fase 1: STARTUP (parado)
 	_change_state(PlayerState.SPINNING_STARTUP)
 	spin_started = false
+	SPEED+=50.0
 	spin_timer.start(spin_startup_duration)  # 0.6s parado
 
 func _on_spin_timer_timeout():
@@ -336,6 +373,10 @@ func _on_spin_end_timer_timeout():
 	# Fase 3: RECOVERY (parado de novo)
 	_change_state(PlayerState.SPIN_END)
 	_animationTree.set("parameters/conditions/finishedSpin", true)
+	SPEED-=50.0
+	
+	
+
 	
 	# Timer final de recovery
 	var final_timer = get_tree().create_timer(spin_end_duration)  # 0.8s parado
@@ -439,7 +480,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		body.takeDamage()
 		attackCounter += 1
 		if current_state == PlayerState.KOKUSEN:
-			freezeFrame()
+			freezeFrame(0.3, 0.5)
 		
 		# Reseta o timer a cada acerto
 		loseStreak.start(combo_window)
@@ -486,11 +527,11 @@ func shoot():
 	get_tree().current_scene.call_deferred("add_child", bullet)
 
 # Freeze frame
-func freezeFrame():
-	Engine.time_scale=0.3 # slow motion
+func freezeFrame(timeScale: float, time: float):
+	Engine.time_scale=timeScale # slow motion
 	#Engine.time_scale=0 freeze frame
 	
-	await get_tree().create_timer(0.5, true, false, true).timeout
+	await get_tree().create_timer(time, true, false, true).timeout
 	
 	Engine.time_scale=1
 
