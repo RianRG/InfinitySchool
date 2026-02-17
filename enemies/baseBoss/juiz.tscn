@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3yakcr5ayv1b" path="res://enemies/juizBoss/ParentBoss.png" id="2_8bmxj"]
 [ext_resource type="Script" uid="uid://bx4io0ocbm0q8" path="res://enemies/juizBoss/juiz.gd" id="2_ybu1o"]
 [ext_resource type="Texture2D" uid="uid://oh3usg2ebodi" path="res://assets/Sombra1.png" id="4_wp1ov"]
+[ext_resource type="Script" uid="uid://0q2dqgg87oj0" path="res://enemies/juizBoss/follow.gd" id="5_lx6jt"]
 [ext_resource type="Script" uid="uid://ciexjgd7jrny7" path="res://enemies/baseBoss/bullet_phase.gd" id="5_wp1ov"]
 [ext_resource type="Script" uid="uid://bavvhirgf0mie" path="res://enemies/juizBoss/meleeAttack.gd" id="5_xokln"]
 
@@ -773,6 +774,9 @@ disabled = true
 [node name="CollisionShape2D" parent="playerDetection" parent_id_path=PackedInt32Array(840287295) index="0" unique_id=1937697267]
 scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_3ve6r")
+
+[node name="follow" parent="FiniteStateMachine" parent_id_path=PackedInt32Array(776770129) index="1" unique_id=871803042]
+script = ExtResource("5_lx6jt")
 
 [node name="meleeAttack" parent="FiniteStateMachine" parent_id_path=PackedInt32Array(776770129) index="2" unique_id=2063373111]
 script = ExtResource("5_xokln")

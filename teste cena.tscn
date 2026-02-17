@@ -212,6 +212,7 @@ position = Vector2(1494, -292)
 light_mask = 3
 visibility_layer = 3
 position = Vector2(1187, -30)
+health = 2
 
 [node name="TileMap" parent="player" index="10" unique_id=1899201351]
 tile_set = SubResource("TileSet_pibik")

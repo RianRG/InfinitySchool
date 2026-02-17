@@ -1994,7 +1994,6 @@ z_index = 1
 collision_mask = 4
 script = ExtResource("1_4flbx")
 bulletNode = ExtResource("2_1jxqw")
-health = 10
 _animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042372997]
@@ -2016,7 +2015,6 @@ z_index = -1
 texture = ExtResource("5_1jxqw")
 
 [node name="solidCircle" type="Sprite2D" parent="." unique_id=804341214]
-visible = false
 z_index = 11
 position = Vector2(0, -40)
 scale = Vector2(1e-05, 1e-05)

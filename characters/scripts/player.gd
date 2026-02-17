@@ -25,7 +25,7 @@ var heal_timer: Timer
 @export var friction = 0.2
 @export var acc = 0.35
 @export var bulletNode: PackedScene
-@export var health = 100
+@export var health = 10
 
 @export_category("Movement")
 @export var SPEED = 150.0
@@ -428,6 +428,8 @@ func _update_animation():
 		PlayerState.DEAD:
 			_stateMachine.travel("death")
 			animationCircle.play("circleDeathAnimation")
+			set_physics_process(false)
+			set_process(false)
 		
 		PlayerState.DASHING:
 			_stateMachine.travel("dash")
