@@ -14,10 +14,10 @@ func enter():
 func transition():
 	var distance = owner.position.distance_to(player.position)
 
-	if distance<=120 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
+	if distance<=135 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
 		get_parent().change_state("meleeAttack")
 		
-	elif distance>130 && !phaseDecided:
+	elif distance>150 && !phaseDecided:
 		var chosenPhase = randi()%5
 		phaseDecided=true
 		if chosenPhase==1:	
