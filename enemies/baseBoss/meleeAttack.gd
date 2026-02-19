@@ -13,6 +13,10 @@ func enter():
 	super.enter()
 	owner.cannotTakeKnockback = true  # Bloqueia knockback durante ataque
 	owner.canMove=true
+	
+	owner.target_direction = (player.position - owner.global_position).normalized()
+	owner.direction = owner.target_direction
+	
 	owner.stateMachine.travel("attack")
 
 func transition():

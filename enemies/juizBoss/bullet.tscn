@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://m637yjf5k2jd"]
+
+[ext_resource type="Script" uid="uid://upytse2g5iv3" path="res://enemies/juizBoss/bullet.gd" id="1_sox02"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_sox02"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wgg5"]
+
+[node name="Bullet" type="Area2D" unique_id=984799299]
+script = ExtResource("1_sox02")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026012165]
+scale = Vector2(18, 18)
+texture = SubResource("CanvasTexture_sox02")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544907962]
+shape = SubResource("RectangleShape2D_4wgg5")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=388128138]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

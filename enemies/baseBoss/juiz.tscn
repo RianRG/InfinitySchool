@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://0q2dqgg87oj0" path="res://enemies/juizBoss/follow.gd" id="5_lx6jt"]
 [ext_resource type="Script" uid="uid://ciexjgd7jrny7" path="res://enemies/baseBoss/bullet_phase.gd" id="5_wp1ov"]
 [ext_resource type="Script" uid="uid://bavvhirgf0mie" path="res://enemies/juizBoss/meleeAttack.gd" id="5_xokln"]
+[ext_resource type="PackedScene" uid="uid://m637yjf5k2jd" path="res://enemies/juizBoss/bullet.tscn" id="8_186p5"]
 
 [sub_resource type="Animation" id="Animation_ybu1o"]
 length = 0.001
@@ -846,27 +847,13 @@ size = Vector2(120, 80)
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ve6r"]
 radius = 135.38
 
-[sub_resource type="Gradient" id="Gradient_lx6jt"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_186p5"]
-gradient = SubResource("Gradient_lx6jt")
-width = 1
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_msdht"]
-particle_flag_disable_z = true
-angle_min = 1.0728835e-05
-angle_max = 40.00001
-gravity = Vector3(0, 98, 0)
-scale_max = 4.0
-
 [node name="Juiz" unique_id=644742827 groups=["enemy"] instance=ExtResource("1_81oqq")]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("2_ybu1o")
+bulletScene = ExtResource("8_186p5")
 
 [node name="cooldownAttack" type="Timer" parent="." index="0" unique_id=27411784]
 wait_time = 4.0
@@ -927,14 +914,12 @@ metadata/_custom_type_script = "uid://cwcijpfuwv840"
 
 [node name="endBulletPhase" type="Timer" parent="." index="10" unique_id=1077502534]
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="11" unique_id=1421227326]
-visible = false
-amount = 16
-texture = SubResource("GradientTexture1D_186p5")
-fixed_fps = 60
-process_material = SubResource("ParticleProcessMaterial_msdht")
+[node name="bulletSpeed" type="Timer" parent="." index="11" unique_id=1462136038]
+wait_time = 0.3
+autostart = true
 
 [connection signal="timeout" from="cooldownAttack" to="FiniteStateMachine/follow" method="_on_cooldown_attack_timeout"]
 [connection signal="body_entered" from="attackArea" to="FiniteStateMachine/meleeAttack" method="_on_attack_area_body_entered"]
 [connection signal="body_entered" from="playerDetection" to="FiniteStateMachine/idle" method="_on_player_detection_body_entered"]
 [connection signal="timeout" from="endBulletPhase" to="FiniteStateMachine/bulletPhase" method="_on_end_bullet_phase_timeout"]
+[connection signal="timeout" from="bulletSpeed" to="FiniteStateMachine/bulletPhase" method="_on_bullet_speed_timeout"]

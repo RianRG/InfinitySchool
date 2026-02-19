@@ -18,7 +18,7 @@ func transition():
 		get_parent().change_state("meleeAttack")
 		
 	elif distance>150 && !phaseDecided:
-		var chosenPhase = randi()%5
+		var chosenPhase = 1
 		phaseDecided=true
 		if chosenPhase==1:	
 			get_parent().change_state("bulletPhase")
