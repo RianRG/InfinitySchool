@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b1d65ug1fk5ir" path="res://assets/new prota/tudo4.png" id="3_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://da7l7rmg66drp" path="res://assets/new prota/Morte1.png" id="3_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://assets/Sombra.png" id="5_1jxqw"]
+[ext_resource type="PackedScene" uid="uid://bxt8dqf3mx1j8" path="res://assets/new prota/playerHud.tscn" id="6_2hs0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 13.5714)
@@ -1948,11 +1949,13 @@ vframes = 44
 frame = 114
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=636522755]
+visible = false
 modulate = Color(1, 1, 1, 0.45490196)
 z_index = -1
 texture = ExtResource("5_1jxqw")
 
 [node name="circleDeath" type="Sprite2D" parent="." unique_id=1036490393]
+visible = false
 z_index = 10
 position = Vector2(0, -35.52)
 scale = Vector2(3, 3)
@@ -2007,6 +2010,8 @@ tile_set = SubResource("TileSet_2hs0m")
 format = 2
 
 [node name="loseStreakTimer" type="Timer" parent="." unique_id=1305586872]
+
+[node name="PlayerHUD" parent="." unique_id=1133000688 instance=ExtResource("6_2hs0m")]
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

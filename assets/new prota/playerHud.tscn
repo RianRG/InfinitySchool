@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bxt8dqf3mx1j8"]
+
+[ext_resource type="Texture2D" uid="uid://cfw2xbbb0snd5" path="res://assets/new prota/lifeHUD.png" id="1_dhe2m"]
+[ext_resource type="Texture2D" uid="uid://bmhxr5eh2mi1v" path="res://assets/new prota/EnergyHUD.png" id="2_wvdcq"]
+
+[node name="PlayerHUD" type="Control" unique_id=1133000688]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1126083759]
+
+[node name="HealthSprite" type="Sprite2D" parent="CanvasLayer" unique_id=1572519929]
+position = Vector2(60, 30)
+texture = ExtResource("1_dhe2m")
+hframes = 13
+
+[node name="EnergySprite" type="Sprite2D" parent="CanvasLayer" unique_id=547016255]
+position = Vector2(60, 30)
+texture = ExtResource("2_wvdcq")
+hframes = 13

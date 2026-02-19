@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cy2kmnq1e43le"
-path="res://.godot/imported/tudo2.png-a38c132d9bdce31a47da42420a66dc46.ctex"
+uid="uid://bmhxr5eh2mi1v"
+path="res://.godot/imported/EnergyHUD.png-271fcf43c69cf0a82832f3766393d86e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/new prota/tudo2.png"
-dest_files=["res://.godot/imported/tudo2.png-a38c132d9bdce31a47da42420a66dc46.ctex"]
+source_file="res://assets/new prota/EnergyHUD.png"
+dest_files=["res://.godot/imported/EnergyHUD.png-271fcf43c69cf0a82832f3766393d86e.ctex"]
 
 [params]
 

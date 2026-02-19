@@ -30,7 +30,7 @@ var player_push_strength := 900.0
 # Zona mínima real
 var min_follow_distance := 60.0
 
-var health = 1:
+var health = 100:
 	set(value):
 		health = value
 		if value <= 0:
@@ -137,7 +137,7 @@ func takeDamage():
 	
 	# Só aplica knockback se o boss NÃO estiver atacando/dash
 	if not cannotTakeKnockback:
-		var knockback_strength = 400.0
+		var knockback_strength = 200.0
 		knockback_velocity = direction_from_player * knockback_strength
 	else:
 		# Feedback visual para mostrar que ele levou hit no dash

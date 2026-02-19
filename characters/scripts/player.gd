@@ -10,6 +10,20 @@ class_name Player
 @onready var loseStreak: Timer = $loseStreakTimer
 @onready var canvasModulate: CanvasModulate = $"../CanvasModulate"
 
+
+
+# ========== 
+# LIFE HUD
+# ==========
+
+@onready var playerHud: Control = $PlayerHUD
+@onready var healthSprite = $PlayerHUD/CanvasLayer/HealthSprite
+@onready var energySprite = $PlayerHUD/CanvasLayer/EnergySprite
+
+
+
+
+
 # TTimers gerenciados
 var dash_timer: Timer
 var dash_cooldown_timer: Timer
@@ -25,7 +39,7 @@ var heal_timer: Timer
 @export var friction = 0.2
 @export var acc = 0.35
 @export var bulletNode: PackedScene
-@export var health = 10
+@export var health = 12
 
 @export_category("Movement")
 @export var SPEED = 150.0
@@ -92,14 +106,13 @@ var canAttack = true
 var spin_started = false
 var canHeal=true
 
-var originalColor := Color.WHITE
+
 
 # ===============================
 # READY
 # ===============================
 func _ready():
 	_stateMachine = _animationTree["parameters/playback"]
-	originalColor = sprite.modulate
 	_animationTree.active = true
 	
 	_setup_timers()
@@ -468,9 +481,19 @@ func apply_knockback(from_position: Vector2, knockback_strength):
 	external_velocity = Vector2.ZERO
 	external_velocity = dir * knockback_strength
 
+
+func updateHUD(damage: int, energy: int):
+	healthSprite.frame = healthSprite.frame+damage
+	var originalSpriteColor = healthSprite.modulate
+	healthSprite.modulate = Color(5, 5, 5, 5)
+	await get_tree().create_timer(0.1).timeout
+	healthSprite.modulate = originalSpriteColor
+	
+
 func takeDamage(fromPosition: Vector2, knockback_strength: float):
 	health -= 1
 	hitFlash()
+	updateHUD(1, 0)
 	
 	# Cancel dash on hit
 	if current_state == PlayerState.DASHING:
@@ -479,7 +502,9 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float):
 		_change_state(PlayerState.IDLE)
 	
 	var dir = (global_position - fromPosition).normalized()
-	external_velocity = dir * knockback_strength
+	#external_velocity = dir * knockback_strength
+	apply_knockback(dir, knockback_strength)
+	
 	
 	camera.screenShake(3, 0.3)
 
@@ -500,13 +525,13 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		if attackCounter == 3:
 			current_cooldown = combo_attack_cooldown # Cooldown maior
 			apply_knockback(body.global_position, 500)  # Knockback maior
-			camera.screenShake(5, 0.5)  # Shake mais forte
+			if !body.isDead: camera.screenShake(5, 0.5)  # Shake mais forte
 			attackCounter = 0  # Reseta combo
 			print("COMBO HIT 3!!")
 		else:
 			current_cooldown = base_attack_cooldown  # Cooldown normal
 			apply_knockback(body.global_position, 350)  # Knockback normal
-			camera.screenShake(3, 0.3)
+			if !body.isDead: camera.screenShake(3, 0.3)
 			print("Hit %d" % attackCounter)
 			
 			
@@ -522,6 +547,7 @@ func _on_lose_streak_timer_timeout() -> void:
 # EFFECTS
 # ===============================
 func hitFlash():
+	var originalColor = sprite.modulate
 	sprite.modulate = Color(5, 5, 5, 5)
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = originalColor

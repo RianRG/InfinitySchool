@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://roy16npomyee"
-path="res://.godot/imported/prota.png-79b7fdd39d49169ba66129e206c37793.ctex"
+uid="uid://cfw2xbbb0snd5"
+path="res://.godot/imported/lifeHUD.png-0f6b68c424b7338104fcac7c0e70d154.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/new prota/prota.png"
-dest_files=["res://.godot/imported/prota.png-79b7fdd39d49169ba66129e206c37793.ctex"]
+source_file="res://assets/new prota/lifeHUD.png"
+dest_files=["res://.godot/imported/lifeHUD.png-0f6b68c424b7338104fcac7c0e70d154.ctex"]
 
 [params]
 

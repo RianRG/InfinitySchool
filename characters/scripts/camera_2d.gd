@@ -16,7 +16,7 @@ func _physics_process(delta: float):
 			noise.get_noise_2d(0, shakeTime)*shakeIntensity
 		)
 		
-		#shakeIntensity = max(shakeIntensity - shakeDecay*delta, 0)
+		shakeIntensity = max(shakeIntensity - shakeDecay*delta, 0)
 	else:
 		offset = lerp(offset, Vector2.ZERO, 10.5*delta)
 		
@@ -25,5 +25,6 @@ func screenShake(intensity: int, time: float):
 	noise.seed = randi()
 	noise.frequency = 2.0
 	shakeIntensity = intensity
+	
 	activeShakeTime = time
 	shakeTime = 0.0
