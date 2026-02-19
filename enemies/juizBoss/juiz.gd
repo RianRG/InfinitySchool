@@ -30,7 +30,7 @@ var player_push_strength := 900.0
 # Zona mínima real
 var min_follow_distance := 60.0
 
-var health = 100:
+var health = 1000:
 	set(value):
 		health = value
 		if value <= 0:

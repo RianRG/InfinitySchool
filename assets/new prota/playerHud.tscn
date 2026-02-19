@@ -12,6 +12,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1126083759]
+scale = Vector2(1.5, 1.5)
+transform = Transform2D(1.5, 0, 0, 1.5, 0, 0)
 
 [node name="HealthSprite" type="Sprite2D" parent="CanvasLayer" unique_id=1572519929]
 position = Vector2(60, 30)
@@ -21,4 +23,5 @@ hframes = 13
 [node name="EnergySprite" type="Sprite2D" parent="CanvasLayer" unique_id=547016255]
 position = Vector2(60, 30)
 texture = ExtResource("2_wvdcq")
-hframes = 13
+hframes = 11
+frame = 10

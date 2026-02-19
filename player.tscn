@@ -87,6 +87,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [SubResource("RectangleShape2D_i3pqv")]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("shadow:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_onrkg"]
 resource_name = "attackDown"
@@ -1069,6 +1081,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [SubResource("RectangleShape2D_i3pqv")]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("shadow:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.33333334, 0.7465861, 1.1666666),
+"transitions": PackedFloat32Array(0.4, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_khis8"]
 resource_name = "kokusenLeft"
@@ -1145,6 +1169,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [SubResource("RectangleShape2D_i3pqv")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("shadow:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.33333334, 0.7465861, 1.1666666),
+"transitions": PackedFloat32Array(0.4, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ek41f"]
@@ -1223,6 +1259,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [SubResource("RectangleShape2D_i3pqv")]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("shadow:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.33333334, 0.7465861, 1.1666666),
+"transitions": PackedFloat32Array(0.4, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_hl5qd"]
 resource_name = "kokusenUp"
@@ -1299,6 +1347,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [SubResource("RectangleShape2D_i3pqv")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("shadow:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.33333334, 0.7465861, 1.1666666),
+"transitions": PackedFloat32Array(0.4, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ivps1"]
@@ -1949,7 +2009,6 @@ vframes = 44
 frame = 114
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=636522755]
-visible = false
 modulate = Color(1, 1, 1, 0.45490196)
 z_index = -1
 texture = ExtResource("5_1jxqw")

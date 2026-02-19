@@ -39,7 +39,31 @@ var heal_timer: Timer
 @export var friction = 0.2
 @export var acc = 0.35
 @export var bulletNode: PackedScene
-@export var health = 12
+@export var totalHealth=12
+@export var totalEnergy=10
+
+
+var _health = 12
+var health:
+	get:
+		return _health
+	set(value):
+		var clamped = clamp(value, 0, totalHealth)
+		updateHUD(clamped, energy)
+		_health = clamped
+var _energy = 0
+var energy:
+	get:
+		return _energy
+	set(value):
+		var clamped = clamp(value, 0, totalEnergy)
+		await updateHUD(health, clamped)
+		_energy = clamped
+
+# Energy costs
+var kokusenEnergyCost = 6
+var spinEnergyCost = 5
+var healthEnergyCost = 6
 
 @export_category("Movement")
 @export var SPEED = 150.0
@@ -336,6 +360,12 @@ func _try_heal():
 	if !canHeal || current_state in [PlayerState.DASHING, PlayerState.ATTACKING]:
 		return
 		
+	if energy<healthEnergyCost: return
+	
+	health+=4
+	energy-=healthEnergyCost
+	
+
 	_change_state(PlayerState.HEALING)
 	heal_timer.start(0.6)
 	freezeFrame(0.5, 0.5)
@@ -357,6 +387,9 @@ func _on_heal_timer_timeout():
 func _try_kokusen():
 	if current_state == PlayerState.KOKUSEN:
 		return
+	if energy<kokusenEnergyCost: return
+	
+	energy-=kokusenEnergyCost
 	
 	_change_state(PlayerState.KOKUSEN)
 	kokusen_timer.start(kokusen_freeze_duration)
@@ -378,6 +411,11 @@ func _on_kokusen_end():
 func _try_spin():
 	if current_state == PlayerState.SPINNING or current_state == PlayerState.SPINNING_STARTUP:
 		return
+	if energy<spinEnergyCost: return
+	
+	energy-=spinEnergyCost
+	
+	
 	
 	# Fase 1: STARTUP (parado)
 	_change_state(PlayerState.SPINNING_STARTUP)
@@ -482,18 +520,46 @@ func apply_knockback(from_position: Vector2, knockback_strength):
 	external_velocity = dir * knockback_strength
 
 
-func updateHUD(damage: int, energy: int):
-	healthSprite.frame = healthSprite.frame+damage
-	var originalSpriteColor = healthSprite.modulate
-	healthSprite.modulate = Color(5, 5, 5, 5)
-	await get_tree().create_timer(0.1).timeout
-	healthSprite.modulate = originalSpriteColor
+func updateHUD(newHealth: int, newEnergy: int):
+	if newEnergy < 0 or newHealth < 0:
+		return 
 	
+	# ===== VIDA =====
+	healthSprite.frame = totalHealth - newHealth
+	
+	# ===== ENERGIA (frame 0 = cheia) =====
+	
+	var oldEnergy = energy
+	
+	if newEnergy < oldEnergy:
+		# diminuindo energia
+		for i in range(oldEnergy, newEnergy, -1):
+			energySprite.frame = totalEnergy - i
+			await get_tree().create_timer(0.1).timeout
+	else:
+		# aumentando energia
+		for i in range(oldEnergy, newEnergy):
+			energySprite.frame = totalEnergy - i
+			await get_tree().create_timer(0.05).timeout
+	
+	# garante frame final correto
+	energySprite.frame = totalEnergy - newEnergy
+	
+	# ===== FLASH VIDA =====
+	var originalSpriteColor = healthSprite.modulate
+	healthSprite.modulate = Color(2, 2, 2, 1)
+	var tween = create_tween()
+	tween.tween_property(
+		healthSprite,
+		"modulate",
+		originalSpriteColor,
+		0.1
+	)
 
-func takeDamage(fromPosition: Vector2, knockback_strength: float):
-	health -= 1
+
+func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
+	health -= damage
 	hitFlash()
-	updateHUD(1, 0)
 	
 	# Cancel dash on hit
 	if current_state == PlayerState.DASHING:
@@ -506,7 +572,7 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float):
 	apply_knockback(dir, knockback_strength)
 	
 	
-	camera.screenShake(3, 0.3)
+	camera.screenShake(5, 0.3)
 
 # ===============================
 # COMBAT
@@ -518,6 +584,9 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		if current_state == PlayerState.KOKUSEN:
 			freezeFrame(0.3, 0.5)
 		
+		if current_state == PlayerState.ATTACKING:
+			energy+=1
+		
 		# Reseta o timer a cada acerto
 		loseStreak.start(combo_window)
 		var current_cooldown: float
@@ -527,12 +596,10 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 			apply_knockback(body.global_position, 500)  # Knockback maior
 			if !body.isDead: camera.screenShake(5, 0.5)  # Shake mais forte
 			attackCounter = 0  # Reseta combo
-			print("COMBO HIT 3!!")
 		else:
 			current_cooldown = base_attack_cooldown  # Cooldown normal
 			apply_knockback(body.global_position, 350)  # Knockback normal
 			if !body.isDead: camera.screenShake(3, 0.3)
-			print("Hit %d" % attackCounter)
 			
 			
 		attack_cooldown_timer.stop()
