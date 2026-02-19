@@ -19,12 +19,16 @@ func _input(event):
 func _ready():
 	if spriteTexture:
 		sprite.texture = spriteTexture
+		
 	if isOpen:
 		animation.play("open")
 		collisionClosed.disabled = !collisionClosed.disabled
 		collisionOpen.disabled=!collisionOpen.disabled
-		
-
+		$LightOccluder2D.visible = true
+		$LightOccluder2D2.visible = false
+	else: 
+		$LightOccluder2D.visible = false
+		$LightOccluder2D2.visible = true
 
 func toggle():
 	if not interactButton.canStartDialog:
@@ -36,7 +40,11 @@ func toggle():
 		animation.play("open")
 		collisionClosed.disabled = !collisionClosed.disabled
 		collisionOpen.disabled=!collisionOpen.disabled
+		$LightOccluder2D.visible = true
+		$LightOccluder2D2.visible = false
 	else:
 		animation.play("closed")
 		collisionClosed.disabled = !collisionClosed.disabled
 		collisionOpen.disabled=!collisionOpen.disabled
+		$LightOccluder2D.visible = false
+		$LightOccluder2D2.visible = true

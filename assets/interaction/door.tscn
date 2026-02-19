@@ -5,10 +5,16 @@
 [ext_resource type="Texture2D" uid="uid://de3ogfjrkcsfo" path="res://terrains/Portas/porta1.png" id="2_qjfpb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfpb"]
-size = Vector2(34, 7)
+size = Vector2(34, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp573"]
 size = Vector2(6, 40)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qjfpb"]
+polygon = PackedVector2Array(-10, -53, -16, -53, -16, 27, -10, 27)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tp573"]
+polygon = PackedVector2Array(-16, 58, -16, 8, 16, 8, 16, 58, 15, 14, -15, 14)
 
 [sub_resource type="Animation" id="Animation_tp573"]
 length = 0.001
@@ -75,7 +81,6 @@ collision_mask = 3
 script = ExtResource("1_0cotw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=711038541]
-light_mask = 4
 visibility_layer = 3
 y_sort_enabled = true
 position = Vector2(8, 1)
@@ -89,7 +94,7 @@ region_rect = Rect2(0, 0, 240, 240)
 
 [node name="CollisionClosed" type="CollisionShape2D" parent="." unique_id=783950894]
 visibility_layer = 3
-position = Vector2(0, -11.5)
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_qjfpb")
 
 [node name="CollisionOpen" type="CollisionShape2D" parent="." unique_id=85219722]
@@ -97,6 +102,13 @@ visibility_layer = 3
 position = Vector2(-13, 2)
 shape = SubResource("RectangleShape2D_tp573")
 disabled = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1294714927]
+occluder = SubResource("OccluderPolygon2D_qjfpb")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1610768339]
+position = Vector2(0, -61)
+occluder = SubResource("OccluderPolygon2D_tp573")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1359562227]
 libraries/ = SubResource("AnimationLibrary_amge4")
