@@ -1,5 +1,6 @@
 extends State
 
+@onready var bulletSpeedTimer: Timer = $"../../bulletSpeed"
 @onready var bulletPhaseTimer: Timer = $"../../endBulletPhase"
 @onready var _animationTree: AnimationTree = $"../../AnimationTree"
 var timerIsOut:=false
@@ -11,13 +12,15 @@ var theta = 0.0
 func enter():
 	super.enter()
 	_animationTree.set("parameters/conditions/timerIsOut", false)
-	bulletPhaseTimer.start(4)
+	bulletPhaseTimer.start(10)
 	owner.cannotTakeKnockback=true
 	owner.stateMachine.travel("bulletPhaseStart")
+	await get_tree().create_timer(1).timeout
+	bulletSpeedTimer.start()
 
 func exit():
 	_animationTree.set("parameters/conditions/timerIsOut", false)
-	
+	bulletSpeedTimer.stop()
 	super.exit()
 
 func transition():

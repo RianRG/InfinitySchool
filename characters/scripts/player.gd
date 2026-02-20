@@ -96,6 +96,8 @@ var healthEnergyCost = 6
 @export_category("Objects")
 @export var _animationTree: AnimationTree = null
 
+
+var originalColor:=Color.WHITE
 # ===============================
 # STATE MACHINE
 # ===============================
@@ -138,7 +140,7 @@ var canHeal=true
 func _ready():
 	_stateMachine = _animationTree["parameters/playback"]
 	_animationTree.active = true
-	
+	originalColor = sprite.modulate
 	_setup_timers()
 
 func _setup_timers():
@@ -614,7 +616,6 @@ func _on_lose_streak_timer_timeout() -> void:
 # EFFECTS
 # ===============================
 func hitFlash():
-	var originalColor = sprite.modulate
 	sprite.modulate = Color(5, 5, 5, 5)
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = originalColor
