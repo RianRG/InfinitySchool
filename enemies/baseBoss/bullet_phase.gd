@@ -44,8 +44,10 @@ func shoot(angle):
 	bullet.position = owner.global_position
 	bullet.direction= get_vector(angle)
 	
-	get_tree().current_scene.call_deferred("add_child", bullet)
+	get_tree().current_scene.add_child(bullet)
 
 
 func _on_bullet_speed_timeout() -> void:
+	if not owner.cannotTakeKnockback:
+		return
 	shoot(theta)

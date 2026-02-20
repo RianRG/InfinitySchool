@@ -28,10 +28,10 @@ texture = ExtResource("2_1lx0a")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544907962]
 shape = SubResource("RectangleShape2D_4wgg5")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=388128138]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1991064392]
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=366494525]
 texture = SubResource("GradientTexture2D_wubi2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]

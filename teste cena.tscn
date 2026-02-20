@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="20_pibik"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="21_m5ask"]
 
-[sub_resource type="TileSet" id="TileSet_v4i4t"]
+[sub_resource type="TileSet" id="TileSet_m5ask"]
 resource_local_to_scene = true
 
 [sub_resource type="Gradient" id="Gradient_k7v17"]
@@ -239,15 +239,15 @@ adjustment_saturation = 0.84
 y_sort_enabled = true
 
 [node name="Juiz" parent="." unique_id=644742827 instance=ExtResource("18_2newn")]
-position = Vector2(1494, -292)
+position = Vector2(-230, -566)
 
 [node name="player" parent="." unique_id=1387394139 instance=ExtResource("4_nhcia")]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(128, -321)
+position = Vector2(1, -4)
 
 [node name="TileMap" parent="player" index="8" unique_id=1899201351]
-tile_set = SubResource("TileSet_v4i4t")
+tile_set = SubResource("TileSet_m5ask")
 
 [node name="PointLight2D" type="PointLight2D" parent="player" unique_id=129258925]
 light_mask = 7
@@ -374,12 +374,12 @@ spriteTexture = ExtResource("19_ylo3c")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(128, -321)
+position = Vector2(1, -4)
 zoom = Vector2(0.8, 0.8)
-limit_left = -1066
-limit_top = -997
-limit_right = 1092
-limit_bottom = 357
+limit_left = -1193
+limit_top = -680
+limit_right = 965
+limit_bottom = 674
 script = ExtResource("19_pibik")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
@@ -389,12 +389,11 @@ script = ExtResource("19_v4i4t")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(128, -321)
+position = Vector2(1, -4)
 script = ExtResource("20_pibik")
 follow_mode = 2
 follow_target = NodePath("../player")
 zoom = Vector2(0.8, 0.8)
-snap_to_pixel = true
 tween_resource = SubResource("Resource_syhfa")
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)

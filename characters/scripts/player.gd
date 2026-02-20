@@ -49,7 +49,7 @@ var health:
 		return _health
 	set(value):
 		var clamped = clamp(value, 0, totalHealth)
-		updateHUD(clamped, energy)
+		await updateHUD(clamped, energy)
 		_health = clamped
 var _energy = 0
 var energy:
@@ -190,6 +190,8 @@ func _setup_timers():
 # PHYSICS PROCESS
 # ===============================
 func _physics_process(delta: float) -> void:
+	
+	
 	if Global.dialogueActive:
 		_stateMachine.travel("idle")
 		return
@@ -527,9 +529,43 @@ func updateHUD(newHealth: int, newEnergy: int):
 		return 
 	
 	# ===== VIDA =====
-	healthSprite.frame = totalHealth - newHealth
+	if newHealth!=health: # animate health sprite
+		var originalSpriteColor = healthSprite.modulate
+		healthSprite.modulate = Color(2, 2, 2, 1)
+		var tween = create_tween()
+		tween.tween_property(
+			healthSprite,
+			"modulate",
+			originalSpriteColor,
+			0.1
+		)
+	var oldHealth = health
+	if newHealth > oldHealth:
+		# aumentando vida
+		for i in range(oldHealth, newHealth+1):
+			print(totalHealth-i)
+			healthSprite.frame = totalHealth - i
+			print(healthSprite.frame)
+			await get_tree().create_timer(0.1).timeout
+	else:
+		healthSprite.frame = totalHealth - newHealth
+		print(healthSprite.frame)
+		
+	
+	
 	
 	# ===== ENERGIA (frame 0 = cheia) =====
+	
+	if newEnergy!=energy: # animate energy sprite
+		var originalSpriteColor = energySprite.modulate
+		energySprite.modulate = Color(2, 2, 2, 1)
+		var tween = create_tween()
+		tween.tween_property(
+			energySprite,
+			"modulate",
+			originalSpriteColor,
+			0.1
+		)
 	
 	var oldEnergy = energy
 	
@@ -548,15 +584,7 @@ func updateHUD(newHealth: int, newEnergy: int):
 	energySprite.frame = totalEnergy - newEnergy
 	
 	# ===== FLASH VIDA =====
-	var originalSpriteColor = healthSprite.modulate
-	healthSprite.modulate = Color(2, 2, 2, 1)
-	var tween = create_tween()
-	tween.tween_property(
-		healthSprite,
-		"modulate",
-		originalSpriteColor,
-		0.1
-	)
+	
 
 
 func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
