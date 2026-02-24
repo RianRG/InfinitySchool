@@ -14,7 +14,7 @@ size = Vector2(6, 40)
 polygon = PackedVector2Array(-10, -53, -16, -53, -16, 27, -10, 27)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tp573"]
-polygon = PackedVector2Array(-16, 58, -16, 8, 16, 8, 16, 58, 15, 14, -15, 14)
+polygon = PackedVector2Array(-16, 36, -16, 8, 16, 8, 16, 36, 15, 14, -15, 14)
 
 [sub_resource type="Animation" id="Animation_tp573"]
 length = 0.001
