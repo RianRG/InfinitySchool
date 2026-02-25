@@ -154,7 +154,6 @@ script = ExtResource("1_sox02")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026012165]
 modulate = Color(2.8157141, 2.8157141, 2.8157141, 1)
-scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_1lx0a")
 hframes = 7
 
