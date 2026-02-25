@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://m637yjf5k2jd"]
 
 [ext_resource type="Script" uid="uid://upytse2g5iv3" path="res://enemies/juizBoss/bullet.gd" id="1_sox02"]
-[ext_resource type="Texture2D" uid="uid://bqywcsdpe5g23" path="res://enemies/juizBoss/bulletSprite.png" id="2_1lx0a"]
+[ext_resource type="Texture2D" uid="uid://b15emasbq7gal" path="res://enemies/juizBoss/projectileJuiz.png" id="2_1lx0a"]
+[ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://assets/Sombra.png" id="3_wubi2"]
+[ext_resource type="Texture2D" uid="uid://dggbl18upsd5t" path="res://enemies/juizBoss/explosionSprite-Sheet.png" id="4_01vvq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wgg5"]
-size = Vector2(22, 20)
+size = Vector2(12, 14)
 
 [sub_resource type="Gradient" id="Gradient_1lx0a"]
 colors = PackedColorArray(1, 0, 0, 0.84300005, 0, 0, 0, 1)
@@ -15,6 +17,135 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7991453, 0.26495728)
 
+[sub_resource type="Animation" id="Animation_wubi2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosionSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explosionSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_mkfp5"]
+resource_name = "explosion"
+length = 0.5714322
+step = 0.035714287
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("explosionSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.035714287, 0.071428575, 0.107142866, 0.14285715, 0.17857143, 0.21428573, 0.25, 0.2857143, 0.3214286, 0.35714287, 0.39285716, 0.42857146, 0.46428573, 0.5, 0.53606296),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosionSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1lx0a"]
+resource_name = "idle"
+length = 1.0000143
+loop_mode = 1
+step = 0.14285715
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857146, 0.5714286, 0.71428573, 0.8571429),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explosionSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wubi2"]
+_data = {
+&"RESET": SubResource("Animation_wubi2"),
+&"explosion": SubResource("Animation_mkfp5"),
+&"idle": SubResource("Animation_1lx0a")
+}
+
 [node name="Bullet" type="Area2D" unique_id=984799299]
 modulate = Color(0.67851543, 0.67851543, 0.67851543, 1)
 z_index = 2
@@ -23,7 +154,9 @@ script = ExtResource("1_sox02")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026012165]
 modulate = Color(2.8157141, 2.8157141, 2.8157141, 1)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_1lx0a")
+hframes = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544907962]
 shape = SubResource("RectangleShape2D_4wgg5")
@@ -33,5 +166,21 @@ shape = SubResource("RectangleShape2D_4wgg5")
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=366494525]
 texture = SubResource("GradientTexture2D_wubi2")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=717594728]
+libraries/ = SubResource("AnimationLibrary_wubi2")
+autoplay = &"idle"
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=1029756655]
+modulate = Color(1, 1, 1, 0.45490196)
+z_index = -1
+position = Vector2(0, 20)
+texture = ExtResource("3_wubi2")
+
+[node name="explosionSprite" type="Sprite2D" parent="." unique_id=570560421]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("4_01vvq")
+hframes = 17
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

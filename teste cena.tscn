@@ -243,7 +243,7 @@ position = Vector2(-230, -566)
 [node name="player" parent="." unique_id=1387394139 instance=ExtResource("4_nhcia")]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(1, -4)
+position = Vector2(-175.00002, -185.00002)
 
 [node name="TileMap" parent="player" index="8" unique_id=1899201351]
 tile_set = SubResource("TileSet_m5ask")
@@ -373,12 +373,12 @@ spriteTexture = ExtResource("19_ylo3c")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(1, -4)
+position = Vector2(-175.00002, -185.00002)
 zoom = Vector2(0.8, 0.8)
-limit_left = -1176
-limit_top = -680
-limit_right = 982
-limit_bottom = 674
+limit_left = -1352
+limit_top = -861
+limit_right = 806
+limit_bottom = 493
 script = ExtResource("19_pibik")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
@@ -388,7 +388,7 @@ script = ExtResource("19_v4i4t")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(1, -4)
+position = Vector2(-175.00002, -185.00002)
 script = ExtResource("20_pibik")
 follow_mode = 2
 follow_target = NodePath("../player")
