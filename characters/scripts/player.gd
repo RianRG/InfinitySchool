@@ -24,7 +24,7 @@ class_name Player
 
 
 
-# TTimers gerenciados
+# Timers gerenciados
 var dash_timer: Timer
 var dash_cooldown_timer: Timer
 var attack_cooldown_timer: Timer
@@ -32,6 +32,7 @@ var kokusen_timer: Timer
 var spin_timer: Timer
 var spin_end_timer: Timer
 var heal_timer: Timer
+var invincible_timer: Timer
 
 # ===============================
 # EXPORTS
@@ -95,6 +96,8 @@ var healthEnergyCost = 6
 
 @export_category("Objects")
 @export var _animationTree: AnimationTree = null
+@export var invencibleTime:=2.0
+
 
 
 var originalColor:=Color.WHITE
@@ -131,6 +134,8 @@ var canDash = true
 var canAttack = true
 var spin_started = false
 var canHeal=true
+var canTakeDamage=true
+var ignoreInvincible=false
 
 
 
@@ -185,6 +190,12 @@ func _setup_timers():
 	heal_timer.one_shot=true
 	heal_timer.timeout.connect(_on_heal_timer_timeout)
 	add_child(heal_timer)
+	
+	#Invincible Timer
+	invincible_timer = Timer.new()
+	invincible_timer.one_shot=true
+	invincible_timer.timeout.connect(_on_invincible_timer_timeout)
+	add_child(invincible_timer)
 
 # ===============================
 # PHYSICS PROCESS
@@ -553,6 +564,7 @@ func updateHUD(newHealth: int, newEnergy: int):
 		
 	
 	
+
 	
 	# ===== ENERGIA (frame 0 = cheia) =====
 	
@@ -587,9 +599,13 @@ func updateHUD(newHealth: int, newEnergy: int):
 	
 
 
+
 func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
+	if !canTakeDamage && !ignoreInvincible: return
+	
 	health -= damage
 	hitFlash()
+		
 	
 	# Cancel dash on hit
 	if current_state == PlayerState.DASHING:
@@ -604,6 +620,9 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	
 	camera.screenShake(5, 0.3)
 
+
+func _on_invincible_timer_timeout():
+	canTakeDamage=true
 # ===============================
 # COMBAT
 # ===============================

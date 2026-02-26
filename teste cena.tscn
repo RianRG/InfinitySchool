@@ -325,6 +325,7 @@ scale = Vector2(0.95, 0.95)
 spriteTexture = ExtResource("13_syhfa")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
+visible = false
 color = Color(0.37825543, 0.27772725, 0.35427502, 1)
 
 [node name="TileMapLayer9" type="TileMapLayer" parent="." unique_id=1089475040]
