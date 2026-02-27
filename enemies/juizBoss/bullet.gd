@@ -10,7 +10,7 @@ func _physics_process(delta: float):
    
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("character"):
+	if body.is_in_group("character") and body.canTakeDamage:
 		body.takeDamage(position, 500.0, 1)
 		animation.play("explosion")
 

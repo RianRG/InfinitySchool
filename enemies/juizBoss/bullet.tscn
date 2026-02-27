@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dggbl18upsd5t" path="res://enemies/juizBoss/explosionSprite-Sheet.png" id="4_01vvq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wgg5"]
-size = Vector2(12, 14)
+size = Vector2(14, 19)
 
 [sub_resource type="Gradient" id="Gradient_1lx0a"]
 colors = PackedColorArray(1, 0, 0, 0.84300005, 0, 0, 0, 1)
@@ -70,8 +70,8 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_mkfp5"]
 resource_name = "explosion"
-length = 0.44444722
-step = 0.027777778
+length = 0.3555578
+step = 0.022222223
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,7 +79,7 @@ tracks/0/path = NodePath("explosionSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.027777778, 0.055555556, 0.083333336, 0.11111111, 0.1388889, 0.16666667, 0.19444445, 0.22222222, 0.25, 0.2777778, 0.30555555, 0.33333334, 0.3611111, 0.3888889, 0.41666666),
+"times": PackedFloat32Array(0, 0.022222223, 0.044444446, 0.06666667, 0.08888889, 0.11111111, 0.13333334, 0.15555556, 0.17777778, 0.2, 0.22222222, 0.24444444, 0.26666668, 0.2888889, 0.31111112, 0.33333334),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]

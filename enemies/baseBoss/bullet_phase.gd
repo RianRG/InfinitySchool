@@ -41,7 +41,7 @@ func get_vector(angle):
 	 
 func shoot(angle):
 	var bullet = bulletScene.instantiate()
-	bullet.position = owner.global_position
+	bullet.position = owner.global_position + Vector2(0, -50)
 	bullet.direction= get_vector(angle)
 	
 	get_tree().current_scene.add_child(bullet)

@@ -603,6 +603,9 @@ func updateHUD(newHealth: int, newEnergy: int):
 func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	if !canTakeDamage && !ignoreInvincible: return
 	
+	canTakeDamage=false
+	invincible_timer.start(1.5)
+	
 	health -= damage
 	hitFlash()
 		
