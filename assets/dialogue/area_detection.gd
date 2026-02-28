@@ -1,9 +1,10 @@
 extends Area2D
 
 var playerEntered: bool = false
-@onready var level: Level = $"../../Level"
 @onready var interactButton: Node2D = $"../buttonSprite"
 @onready var interactButtonFather: Node2D = $".."
+
+@onready var door: Door = $"../.."
 
 
 
@@ -12,7 +13,10 @@ func _on_body_entered(body: Node2D) -> void:
 		playerEntered=true
 		interactButtonFather.canStartDialog=true
 		interactButton.appear()
-	pass # Replace with function body.
+		
+		if door && door.ceilling && door.isOpen:
+			var tween = create_tween()
+			tween.tween_property(door.ceilling, "modulate:a", 0.0, 0.5)
 
 
 func _on_body_exited(body: Node2D) -> void:
@@ -20,4 +24,8 @@ func _on_body_exited(body: Node2D) -> void:
 		playerEntered=false
 		interactButtonFather.canStartDialog=false
 		interactButton.disappear()
-	pass # Replace with function body.
+		
+		if door && door.ceilling && !door.isOpen:
+			var tween = create_tween()
+			tween.tween_property(door.ceilling, "modulate:a", 1, 0.5)
+		

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dlf1appyq4mds"]
+
+[ext_resource type="Texture2D" uid="uid://bv0flfm5xdlna" path="res://assets/new prota/KokusenVFX.png" id="1_2xrp3"]
+
+[sub_resource type="Animation" id="Animation_fhuoa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8oyt0"]
+resource_name = "kokusen"
+length = 2.00001
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.7055374, 2.00001),
+"transitions": PackedFloat32Array(1.7411014, 1.7411014),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1iuqw"]
+_data = {
+&"RESET": SubResource("Animation_fhuoa"),
+&"kokusen": SubResource("Animation_8oyt0")
+}
+
+[node name="kokusenVFX" type="Node2D" unique_id=144532156]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1878870904]
+position = Vector2(0, 20)
+texture = ExtResource("1_2xrp3")
+hframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=234738857]
+libraries/ = SubResource("AnimationLibrary_1iuqw")
+autoplay = &"kokusen"

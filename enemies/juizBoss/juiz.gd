@@ -34,7 +34,7 @@ var min_follow_distance := 60.0
 # Bullet Scene
 @export var bulletScene: PackedScene
 
-var health = 100:
+var health = 1000:
 	set(value):
 		health = value
 		if value <= 0:
@@ -51,7 +51,7 @@ func _ready():
 
 
 func _process(delta):
-	#set_physics_process(false)
+	set_physics_process(false)
 	if player == null || !canMove:
 		return
 	

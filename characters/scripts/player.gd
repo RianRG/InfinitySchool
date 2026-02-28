@@ -63,7 +63,7 @@ var energy:
 		_energy = clamped
 
 # Energy costs
-var kokusenEnergyCost = 6
+var kokusenEnergyCost = 1
 var spinEnergyCost = 5
 var healthEnergyCost = 6
 
@@ -87,8 +87,11 @@ var healthEnergyCost = 6
 @export var knockback_decay := 900.0
 
 @export_category("Kokusen Settings")
-@export var kokusen_freeze_duration := 1
+@export var kokusen_freeze_duration := 1.2
 @export var kokusen_end_duration := 0.3
+const kokusenVfxScene = preload("res://assets/vfx/kokusenVFX.tscn")
+
+
 
 @export_category("Spin Settings")
 @export var spin_startup_duration := 0.6
@@ -407,13 +410,17 @@ func _try_kokusen():
 	
 	energy-=kokusenEnergyCost
 	
+	
 	_change_state(PlayerState.KOKUSEN)
 	kokusen_timer.start(kokusen_freeze_duration)
+	
+	await get_tree().create_timer(.8).timeout
+	var kokusenVfx = kokusenVfxScene.instantiate()
+	kokusenVfx.global_position = global_position
+	get_tree().current_scene.add_child(kokusenVfx)
+	camera.screenShake(4, 0.5)
 
 func _on_kokusen_timer_timeout():
-	camera.screenShake(4, 0.5)
-	
-	
 	# Timer for end of kokusen
 	var end_timer = get_tree().create_timer(kokusen_end_duration)
 	end_timer.timeout.connect(_on_kokusen_end)
