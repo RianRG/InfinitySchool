@@ -41,7 +41,7 @@ var invincible_timer: Timer
 @export var friction = 0.2
 @export var acc = 0.35
 @export var bulletNode: PackedScene
-@export var totalHealth=1
+@export var totalHealth=12
 @export var totalEnergy=10
 
 
@@ -489,6 +489,7 @@ func _update_velocity():
 # ===============================
 func _update_animation():
 	if health <= 0 and current_state != PlayerState.DEAD:
+		await get_tree().create_timer(.2).timeout
 		_change_state(PlayerState.DEAD)
 	
 	match current_state:
@@ -496,9 +497,8 @@ func _update_animation():
 			freezeFrame(0.5, 3.0)
 			_stateMachine.travel("death")
 			
-			whiteout(1.8)			
-			
-			set_physics_process(false)
+			whiteout(140)			
+			#set_physics_process(false)
 			set_process(false)
 		
 		PlayerState.DASHING:
@@ -556,13 +556,10 @@ func updateHUD(newHealth: int, newEnergy: int):
 	if newHealth > oldHealth:
 		# aumentando vida
 		for i in range(oldHealth, newHealth+1):
-			print(totalHealth-i)
 			healthSprite.frame = totalHealth - i
-			print(healthSprite.frame)
 			await get_tree().create_timer(0.1).timeout
 	else:
 		healthSprite.frame = totalHealth - newHealth
-		print(healthSprite.frame)
 		
 	
 	
@@ -637,7 +634,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		if current_state == PlayerState.KOKUSEN:
 			freezeFrame(0.3, 0.5)
 		
-		if current_state == PlayerState.ATTACKING:
+		if current_state == PlayerState.ATTACKING && !body.isDead:
 			energy+=1
 		
 		# Reseta o timer a cada acerto

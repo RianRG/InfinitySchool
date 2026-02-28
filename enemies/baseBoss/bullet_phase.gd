@@ -30,6 +30,7 @@ func exit():
 	_animationTree.set("parameters/conditions/timerIsOut", false)
 	bulletSpeedTimer.stop()
 	bulletPhaseTimer.stop()
+	owner.bulletPhaseDecided=false
 	super.exit()
 
 func transition():

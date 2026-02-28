@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://m637yjf5k2jd"]
 
 [ext_resource type="Script" uid="uid://upytse2g5iv3" path="res://enemies/juizBoss/bullet.gd" id="1_sox02"]
-[ext_resource type="Texture2D" uid="uid://b15emasbq7gal" path="res://enemies/juizBoss/projectileJuiz.png" id="2_1lx0a"]
+[ext_resource type="Texture2D" uid="uid://cui7sh6uy1tux" path="res://enemies/juizBoss/bulletSprite-Sheet.png" id="2_01vvq"]
 [ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://assets/Sombra.png" id="3_wubi2"]
 [ext_resource type="Texture2D" uid="uid://dggbl18upsd5t" path="res://enemies/juizBoss/explosionSprite-Sheet.png" id="4_01vvq"]
 
@@ -111,7 +111,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_1lx0a"]
 resource_name = "idle"
-length = 1.0000143
+length = 0.8571572
 loop_mode = 1
 step = 0.14285715
 tracks/0/type = "value"
@@ -121,10 +121,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857146, 0.5714286, 0.71428573, 0.8571429),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143, 0.42857146, 0.5714286, 0.71428573),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [0, 1, 2, 3, 4, 5]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -154,8 +154,8 @@ script = ExtResource("1_sox02")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026012165]
 modulate = Color(2.8157141, 2.8157141, 2.8157141, 1)
-texture = ExtResource("2_1lx0a")
-hframes = 7
+texture = ExtResource("2_01vvq")
+hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544907962]
 shape = SubResource("RectangleShape2D_4wgg5")

@@ -6,8 +6,6 @@ func enter():
 	super.enter()
 	owner.cannotTakeKnockback=false
 	var direction_from_player = (owner.global_position - owner.player.global_position).normalized()
-	#owner.move_velocity = direction_from_player * 1500.0
-	print(owner.knockback_velocity)
 	
 	owner.stateMachine.travel("idleDown")
 	await get_tree().create_timer(0.5).timeout
