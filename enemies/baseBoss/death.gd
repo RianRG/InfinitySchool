@@ -4,10 +4,15 @@ var stateMachine
 @onready var phantom: PhantomCamera2D = $"../../../PhantomCamera2D"
 func enter():
 	super.enter()
+	owner.cannotTakeKnockback=false
+	var direction_from_player = (owner.global_position - owner.player.global_position).normalized()
+	#owner.move_velocity = direction_from_player * 1500.0
+	print(owner.knockback_velocity)
+	
 	owner.stateMachine.travel("idleDown")
 	await get_tree().create_timer(0.5).timeout
-	owner.set_physics_process(false)
+	owner.set_physics_process(false) 
 	camera.screenShake(10, 4)
-	await get_tree().create_timer(4).timeout
+	await get_tree().create_timer(2).timeout
 	
 	owner.stateMachine.travel("death")

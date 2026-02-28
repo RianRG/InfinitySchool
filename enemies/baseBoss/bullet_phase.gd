@@ -9,23 +9,31 @@ var theta = 0.0
 @export_range(0,2*PI) var alpha: float = 0.0
 @onready var bulletScene: PackedScene = owner.bulletScene
 
+var _active:=false
+
 func enter():
 	super.enter()
+	_active=true
 	_animationTree.set("parameters/conditions/timerIsOut", false)
-	bulletPhaseTimer.start(10)
 	owner.cannotTakeKnockback=true
+	bulletPhaseTimer.start(10)
 	owner.stateMachine.travel("bulletPhaseStart")
 	await get_tree().create_timer(1).timeout
+	
+	if !_active:
+		return
+	
 	bulletSpeedTimer.start()
 
 func exit():
+	_active=false
 	_animationTree.set("parameters/conditions/timerIsOut", false)
 	bulletSpeedTimer.stop()
+	bulletPhaseTimer.stop()
 	super.exit()
 
 func transition():
 	pass
-
 func _on_end_bullet_phase_timeout() -> void:
 	_animationTree.set("parameters/conditions/timerIsOut", true)
 
@@ -48,6 +56,6 @@ func shoot(angle):
 
 
 func _on_bullet_speed_timeout() -> void:
-	if not owner.cannotTakeKnockback:
+	if !_active:
 		return
 	shoot(theta)

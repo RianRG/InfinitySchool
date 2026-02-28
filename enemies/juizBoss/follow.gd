@@ -1,26 +1,25 @@
 extends "res://enemies/baseBoss/follow.gd"
 
 # phase
-var phaseDecided:=false
 var chosenPhase=0
 func enter():
 	super.enter()
 	owner.canMove=true
 	owner.cannotTakeKnockback=false
-	phaseDecided=false
 	owner.stateMachine.travel("walk")
 
 
 func transition():
+	
 	var distance = owner.position.distance_to(player.position)
 
 	if distance<=135 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
 		get_parent().change_state("meleeAttack")
 		
-	elif distance>150 && !phaseDecided:
-		var chosenPhase = randi()%5
-		phaseDecided=true
+	elif distance>150 && !owner.bulletPhaseDecided:
+		var chosenPhase = 1
 		if chosenPhase==1:	
+			owner.bulletPhaseDecided=true
 			get_parent().change_state("bulletPhase")
 		
 

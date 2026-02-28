@@ -37,14 +37,15 @@ var invincible_timer: Timer
 # ===============================
 # EXPORTS
 # ===============================
+@export_category("Basics")
 @export var friction = 0.2
 @export var acc = 0.35
 @export var bulletNode: PackedScene
-@export var totalHealth=12
+@export var totalHealth=1
 @export var totalEnergy=10
 
 
-var _health = 12
+var _health = totalHealth
 var health:
 	get:
 		return _health
@@ -492,9 +493,10 @@ func _update_animation():
 	
 	match current_state:
 		PlayerState.DEAD:
+			freezeFrame(0.5, 3.0)
 			_stateMachine.travel("death")
-
-			whiteout(2)			
+			
+			whiteout(1.8)			
 			
 			set_physics_process(false)
 			set_process(false)
@@ -608,7 +610,6 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	
 	health -= damage
 	hitFlash()
-		
 	
 	# Cancel dash on hit
 	if current_state == PlayerState.DASHING:
@@ -631,7 +632,7 @@ func _on_invincible_timer_timeout():
 # ===============================
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.takeDamage()
+		body.takeDamage(100.0)
 		attackCounter += 1
 		if current_state == PlayerState.KOKUSEN:
 			freezeFrame(0.3, 0.5)

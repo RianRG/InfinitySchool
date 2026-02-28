@@ -13,6 +13,7 @@ var stateMachine
 var speed := 160
 var originalColor := Color.WHITE
 var isDead:=false
+var bulletPhaseDecided=false
 
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0
@@ -33,7 +34,7 @@ var min_follow_distance := 60.0
 # Bullet Scene
 @export var bulletScene: PackedScene
 
-var health = 1000:
+var health = 2:
 	set(value):
 		health = value
 		if value <= 0:
@@ -126,9 +127,10 @@ func _physics_process(delta):
 
 const purpleAttackVfx = preload("res://assets/vfx/purpleAttackVfx.tscn")
 
-func takeDamage():
+func takeDamage(knockback_strength: float):
 	health -= 10 - DEF
-
+	
+	if isDead: knockback_strength = 400.0
 	# Spawn do VFX
 	var attackScene = purpleAttackVfx.instantiate()
 	attackScene.position = global_position
@@ -140,7 +142,6 @@ func takeDamage():
 	
 	# Só aplica knockback se o boss NÃO estiver atacando/dash
 	if not cannotTakeKnockback:
-		var knockback_strength = 200.0
 		knockback_velocity = direction_from_player * knockback_strength
 	else:
 		# Feedback visual para mostrar que ele levou hit no dash
