@@ -63,7 +63,7 @@ var energy:
 		_energy = clamped
 
 # Energy costs
-var kokusenEnergyCost = 1
+var kokusenEnergyCost = 6
 var spinEnergyCost = 5
 var healthEnergyCost = 6
 
@@ -86,9 +86,9 @@ var healthEnergyCost = 6
 @export_category("Knockback Settings")
 @export var knockback_decay := 900.0
 
+
 @export_category("Kokusen Settings")
-@export var kokusen_freeze_duration := 1.2
-@export var kokusen_end_duration := 0.3
+@export var kokusen_freeze_duration := 1.4
 const kokusenVfxScene = preload("res://assets/vfx/kokusenVFX.tscn")
 
 
@@ -218,7 +218,7 @@ func _physics_process(delta: float) -> void:
 	_process_state(delta)
 	
 	# Handle input (unless locked)
-	if _can_handle_input():
+	if _can_handle_input() && health>0:
 		_handle_input()
 	
 	# Update velocity and move
@@ -283,7 +283,8 @@ func _handle_input():
 # ===============================
 func _process_movement(delta: float):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	
+	if health<=0: 
+		direction=Vector2.ZERO
 	if direction != Vector2.ZERO:
 		lastDirection = direction
 		_update_animation_blend_positions(direction)
@@ -413,20 +414,15 @@ func _try_kokusen():
 	
 	_change_state(PlayerState.KOKUSEN)
 	kokusen_timer.start(kokusen_freeze_duration)
-	
-	await get_tree().create_timer(.8).timeout
+	await get_tree().create_timer(.9).timeout
+	camera.screenShake(4, 0.5)
 	var kokusenVfx = kokusenVfxScene.instantiate()
 	kokusenVfx.global_position = global_position
 	get_tree().current_scene.add_child(kokusenVfx)
-	camera.screenShake(4, 0.5)
 
 func _on_kokusen_timer_timeout():
-	# Timer for end of kokusen
-	var end_timer = get_tree().create_timer(kokusen_end_duration)
-	end_timer.timeout.connect(_on_kokusen_end)
-
-func _on_kokusen_end():
 	_change_state(PlayerState.IDLE)
+	
 
 # ===============================
 # SPIN ATTACK
@@ -495,9 +491,6 @@ func _update_velocity():
 # ANIMATION
 # ===============================
 func _update_animation():
-	if health <= 0 and current_state != PlayerState.DEAD:
-		await get_tree().create_timer(.2).timeout
-		_change_state(PlayerState.DEAD)
 	
 	match current_state:
 		PlayerState.DEAD:
@@ -538,10 +531,10 @@ func _update_animation():
 # KNOCKBACK & DAMAGE
 # ===============================
 func apply_knockback(from_position: Vector2, knockback_strength):
-	
 	var dir = (global_position - from_position).normalized()
-	external_velocity = Vector2.ZERO
 	external_velocity = dir * knockback_strength
+	
+	
 
 
 func updateHUD(newHealth: int, newEnergy: int):
@@ -621,12 +614,19 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 		dash_velocity = Vector2.ZERO
 		_change_state(PlayerState.IDLE)
 	
-	var dir = (global_position - fromPosition).normalized()
 	#external_velocity = dir * knockback_strength
-	apply_knockback(dir, knockback_strength)
+	apply_knockback(fromPosition, knockback_strength)
 	
 	
 	camera.screenShake(5, 0.3)
+	if health<=0:
+		freezeFrame(0.3, 1.0)
+		_die()
+
+func _die():
+	canTakeDamage=false
+	await get_tree().create_timer(1).timeout
+	_change_state(PlayerState.DEAD)
 
 
 func _on_invincible_timer_timeout():

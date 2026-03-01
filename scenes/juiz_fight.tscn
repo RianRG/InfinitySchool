@@ -71,12 +71,12 @@ tile_set = ExtResource("4_adwtm")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2055352937]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(27, -358)
+position = Vector2(-1.9073486e-06, -321)
 zoom = Vector2(0.8, 0.8)
-limit_left = -373
-limit_top = -806
-limit_right = 367
-limit_bottom = -133
+limit_left = -439
+limit_top = -841
+limit_right = 443
+limit_bottom = -96
 script = ExtResource("4_jeq4h")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=683271849]
@@ -86,7 +86,7 @@ script = ExtResource("5_adwtm")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=1459079574 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(27, -358)
+position = Vector2(-1.9073486e-06, -321)
 script = ExtResource("6_l68dg")
 follow_mode = 2
 follow_target = NodePath("../player")
