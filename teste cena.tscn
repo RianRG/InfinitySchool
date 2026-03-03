@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://b8kas6yhuo3au"]
 
 [ext_resource type="TileSet" uid="uid://dxj02uipe2fmp" path="res://Chao.tres" id="1_11sws"]
+[ext_resource type="Script" uid="uid://bfislp738t1wt" path="res://scenes/scripts/juizScene.gd" id="1_syhfa"]
 [ext_resource type="TileSet" uid="uid://jcxa0sn1lcmm" path="res://Paredes.tres" id="2_k7v17"]
 [ext_resource type="TileSet" uid="uid://cfrrfjiye5bnj" path="res://ParedesTopo.tres" id="3_vejse"]
 [ext_resource type="PackedScene" uid="uid://b25qg3uermyxk" path="res://player.tscn" id="4_nhcia"]
@@ -226,10 +227,14 @@ adjustment_brightness = 0.63
 adjustment_contrast = 1.12
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoljt"]
-size = Vector2(2588, 681)
+size = Vector2(580, 763)
+
+[sub_resource type="Resource" id="Resource_ylo3c"]
+script = ExtResource("21_m5ask")
 
 [node name="Node2D" type="Node2D" unique_id=1154151293]
 y_sort_enabled = true
+script = ExtResource("1_syhfa")
 
 [node name="Juiz" parent="." unique_id=644742827 instance=ExtResource("18_2newn")]
 position = Vector2(-653, -244)
@@ -351,12 +356,9 @@ ceilling = NodePath("../ceilling")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(-657.00006, 46)
+position = Vector2(-657.00006, 106.000015)
 zoom = Vector2(0.8, 0.8)
-limit_left = -1624
-limit_top = -410
-limit_right = 964
-limit_bottom = 271
+limit_enabled = false
 script = ExtResource("19_pibik")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
@@ -366,15 +368,15 @@ script = ExtResource("19_v4i4t")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-657.00006, 46)
+position = Vector2(-657.00006, 106.000015)
 script = ExtResource("20_pibik")
+priority = 1
 follow_mode = 2
 follow_target = NodePath("../player")
 zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_syhfa")
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
-limit_target = NodePath("../cameraBounds/CollisionShape2D")
 
 [node name="PointLight2D4" type="PointLight2D" parent="." unique_id=1057086899]
 z_index = -2
@@ -427,6 +429,17 @@ texture = SubResource("GradientTexture2D_m5ask")
 [node name="cameraBounds" type="Area2D" parent="." unique_id=191345596]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cameraBounds" unique_id=377826437]
-position = Vector2(-330, -69.5)
+position = Vector2(-656, -75.5)
 shape = SubResource("RectangleShape2D_aoljt")
 disabled = true
+
+[node name="bossCamera" type="Node2D" parent="." unique_id=2026303458 node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(-653, -244)
+script = ExtResource("20_pibik")
+follow_mode = 2
+follow_target = NodePath("../Juiz")
+tween_resource = SubResource("Resource_ylo3c")
+follow_damping = true
+follow_damping_value = Vector2(4, 4)
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
