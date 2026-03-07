@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://q41niie1872s" path="res://terrains/Portas/porta4.png" id="19_ylo3c"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="20_pibik"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="21_m5ask"]
-[ext_resource type="TileSet" uid="uid://dqhrel7r3wap" path="res://Escada teste.tres" id="25_ylo3c"]
+[ext_resource type="TileSet" uid="uid://nux3shfkcpe8" path="res://Escada teste.tres" id="25_ylo3c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfqxu"]
 texture = ExtResource("14_as6p8")
@@ -240,8 +240,10 @@ script = ExtResource("1_syhfa")
 [node name="Juiz" parent="." unique_id=644742827 instance=ExtResource("18_2newn")]
 position = Vector2(-653, -244)
 
-[node name="player" parent="." unique_id=1149914169 instance=ExtResource("4_nhcia")]
+[node name="player" parent="." unique_id=1149914169 node_paths=PackedStringArray("stairMap") instance=ExtResource("4_nhcia")]
 position = Vector2(142.00012, -252.00005)
+scale = Vector2(1, 1)
+stairMap = NodePath("../stairs")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=50848760]
 z_index = -1
@@ -446,7 +448,7 @@ follow_damping = true
 follow_damping_value = Vector2(4, 4)
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
-[node name="TileMapLayer6" type="TileMapLayer" parent="." unique_id=107459100]
+[node name="stairs" type="TileMapLayer" parent="." unique_id=107459100]
 z_index = 1
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAHAN//AAAAAAgAAAAIAN//AAABAAcAAAAJAN//AAACAAcAAAAJAOD/AAACAAkAAAAIAOD/AAABAAgAAAAHAOD/AAAAAAgAAAAHAOH/AAAAAAkAAAAIAOH/AAABAAgAAAAJAOH/AAACAAkAAAAJAOL/AAACAAcAAAAIAOL/AAABAAkAAAAHAOL/AAAAAAkAAAAJAOP/AAACAAgAAAAIAOP/AAABAAkAAAAHAOP/AAAAAAgAAAAJAOT/AAACAAkAAAAIAOT/AAABAAgAAAAHAOT/AAAAAAkAAAAHAOX/AAAAAAoAAAAIAOX/AAABAAoAAAAJAOX/AAACAAoAAAAMAOv/AAAGAAUAAAAMAOr/AAAIAAAAAAANAOv/AAAGAAUAAAAOAOv/AAAGAAUAAAAOAOr/AAAIAAQAAAAOAOn/AAAGAAEAAAAPAOn/AAAJAAAAAAAPAOr/AAAJAAQAAAAPAOv/AAAJAAUAAAAGAOv/AAAEAAEAAAAFAOv/AAABAAUAAAAFAOr/AAABAAAAAAAEAOr/AAACAAAAAAAEAOv/AAACAAUAAAADAOv/AAABAAUAAAADAOr/AAABAAQAAAADAOn/AAABAAAAAAACAOn/AAAAAAAAAAACAOr/AAAAAAQAAAACAOv/AAAAAAUAAAALAOv/AAAFAAEAAAANAOr/AAAHAAAAAAA=")

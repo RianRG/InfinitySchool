@@ -6,9 +6,8 @@ var cutscenePlayed:=false
 @onready var playerPhantom: PhantomCamera2D = $PhantomCamera2D
 @onready var bossPhantom: PhantomCamera2D = $bossCamera
 
-func _ready() -> void:
-	print(13213123213)
-	startCutscene()
+#func _ready() -> void:
+	#startCutscene()
 
 func _process(delta: float) -> void:
 	pass
