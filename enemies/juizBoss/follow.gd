@@ -18,7 +18,7 @@ func transition():
 		
 	elif distance>150 && !owner.bulletPhaseDecided && !phaseRolled:
 		phaseRolled=true
-		var chosenPhase = randi()%5
+		var chosenPhase = 2
 		if chosenPhase==1:	
 			owner.bulletPhaseDecided=true
 			get_parent().change_state("bulletPhase")

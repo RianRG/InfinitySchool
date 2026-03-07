@@ -30,7 +30,7 @@ func getTileName():
 	searchPosition+=playerOffset
 	var tilePos = stairMap.local_to_map(stairMap.to_local(searchPosition))
 	var tileData = stairMap.get_cell_tile_data(tilePos)
-	
+	print(tilePos, tileData)
 	if tileData:
 		var tileName = tileData.get_custom_data("tileName")
 		return tileName
@@ -220,6 +220,7 @@ func _setup_timers():
 func _physics_process(delta: float) -> void:
 	
 	onWhatStair = getTileName()
+	print(getTileName())
 	if Global.dialogueActive:
 		_stateMachine.travel("idle")
 		return
@@ -273,7 +274,7 @@ func _process_state(delta: float):
 		PlayerState.DEAD:
 			velocity = Vector2.ZERO
 func _can_handle_input() -> bool:
-	return current_state in [PlayerState.IDLE, PlayerState.MOVING ]
+	return current_state in [PlayerState.IDLE, PlayerState.MOVING ] && onWhatStair.length()==0
 
 func _handle_input():
 	if Input.is_action_just_pressed("dash"):
