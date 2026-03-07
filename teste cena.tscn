@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://q41niie1872s" path="res://terrains/Portas/porta4.png" id="19_ylo3c"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="20_pibik"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="21_m5ask"]
+[ext_resource type="TileSet" uid="uid://dqhrel7r3wap" path="res://Escada teste.tres" id="25_ylo3c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfqxu"]
 texture = ExtResource("14_as6p8")
@@ -240,7 +241,7 @@ script = ExtResource("1_syhfa")
 position = Vector2(-653, -244)
 
 [node name="player" parent="." unique_id=1149914169 instance=ExtResource("4_nhcia")]
-position = Vector2(-657.00006, 106.000015)
+position = Vector2(142.00012, -252.00005)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=50848760]
 z_index = -1
@@ -299,6 +300,7 @@ scale = Vector2(0.95, 0.95)
 spriteTexture = ExtResource("13_syhfa")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
+visible = false
 color = Color(0.37825543, 0.27772725, 0.35427502, 1)
 
 [node name="walls" type="TileMapLayer" parent="." unique_id=1089475040]
@@ -340,7 +342,7 @@ tile_set = ExtResource("18_figpc")
 [node name="TileMapLayer13" type="TileMapLayer" parent="." unique_id=755652905]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAAAOD/AAACAAEAAAABAOD/AAAFAAsAAAACAOD/AAACAAEAAAADAOD/AAACAAEAAAAEAOD/AAAFAAsAAAAFAOD/AAACAAYAAAAGAOD/AAANAAsAAAAHAOD/AAANAAsAAAAIAOD/AAACAAYAAAAJAOD/AAACAAsAAAAKAOD/AAACAAEAAAALAOD/AAABAAsAAAAMAOD/AAADAAsAAAANAOD/AAANAAsAAAAOAOD/AAANAAsAAAAPAOD/AAACAAEAAAAQAOD/AAAFAAsAAAARAOD/AAAGAAEAAAARAOH/AAAKAAoAAAARAOL/AAAKAAoAAAARAOP/AAAKAAoAAAARAOT/AAAKAAoAAAARAOX/AAAKAAoAAAARAOb/AAAKAAoAAAARAOf/AAAKAAoAAAARAOj/AAAKAAoAAAARAOn/AAAKAAoAAAARAOr/AAAKAAoAAAARAOv/AAAKAAoAAAARAOz/AAAKAAoAAAARAO3/AAAKAAoAAAARAO7/AAAKAAoAAAARAO//AAAKAAoAAAARAPD/AAAKAAoAAAARAPH/AAAKAAoAAAARAPL/AAAGAAsAAAAQAPL/AAACAAEAAAAPAPL/AAAFAAsAAAAOAPL/AAANAAsAAAANAPL/AAANAAsAAAAMAPL/AAACAAYAAAALAPL/AAADAAsAAAAKAPL/AAAAAAEAAAAFAPL/AAAGAAEAAAAEAPL/AAADAAsAAAADAPL/AAANAAsAAAACAPL/AAANAAsAAAABAPL/AAAFAAsAAAAAAPL/AAAFAAsAAAD///L/AAAAAAsAAAD///H/AAAKAAoAAAD///D/AAAKAAoAAAD//+//AAAKAAoAAAD//+7/AAAKAAoAAAD//+3/AAAKAAoAAAD//+z/AAAKAAoAAAD//+v/AAAKAAoAAAD//+r/AAAKAAoAAAD//+n/AAAKAAoAAAD//+j/AAAKAAoAAAD//+f/AAAKAAoAAAD//+b/AAAKAAoAAAD//+X/AAAKAAoAAAD//+T/AAAKAAoAAAD//+P/AAAKAAoAAAD//+L/AAAKAAoAAAD//+H/AAAKAAoAAAD//+D/AAAAAAEAAAAFAPP/AAAKAAoAAAAFAPT/AAAKAAoAAAAFAPX/AAAKAAoAAAAFAPb/AAAKAAoAAAAFAPf/AAAKAAoAAAAFAPj/AAAKAAoAAAAFAPn/AAAKAAoAAAAFAPr/AAAKAAoAAAAFAPv/AAAKAAsAAAAKAPP/AAAKAAoAAAAKAPT/AAAKAAoAAAAKAPX/AAAKAAoAAAAKAPb/AAAKAAsAAAA=")
+tile_map_data = PackedByteArray("AAAAAOD/AAACAAEAAAABAOD/AAAFAAsAAAACAOD/AAACAAEAAAADAOD/AAACAAEAAAAEAOD/AAAFAAsAAAAFAOD/AAACAAYAAAAGAOD/AAADAAEAAAAKAOD/AAAMAAsAAAALAOD/AAABAAsAAAAMAOD/AAADAAsAAAANAOD/AAANAAsAAAAOAOD/AAANAAsAAAAPAOD/AAACAAEAAAAQAOD/AAAFAAsAAAARAOD/AAAGAAEAAAARAOH/AAAKAAoAAAARAOL/AAAKAAoAAAARAOP/AAAKAAoAAAARAOT/AAAKAAoAAAARAOX/AAAKAAoAAAARAOb/AAAKAAoAAAARAOf/AAAKAAoAAAARAOj/AAAKAAoAAAARAOn/AAAKAAoAAAARAOr/AAAKAAoAAAARAOv/AAAKAAoAAAARAOz/AAAKAAoAAAARAO3/AAAKAAoAAAARAO7/AAAKAAoAAAARAO//AAAKAAoAAAARAPD/AAAKAAoAAAARAPH/AAAKAAoAAAARAPL/AAAGAAsAAAAQAPL/AAACAAEAAAAPAPL/AAAFAAsAAAAOAPL/AAANAAsAAAANAPL/AAANAAsAAAAMAPL/AAACAAYAAAALAPL/AAADAAsAAAAKAPL/AAAAAAEAAAAFAPL/AAAGAAEAAAAEAPL/AAADAAsAAAADAPL/AAANAAsAAAACAPL/AAANAAsAAAABAPL/AAAFAAsAAAAAAPL/AAAFAAsAAAD///L/AAAAAAsAAAD///H/AAAKAAoAAAD///D/AAAKAAoAAAD//+//AAAKAAoAAAD//+7/AAAKAAoAAAD//+3/AAAKAAoAAAD//+z/AAAKAAoAAAD//+v/AAAKAAoAAAD//+r/AAAKAAoAAAD//+n/AAAKAAoAAAD//+j/AAAKAAoAAAD//+f/AAAKAAoAAAD//+b/AAAKAAoAAAD//+X/AAAKAAoAAAD//+T/AAAKAAoAAAD//+P/AAAKAAoAAAD//+L/AAAKAAoAAAD//+H/AAAKAAoAAAD//+D/AAAAAAEAAAAFAPP/AAAKAAoAAAAFAPT/AAAKAAoAAAAFAPX/AAAKAAoAAAAFAPb/AAAKAAoAAAAFAPf/AAAKAAoAAAAFAPj/AAAKAAoAAAAFAPn/AAAKAAoAAAAFAPr/AAAKAAoAAAAFAPv/AAAKAAsAAAAKAPP/AAAKAAoAAAAKAPT/AAAKAAoAAAAKAPX/AAAKAAoAAAAKAPb/AAAKAAsAAAA=")
 tile_set = ExtResource("19_figpc")
 
 [node name="walls3" type="TileMapLayer" parent="." unique_id=183668723]
@@ -356,7 +358,7 @@ ceilling = NodePath("../ceilling")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(-657.00006, 106.000015)
+position = Vector2(142.00012, -252.00005)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
 script = ExtResource("19_pibik")
@@ -368,7 +370,7 @@ script = ExtResource("19_v4i4t")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-657.00006, 106.000015)
+position = Vector2(142.00012, -252.00005)
 script = ExtResource("20_pibik")
 priority = 1
 follow_mode = 2
@@ -443,3 +445,7 @@ tween_resource = SubResource("Resource_ylo3c")
 follow_damping = true
 follow_damping_value = Vector2(4, 4)
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="TileMapLayer6" type="TileMapLayer" parent="." unique_id=107459100]
+tile_map_data = PackedByteArray("AAAIAOD/AAAAAAcAAAAIAOH/AAAAAAgAAAAIAOL/AAAAAAgAAAAIAOP/AAAAAAcAAAAIAOT/AAAAAAkAAAAIAOX/AAAAAAoAAAAIAN//AAAAAAYAAAA=")
+tile_set = ExtResource("25_ylo3c")
