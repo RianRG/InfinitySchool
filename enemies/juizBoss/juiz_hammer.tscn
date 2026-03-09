@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://c4x1k556vy0tn"]
+
+[ext_resource type="Script" uid="uid://d0mfpjb6qmgr5" path="res://enemies/juizBoss/juiz_hammer.gd" id="1_hj86u"]
+[ext_resource type="Texture2D" uid="uid://cbp1dgjabdlbx" path="res://enemies/juizBoss/Hammer.png" id="1_jmf3b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj86u"]
+size = Vector2(20, 138)
+
+[sub_resource type="Animation" id="Animation_hj86u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v1ni2"]
+resource_name = "attack"
+length = 0.6000067
+step = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.26666668, 0.33333334, 0.40000004, 0.4666667, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.27214873, 0.33344346, 0.5810743),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_52yem"]
+resource_name = "reset"
+length = 0.6000067
+step = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.26666668, 0.33333334, 0.40000004, 0.4666667, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f2rfw"]
+_data = {
+&"RESET": SubResource("Animation_hj86u"),
+&"attack": SubResource("Animation_v1ni2"),
+&"reset": SubResource("Animation_52yem")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmf3b"]
+radius = 86.023254
+
+[node name="JuizHammer" type="CharacterBody2D" unique_id=1073351496]
+y_sort_enabled = true
+script = ExtResource("1_hj86u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1397959150]
+visible = false
+position = Vector2(0, -59)
+shape = SubResource("RectangleShape2D_hj86u")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=714764582]
+texture = ExtResource("1_jmf3b")
+hframes = 9
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1829070797]
+libraries/ = SubResource("AnimationLibrary_f2rfw")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=521055508]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=947144572]
+position = Vector2(0, 90)
+shape = SubResource("CircleShape2D_jmf3b")
+disabled = true
+
+[node name="toAttack" type="Timer" parent="." unique_id=1858052533]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="toRetreat" type="Timer" parent="." unique_id=2033247081]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="toAttack" to="." method="_on_to_attack_timeout"]
+[connection signal="timeout" from="toRetreat" to="." method="_on_to_retreat_timeout"]

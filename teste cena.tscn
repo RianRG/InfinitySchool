@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="20_pibik"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="21_m5ask"]
 [ext_resource type="TileSet" uid="uid://nux3shfkcpe8" path="res://Escada teste.tres" id="25_ylo3c"]
+[ext_resource type="PackedScene" uid="uid://c4x1k556vy0tn" path="res://enemies/juizBoss/juiz_hammer.tscn" id="26_ovl2e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfqxu"]
 texture = ExtResource("14_as6p8")
@@ -237,11 +238,15 @@ script = ExtResource("21_m5ask")
 y_sort_enabled = true
 script = ExtResource("1_syhfa")
 
+[node name="JuizHammer" parent="." unique_id=1073351496 instance=ExtResource("26_ovl2e")]
+z_index = 1
+position = Vector2(-658, -136)
+
 [node name="Juiz" parent="." unique_id=644742827 instance=ExtResource("18_2newn")]
 position = Vector2(-653, -244)
 
 [node name="player" parent="." unique_id=1149914169 node_paths=PackedStringArray("stairMap") instance=ExtResource("4_nhcia")]
-position = Vector2(-1821, -138)
+position = Vector2(-660, -38.000015)
 stairMap = NodePath("../stairs2")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=50848760]
@@ -301,7 +306,6 @@ scale = Vector2(0.95, 0.95)
 spriteTexture = ExtResource("13_syhfa")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
-visible = false
 color = Color(0.37825543, 0.27772725, 0.35427502, 1)
 
 [node name="walls" type="TileMapLayer" parent="." unique_id=1089475040]
@@ -362,7 +366,7 @@ ceilling = NodePath("../ceilling")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(-1821, -138)
+position = Vector2(-660, -38.000015)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
 script = ExtResource("19_pibik")
@@ -374,7 +378,7 @@ script = ExtResource("19_v4i4t")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-1821, -138)
+position = Vector2(-660, -38.000015)
 script = ExtResource("20_pibik")
 priority = 1
 follow_mode = 2
@@ -425,7 +429,7 @@ texture = SubResource("GradientTexture2D_m5ask")
 
 [node name="PointLight2D3" type="PointLight2D" parent="." unique_id=1412269719]
 z_index = -2
-position = Vector2(568, -248)
+position = Vector2(815.99994, -142)
 scale = Vector2(100, 100)
 color = Color(0.99922305, 0.7942054, 0.6117739, 1)
 energy = 0.3
