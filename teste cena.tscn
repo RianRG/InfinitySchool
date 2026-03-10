@@ -241,13 +241,15 @@ script = ExtResource("1_syhfa")
 
 [node name="JuizHammer" parent="." unique_id=1073351496 instance=ExtResource("26_ovl2e")]
 z_index = 1
-position = Vector2(-657, -118)
+position = Vector2(-654, -211.00002)
+scale = Vector2(1.2, 1.2)
 
 [node name="Juiz" parent="." unique_id=644742827 instance=ExtResource("18_2newn")]
-position = Vector2(-653, -244)
+position = Vector2(-653.00006, -70)
+scale = Vector2(0.9, 0.9)
 
 [node name="player" parent="." unique_id=1149914169 node_paths=PackedStringArray("stairMap") instance=ExtResource("4_nhcia")]
-position = Vector2(-645, 45.000008)
+position = Vector2(-642, 136)
 stairMap = NodePath("../stairs2")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=50848760]
@@ -367,7 +369,7 @@ ceilling = NodePath("../ceilling")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(-645, 45.000008)
+position = Vector2(-642, 136)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
 script = ExtResource("19_pibik")
@@ -379,7 +381,7 @@ script = ExtResource("19_v4i4t")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-645, 45.000008)
+position = Vector2(-642, 136)
 script = ExtResource("20_pibik")
 priority = 1
 follow_mode = 2
@@ -446,7 +448,7 @@ disabled = true
 
 [node name="bossCamera" type="Node2D" parent="." unique_id=2026303458 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-653, -244)
+position = Vector2(-653.00006, -70)
 script = ExtResource("20_pibik")
 follow_mode = 2
 follow_target = NodePath("../Juiz")
