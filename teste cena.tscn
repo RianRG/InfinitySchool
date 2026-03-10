@@ -219,15 +219,15 @@ tonemap_mode = 1
 tonemap_exposure = 1.14
 glow_enabled = true
 glow_intensity = 1.67
-glow_bloom = 0.15
+glow_bloom = 0.18
 fog_enabled = true
 fog_light_energy = 12.0
 fog_sun_scatter = 0.35
 fog_density = 0.8404
 adjustment_enabled = true
-adjustment_brightness = 0.61
-adjustment_contrast = 1.12
-adjustment_saturation = 0.53
+adjustment_brightness = 0.55
+adjustment_contrast = 1.08
+adjustment_saturation = 0.74
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoljt"]
 size = Vector2(580, 763)
@@ -309,7 +309,7 @@ scale = Vector2(0.95, 0.95)
 spriteTexture = ExtResource("13_syhfa")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
-color = Color(0.37324736, 0.32305366, 0.39683217, 1)
+color = Color(0.5253621, 0.2814634, 0.28569737, 1)
 
 [node name="walls" type="TileMapLayer" parent="." unique_id=1089475040]
 z_index = 1
@@ -404,7 +404,7 @@ texture = SubResource("GradientTexture2D_m5ask")
 z_index = -2
 position = Vector2(-444, -268)
 scale = Vector2(15, 15)
-color = Color(1, 0.6666667, 0.4862745, 1)
+color = Color(0.94381547, 0.49509972, 0.5292546, 1)
 energy = 1.96
 shadow_enabled = true
 texture = SubResource("GradientTexture2D_syhfa")
