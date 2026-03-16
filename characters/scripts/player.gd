@@ -86,7 +86,7 @@ var healthEnergyCost = 6
 
 @export_category("Dash Settings")
 @export var dash_speed := 600.0
-@export var dash_time := 0.2
+@export var dash_time := 0.15
 @export var dash_cooldown := 1.0
 
 @export_category("Attack Settings")
@@ -675,7 +675,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		# Lógica do 3º hit
 		if attackCounter == 3:
 			current_cooldown = combo_attack_cooldown # Cooldown maior
-			apply_knockback(body.global_position, 500)  # Knockback maior
+			apply_knockback(body.global_position, 450)  # Knockback maior
 			if !body.isDead: camera.screenShake(5, 0.5)  # Shake mais forte
 			attackCounter = 0  # Reseta combo
 		else:

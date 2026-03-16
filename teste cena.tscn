@@ -26,8 +26,8 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="21_m5ask"]
 [ext_resource type="TileSet" uid="uid://nux3shfkcpe8" path="res://Escada teste.tres" id="25_ylo3c"]
 [ext_resource type="PackedScene" uid="uid://c4x1k556vy0tn" path="res://enemies/juizBoss/juiz_hammer.tscn" id="26_ovl2e"]
-[ext_resource type="TileSet" uid="uid://dvfbyflce04dq" path="res://NatureProp.tres" id="27_bh3x3"]
-[ext_resource type="TileSet" uid="uid://chcv7qjf8hhqx" path="res://Grama.tres" id="28_tj61b"]
+[ext_resource type="TileSet" uid="uid://2tew7gtri0h7" path="res://NatureProp.tres" id="27_bh3x3"]
+[ext_resource type="TileSet" uid="uid://deh6b7t10cbyx" path="res://Grama.tres" id="28_tj61b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfqxu"]
 texture = ExtResource("14_as6p8")
@@ -232,7 +232,7 @@ adjustment_contrast = 1.08
 adjustment_saturation = 0.74
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoljt"]
-size = Vector2(580, 763)
+size = Vector2(899, 916)
 
 [sub_resource type="Resource" id="Resource_ylo3c"]
 script = ExtResource("21_m5ask")
@@ -247,11 +247,10 @@ position = Vector2(-654, -211.00002)
 scale = Vector2(1.2, 1.2)
 
 [node name="Juiz" parent="." unique_id=644742827 instance=ExtResource("18_2newn")]
-position = Vector2(-653.00006, -70)
-scale = Vector2(0.9, 0.9)
+position = Vector2(-567, 16.999992)
 
 [node name="player" parent="." unique_id=1149914169 node_paths=PackedStringArray("stairMap") instance=ExtResource("4_nhcia")]
-position = Vector2(880.0001, 315)
+position = Vector2(-642.0001, 105.999985)
 stairMap = NodePath("../stairs2")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=50848760]
@@ -371,9 +370,13 @@ ceilling = NodePath("../ceilling")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(880.0001, 315)
+position = Vector2(-546, 81)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
+limit_left = -946
+limit_top = -457
+limit_right = -366
+limit_bottom = 306
 script = ExtResource("19_pibik")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
@@ -383,7 +386,7 @@ script = ExtResource("19_v4i4t")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(880.0001, 315)
+position = Vector2(-546, 81)
 script = ExtResource("20_pibik")
 priority = 1
 follow_mode = 2
@@ -392,6 +395,7 @@ zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_syhfa")
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
+limit_target = NodePath("../cameraBounds/CollisionShape2D")
 
 [node name="PointLight2D4" type="PointLight2D" parent="." unique_id=1057086899]
 z_index = -2
@@ -452,13 +456,13 @@ texture = SubResource("GradientTexture2D_m5ask")
 [node name="cameraBounds" type="Area2D" parent="." unique_id=191345596]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cameraBounds" unique_id=377826437]
-position = Vector2(-656, -75.5)
+position = Vector2(-657, -102)
 shape = SubResource("RectangleShape2D_aoljt")
 disabled = true
 
 [node name="bossCamera" type="Node2D" parent="." unique_id=2026303458 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-653.00006, -70)
+position = Vector2(-567, 16.999992)
 script = ExtResource("20_pibik")
 follow_mode = 2
 follow_target = NodePath("../Juiz")

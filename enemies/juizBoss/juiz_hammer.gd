@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var toRetreatTimer: Timer = $toRetreat
+@onready var camera: Camera2D = $"../Camera2D"
 
 @onready var toAttackTimer: Timer = $toAttack
 @onready var animation: AnimationPlayer = $AnimationPlayer
@@ -11,6 +12,8 @@ extends CharacterBody2D
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character"):
 		body.takeDamage(global_position, 500.0, 3)
+		camera.screenShake(5, 0.5)
+		body.freezeFrame(0.3, 1.0)
 		
 
 
