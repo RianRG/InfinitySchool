@@ -20,5 +20,6 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "explosion":
+	if anim_name == "explosion" || anim_name == "exitLimit":
 		queue_free()
+		

@@ -379,6 +379,7 @@ ceilling = NodePath("../ceilling")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
+top_level = true
 position = Vector2(-707, -169)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false

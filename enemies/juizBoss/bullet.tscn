@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b15emasbq7gal" path="res://enemies/juizBoss/projectileJuiz.png" id="2_01vvq"]
 [ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://assets/Sombra.png" id="3_wubi2"]
 [ext_resource type="Texture2D" uid="uid://dggbl18upsd5t" path="res://enemies/juizBoss/explosionSprite-Sheet.png" id="4_01vvq"]
+[ext_resource type="Texture2D" uid="uid://wk1tbsl706mp" path="res://enemies/juizBoss/deathprojectile.png" id="5_mkfp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wgg5"]
 size = Vector2(14, 19)
@@ -66,6 +67,71 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("exitLimitSprite:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("exitLimitSprite:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_uhmpk"]
+resource_name = "exitLimit"
+length = 0.500025
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("exitLimitSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.2857143),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("exitLimitSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_mkfp5"]
@@ -138,10 +204,23 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("exitLimitSprite:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wubi2"]
 _data = {
 &"RESET": SubResource("Animation_wubi2"),
+&"exitLimit": SubResource("Animation_uhmpk"),
 &"explosion": SubResource("Animation_mkfp5"),
 &"idle": SubResource("Animation_1lx0a")
 }
@@ -149,6 +228,7 @@ _data = {
 [node name="Bullet" type="Area2D" unique_id=984799299]
 modulate = Color(0.67851543, 0.67851543, 0.67851543, 1)
 z_index = 1
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_sox02")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026012165]
@@ -181,7 +261,9 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_01vvq")
 hframes = 17
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2018750817]
+[node name="exitLimitSprite" type="Sprite2D" parent="." unique_id=914003095]
+texture = ExtResource("5_mkfp5")
+hframes = 3
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
