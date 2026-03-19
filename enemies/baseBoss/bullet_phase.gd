@@ -10,7 +10,7 @@ var theta = 0.0
 @onready var bulletScene: PackedScene = owner.bulletScene
 
 var _active:=false
-
+var bullet
 func enter():
 	super.enter()
 	_active=true
@@ -49,9 +49,12 @@ func get_vector(angle):
 	return Vector2(cos(theta), sin(theta))
 	 
 func shoot(angle):
-	var bullet = bulletScene.instantiate()
-	bullet.position = owner.global_position + Vector2(0, -50)
-	bullet.direction= get_vector(angle)
+	bullet = bulletScene.instantiate()
+	var radius = 40
+	var offset = Vector2(cos(angle), sin(angle)) * radius
+	
+	bullet.position = owner.global_position + offset
+	bullet.direction = get_vector(angle)
 	
 	get_tree().current_scene.add_child(bullet)
 
@@ -60,3 +63,10 @@ func _on_bullet_speed_timeout() -> void:
 	if !_active:
 		return
 	shoot(theta)
+
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	var anim = area.get_node_or_null("AnimationPlayer")
+	if anim:
+		anim.play("explosion")

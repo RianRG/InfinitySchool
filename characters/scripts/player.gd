@@ -30,7 +30,6 @@ func getTileName():
 	searchPosition+=playerOffset
 	var tilePos = stairMap.local_to_map(stairMap.to_local(searchPosition))
 	var tileData = stairMap.get_cell_tile_data(tilePos)
-	print(tilePos, tileData)
 	if tileData:
 		var tileName = tileData.get_custom_data("tileName")
 		return tileName
@@ -220,7 +219,6 @@ func _setup_timers():
 func _physics_process(delta: float) -> void:
 	
 	onWhatStair = getTileName()
-	print(getTileName())
 	if Global.dialogueActive:
 		_stateMachine.travel("idle")
 		return
@@ -680,7 +678,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 			attackCounter = 0  # Reseta combo
 		else:
 			current_cooldown = base_attack_cooldown  # Cooldown normal
-			apply_knockback(body.global_position, 350)  # Knockback normal
+			apply_knockback(body.global_position, 400)  # Knockback normal
 			if !body.isDead: camera.screenShake(3, 0.3)
 			
 			
