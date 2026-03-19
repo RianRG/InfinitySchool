@@ -857,7 +857,7 @@ script = ExtResource("2_ybu1o")
 bulletScene = ExtResource("8_186p5")
 
 [node name="cooldownAttack" type="Timer" parent="." index="0" unique_id=27411784]
-wait_time = 4.0
+wait_time = 0.001
 autostart = true
 
 [node name="Sprite2D" parent="." index="1" unique_id=2097465531]

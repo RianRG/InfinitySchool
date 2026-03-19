@@ -36,7 +36,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 
 
 func startAttackCooldown():
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1.3).timeout
 	owner.speed = 160
 	owner.onAttackCooldown = false
 	owner.knockback_velocity = Vector2.ZERO
