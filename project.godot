@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="first topdown"
 run/main_scene="uid://b8kas6yhuo3au"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -28,7 +29,7 @@ PhantomCameraManager="*uid://duq6jhf6unyis"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=2
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [editor_plugins]
@@ -126,4 +127,4 @@ heal={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.12955844, 0.12955847, 0.12955844, 1)
+environment/defaults/default_clear_color=Color(0.13682577, 0.13682574, 0.13682571, 1)
