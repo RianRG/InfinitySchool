@@ -2075,10 +2075,10 @@ texture = ExtResource("5_1jxqw")
 visible = false
 z_index = 10
 position = Vector2(0, -35.52)
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 texture = ExtResource("3_i3pqv")
 hframes = 16
-frame = 15
+frame = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=891681292]
 libraries/ = SubResource("AnimationLibrary_sweqy")
