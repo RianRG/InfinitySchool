@@ -12,7 +12,7 @@ extends CharacterBody2D
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character"):
 		body.takeDamage(global_position, 400.0, 3)
-		camera.screenShake(5, 0.5)
+		
 		body.freezeFrame(0.5, .7)
 		
 
@@ -22,3 +22,7 @@ func _on_to_attack_timeout() -> void:
 	await get_tree().create_timer(3).timeout
 	animation.play("reset")
 	toAttackTimer.start() 
+
+
+func attack():
+	camera.screenShake(5, 0.5)

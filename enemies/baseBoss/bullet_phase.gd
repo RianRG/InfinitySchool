@@ -68,5 +68,7 @@ func _on_bullet_speed_timeout() -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	var anim = area.get_node_or_null("AnimationPlayer")
+	var pointLight = area.get_node_or_null("PointLight2D")
 	if anim:
 		anim.play("exitLimit")
+		pointLight.enabled = false
