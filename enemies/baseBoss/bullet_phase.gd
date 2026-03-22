@@ -72,3 +72,4 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 	if anim:
 		anim.play("exitLimit")
 		pointLight.enabled = false
+		area.set_physics_process(false)

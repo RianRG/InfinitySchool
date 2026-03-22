@@ -21,7 +21,7 @@ func spinAttack():
 
 func endSpinAttack():
 	owner.cannotTakeKnockback = false
-	owner.speed = 90
+	owner.speed = owner.slowSpeed
 	owner.onAttackCooldown = true
 	startAttackCooldown()
 	cooldownAttackTimer.start()

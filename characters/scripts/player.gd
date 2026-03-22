@@ -659,7 +659,7 @@ func _on_invincible_timer_timeout():
 # ===============================
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.takeDamage(100.0)
+		body.takeDamage()
 		attackCounter += 1
 		if current_state == PlayerState.KOKUSEN:
 			freezeFrame(0.3, 0.5)
@@ -673,12 +673,12 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		# Lógica do 3º hit
 		if attackCounter == 3:
 			current_cooldown = combo_attack_cooldown # Cooldown maior
-			apply_knockback(body.global_position, 450)  # Knockback maior
+			apply_knockback(body.global_position, 400)  # Knockback maior
 			if !body.isDead: camera.screenShake(5, 0.5)  # Shake mais forte
 			attackCounter = 0  # Reseta combo
 		else:
 			current_cooldown = base_attack_cooldown  # Cooldown normal
-			apply_knockback(body.global_position, 400)  # Knockback normal
+			apply_knockback(body.global_position, 350)  # Knockback normal
 			if !body.isDead: camera.screenShake(3, 0.3)
 			
 			
