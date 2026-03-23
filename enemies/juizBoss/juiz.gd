@@ -19,7 +19,7 @@ var originalColor := Color.WHITE
 var isDead:=false
 var bulletPhaseDecided=false
 
-var knockback_strength:=150.0
+var knockback_strength:=250.0
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0
 var cannotTakeKnockback = false
@@ -40,7 +40,7 @@ var min_follow_distance := 60.0
 # Bullet Scene
 @export var bulletScene: PackedScene
 
-var health = 20:
+var health = 1000:
 	set(value):
 		health = value
 		if value <= 0:
