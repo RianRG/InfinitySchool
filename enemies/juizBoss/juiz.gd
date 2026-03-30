@@ -10,15 +10,21 @@ var target_direction: Vector2 = Vector2.ZERO
 var DEF = 0
 var onAttackCooldown := false
 var stateMachine
-var speed := 160
+
+var speed := 120
+var defaultSpeed:=120
+var slowSpeed:=90
+
 var originalColor := Color.WHITE
 var isDead:=false
 var bulletPhaseDecided=false
 
+var knockback_strength:=250.0
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_decay := 700.0
 var cannotTakeKnockback = false
 var canMove:=false
+
 
 # Controle de atualização de direção
 var direction_update_timer := 0.0
@@ -127,10 +133,10 @@ func _physics_process(delta):
 
 const purpleAttackVfx = preload("res://assets/vfx/purpleAttackVfx.tscn")
 
-func takeDamage(knockback_strength: float):
+func takeDamage():
 	health -= 10 - DEF
 	
-	if isDead: knockback_strength = 400.0
+	if isDead: knockback_strength = 400.0 # tomar knockback maior no ultimo hit
 	# Spawn do VFX
 	var attackScene = purpleAttackVfx.instantiate()
 	attackScene.position = global_position
