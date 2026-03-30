@@ -382,12 +382,12 @@ ceilling = NodePath("../ceilling")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(-688, -95.000015)
+position = Vector2(185.00018, -95.000015)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
 limit_left = -1120
-limit_top = -464
-limit_right = -288
+limit_top = -615
+limit_right = 776
 limit_bottom = 161
 script = ExtResource("19_pibik")
 
@@ -398,7 +398,7 @@ script = ExtResource("19_v4i4t")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-688, -95.000015)
+position = Vector2(185.00018, -95.000015)
 script = ExtResource("20_pibik")
 priority = 1
 follow_mode = 2
