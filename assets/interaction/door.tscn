@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://de3ogfjrkcsfo" path="res://terrains/Portas/porta1.png" id="2_qjfpb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfpb"]
-size = Vector2(34, 6)
+size = Vector2(34, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp573"]
 size = Vector2(6, 40)
@@ -94,7 +94,7 @@ region_rect = Rect2(0, 0, 240, 240)
 
 [node name="CollisionClosed" type="CollisionShape2D" parent="." unique_id=783950894]
 visibility_layer = 3
-position = Vector2(0, -12)
+position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_qjfpb")
 
 [node name="CollisionOpen" type="CollisionShape2D" parent="." unique_id=85219722]
