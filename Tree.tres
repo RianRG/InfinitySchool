@@ -1,0 +1,27 @@
+[gd_resource type="TileSet" format=3 uid="uid://cts7whkm7ggnt"]
+
+[ext_resource type="Texture2D" uid="uid://deiba05kllb5k" path="res://terrains/Decoração/TreeAnimation.png" id="1_ylr6s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mqg8j"]
+texture = ExtResource("1_ylr6s")
+0:0/size_in_atlas = Vector2i(7, 9)
+0:0/animation_columns = 9
+0:0/animation_speed = 3.0
+0:0/animation_mode = 1
+0:0/animation_frame_0/duration = 1.0
+0:0/animation_frame_1/duration = 1.0
+0:0/animation_frame_2/duration = 1.0
+0:0/animation_frame_3/duration = 1.5
+0:0/animation_frame_4/duration = 1.0
+0:0/animation_frame_5/duration = 1.0
+0:0/animation_frame_6/duration = 1.0
+0:0/animation_frame_7/duration = 1.5
+0:0/animation_frame_8/duration = 1.0
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(4, 40)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-10.285714, -10.285714, 0.9444256, -11.689482, 8, -10.285714, 12.57143, 1.1428576, 8, 8, -10.285714, 8, -14.857143, 1.1428576)
+
+[resource]
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_mqg8j")
