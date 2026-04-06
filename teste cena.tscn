@@ -265,7 +265,7 @@ position = Vector2(-704, -159)
 scale = Vector2(0.9, 0.9)
 
 [node name="player" parent="." unique_id=1149914169 node_paths=PackedStringArray("stairMap") instance=ExtResource("4_nhcia")]
-position = Vector2(1093, -1030.0001)
+position = Vector2(-512, -18)
 stairMap = NodePath("../stairs2")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=50848760]
@@ -325,7 +325,6 @@ scale = Vector2(0.95, 0.95)
 spriteTexture = ExtResource("13_syhfa")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
-visible = false
 color = Color(0.22865248, 0.36661825, 0.4246872, 1)
 
 [node name="walls" type="TileMapLayer" parent="." unique_id=1089475040]
@@ -387,11 +386,11 @@ ceilling = NodePath("../ceilling")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(1093, -569)
+position = Vector2(-512, -18)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
 limit_left = -1120
-limit_top = -794
+limit_top = -1427
 limit_right = 1612
 limit_bottom = 598
 script = ExtResource("19_pibik")
@@ -403,7 +402,7 @@ script = ExtResource("19_v4i4t")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(1093, -569)
+position = Vector2(-512, -18)
 script = ExtResource("20_pibik")
 priority = 1
 follow_mode = 2
