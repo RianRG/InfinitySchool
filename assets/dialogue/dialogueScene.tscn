@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2o0bewyiw868"]
+[gd_scene format=3 uid="uid://c2o0bewyiw868"]
 
 [ext_resource type="Script" uid="uid://chm43km5kkqav" path="res://assets/dialogue/dialogue_scene.gd" id="1_aaajq"]
-[ext_resource type="PackedScene" uid="uid://xiciyy5pl2m7" path="res://dialogue.tscn" id="1_w06oj"]
-[ext_resource type="Texture2D" uid="uid://bsb5fmvj3llem" path="res://assets/new prota/protaDialogue.png" id="2_aaajq"]
+[ext_resource type="PackedScene" uid="uid://xiciyy5pl2m7" path="res://assets/dialogue/dialogue.tscn" id="1_w06oj"]
+[ext_resource type="Texture2D" uid="uid://bsb5fmvj3llem" path="res://prota/protaDialogue.png" id="2_aaajq"]
 
 [sub_resource type="Animation" id="Animation_2updl"]
 length = 0.001
