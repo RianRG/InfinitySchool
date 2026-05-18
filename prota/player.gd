@@ -77,7 +77,7 @@ var energy:
 # Energy costs
 var kokusenEnergyCost = 6
 var spinEnergyCost = 5
-var healthEnergyCost = 6
+var healthEnergyCost = 4
 
 @export_category("Movement")
 @export var SPEED = 190.0
@@ -91,7 +91,7 @@ var healthEnergyCost = 6
 @export_category("Attack Settings")
 @export var base_attack_cooldown := 0.4
 @export var combo_attack_cooldown := 0.8
-@export var attack_dash_speed := 150.0
+@export var attack_dash_speed := 210.0
 @export var attack_duration := 0.5
 @export var combo_window := 1.0
 
@@ -106,9 +106,9 @@ const kokusenVfxScene = preload("res://assets/vfx/kokusenVFX.tscn")
 
 
 @export_category("Spin Settings")
-@export var spin_startup_duration := 0.6
+@export var spin_startup_duration := 0.5
 @export var spin_duration := 6.0
-@export var spin_end_duration := 0.8
+@export var spin_end_duration := 0.3
 
 @export_category("Objects")
 @export var _animationTree: AnimationTree = null
