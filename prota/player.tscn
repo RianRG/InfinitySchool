@@ -1018,6 +1018,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tryrn"]
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_tkwlq"]
 resource_name = "kokusenDown"
@@ -1121,6 +1122,7 @@ tracks/7/keys = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hi6va"]
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_khis8"]
 resource_name = "kokusenLeft"
@@ -1224,6 +1226,7 @@ tracks/7/keys = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sgpap"]
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_ek41f"]
 resource_name = "kokusenRight"
@@ -1327,6 +1330,7 @@ tracks/7/keys = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kckl3"]
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_hl5qd"]
 resource_name = "kokusenUp"

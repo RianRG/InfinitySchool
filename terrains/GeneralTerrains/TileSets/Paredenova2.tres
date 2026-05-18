@@ -50,6 +50,9 @@ polygon = PackedVector2Array(8, -24, -8, -24, -8, -8, 5.714287, -8, 8, 3.4285717
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b5xvn"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cfwrt"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g1l2q"]
 polygon = PackedVector2Array(-8, -24, 8, -24, 8, -8, -8, -8)
 
@@ -631,6 +634,18 @@ texture = ExtResource("1_ag7fm")
 14:7/0/terrain = 1
 14:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_b5xvn")
 14:7/0/terrains_peering_bit/bottom_side = 1
+16:7/0 = 0
+16:7/0/z_index = 2
+16:7/0/terrain_set = 0
+16:7/0/terrain = 1
+16:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_cfwrt")
+16:7/0/terrains_peering_bit/right_side = 1
+17:7/0 = 0
+17:7/0/z_index = 2
+17:7/0/terrain_set = 0
+17:7/0/terrain = 1
+17:7/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_cfwrt")
+17:7/0/terrains_peering_bit/left_side = 1
 
 [resource]
 occlusion_layer_0/light_mask = 1

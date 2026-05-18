@@ -19,9 +19,9 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_to_attack_timeout() -> void:
 	animation.play("attack")
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(2).timeout
 	animation.play("reset")
-	toAttackTimer.start() 
+	toAttackTimer.start(10) 
 
 
 func attack():
