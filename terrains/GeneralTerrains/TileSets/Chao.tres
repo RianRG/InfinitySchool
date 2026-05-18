@@ -2,28 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://b8suyvu6vx4he" path="res://terrains/GeneralTerrains/Chao.png" id="1_16d8b"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aws6v"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yyxsq"]
-texture = SubResource("CompressedTexture2D_aws6v")
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmiw7"]
 texture = ExtResource("1_16d8b")
 0:0/0 = 0
@@ -52,5 +30,6 @@ texture = ExtResource("1_16d8b")
 4:0/0/z_index = -1
 
 [resource]
-sources/0 = SubResource("TileSetAtlasSource_yyxsq")
+custom_data_layer_0/name = "floor_type"
+custom_data_layer_0/type = 4
 sources/1 = SubResource("TileSetAtlasSource_xmiw7")
