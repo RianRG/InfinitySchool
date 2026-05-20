@@ -77,7 +77,7 @@ var energy:
 # Energy costs
 var kokusenEnergyCost = 6
 var spinEnergyCost = 5
-var healthEnergyCost = 4
+var healthEnergyCost = 6
 
 @export_category("Movement")
 @export var SPEED = 190.0
@@ -659,7 +659,12 @@ func _on_invincible_timer_timeout():
 # ===============================
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
-		body.takeDamage()
+		if current_state == PlayerState.KOKUSEN:
+			body.takeDamage(20)
+		if current_state == PlayerState.SPINNING:
+			body.takeDamage(10)
+		if current_state == PlayerState.ATTACKING:
+			body.takeDamage(5)
 		attackCounter += 1
 		if current_state == PlayerState.KOKUSEN:
 			freezeFrame(0.3, 0.5)

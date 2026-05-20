@@ -133,8 +133,8 @@ func _physics_process(delta):
 
 const purpleAttackVfx = preload("res://assets/vfx/purpleAttackVfx.tscn")
 
-func takeDamage():
-	health -= 10 - DEF
+func takeDamage(dano: int):
+	health -= 5 + dano - DEF
 	
 	if isDead: knockback_strength = 400.0 # tomar knockback maior no ultimo hit
 	# Spawn do VFX

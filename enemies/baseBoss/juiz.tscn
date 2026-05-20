@@ -170,7 +170,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 70)]
+"values": [Vector2(0, 60)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -182,7 +182,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(170, 60)]
+"values": [Vector2(170, 70)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -285,7 +285,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.00832667),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-80, 0)]
+"values": [Vector2(-70, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -297,7 +297,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(60, 170)]
+"values": [Vector2(70, 170)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -400,7 +400,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(80, 0)]
+"values": [Vector2(70, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -412,7 +412,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(60, 170)]
+"values": [Vector2(70, 170)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -551,7 +551,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -50)]
+"values": [Vector2(0, -45)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -563,7 +563,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(170, 60)]
+"values": [Vector2(170, 70)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -1721,7 +1721,7 @@ size = Vector2(95.00007, 55.00004)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_186p5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ve6r"]
-radius = 100.38
+radius = 80.0
 
 [sub_resource type="Gradient" id="Gradient_msdht"]
 offsets = PackedFloat32Array(0, 0.26605505, 0.48623854, 1)

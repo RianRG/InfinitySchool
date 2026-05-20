@@ -206,7 +206,7 @@ libraries/ = SubResource("AnimationLibrary_f2rfw")
 [node name="Area2D" type="Area2D" parent="." unique_id=521055508]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=947144572]
-position = Vector2(0, 100)
+position = Vector2(0, 106.66666)
 shape = SubResource("CircleShape2D_jmf3b")
 disabled = true
 
