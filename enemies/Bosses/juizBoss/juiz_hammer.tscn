@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0mfpjb6qmgr5" path="res://enemies/Bosses/juizBoss/juiz_hammer.gd" id="1_hj86u"]
 [ext_resource type="Texture2D" uid="uid://cbp1dgjabdlbx" path="res://enemies/Bosses/juizBoss/Hammer.png" id="1_jmf3b"]
+[ext_resource type="Texture2D" uid="uid://cnjkqq3hiu4bf" path="res://terrains/Decoração/HammerRocks.png" id="3_e7pds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj86u"]
 
@@ -57,6 +58,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_v1ni2"]
@@ -125,6 +138,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CPUParticles2D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.53333336),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_52yem"]
 resource_name = "reset"
@@ -180,7 +205,7 @@ radius = 86.023254
 [node name="JuizHammer" type="CharacterBody2D" unique_id=1073351496]
 z_as_relative = false
 y_sort_enabled = true
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1.1, 1.1)
 collision_layer = 8
 script = ExtResource("1_hj86u")
 
@@ -216,6 +241,22 @@ one_shot = true
 autostart = true
 
 [node name="toRetreat" type="Timer" parent="." unique_id=2033247081]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1706004416]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(0, 21.81818)
+emitting = false
+amount = 10
+texture = ExtResource("3_e7pds")
+one_shot = true
+explosiveness = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(430, 200)
+direction = Vector2(0, -1)
+spread = 0.0
+scale_amount_min = 0.2
+scale_amount_max = 1.2
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

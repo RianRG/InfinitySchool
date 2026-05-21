@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://4y5kk8gcvew4" path="res://terrains/Decoração/JuizBossProps.png" id="1_iwv1p"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iwv1p"]
-polygon = PackedVector2Array(-3.4285712, -21.714287, 3.4285717, -21.714287, 12.57143, -17.142857, 17.142859, -3.4285712, 12.57143, -10.285714, 10.285715, -14.857143, 1.1428576, -19.428572, -1.1428566, -19.428572, -10.285714, -14.857143, -12.571428, -10.285714, -17.142857, -3.4285712, -12.571428, -17.142857)
+polygon = PackedVector2Array(-5.714286, -19.428572, 5.714287, -19.428572, 12.57143, -17.142857, 14.857143, -1.1428566, 12.57143, -10.285714, 10.285715, -14.857143, 5.714287, -17.142857, -5.714286, -17.142857, -10.285714, -14.857143, -12.571428, -12.571428, -14.857143, -1.1428566, -12.571428, -17.142857)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jvykn"]
 texture = ExtResource("1_iwv1p")
@@ -40,6 +40,10 @@ texture = ExtResource("1_iwv1p")
 27:10/0/texture_origin = Vector2i(0, -20)
 27:10/0/y_sort_origin = 64
 27:10/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_iwv1p")
+5:12/size_in_atlas = Vector2i(8, 7)
+5:12/0 = 0
+5:12/0/texture_origin = Vector2i(-8, -16)
+5:12/0/z_index = -1
 
 [resource]
 occlusion_layer_0/light_mask = 1

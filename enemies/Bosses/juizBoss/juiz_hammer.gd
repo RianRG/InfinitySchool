@@ -25,4 +25,4 @@ func _on_to_attack_timeout() -> void:
 
 
 func attack():
-	camera.screenShake(5, 0.5)
+	camera.screenShake(10, 0.5)

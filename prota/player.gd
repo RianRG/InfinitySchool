@@ -462,7 +462,7 @@ func _try_spin():
 	# Fase 1: STARTUP (parado)
 	_change_state(PlayerState.SPINNING_STARTUP)
 	spin_started = false
-	SPEED+=50.0
+	SPEED+=100.0
 	spin_timer.start(spin_startup_duration)  # 0.6s parado
 
 func _on_spin_timer_timeout():
@@ -474,7 +474,7 @@ func _on_spin_end_timer_timeout():
 	# Fase 3: RECOVERY (parado de novo)
 	_change_state(PlayerState.SPIN_END)
 	_animationTree.set("parameters/conditions/finishedSpin", true)
-	SPEED-=50.0
+	SPEED-=100.0
 	
 	
 
