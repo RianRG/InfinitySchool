@@ -379,10 +379,6 @@ top_level = true
 position = Vector2(2956, -1001)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
-limit_left = 2520
-limit_top = -1304
-limit_right = 3400
-limit_bottom = -776
 script = ExtResource("23_w5sdy")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
