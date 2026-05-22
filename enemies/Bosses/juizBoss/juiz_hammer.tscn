@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://d0mfpjb6qmgr5" path="res://enemies/Bosses/juizBoss/juiz_hammer.gd" id="1_hj86u"]
 [ext_resource type="Texture2D" uid="uid://cbp1dgjabdlbx" path="res://enemies/Bosses/juizBoss/Hammer.png" id="1_jmf3b"]
 [ext_resource type="Texture2D" uid="uid://cnjkqq3hiu4bf" path="res://terrains/Decoração/HammerRocks.png" id="3_e7pds"]
+[ext_resource type="Texture2D" uid="uid://ckwgwe8b7k1la" path="res://enemies/Bosses/juizBoss/HammerVFX2.png" id="4_cbh05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj86u"]
 
@@ -202,6 +203,239 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmf3b"]
 radius = 86.023254
 
+[sub_resource type="Animation" id="Animation_esk6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerVFXSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VfxArea/collisionVfx:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VfxArea/collisionVfx2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VfxArea/collisionVfx3:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VfxArea/collisionVfx4:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VfxArea/collisionVfx:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-57.272728, 76.36363)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VfxArea/collisionVfx2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(67.27273, 137.27272)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VfxArea/collisionVfx3:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(66.36363, 72.72727)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VfxArea/collisionVfx4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-58.18182, 138.18182)]
+}
+
+[sub_resource type="Animation" id="Animation_n3qrh"]
+resource_name = "X"
+length = 1.4285786
+step = 0.071428575
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerVFXSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.35973638, 0.6468337, 0.71428573, 0.7857143, 0.8571429, 0.92857146, 1, 1.0714287, 1.1428572, 1.2142857, 1.2857144, 1.356704),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VfxArea/collisionVfx:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.70698965, 0.7156437, 1.3080198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VfxArea/collisionVfx2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7075305, 0.71618456, 1.3080198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VfxArea/collisionVfx3:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.70644873, 0.71456194, 1.3080198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VfxArea/collisionVfx4:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7059079, 0.7156437, 1.3080198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VfxArea/collisionVfx:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7163874, 1.293505),
+"transitions": PackedFloat32Array(1.5691683, 1.5691683),
+"update": 0,
+"values": [Vector2(-57.272728, 76.36363), Vector2(-380, -75)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VfxArea/collisionVfx2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.71428573, 1.2914033),
+"transitions": PackedFloat32Array(1.5691683, 1.5691683),
+"update": 0,
+"values": [Vector2(70, 130), Vector2(380, 260)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VfxArea/collisionVfx3:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.71428573, 1.2914033),
+"transitions": PackedFloat32Array(1.5691683, 1.5691683),
+"update": 0,
+"values": [Vector2(62, 72), Vector2(380, -75)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VfxArea/collisionVfx4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.71428573, 1.2914033),
+"transitions": PackedFloat32Array(1.5691683, 1.5691683),
+"update": 0,
+"values": [Vector2(-58, 138), Vector2(-380, 260)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i60d1"]
+_data = {
+&"RESET": SubResource("Animation_esk6i"),
+&"X": SubResource("Animation_n3qrh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbh05"]
+size = Vector2(30, 30.909084)
+
 [node name="JuizHammer" type="CharacterBody2D" unique_id=1073351496]
 z_as_relative = false
 y_sort_enabled = true
@@ -258,7 +492,40 @@ spread = 0.0
 scale_amount_min = 0.2
 scale_amount_max = 1.2
 
+[node name="HammerVFXSprite" type="Sprite2D" parent="." unique_id=380233170]
+position = Vector2(0, 95)
+texture = ExtResource("4_cbh05")
+hframes = 13
+frame = 1
+
+[node name="HammerVFXAnimation" type="AnimationPlayer" parent="." unique_id=63026478]
+libraries/ = SubResource("AnimationLibrary_i60d1")
+
+[node name="VfxArea" type="Area2D" parent="." unique_id=1326452870]
+
+[node name="collisionVfx" type="CollisionShape2D" parent="VfxArea" unique_id=1458773140]
+position = Vector2(-57.272728, 76.36363)
+shape = SubResource("RectangleShape2D_cbh05")
+disabled = true
+
+[node name="collisionVfx2" type="CollisionShape2D" parent="VfxArea" unique_id=1180862566]
+position = Vector2(67.27273, 137.27272)
+shape = SubResource("RectangleShape2D_cbh05")
+disabled = true
+
+[node name="collisionVfx3" type="CollisionShape2D" parent="VfxArea" unique_id=993165551]
+position = Vector2(66.36363, 72.72727)
+shape = SubResource("RectangleShape2D_cbh05")
+disabled = true
+
+[node name="collisionVfx4" type="CollisionShape2D" parent="VfxArea" unique_id=1625476903]
+position = Vector2(-58.18182, 138.18182)
+shape = SubResource("RectangleShape2D_cbh05")
+disabled = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="toAttack" to="." method="_on_to_attack_timeout"]
 [connection signal="timeout" from="toRetreat" to="." method="_on_to_retreat_timeout"]
+[connection signal="animation_finished" from="HammerVFXAnimation" to="." method="_on_hammer_vfx_animation_animation_finished"]
+[connection signal="body_entered" from="VfxArea" to="." method="_on_vfx_area_body_entered"]
