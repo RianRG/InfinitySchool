@@ -18,7 +18,7 @@ func transition():
 
 	if distance<=120 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
 		get_parent().change_state("meleeAttack")
-		
+
 
 
 func _on_cooldown_attack_timeout() -> void:
