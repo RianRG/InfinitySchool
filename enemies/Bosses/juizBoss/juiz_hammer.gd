@@ -15,7 +15,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character"):
 		body.takeDamage(global_position, 400.0, 3)
 		
-		body.freezeFrame(0.5, .7)
+		body.freezeFrame(0.01, 0.3)
 		
 
 
@@ -26,11 +26,11 @@ func _on_to_attack_timeout() -> void:
 	animation.play("attack")
 	await get_tree().create_timer(2).timeout
 	animation.play("reset")
-	toAttackTimer.start(10) 
+	toAttackTimer.start(6.7) 
 
 
 func attack():
-	camera.screenShake(10, 0.5)
+	camera.screenShake(15, 0.5)
 
 
 #func _on_hammer_vfx_animation_animation_finished(anim_name: StringName) -> void:
@@ -40,7 +40,8 @@ func attack():
 
 func _on_vfx_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character"):
-		body.takeDamage(global_position, 200.0, 3)
+		body.takeDamage(global_position, 200.0, 4)
 		
-		body.freezeFrame(0.5, .7)
+		body.freezeFrame(0.02, 0.2)
+		camera.screenShake(30, 0.3)
 	pass # Replace with function body.

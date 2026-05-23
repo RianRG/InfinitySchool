@@ -1808,13 +1808,13 @@ script = ExtResource("5_xokln")
 
 [node name="bulletPhase" type="Node2D" parent="FiniteStateMachine" parent_id_path=PackedInt32Array(776770129) index="6" unique_id=1891180197]
 script = ExtResource("5_wp1ov")
-alpha = 2.0
+alpha = 0.75
 metadata/_custom_type_script = "uid://cwcijpfuwv840"
 
 [node name="endBulletPhase" type="Timer" parent="." index="10" unique_id=1077502534]
 
 [node name="bulletSpeed" type="Timer" parent="." index="11" unique_id=1462136038]
-wait_time = 0.06
+wait_time = 0.04
 
 [node name="PointLight2D4" type="PointLight2D" parent="." index="12" unique_id=1534715481]
 position = Vector2(-21.75, -43.5)
