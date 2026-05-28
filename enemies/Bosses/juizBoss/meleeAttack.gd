@@ -6,7 +6,7 @@ enum juizAttacks {
 }
 
 func attackPlayer():
-	var knockback_strength = 500.0 if currentAttack == juizAttacks.SPIN else 200.0
+	var knockback_strength = 400.0 if currentAttack == juizAttacks.SPIN else 100.0
 	player.takeDamage(owner.position, knockback_strength, 2)
 
 

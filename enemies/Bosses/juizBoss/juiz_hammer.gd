@@ -7,7 +7,11 @@ extends CharacterBody2D
 
 @onready var toAttackTimer: Timer = $toAttack
 @onready var animation: AnimationPlayer = $AnimationPlayer
+enum PossibleAttacks {
+	X, PLUS
+}
 
+var currentAttack = PossibleAttacks.X
 #func _physics_process(delta: float) -> void:
 #
 
@@ -20,13 +24,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_to_attack_timeout() -> void:
-	
-	vfxAnimation.play("X")
+	if currentAttack == PossibleAttacks.X:
+		vfxAnimation.play("X")
+		currentAttack = PossibleAttacks.PLUS
+	else:
+		vfxAnimation.play("+")
+		currentAttack = PossibleAttacks.X
 	await get_tree().create_timer(.4).timeout
 	animation.play("attack")
 	await get_tree().create_timer(2).timeout
 	animation.play("reset")
-	toAttackTimer.start(6.7) 
+	toAttackTimer.start(2) 
 
 
 func attack():
@@ -43,5 +51,3 @@ func _on_vfx_area_body_entered(body: Node2D) -> void:
 		body.takeDamage(global_position, 200.0, 4)
 		
 		body.freezeFrame(0.02, 0.2)
-		camera.screenShake(30, 0.3)
-	pass # Replace with function body.
