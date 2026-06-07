@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbp1dgjabdlbx" path="res://enemies/Bosses/juizBoss/Hammer.png" id="1_jmf3b"]
 [ext_resource type="Texture2D" uid="uid://cnjkqq3hiu4bf" path="res://terrains/Decoração/HammerRocks.png" id="3_e7pds"]
 [ext_resource type="Texture2D" uid="uid://ckwgwe8b7k1la" path="res://enemies/Bosses/juizBoss/HammerVFX2.png" id="4_cbh05"]
+[ext_resource type="Texture2D" uid="uid://ph4rgmyv6k1g" path="res://enemies/Bosses/juizBoss/HammerVFX3.png" id="5_esk6i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj86u"]
 
@@ -203,6 +204,107 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmf3b"]
 radius = 86.023254
 
+[sub_resource type="Animation" id="Animation_i60d1"]
+resource_name = "+"
+length = 1.4285786
+step = 0.071428575
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerVFXSprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14280213, 0.35664654, 0.643686, 0.71428573, 0.7857143, 0.8571429, 0.92857146, 1, 1.0714287, 1.1428572, 1.2142857, 1.2859368, 1.3571429),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VfxArea/collisionVfx:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7121323, 0.7161614, 1.1091198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VfxArea/collisionVfx:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.71049213, 0.71536005, 1.1091198),
+"transitions": PackedFloat32Array(1, 1.1892072, 1.1892072),
+"update": 0,
+"values": [Vector2(-57.272728, 76.36363), Vector2(0, 165), Vector2(0, 295)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VfxArea/collisionVfx2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7106662, 0.71211475, 0.71660304, 0.71698266, 1.2337899),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VfxArea/collisionVfx2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.71103305, 0.7164418, 1.2335219),
+"transitions": PackedFloat32Array(1, 1.5157166, 1.5157166),
+"update": 0,
+"values": [Vector2(70, 130), Vector2(70, 95), Vector2(400, 95)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VfxArea/collisionVfx3:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7111943, 0.71714395, 1.2342241),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VfxArea/collisionVfx3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.71428573, 0.7196945, 1.2367747),
+"transitions": PackedFloat32Array(1, 1.5157166, 1.5157166),
+"update": 0,
+"values": [Vector2(70, 130), Vector2(-70, 95), Vector2(-400, 95)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HammerVFXSprite2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.005726382),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_esk6i"]
 length = 0.001
 tracks/0/type = "value"
@@ -312,6 +414,42 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-58.18182, 138.18182)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HammerVFXSprite2:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HammerVFXSprite2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HammerVFXSprite:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_n3qrh"]
@@ -426,15 +564,28 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector2(-58, 138), Vector2(-380, 285)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HammerVFXSprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.005726382),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i60d1"]
 _data = {
+&"+": SubResource("Animation_i60d1"),
 &"RESET": SubResource("Animation_esk6i"),
 &"X": SubResource("Animation_n3qrh")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cbh05"]
-size = Vector2(30, 30.909084)
+size = Vector2(35, 35)
 
 [node name="JuizHammer" type="CharacterBody2D" unique_id=1073351496]
 z_as_relative = false
@@ -493,6 +644,7 @@ scale_amount_min = 0.2
 scale_amount_max = 1.2
 
 [node name="HammerVFXSprite" type="Sprite2D" parent="." unique_id=380233170]
+visible = false
 position = Vector2(0, 95)
 texture = ExtResource("4_cbh05")
 hframes = 13
@@ -527,6 +679,12 @@ position = Vector2(-58.18182, 138.18182)
 scale = Vector2(1.6, 1.6)
 shape = SubResource("RectangleShape2D_cbh05")
 disabled = true
+
+[node name="HammerVFXSprite2" type="Sprite2D" parent="." unique_id=472885807]
+visible = false
+position = Vector2(0, 95)
+texture = ExtResource("5_esk6i")
+hframes = 13
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
