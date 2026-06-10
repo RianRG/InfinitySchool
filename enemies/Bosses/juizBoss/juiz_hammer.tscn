@@ -463,7 +463,7 @@ tracks/0/path = NodePath("HammerVFXSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.14285715, 0.35973638, 0.6468337, 0.71428573, 0.7857143, 0.8571429, 0.92857146, 1, 1.0714287, 1.1428572, 1.2142857, 1.2857144, 1.356704),
+"times": PackedFloat32Array(0, 0.14285715, 0.35973638, 0.6468337, 0.71428573, 0.7857143, 0.8571429, 0.92857146, 1, 1.0714285, 1.1428572, 1.2142857, 1.2857144, 1.356704),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1]
@@ -645,7 +645,10 @@ scale_amount_max = 1.2
 
 [node name="HammerVFXSprite" type="Sprite2D" parent="." unique_id=380233170]
 visible = false
+z_index = 1
+y_sort_enabled = true
 position = Vector2(0, 95)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("4_cbh05")
 hframes = 13
 frame = 1
@@ -655,6 +658,7 @@ libraries/ = SubResource("AnimationLibrary_i60d1")
 speed_scale = 1.1
 
 [node name="VfxArea" type="Area2D" parent="." unique_id=1326452870]
+scale = Vector2(1.2, 1.2)
 
 [node name="collisionVfx" type="CollisionShape2D" parent="VfxArea" unique_id=1458773140]
 position = Vector2(-57.272728, 76.36363)
@@ -682,7 +686,10 @@ disabled = true
 
 [node name="HammerVFXSprite2" type="Sprite2D" parent="." unique_id=472885807]
 visible = false
+z_index = 1
+y_sort_enabled = true
 position = Vector2(0, 95)
+scale = Vector2(1.2, 1.2)
 texture = ExtResource("5_esk6i")
 hframes = 13
 

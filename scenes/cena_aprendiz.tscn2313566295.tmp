@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://dsd35n1r4hf0x"]
+
+[ext_resource type="PackedScene" uid="uid://b25qg3uermyxk" path="res://prota/player.tscn" id="1_2osu1"]
+[ext_resource type="Script" uid="uid://ch6gilxo87qpn" path="res://characters/scripts/camera_2d.gd" id="2_d7non"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_5t78q"]
+[ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="4_grghd"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_ncsvl"]
+
+[sub_resource type="Resource" id="Resource_nu6au"]
+script = ExtResource("5_ncsvl")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nc5y"]
+size = Vector2(2932, 1501)
+
+[node name="Node2D" type="Node2D" unique_id=1096493389]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1838493087]
+physics_interpolation_mode = 1
+top_level = true
+position = Vector2(2960, -823.99994)
+zoom = Vector2(0.8, 0.8)
+limit_enabled = false
+script = ExtResource("2_d7non")
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=18585181]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("3_5t78q")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." unique_id=259195283 node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(2960, -823.99994)
+script = ExtResource("4_grghd")
+priority = 1
+follow_mode = 2
+follow_target = NodePath("")
+zoom = Vector2(0.8, 0.8)
+tween_resource = SubResource("Resource_nu6au")
+follow_damping = true
+follow_damping_value = Vector2(0.3, 0.3)
+limit_target = NodePath("../cameraBounds/CollisionShape2D")
+
+[node name="cameraBounds" type="Area2D" parent="." unique_id=1326909052]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cameraBounds" unique_id=464795332]
+position = Vector2(405, 156.5)
+shape = SubResource("RectangleShape2D_1nc5y")
+disabled = true
+debug_color = Color(0, 0.6, 0.69803923, 0)
+
+[node name="player" parent="." unique_id=1149914169 instance=ExtResource("1_2osu1")]

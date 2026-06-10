@@ -25,6 +25,7 @@ class_name Player
 var onWhatStair:=""
 
 func getTileName():
+	
 	var searchPosition = global_position
 	var playerOffset = Vector2(0, 10)
 	searchPosition+=playerOffset
@@ -33,7 +34,7 @@ func getTileName():
 	if tileData:
 		var tileName = tileData.get_custom_data("tileName")
 		return tileName
-	else: return ""
+	else: return "" 
 
 
 # Timers gerenciados

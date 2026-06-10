@@ -287,6 +287,26 @@ scale = Vector2(0.9, 0.9)
 [node name="player" parent="." unique_id=1149914169 node_paths=PackedStringArray("stairMap") instance=ExtResource("4_4vyth")]
 position = Vector2(2960, -823.99994)
 stairMap = NodePath("../stairs2")
+friction = null
+acc = null
+totalHealth = null
+totalEnergy = null
+SPEED = null
+JUMP_VELOCITY = null
+dash_speed = null
+dash_time = null
+dash_cooldown = null
+base_attack_cooldown = null
+combo_attack_cooldown = null
+attack_dash_speed = null
+attack_duration = null
+combo_window = null
+knockback_decay = null
+kokusen_freeze_duration = null
+spin_startup_duration = null
+spin_duration = null
+spin_end_duration = null
+invencibleTime = null
 
 [node name="Door" parent="." unique_id=804227107 instance=ExtResource("10_uyp6h")]
 position = Vector2(224, -4)
