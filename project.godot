@@ -54,6 +54,7 @@ folder_colors={
 character="Main player"
 enemy="enemies"
 ambient=""
+stairs=""
 
 [input]
 

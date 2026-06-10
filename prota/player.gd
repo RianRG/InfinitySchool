@@ -20,22 +20,18 @@ class_name Player
 @onready var healthSprite = $PlayerHUD/CanvasLayer/HealthSprite
 @onready var energySprite = $PlayerHUD/CanvasLayer/EnergySprite
 
-@export_category("Stair tiles")
-@export var stairMap: TileMapLayer
-var onWhatStair:=""
+var stairMaps: Array = [];
 
-func getTileName():
-	
-	var searchPosition = global_position
-	var playerOffset = Vector2(0, 10)
-	searchPosition+=playerOffset
-	var tilePos = stairMap.local_to_map(stairMap.to_local(searchPosition))
-	var tileData = stairMap.get_cell_tile_data(tilePos)
-	if tileData:
-		var tileName = tileData.get_custom_data("tileName")
-		return tileName
-	else: return "" 
-
+func getTileName() -> String:
+	var searchPosition = global_position + Vector2(0, 10)
+	for stairMap in stairMaps:
+		var tilePos = stairMap.local_to_map(stairMap.to_local(searchPosition))
+		var tileData = stairMap.get_cell_tile_data(tilePos)
+		if tileData:
+			var tileName = str(tileData.get_custom_data("tileName"))
+			if tileName != "":
+				return tileName
+	return ""
 
 # Timers gerenciados
 var dash_timer: Timer
@@ -81,7 +77,7 @@ var spinEnergyCost = 5
 var healthEnergyCost = 6
 
 @export_category("Movement")
-@export var SPEED = 190.0
+@export var SPEED: float = 190.0
 @export var JUMP_VELOCITY = -400.0
 
 @export_category("Dash Settings")
@@ -164,6 +160,7 @@ func _ready():
 	_animationTree.active = true
 	originalColor = sprite.modulate
 	_setup_timers()
+	stairMaps = get_tree().get_nodes_in_group("stairs")
 
 func _setup_timers():
 	# Dash timer
@@ -218,8 +215,6 @@ func _setup_timers():
 # PHYSICS PROCESS
 # ===============================
 func _physics_process(delta: float) -> void:
-	
-	onWhatStair = getTileName()
 	if Global.dialogueActive:
 		_stateMachine.travel("idle")
 		return
@@ -273,7 +268,7 @@ func _process_state(delta: float):
 		PlayerState.DEAD:
 			velocity = Vector2.ZERO
 func _can_handle_input() -> bool:
-	return current_state in [PlayerState.IDLE, PlayerState.MOVING ] && onWhatStair.length()==0
+	return current_state in [PlayerState.IDLE, PlayerState.MOVING ]
 
 func _handle_input():
 	if Input.is_action_just_pressed("dash"):
@@ -296,17 +291,18 @@ func _handle_input():
 # ===============================
 func _process_movement(delta: float):
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if onWhatStair.length() > 0:
-		if onWhatStair == "stairRight":
-			if direction.x<0:
-				position.y += delta*100
-			elif direction.x>0:
-				position.y -= delta*100
-		elif onWhatStair == "stairLeft":
-			if direction.x<0:
-				position.y -= delta*100
-			elif direction.x>0:
-				position.y += delta*100
+	
+	var onWhatStair = getTileName()  # local, calculado todo frame
+	if onWhatStair == "stairRight":
+		if direction.x < 0:
+			position.y += delta * 100
+		elif direction.x > 0:
+			position.y -= delta * 100
+	elif onWhatStair == "stairLeft":
+		if direction.x < 0:
+			position.y -= delta * 100
+		elif direction.x > 0:
+			position.y += delta * 100
 	if health<=0: 
 		direction=Vector2.ZERO
 	if direction != Vector2.ZERO:
