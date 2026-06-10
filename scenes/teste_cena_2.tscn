@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://boovadyqccwe8"]
+[gd_scene format=4 uid="uid://bpkv3kbpnspm4"]
 
 [ext_resource type="PackedScene" uid="uid://b25qg3uermyxk" path="res://prota/player.tscn" id="1_x8yrs"]
 [ext_resource type="Script" uid="uid://ch6gilxo87qpn" path="res://characters/scripts/camera_2d.gd" id="2_iq3fv"]
@@ -13,7 +13,7 @@ script = ExtResource("5_d2tsc")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jitvj"]
 size = Vector2(880, 528)
 
-[node name="teste cena2" type="Node2D" unique_id=1513335154]
+[node name="defaultCena" type="Node2D" unique_id=1513335154]
 
 [node name="player" parent="." unique_id=1149914169 instance=ExtResource("1_x8yrs")]
 position = Vector2(242.00003, 199)
@@ -21,9 +21,13 @@ position = Vector2(242.00003, 199)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=880333630]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(242.00003, 199)
+position = Vector2(305, 199)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
+limit_left = -95
+limit_top = -85
+limit_right = 785
+limit_bottom = 443
 script = ExtResource("2_iq3fv")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=1147377254]
@@ -33,7 +37,7 @@ script = ExtResource("3_3vgqb")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=541394278 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(242.00003, 199)
+position = Vector2(305, 199)
 script = ExtResource("4_m40f6")
 priority = 1
 follow_mode = 2
