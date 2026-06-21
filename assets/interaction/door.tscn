@@ -14,6 +14,7 @@ size = Vector2(3.75, 78)
 polygon = PackedVector2Array(-12, -52, -16, -52, -16, 27, -12, 27)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tp573"]
+cull_mode = 1
 polygon = PackedVector2Array(-16, 61, -16, 8, 16, 8, 16, 61, 15, 13, -15, 13)
 
 [sub_resource type="Animation" id="Animation_tp573"]

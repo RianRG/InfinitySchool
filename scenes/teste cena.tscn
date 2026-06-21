@@ -222,21 +222,14 @@ fill_to = Vector2(0.9358974, 0.115384616)
 [sub_resource type="Environment" id="Environment_m5ask"]
 background_mode = 3
 background_color = Color(0.7881171, 0, 0.33306837, 1)
-background_energy_multiplier = 3.91
-background_canvas_max_layer = 5
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 2.59
-tonemap_mode = 1
+tonemap_mode = 4
 glow_enabled = true
-glow_intensity = 0.8
-glow_bloom = 0.4
-fog_enabled = true
-fog_light_energy = 12.0
-fog_sun_scatter = 0.35
-fog_density = 0.8404
+glow_intensity = 0.45
+glow_bloom = 0.05
+glow_hdr_scale = 0.0
 adjustment_enabled = true
-adjustment_brightness = 0.7
-adjustment_contrast = 1.05
+adjustment_brightness = 0.9
+adjustment_contrast = 1.07
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoljt"]
 size = Vector2(880, 528)
@@ -284,9 +277,8 @@ scale = Vector2(1, 1)
 position = Vector2(2959.0002, -945.00006)
 scale = Vector2(0.9, 0.9)
 
-[node name="player" parent="." unique_id=1149914169 node_paths=PackedStringArray("stairMap") instance=ExtResource("4_4vyth")]
+[node name="player" parent="." unique_id=1149914169 instance=ExtResource("4_4vyth")]
 position = Vector2(2960, -823.99994)
-stairMap = NodePath("../stairs2")
 
 [node name="Door" parent="." unique_id=804227107 instance=ExtResource("10_uyp6h")]
 position = Vector2(224, -4)
@@ -321,7 +313,7 @@ scale = Vector2(0.95, 0.95)
 spriteTexture = ExtResource("15_cyxdn")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
-color = Color(0.2929927, 0.09382523, 1.2032688e-08, 1)
+color = Color(0.25506076, 0.17259037, 0.18259409, 1)
 
 [node name="walls" type="TileMapLayer" parent="." unique_id=1089475040]
 z_index = 1
@@ -553,8 +545,7 @@ tile_set = ExtResource("30_stwsr")
 position = Vector2(2632.0002, -1264.0001)
 rotation = -0.523598
 scale = Vector2(30, 15)
-color = Color(0.9538024, 0.5610245, 0.4042669, 1)
-energy = 1.5
+color = Color(0.9537517, 0.47657922, 0.3623615, 1)
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 3.0
@@ -565,7 +556,6 @@ offset = Vector2(0, 30)
 position = Vector2(2824.0002, -1264)
 scale = Vector2(30, 10)
 color = Color(0.95686525, 0.57261103, 0.4191228, 1)
-energy = 2.0
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 3.0
@@ -576,7 +566,6 @@ offset = Vector2(0, 30)
 position = Vector2(3096, -1264)
 scale = Vector2(30, 10)
 color = Color(0.95686525, 0.57261103, 0.4191228, 1)
-energy = 2.0
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 3.0
@@ -588,7 +577,6 @@ position = Vector2(3288.0002, -1264.0001)
 rotation = 0.523598
 scale = Vector2(30, 15)
 color = Color(0.95686525, 0.57261103, 0.4191228, 1)
-energy = 1.5
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 5.0

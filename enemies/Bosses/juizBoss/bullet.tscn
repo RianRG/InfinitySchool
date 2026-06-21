@@ -2,9 +2,18 @@
 
 [ext_resource type="Script" uid="uid://upytse2g5iv3" path="res://enemies/Bosses/juizBoss/bullet.gd" id="1_sox02"]
 [ext_resource type="Texture2D" uid="uid://b15emasbq7gal" path="res://enemies/Bosses/juizBoss/projectileJuiz.png" id="2_01vvq"]
+[ext_resource type="Texture2D" uid="uid://di8olutp2r3o8" path="res://assets/vfx/firetexture.png" id="2_4ocnp"]
 [ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://prota/Sombra.png" id="3_wubi2"]
 [ext_resource type="Texture2D" uid="uid://dggbl18upsd5t" path="res://enemies/Bosses/juizBoss/explosionSprite-Sheet.png" id="4_01vvq"]
 [ext_resource type="Texture2D" uid="uid://wk1tbsl706mp" path="res://enemies/Bosses/juizBoss/deathprojectile.png" id="5_mkfp5"]
+
+[sub_resource type="Curve" id="Curve_4ocnp"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.99615383, 0.5904686), -1.2513467, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_pc0i7"]
+offsets = PackedFloat32Array(0, 0.46153846, 0.6495727, 0.85897434)
+colors = PackedColorArray(1, 0.9275334, 0.89165515, 1, 1, 0.29748532, 0, 1, 1, 0, 0, 1, 0.14767182, 0.14767179, 0.14767179, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wgg5"]
 size = Vector2(14, 19)
@@ -91,6 +100,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CPUParticles2D:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_uhmpk"]
@@ -216,6 +237,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CPUParticles2D:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wubi2"]
 _data = {
@@ -231,8 +264,28 @@ z_index = 1
 scale = Vector2(0.8, 0.8)
 script = ExtResource("1_sox02")
 
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=2018203035]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, 1.2499999)
+scale = Vector2(1.2499999, 1.2499999)
+emitting = false
+amount = 50
+texture = ExtResource("2_4ocnp")
+lifetime = 0.2
+emission_shape = 1
+emission_sphere_radius = 9.0
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, -60)
+angular_velocity_min = 10.0
+angular_velocity_max = 10.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_4ocnp")
+color_ramp = SubResource("Gradient_pc0i7")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026012165]
-modulate = Color(2.8157141, 2.8157141, 2.8157141, 1)
+modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
 texture = ExtResource("2_01vvq")
 hframes = 8
 
