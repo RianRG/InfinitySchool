@@ -313,7 +313,7 @@ scale = Vector2(0.95, 0.95)
 spriteTexture = ExtResource("15_cyxdn")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
-color = Color(0.25506076, 0.17259037, 0.18259409, 1)
+color = Color(0.38495508, 0.27200887, 0.29027998, 1)
 
 [node name="walls" type="TileMapLayer" parent="." unique_id=1089475040]
 z_index = 1
@@ -367,7 +367,6 @@ ceilling = NodePath("../ceilling")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
-top_level = true
 position = Vector2(2960, -1001)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
@@ -546,6 +545,7 @@ position = Vector2(2632.0002, -1264.0001)
 rotation = -0.523598
 scale = Vector2(30, 15)
 color = Color(0.9537517, 0.47657922, 0.3623615, 1)
+energy = 0.7
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 3.0
@@ -556,6 +556,7 @@ offset = Vector2(0, 30)
 position = Vector2(2824.0002, -1264)
 scale = Vector2(30, 10)
 color = Color(0.95686525, 0.57261103, 0.4191228, 1)
+energy = 0.7
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 3.0
@@ -566,6 +567,7 @@ offset = Vector2(0, 30)
 position = Vector2(3096, -1264)
 scale = Vector2(30, 10)
 color = Color(0.95686525, 0.57261103, 0.4191228, 1)
+energy = 0.7
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 3.0
@@ -577,6 +579,7 @@ position = Vector2(3288.0002, -1264.0001)
 rotation = 0.523598
 scale = Vector2(30, 15)
 color = Color(0.95686525, 0.57261103, 0.4191228, 1)
+energy = 0.7
 shadow_enabled = true
 shadow_filter = 2
 shadow_filter_smooth = 5.0

@@ -9,7 +9,7 @@ var theta = 0.0
 @export_range(0,2*PI) var alpha: float = 0.0
 @onready var bulletScene: PackedScene = owner.bulletScene
 
-var _active:=false
+var _active:=true
 var bullet
 func enter():
 	super.enter()
