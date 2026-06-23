@@ -151,14 +151,14 @@ func takeDamage(dano: int):
 		knockback_velocity = direction_from_player * knockback_strength
 	else:
 		# Feedback visual para mostrar que ele levou hit no dash
-		sprite.modulate = Color(1, 0.5, 0.5)
+		sprite.self_modulate = Color(1, 0, 0)
 		await get_tree().create_timer(0.05).timeout
-		sprite.modulate = originalColor
+		sprite.self_modulate = originalColor
 	
 	hitFlash()
 
 
 func hitFlash():
-	sprite.modulate = Color(5, 5, 5, 5)
+	sprite.modulate = Color(3, 3, 3, 1)
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = originalColor

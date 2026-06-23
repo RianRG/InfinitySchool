@@ -696,9 +696,9 @@ func _on_lose_streak_timer_timeout() -> void:
 # EFFECTS
 # ===============================
 func hitFlash():
-	sprite.modulate = Color(5, 5, 5, 5)
+	sprite.self_modulate = Color(2, 2, 2, 3)
 	await get_tree().create_timer(0.1).timeout
-	sprite.modulate = originalColor
+	sprite.self_modulate = originalColor
 
 
 # ===============================
@@ -728,7 +728,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	pass # Replace with function body.
 
 
-func whiteout(duration := 2.0):
+func whiteout(duration := 1):
 	# cria CanvasLayer acima de tudo
 	var layer = CanvasLayer.new()
 	layer.layer = 999  # maior que qualquer outro

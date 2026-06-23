@@ -1808,7 +1808,7 @@ script = ExtResource("5_xokln")
 
 [node name="bulletPhase" type="Node2D" parent="FiniteStateMachine" parent_id_path=PackedInt32Array(776770129) index="6" unique_id=1891180197]
 script = ExtResource("5_wp1ov")
-alpha = 1.6179999999999999
+alpha = 1.618
 metadata/_custom_type_script = "uid://cwcijpfuwv840"
 
 [node name="endBulletPhase" type="Timer" parent="." index="10" unique_id=1077502534]

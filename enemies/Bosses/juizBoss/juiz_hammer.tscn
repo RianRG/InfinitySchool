@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cbp1dgjabdlbx" path="res://enemies/Bosses/juizBoss/Hammer.png" id="1_jmf3b"]
 [ext_resource type="Texture2D" uid="uid://cnjkqq3hiu4bf" path="res://terrains/Decoração/HammerRocks.png" id="3_e7pds"]
 [ext_resource type="Texture2D" uid="uid://ckwgwe8b7k1la" path="res://enemies/Bosses/juizBoss/HammerVFX2.png" id="4_cbh05"]
-[ext_resource type="Texture2D" uid="uid://ph4rgmyv6k1g" path="res://enemies/Bosses/juizBoss/HammerVFX3.png" id="5_esk6i"]
+[ext_resource type="Texture2D" uid="uid://d2pbbixrgjcou" path="res://enemies/Bosses/juizBoss/HammerVFX1.png" id="5_esk6i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj86u"]
 
@@ -924,7 +924,7 @@ scale_amount_max = 1.2
 
 [node name="HammerVFXSprite" type="Sprite2D" parent="." unique_id=380233170]
 visible = false
-modulate = Color(1.0003047, 1.0003047, 1.0003047, 1)
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
 y_sort_enabled = true
 position = Vector2(0, 95)
 scale = Vector2(1.2, 1.2)
@@ -953,6 +953,7 @@ energy = 0.5
 texture = SubResource("GradientTexture2D_n3qrh")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx" unique_id=712237791]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
 emitting = false
 amount = 100
 lifetime = 0.5
@@ -967,7 +968,7 @@ radial_accel_min = 10.0
 radial_accel_max = 10.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
-color_ramp = SubResource("Gradient_n3qrh")
+color_initial_ramp = SubResource("Gradient_n3qrh")
 
 [node name="collisionVfx2" type="CollisionShape2D" parent="VfxArea" unique_id=1180862566]
 position = Vector2(67.27273, 137.27272)
@@ -983,6 +984,7 @@ energy = 0.5
 texture = SubResource("GradientTexture2D_n3qrh")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx2" unique_id=1996207252]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
 emitting = false
 amount = 100
 lifetime = 0.5
@@ -997,7 +999,7 @@ radial_accel_min = 10.0
 radial_accel_max = 10.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
-color_ramp = SubResource("Gradient_n3qrh")
+color_initial_ramp = SubResource("Gradient_n3qrh")
 
 [node name="collisionVfx3" type="CollisionShape2D" parent="VfxArea" unique_id=993165551]
 position = Vector2(66.36363, 72.72727)
@@ -1013,6 +1015,7 @@ energy = 0.5
 texture = SubResource("GradientTexture2D_n3qrh")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx3" unique_id=1012686063]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
 emitting = false
 amount = 100
 lifetime = 0.5
@@ -1027,7 +1030,7 @@ radial_accel_min = 10.0
 radial_accel_max = 10.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
-color_ramp = SubResource("Gradient_n3qrh")
+color_initial_ramp = SubResource("Gradient_n3qrh")
 
 [node name="collisionVfx4" type="CollisionShape2D" parent="VfxArea" unique_id=1625476903]
 position = Vector2(-58.18182, 138.18182)
@@ -1043,6 +1046,7 @@ energy = 0.5
 texture = SubResource("GradientTexture2D_n3qrh")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx4" unique_id=1217904454]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
 emitting = false
 amount = 100
 lifetime = 0.5
@@ -1057,11 +1061,11 @@ radial_accel_min = 10.0
 radial_accel_max = 10.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
-color_ramp = SubResource("Gradient_n3qrh")
+color_initial_ramp = SubResource("Gradient_n3qrh")
 
 [node name="HammerVFXSprite2" type="Sprite2D" parent="." unique_id=472885807]
 visible = false
-modulate = Color(1.0003047, 1.0003047, 1.0003047, 1)
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
 y_sort_enabled = true
 position = Vector2(0, 95)
 scale = Vector2(1.2, 1.2)

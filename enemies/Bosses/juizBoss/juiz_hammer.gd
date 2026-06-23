@@ -34,7 +34,7 @@ func _on_to_attack_timeout() -> void:
 	animation.play("attack")
 	await get_tree().create_timer(2).timeout
 	animation.play("reset")
-	toAttackTimer.start(6.7) 
+	toAttackTimer.start(6.5) 
 
 
 func attack():

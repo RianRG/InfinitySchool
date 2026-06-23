@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ph4rgmyv6k1g"
-path="res://.godot/imported/HammerVFX3.png-45c86da4a575f76bde2839fecb0f4ed2.ctex"
+uid="uid://d2pbbixrgjcou"
+path="res://.godot/imported/HammerVFX1.png-2993ea7d2a5e2901c8f0969a2f315ac2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemies/Bosses/juizBoss/HammerVFX3.png"
-dest_files=["res://.godot/imported/HammerVFX3.png-45c86da4a575f76bde2839fecb0f4ed2.ctex"]
+source_file="res://enemies/Bosses/juizBoss/HammerVFX1.png"
+dest_files=["res://.godot/imported/HammerVFX1.png-2993ea7d2a5e2901c8f0969a2f315ac2.ctex"]
 
 [params]
 
