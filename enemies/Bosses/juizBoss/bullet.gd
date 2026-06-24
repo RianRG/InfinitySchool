@@ -1,7 +1,7 @@
 extends Area2D
 @onready var animation: AnimationPlayer = $AnimationPlayer
 
-var speed:=350
+var speed:=250
 var direction:=Vector2.RIGHT
 func _physics_process(delta: float):
 	position+=direction*speed*delta

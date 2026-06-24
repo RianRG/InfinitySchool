@@ -313,7 +313,7 @@ position = Vector2(0, 25)
 texture = ExtResource("3_wubi2")
 
 [node name="explosionSprite" type="Sprite2D" parent="." unique_id=570560421]
-modulate = Color(2.7075353, 2.7075353, 2.7075353, 1)
+modulate = Color(2.708, 1.3018621, 1.5811949, 1)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("4_01vvq")
 hframes = 14
