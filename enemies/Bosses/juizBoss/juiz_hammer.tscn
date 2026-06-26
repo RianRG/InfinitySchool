@@ -955,7 +955,7 @@ texture = SubResource("GradientTexture2D_n3qrh")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx" unique_id=712237791]
 modulate = Color(2.454227, 2.454227, 2.454227, 1)
 emitting = false
-amount = 100
+amount = 50
 lifetime = 0.5
 emission_shape = 1
 emission_sphere_radius = 7.0
@@ -986,7 +986,7 @@ texture = SubResource("GradientTexture2D_n3qrh")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx2" unique_id=1996207252]
 modulate = Color(2.454227, 2.454227, 2.454227, 1)
 emitting = false
-amount = 100
+amount = 50
 lifetime = 0.5
 emission_shape = 1
 emission_sphere_radius = 7.0
@@ -1017,7 +1017,7 @@ texture = SubResource("GradientTexture2D_n3qrh")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx3" unique_id=1012686063]
 modulate = Color(2.454227, 2.454227, 2.454227, 1)
 emitting = false
-amount = 100
+amount = 50
 lifetime = 0.5
 emission_shape = 1
 emission_sphere_radius = 7.0
@@ -1048,7 +1048,7 @@ texture = SubResource("GradientTexture2D_n3qrh")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx4" unique_id=1217904454]
 modulate = Color(2.454227, 2.454227, 2.454227, 1)
 emitting = false
-amount = 100
+amount = 50
 lifetime = 0.5
 emission_shape = 1
 emission_sphere_radius = 7.0
