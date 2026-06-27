@@ -46,6 +46,7 @@ z_index = 2
 script = ExtResource("1_f4is5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1710733406]
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 texture = ExtResource("1_6w6rj")
 hframes = 4
 
