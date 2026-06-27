@@ -88,7 +88,7 @@ _data = {
 &"enter": SubResource("Animation_aaajq")
 }
 
-[node name="DialogueScene" type="Control"]
+[node name="DialogueScene" type="Control" unique_id=333971733]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 3
 anchors_preset = 7
@@ -100,20 +100,18 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("1_aaajq")
 
-[node name="DialogueScreen" parent="." instance=ExtResource("1_w06oj")]
+[node name="DialogueScreen" parent="." unique_id=1440623166 instance=ExtResource("1_w06oj")]
 layout_mode = 1
 offset_left = -300.0
-offset_top = 163.7
+offset_top = -38.3
 offset_right = 300.0
-offset_bottom = 241.24
+offset_bottom = 39.240013
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="sprite" type="Sprite2D" parent="." unique_id=471145052]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(-200, -94)
 scale = Vector2(0.415, 0.415)
 texture = ExtResource("2_aaajq")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_7d4h4")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1228394889]
+libraries/ = SubResource("AnimationLibrary_7d4h4")
