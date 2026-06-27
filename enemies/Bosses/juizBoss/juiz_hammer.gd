@@ -5,12 +5,13 @@ extends CharacterBody2D
 
 @onready var vfxAnimation: AnimationPlayer = $HammerVFXAnimation
 
+@onready var baseframe: Sprite2D = $HammerBase
 @onready var toAttackTimer: Timer = $toAttack
 @onready var animation: AnimationPlayer = $AnimationPlayer
 enum PossibleAttacks {
 	X, PLUS
 }
-
+var attackcounter = 0
 var currentAttack = PossibleAttacks.X
 #func _physics_process(delta: float) -> void:
 #
@@ -39,8 +40,14 @@ func _on_to_attack_timeout() -> void:
 
 func attack():
 	camera.screenShake(15, 0.5)
-
-
+	attackcounter += 1
+	if attackcounter == 2:
+		baseframe.frame = 1
+	if attackcounter == 18:
+		baseframe.frame = 2
+	if attackcounter == 20:
+		baseframe.frame = 3
+	
 #func _on_hammer_vfx_animation_animation_finished(anim_name: StringName) -> void:
 	#if anim_name == "X":
 		#print()
