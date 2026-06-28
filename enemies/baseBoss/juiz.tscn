@@ -1630,15 +1630,19 @@ animation = &"attackLeft"
 animation = &"attackRight"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_82dab"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_xokln")
 blend_point_0/pos = Vector2(0, 1)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_lx6jt")
 blend_point_1/pos = Vector2(0, -0.9)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_186p5")
 blend_point_2/pos = Vector2(-1, 0)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_msdht")
 blend_point_3/pos = Vector2(1, 0)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g27j6"]
 animation = &"bulletPhaseEnd"
@@ -1671,15 +1675,19 @@ animation = &"walkLeft"
 animation = &"walkRight"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_xokln"]
+blend_mode = 1
 blend_point_0/node = SubResource("AnimationNodeAnimation_8bmxj")
 blend_point_0/pos = Vector2(0, 1)
+blend_point_0/name = &"0"
 blend_point_1/node = SubResource("AnimationNodeAnimation_ybu1o")
 blend_point_1/pos = Vector2(0, -1)
+blend_point_1/name = &"1"
 blend_point_2/node = SubResource("AnimationNodeAnimation_3ve6r")
 blend_point_2/pos = Vector2(-1, 0)
+blend_point_2/name = &"2"
 blend_point_3/node = SubResource("AnimationNodeAnimation_wp1ov")
 blend_point_3/pos = Vector2(1, 0)
-blend_mode = 1
+blend_point_3/name = &"3"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3ve6r"]
 switch_mode = 2
@@ -1767,7 +1775,6 @@ frame = 15
 
 [node name="shadow" type="Sprite2D" parent="." index="2" unique_id=1191370424]
 modulate = Color(1, 1, 1, 0.4627451)
-z_index = -1
 position = Vector2(2, 37)
 scale = Vector2(1.3, 1.3)
 texture = ExtResource("4_wp1ov")

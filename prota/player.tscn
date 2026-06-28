@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://blc7div4v8mwg" path="res://prota/tudo3.png" id="3_ubwyu"]
 [ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://prota/Sombra.png" id="5_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://bxt8dqf3mx1j8" path="res://prota/playerHud.tscn" id="6_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://dfcnpfrfanq2b" path="res://assets/vfx/dash.png" id="6_tryrn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 13.5714)
@@ -2110,8 +2111,12 @@ _data = [Vector2(0, 0.595506), 0.0, 0.0628193, 0, 0, Vector2(0.852273, 0), 0.076
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_hqtel"]
-offsets = PackedFloat32Array(0.0858896, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.0705882, 0, 0.447059, 1)
+offsets = PackedFloat32Array(0.09090909, 0.7869318)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0.70500004)
+
+[sub_resource type="Gradient" id="Gradient_hi6va"]
+offsets = PackedFloat32Array(0.5113636, 0.81534094)
+colors = PackedColorArray(0.11756595, 0, 0.63066405, 1, 1, 1, 1, 1)
 
 [node name="player" type="CharacterBody2D" unique_id=1149914169 node_paths=PackedStringArray("_animationTree") groups=["character"]]
 z_index = 1
@@ -2134,7 +2139,7 @@ hframes = 10
 vframes = 44
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=636522755]
-modulate = Color(1, 1, 1, 0.45490196)
+modulate = Color(1, 1, 1, 0.6)
 z_index = -1
 texture = ExtResource("5_1jxqw")
 
@@ -2146,7 +2151,6 @@ position = Vector2(0, -35.52)
 scale = Vector2(4, 4)
 texture = ExtResource("3_i3pqv")
 hframes = 16
-frame = 14
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=891681292]
 libraries/ = SubResource("AnimationLibrary_sweqy")
@@ -2177,19 +2181,24 @@ disabled = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=305568012]
 modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
-position = Vector2(0, -25.2632)
+position = Vector2(0, -22.352942)
 emitting = false
 amount = 200
-lifetime = 0.59
+texture = ExtResource("6_tryrn")
+lifetime = 0.6
 emission_shape = 1
-emission_sphere_radius = 14.5
+emission_sphere_radius = 20.0
+spread = 0.0
 gravity = Vector2(0, 0)
-linear_accel_max = 5.15
-scale_amount_min = 2.0
-scale_amount_max = 8.0
+initial_velocity_min = 300.0
+initial_velocity_max = 300.0
+damping_min = 600.0
+damping_max = 600.0
+scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_onrkg")
 color = Color(2.7083335, 2.7083335, 2.7083335, 1)
-color_initial_ramp = SubResource("Gradient_hqtel")
+color_ramp = SubResource("Gradient_hqtel")
+color_initial_ramp = SubResource("Gradient_hi6va")
 
 [node name="loseStreakTimer" type="Timer" parent="." unique_id=1305586872]
 

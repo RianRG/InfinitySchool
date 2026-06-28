@@ -338,17 +338,27 @@ func _update_animation_blend_positions(direction: Vector2):
 func _try_dash():
 	if not canDash or current_state in [PlayerState.SPINNING || PlayerState.HEALING]:
 		return
-	
 	_change_state(PlayerState.DASHING)
 	canDash = false
 	
 	var dashDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if dashDirection == Vector2.ZERO:
 		dashDirection = lastDirection
+	var direction = snapped(rad_to_deg(dashDirection.angle()), 0.01)
+	particles.direction = dashDirection*-1
+	
+	if direction == 45 || direction == -45 || direction == 135 || direction == -135:
+		direction += 90
+	
+	particles.angle_max = direction
+	particles.angle_min = direction 
+	print(direction)
+	
 	
 	dash_velocity = dashDirection.normalized() * dash_speed
 	external_velocity = Vector2.ZERO
 	move_velocity = Vector2.ZERO
+	
 	
 	particles.emitting = true
 	dash_timer.start(dash_time)
