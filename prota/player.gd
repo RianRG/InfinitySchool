@@ -312,6 +312,7 @@ func _process_movement(delta: float):
 		move_velocity.x = lerp(move_velocity.x, direction.normalized().x * SPEED, acc)
 		move_velocity.y = lerp(move_velocity.y, direction.normalized().y * SPEED, acc)
 		
+		
 		if current_state == PlayerState.IDLE:
 			_change_state(PlayerState.MOVING)
 	else:
@@ -321,6 +322,9 @@ func _process_movement(delta: float):
 		
 		if current_state == PlayerState.MOVING and move_velocity.length() < 1.0:
 			_change_state(PlayerState.IDLE)
+			
+		
+	
 
 func _update_animation_blend_positions(direction: Vector2):
 	_animationTree["parameters/kokusen/blend_position"] = direction
