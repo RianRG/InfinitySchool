@@ -9,7 +9,8 @@ class_name Player
 @onready var particles = $CPUParticles2D
 @onready var loseStreak: Timer = $loseStreakTimer
 @onready var canvasModulate: CanvasModulate = $"../CanvasModulate"
-
+@onready var walkstart = $WalkStart
+@onready var walkidle = $Walkidle
 
 
 # ========== 
@@ -149,6 +150,7 @@ var spin_started = false
 var canHeal=true
 var canTakeDamage=true
 var ignoreInvincible=false
+var was_moving = false
 
 
 
@@ -309,22 +311,35 @@ func _process_movement(delta: float):
 		lastDirection = direction
 		_update_animation_blend_positions(direction)
 		
+		var is_moving = direction != Vector2.ZERO
+		
+		if is_moving:
+			if not was_moving:
+				walkstart.emitting = true
+				walkidle.emitting = true
+				was_moving = true
+		
 		move_velocity.x = lerp(move_velocity.x, direction.normalized().x * SPEED, acc)
 		move_velocity.y = lerp(move_velocity.y, direction.normalized().y * SPEED, acc)
+		
+		walkstart.direction = direction*-1
+		walkidle.direction = direction*-1
 		
 		
 		if current_state == PlayerState.IDLE:
 			_change_state(PlayerState.MOVING)
+		
 	else:
 		move_velocity = Vector2.ZERO
+		walkidle.emitting = false
+		was_moving = false
+		
 		#move_velocity.x = lerp(move_velocity.x, 0.0, friction)
 		#move_velocity.y = lerp(move_velocity.y, 0.0, friction)
 		
 		if current_state == PlayerState.MOVING and move_velocity.length() < 1.0:
 			_change_state(PlayerState.IDLE)
 			
-		
-	
 
 func _update_animation_blend_positions(direction: Vector2):
 	_animationTree["parameters/kokusen/blend_position"] = direction
@@ -356,7 +371,6 @@ func _try_dash():
 	
 	particles.angle_max = direction
 	particles.angle_min = direction 
-	print(direction)
 	
 	
 	dash_velocity = dashDirection.normalized() * dash_speed
@@ -659,6 +673,7 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 
 func _die():
 	canTakeDamage=false
+	canHeal = false
 	await get_tree().create_timer(1).timeout
 	_change_state(PlayerState.DEAD)
 

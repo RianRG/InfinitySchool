@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dij2hasjty3cy" path="res://prota/Sombra.png" id="5_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://bxt8dqf3mx1j8" path="res://prota/playerHud.tscn" id="6_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://dfcnpfrfanq2b" path="res://assets/vfx/dash.png" id="6_tryrn"]
+[ext_resource type="Texture2D" uid="uid://di8olutp2r3o8" path="res://assets/vfx/firetexture.png" id="8_hi6va"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 13.5714)
@@ -2118,6 +2119,10 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0.70500004)
 offsets = PackedFloat32Array(0.5113636, 0.81534094)
 colors = PackedColorArray(0.11756595, 0, 0.63066405, 1, 1, 1, 1, 1)
 
+[sub_resource type="Gradient" id="Gradient_sgpap"]
+offsets = PackedFloat32Array(0, 0.64204544)
+colors = PackedColorArray(0.5729883, 0.5729883, 0.5729883, 1, 1, 1, 1, 1)
+
 [node name="player" type="CharacterBody2D" unique_id=1149914169 node_paths=PackedStringArray("_animationTree") groups=["character"]]
 z_index = 1
 scale = Vector2(0.85, 0.85)
@@ -2203,6 +2208,49 @@ color_initial_ramp = SubResource("Gradient_hi6va")
 [node name="loseStreakTimer" type="Timer" parent="." unique_id=1305586872]
 
 [node name="PlayerHUD" parent="." unique_id=1133000688 instance=ExtResource("6_2hs0m")]
+
+[node name="WalkStart" type="CPUParticles2D" parent="." unique_id=1447814864]
+z_index = -1
+y_sort_enabled = true
+scale = Vector2(1.0000001, 1.0000001)
+emitting = false
+amount = 4
+texture = ExtResource("8_hi6va")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.8
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+damping_min = 50.0
+damping_max = 50.0
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+color = Color(0.886004, 0.886004, 0.886004, 0.3)
+
+[node name="Walkidle" type="CPUParticles2D" parent="." unique_id=1088394954]
+z_index = -1
+y_sort_enabled = true
+emitting = false
+amount = 3
+texture = ExtResource("8_hi6va")
+lifetime = 0.3
+explosiveness = 0.2
+emission_shape = 1
+emission_sphere_radius = 8.0
+spread = 90.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+damping_min = 50.0
+damping_max = 50.0
+scale_amount_min = 0.2
+scale_amount_max = 0.5
+color = Color(0.8823829, 0.8823829, 0.8823829, 0.3)
+color_initial_ramp = SubResource("Gradient_sgpap")
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
