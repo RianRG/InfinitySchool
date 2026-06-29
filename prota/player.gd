@@ -12,7 +12,6 @@ class_name Player
 @onready var walkstart = $WalkStart
 @onready var walkidle = $Walkidle
 
-
 # ========== 
 # LIFE HUD
 # ==========
