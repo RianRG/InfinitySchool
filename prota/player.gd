@@ -11,6 +11,9 @@ class_name Player
 @onready var canvasModulate: CanvasModulate = $"../CanvasModulate"
 @onready var walkstart = $WalkStart
 @onready var walkidle = $Walkidle
+@onready var flash = CanvasLayer.new()
+
+
 
 # ========== 
 # LIFE HUD
@@ -72,7 +75,7 @@ var energy:
 		_energy = clamped
 
 # Energy costs
-var kokusenEnergyCost = 6
+var kokusenEnergyCost = 0
 var spinEnergyCost = 5
 var healthEnergyCost = 6
 
@@ -162,6 +165,7 @@ func _ready():
 	originalColor = sprite.modulate
 	_setup_timers()
 	stairMaps = get_tree().get_nodes_in_group("stairs")
+	
 
 func _setup_timers():
 	# Dash timer
@@ -692,7 +696,10 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 			body.takeDamage(5)
 		attackCounter += 1
 		if current_state == PlayerState.KOKUSEN:
-			freezeFrame(0.3, 0.5)
+			
+			freezeFrame(0.1, 0.3)
+			
+			
 		
 		if current_state == PlayerState.ATTACKING && !body.isDead:
 			energy+=1
@@ -756,7 +763,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	pass # Replace with function body.
 
 
-func whiteout(duration := 1):
+func whiteout(duration := 0.5):
 	# cria CanvasLayer acima de tudo
 	var layer = CanvasLayer.new()
 	layer.layer = 999  # maior que qualquer outro
