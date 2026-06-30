@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://xl452pha1ti4"
-path="res://.godot/imported/MatchupPro.svg-61e0fb87e05d4592c5c54ddd124efe55.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://assets/fonts/hf-free-complete/matchup-pro-v1.1/MatchupPro.svg"
-dest_files=["res://.godot/imported/MatchupPro.svg-61e0fb87e05d4592c5c54ddd124efe55.ctex"]
 
 [params]
 

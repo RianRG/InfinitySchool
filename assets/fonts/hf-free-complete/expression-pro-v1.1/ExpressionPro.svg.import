@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d11fnrtbqefee"
-path="res://.godot/imported/ExpressionPro.svg-3458d3440a7fdf4238fe08c6357f1fd3.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://assets/fonts/hf-free-complete/expression-pro-v1.1/ExpressionPro.svg"
-dest_files=["res://.godot/imported/ExpressionPro.svg-3458d3440a7fdf4238fe08c6357f1fd3.ctex"]
 
 [params]
 

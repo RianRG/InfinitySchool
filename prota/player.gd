@@ -431,7 +431,7 @@ func _try_heal():
 	if !canHeal || current_state in [PlayerState.DASHING, PlayerState.ATTACKING]:
 		return
 		
-	if energy<healthEnergyCost: return
+	if energy<healthEnergyCost or current_state == PlayerState.DEAD: return
 	
 	health+=4
 	energy-=healthEnergyCost
