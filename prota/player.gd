@@ -75,8 +75,8 @@ var energy:
 		_energy = clamped
 
 # Energy costs
-var kokusenEnergyCost = 6
-var spinEnergyCost = 5
+var kokusenEnergyCost = 0
+var spinEnergyCost = 0
 var healthEnergyCost = 6
 
 @export_category("Movement")
@@ -102,7 +102,7 @@ var healthEnergyCost = 6
 @export_category("Kokusen Settings")
 @export var kokusen_freeze_duration := 1.4
 const kokusenVfxScene = preload("res://assets/vfx/kokusenVFX.tscn")
-
+const spinVfxScene = preload("res://assets/vfx/SpinVFX.tscn")
 
 
 @export_category("Spin Settings")
@@ -496,7 +496,15 @@ func _try_spin():
 func _on_spin_timer_timeout():
 	# Fase 2: SPINNING (se move normalmente)
 	_change_state(PlayerState.SPINNING)
+	await get_tree().create_timer(0.18).timeout
+	var spinVfx = spinVfxScene.instantiate()
+	$texture.add_child(spinVfx)
+	spinVfx.position = Vector2.ZERO
 	spin_end_timer.start(spin_duration)  # 6s girando
+	await get_tree().create_timer(6).timeout
+	spinVfx.stop()
+	spinVfx.queue_free()
+
 
 func _on_spin_end_timer_timeout():
 	# Fase 3: RECOVERY (parado de novo)
