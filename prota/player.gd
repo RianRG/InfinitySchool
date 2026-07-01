@@ -75,8 +75,8 @@ var energy:
 		_energy = clamped
 
 # Energy costs
-var kokusenEnergyCost = 0
-var spinEnergyCost = 0
+var kokusenEnergyCost = 6
+var spinEnergyCost = 5
 var healthEnergyCost = 6
 
 @export_category("Movement")

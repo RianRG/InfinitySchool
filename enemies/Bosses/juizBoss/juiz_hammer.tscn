@@ -868,9 +868,7 @@ offsets = PackedFloat32Array(0.11111111, 0.21367522, 0.35897437, 0.64529914)
 colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 0.733002, 2.7554854e-06, 6.738305e-07, 1, 0.38920352, 0, 0.12525514, 1)
 
 [node name="JuizHammer" type="CharacterBody2D" unique_id=1073351496]
-z_as_relative = false
 y_sort_enabled = true
-scale = Vector2(1.1, 1.1)
 collision_layer = 8
 script = ExtResource("1_hj86u")
 
@@ -1079,6 +1077,7 @@ z_index = -1
 y_sort_enabled = true
 position = Vector2(0, 103)
 texture = ExtResource("6_n3qrh")
+offset = Vector2(0, 1)
 hframes = 4
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -8,6 +8,7 @@ func enter():
 	owner.canMove=true
 	owner.cannotTakeKnockback=false
 	owner.stateMachine.travel("walk")
+	
 
 
 func transition():
@@ -22,7 +23,13 @@ func transition():
 		if chosenPhase==1:	
 			owner.bulletPhaseDecided=true
 			get_parent().change_state("bulletPhase")
+		else:
+			await get_tree().create_timer(5).timeout
+			if distance>150 && !owner.onAttackCooldown:
+				get_parent().change_state("bulletPhase")
 		
+	
+	
 
 
 func _on_cooldown_attack_timeout() -> void:

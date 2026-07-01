@@ -63,13 +63,16 @@ func _process(delta):
 	
 	var distance_to_player = global_position.distance_to(player.global_position)
 	
+	
 	# Atualiza direção apenas em intervalos
 	if !cannotTakeKnockback:
 		direction_update_timer += delta
 		if direction_update_timer >= direction_update_interval:
 			direction_update_timer = 0.0
 			
-			# Só recalcula se estiver fora da zona mínima
+			
+			
+			#Só recalcula se estiver fora da zona mínima
 			if distance_to_player > min_follow_distance:
 				target_direction = (player.global_position - global_position).normalized()
 		
