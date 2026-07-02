@@ -695,7 +695,7 @@ func _on_invincible_timer_timeout():
 # COMBAT
 # ===============================
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("enemy") || body.is_in_group("quebravel") :
 		if current_state == PlayerState.KOKUSEN:
 			body.takeDamage(20)
 		if current_state == PlayerState.SPINNING:
@@ -709,8 +709,9 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 			
 			
 		
-		if current_state == PlayerState.ATTACKING && !body.isDead:
-			energy+=1
+		if current_state == PlayerState.ATTACKING && body.is_in_group("enemy"):
+			if !body.isDead:
+				energy = energy +1
 		
 		# Reseta o timer a cada acerto
 		loseStreak.start(combo_window)

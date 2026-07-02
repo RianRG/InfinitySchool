@@ -1,7 +1,7 @@
 extends Node2D
 @onready var boss: CharacterBody2D = $Juiz
 @onready var camera: Camera2D = $Camera2D
-@onready var player: Player = $player
+@onready var player = $player
 var cutscenePlayed:=false
 @onready var playerPhantom: PhantomCamera2D = $PhantomCamera2D
 @onready var bossPhantom: PhantomCamera2D = $bossCamera

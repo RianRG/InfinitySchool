@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var player = get_parent().find_child("player")
 @onready var animationTree: AnimationTree = $AnimationTree
+@onready var finitestate: Node2D = $FiniteStateMachine
 
 var direction: Vector2 = Vector2.ZERO
 var target_direction: Vector2 = Vector2.ZERO
@@ -165,3 +166,9 @@ func hitFlash():
 	sprite.modulate = Color(3, 3, 3, 1)
 	await get_tree().create_timer(0.1).timeout
 	sprite.modulate = originalColor
+
+
+func _on_followtimer_timeout():
+	if  owner.position.distance_to(player.position) > 150 :
+		finitestate.change_state("bulletPhase")
+	 # Replace with function body.

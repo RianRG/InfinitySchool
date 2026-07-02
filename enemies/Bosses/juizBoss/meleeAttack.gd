@@ -9,6 +9,10 @@ func attackPlayer():
 	var knockback_strength = 400.0 if currentAttack == juizAttacks.SPIN else 100.0
 	player.takeDamage(owner.position, knockback_strength, 2)
 
+func _on_attack_area_body_entered(body: Node2D):
+	if body.is_in_group("quebravel"):
+		body.takeDamage(18)
+
 
 # ======================
 # ATAQUES

@@ -55,6 +55,7 @@ character="Main player"
 enemy="enemies"
 ambient=""
 stairs=""
+quebravel=""
 
 [input]
 

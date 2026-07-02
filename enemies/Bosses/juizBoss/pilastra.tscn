@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://kx3snxy3xuak"]
+
+[ext_resource type="Texture2D" uid="uid://box4eiek2vcei" path="res://enemies/Bosses/juizBoss/BossPilaster.png" id="1_dpccm"]
+[ext_resource type="Script" uid="uid://c46uoot2ymynj" path="res://enemies/Bosses/juizBoss/pilastra.gd" id="1_ow35r"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8cxyx"]
+radius = 24.0
+
+[sub_resource type="Gradient" id="Gradient_ow35r"]
+colors = PackedColorArray(0.35742462, 0.2404002, 0.15961131, 1, 1, 1, 1, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0mymv"]
+polygon = PackedVector2Array(0, 8, 16, 56, -16, 56)
+
+[node name="Pilastra" type="CharacterBody2D" unique_id=1108521031 groups=["quebravel"]]
+collision_layer = 7
+collision_mask = 3
+script = ExtResource("1_ow35r")
+
+[node name="texture" type="Sprite2D" parent="." unique_id=2120513030]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, 24)
+texture = ExtResource("1_dpccm")
+offset = Vector2(0, -25)
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131496562]
+z_index = 1
+position = Vector2(0, 40)
+shape = SubResource("CircleShape2D_8cxyx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1872537664]
+z_index = 1
+position = Vector2(0, 8)
+emitting = false
+amount = 12
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(12, 50)
+direction = Vector2(0, -1)
+spread = 100.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 3.0
+scale_amount_max = 5.0
+color = Color(0.98130625, 0.90982777, 0.816975, 1)
+color_initial_ramp = SubResource("Gradient_ow35r")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=211693506]
+occluder = SubResource("OccluderPolygon2D_0mymv")
+sdf_collision = false
+occluder_light_mask = 3

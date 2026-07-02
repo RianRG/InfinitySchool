@@ -16,6 +16,7 @@ func transition():
 	var distance = owner.position.distance_to(player.position)
 	if distance<=135 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
 		get_parent().change_state("meleeAttack")
+		$"../../followtimer".stop()
 		
 	elif distance>150 && !owner.bulletPhaseDecided && !phaseRolled:
 		phaseRolled=true
@@ -24,9 +25,8 @@ func transition():
 			owner.bulletPhaseDecided=true
 			get_parent().change_state("bulletPhase")
 		else:
-			await get_tree().create_timer(5).timeout
-			if distance>150 && !owner.onAttackCooldown:
-				get_parent().change_state("bulletPhase")
+			$"../../followtimer".start(5)
+			
 		
 	
 	

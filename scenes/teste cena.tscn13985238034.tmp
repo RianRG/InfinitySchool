@@ -522,7 +522,7 @@ tile_set = ExtResource("29_stwsr")
 [node name="JuizProps" type="TileMapLayer" parent="." unique_id=1730852400]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAC4AMH/AAAFAAwAAAC5ALr/AAAIAAEAAADGALj/AAAbAAAAAACqALj/AAAbAAAAAADLALL/AAAbAAoAAACmALL/AAAbAAoAAACxALL/AAAbAAoAAADAALL/AAAbAAoAAADQAMz/AAAgAAAAAAChAMz/AAAAAAAAAAChAL//AAAAAAAAAADQAL//AAAgAAAAAAA=")
+tile_map_data = PackedByteArray("AAC4AMH/AAAFAAwAAAC5ALr/AAAIAAEAAADGALj/AAAbAAAAAACqALj/AAAbAAAAAADLALL/AAAbAAoAAACmALL/AAAbAAoAAACxALL/AAAbAAoAAADAALL/AAAbAAoAAADQAMz/AAAgAAAAAAChAMz/AAAAAAAAAAChAL//AAAAAAAAAADQAL//AAAgAAAAAADEAL//AAAQAA0AAADFAMf/AAAVAA4AAACsAMf/AAABAAkAAAA=")
 tile_set = ExtResource("30_stwsr")
 
 [node name="PointLight2D9" type="PointLight2D" parent="." unique_id=136386738]
@@ -592,11 +592,7 @@ scale = Vector2(2, 2)
 tile_set = ExtResource("32_d2yjx")
 
 [node name="Pilastra" parent="." unique_id=1108521031 instance=ExtResource("33_4vyth")]
-position = Vector2(2736, -992)
-
-[node name="Pilastra2" parent="." unique_id=638600727 instance=ExtResource("33_4vyth")]
-position = Vector2(3184, -992)
-health = 10
+position = Vector2(2680, -952)
 
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
 
