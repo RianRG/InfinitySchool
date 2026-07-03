@@ -695,7 +695,17 @@ func _on_invincible_timer_timeout():
 # COMBAT
 # ===============================
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy") || body.is_in_group("quebravel") :
+	if  body.is_in_group("quebravel"):
+		if current_state == PlayerState.KOKUSEN:
+			body.takeDamage(20)
+		if current_state == PlayerState.SPINNING:
+			body.takeDamage(10)
+		if current_state == PlayerState.ATTACKING:
+			body.takeDamage(5)
+		apply_knockback(body.global_position, 350)
+	
+	
+	if body.is_in_group("enemy"):
 		if current_state == PlayerState.KOKUSEN:
 			body.takeDamage(20)
 		if current_state == PlayerState.SPINNING:
@@ -726,7 +736,6 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 			current_cooldown = base_attack_cooldown  # Cooldown normal
 			apply_knockback(body.global_position, 350)  # Knockback normal
 			if !body.isDead: camera.screenShake(3, 0.3)
-			
 			
 		attack_cooldown_timer.stop()
 		attack_cooldown_timer.start(current_cooldown)

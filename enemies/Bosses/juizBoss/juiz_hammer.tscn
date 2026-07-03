@@ -885,7 +885,7 @@ disabled = true
 modulate = Color(1.0015246, 1.0015246, 1.0015246, 1)
 y_sort_enabled = true
 texture = ExtResource("1_jmf3b")
-offset = Vector2(0, 10)
+offset = Vector2(0, 16)
 hframes = 9
 vframes = 2
 

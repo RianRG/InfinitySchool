@@ -1791,7 +1791,7 @@ parameters/attack/blend_position = Vector2(0, 0)
 parameters/walk/blend_position = Vector2(-0.0015949, 0.043956)
 
 [node name="CollisionShape2D" parent="." index="5" unique_id=724335017]
-position = Vector2(-1.250001, 18.749996)
+position = Vector2(-7.1054274e-15, 17.777777)
 scale = Vector2(0.9999991, 0.9999991)
 shape = SubResource("RectangleShape2D_3ve6r")
 
@@ -1804,6 +1804,7 @@ shape = SubResource("RectangleShape2D_186p5")
 disabled = true
 
 [node name="CollisionShape2D" parent="playerDetection" parent_id_path=PackedInt32Array(840287295) index="0" unique_id=1937697267]
+position = Vector2(0, -9.536743e-07)
 scale = Vector2(1, 1)
 shape = SubResource("CircleShape2D_3ve6r")
 
