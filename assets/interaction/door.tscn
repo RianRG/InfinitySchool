@@ -105,9 +105,11 @@ shape = SubResource("RectangleShape2D_tp573")
 disabled = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1294714927]
+visible = false
 occluder = SubResource("OccluderPolygon2D_qjfpb")
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1610768339]
+visible = false
 position = Vector2(0, -61)
 occluder = SubResource("OccluderPolygon2D_tp573")
 

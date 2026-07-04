@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsm7lf61fjqgi"]
+[gd_scene format=3 uid="uid://bsm7lf61fjqgi"]
 
 [ext_resource type="Script" uid="uid://dg8jw3ghh4mof" path="res://assets/dialogue/interact_button.gd" id="1_1t5vk"]
 [ext_resource type="Texture2D" uid="uid://b7toig6ko72uc" path="res://assets/dialogue/interactButton-Sheet.png" id="1_i1by4"]
@@ -42,16 +42,14 @@ _data = {
 &"interactButtonAnimation": SubResource("Animation_i1by4")
 }
 
-[node name="InteractButton" type="Node2D"]
+[node name="InteractButton" type="Node2D" unique_id=210204382]
 scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_1t5vk")
 
-[node name="InteractButtonSprite" type="Sprite2D" parent="."]
+[node name="InteractButtonSprite" type="Sprite2D" parent="." unique_id=260610847]
 texture = ExtResource("1_i1by4")
 hframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_1t5vk")
-}
-autoplay = "interactButtonAnimation"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=229621107]
+libraries/ = SubResource("AnimationLibrary_1t5vk")
+autoplay = &"interactButtonAnimation"

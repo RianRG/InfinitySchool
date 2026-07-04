@@ -2,16 +2,15 @@ extends Node
 
 
 var tilemaps: Array[TileMapLayer] = []
-
+# preload sounds file for each tilemap
 const footstep_sounds = {
-	"juiz": [
-		preload("res://sfx/O Grilo - Herói do Futuro - GriloTube (128k).mp3")
-	],
+	#"juiz": [
+		#preload("")
+	#],
 	
 }
 
 func play_footstep(position: Vector2):
-	print(tilemaps)
 	var tile_data = []
 	for tilemap in tilemaps:
 		var tile_position = tilemap.local_to_map(position)

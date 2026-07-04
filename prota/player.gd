@@ -53,7 +53,7 @@ var invincible_timer: Timer
 @export var friction = 0.2
 @export var acc = 0.35
 @export var bulletNode: PackedScene
-@export var totalHealth=12
+@export var totalHealth=2
 @export var totalEnergy=10
 
 

@@ -12,6 +12,8 @@ func attackPlayer():
 func _on_attack_area_body_entered(body: Node2D):
 	if body.is_in_group("quebravel"):
 		body.takeDamage(15)
+	if body.is_in_group("character"):
+		body.takeDamage(owner.position, 300.0,2)
 
 
 # ======================

@@ -235,7 +235,7 @@ adjustment_brightness = 0.9
 adjustment_contrast = 1.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoljt"]
-size = Vector2(799, 496)
+size = Vector2(799, 585)
 
 [sub_resource type="Resource" id="Resource_ylo3c"]
 script = ExtResource("26_ir3w1")
@@ -279,7 +279,7 @@ position = Vector2(2944, -1096)
 position = Vector2(2944, -928)
 
 [node name="player" parent="." unique_id=1149914169 instance=ExtResource("4_4vyth")]
-position = Vector2(2944, -807.99994)
+position = Vector2(1153.9999, 256)
 
 [node name="Door" parent="." unique_id=804227107 instance=ExtResource("10_uyp6h")]
 position = Vector2(224, -4)
@@ -369,13 +369,13 @@ ceilling = NodePath("../ceilling")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(2960, -1009)
+position = Vector2(1162, 219)
 zoom = Vector2(0.8, 0.8)
 limit_enabled = false
-limit_left = 2560
-limit_top = -1280
-limit_right = 3359
-limit_bottom = -784
+limit_left = 762
+limit_top = -141
+limit_right = 1561
+limit_bottom = 444
 script = ExtResource("23_w5sdy")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
@@ -385,7 +385,7 @@ script = ExtResource("24_gix2x")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2960, -1009)
+position = Vector2(1162, 219)
 script = ExtResource("25_sllsw")
 priority = 1
 follow_mode = 2
@@ -447,7 +447,7 @@ texture = SubResource("GradientTexture2D_m5ask")
 [node name="cameraBounds" type="Area2D" parent="." unique_id=191345596]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cameraBounds" unique_id=377826437]
-position = Vector2(2959.5, -1032)
+position = Vector2(1161, 151.5)
 shape = SubResource("RectangleShape2D_aoljt")
 disabled = true
 debug_color = Color(0, 0.6, 0.69803923, 0)
@@ -599,6 +599,9 @@ position = Vector2(2720, -968)
 [node name="Pilastra2" parent="." unique_id=638600727 instance=ExtResource("33_4vyth")]
 position = Vector2(3168, -968)
 health = 16
+
+[node name="Door5" parent="." unique_id=1296570074 instance=ExtResource("10_uyp6h")]
+position = Vector2(1167, -11)
 
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
 

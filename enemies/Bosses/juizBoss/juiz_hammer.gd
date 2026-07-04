@@ -48,6 +48,8 @@ func attack():
 	if attackcounter == 20:
 		baseframe.frame = 3
 
+func startTimer():
+	toAttackTimer.start()
 func stop():
 	toAttackTimer.stop()
 	toRetreatTimer.stop()

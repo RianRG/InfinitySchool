@@ -147,7 +147,7 @@ func takeDamage(dano: int):
 	var attackScene = purpleAttackVfx.instantiate()
 	attackScene.position = global_position
 	get_parent().add_child(attackScene)
-	attackScene.scale = Vector2(1, 1)
+	attackScene.scale = Vector2(.5, .5)
 	
 	var direction_from_player = (global_position - player.global_position).normalized()
 	attackScene.rotation = direction_from_player.angle() + 1.7

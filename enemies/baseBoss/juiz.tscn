@@ -1729,7 +1729,7 @@ size = Vector2(95.00007, 55.00004)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_186p5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ve6r"]
-radius = 80.0
+radius = 63.497017
 
 [sub_resource type="Gradient" id="Gradient_msdht"]
 offsets = PackedFloat32Array(0, 0.26605505, 0.48623854, 1)
