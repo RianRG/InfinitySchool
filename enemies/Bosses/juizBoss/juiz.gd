@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var player = get_parent().find_child("player")
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var finitestate: Node2D = $FiniteStateMachine
+@onready var hammer: CharacterBody2D = $"../JuizHammer"
 
 var direction: Vector2 = Vector2.ZERO
 var target_direction: Vector2 = Vector2.ZERO
@@ -46,6 +47,7 @@ var health = 1000:
 		health = value
 		if value <= 0:
 			if !isDead: player.freezeFrame(0.4, 3)
+			hammer.stop()
 			isDead=true
 			find_child("FiniteStateMachine").change_state("death")
 

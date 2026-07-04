@@ -291,6 +291,7 @@ func _handle_input():
 	if Input.is_action_just_pressed("heal"):
 		_try_heal()
 
+
 # ===============================
 # MOVEMENT
 # ===============================
@@ -353,6 +354,9 @@ func _update_animation_blend_positions(direction: Vector2):
 	_animationTree["parameters/attack/blend_position"] = direction
 	_animationTree["parameters/combo/blend_position"] = direction
 	
+
+func _play_footstep():
+	FootstepsSoundManager.play_footstep(global_position)
 
 # ===============================
 # DASH

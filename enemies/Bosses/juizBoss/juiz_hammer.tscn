@@ -378,6 +378,18 @@ tracks/13/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("HammerVFXSprite2:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.48887253, 0.63069165, 0.71428573),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 0.3137255), Color(2.454227, 2.454227, 2.454227, 0.3137255), Color(2.454227, 2.454227, 2.454227, 0.3137255), Color(2.454227, 2.454227, 2.454227, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_esk6i"]
 length = 0.001
@@ -621,6 +633,30 @@ tracks/19/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("HammerVFXSprite:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 1)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("HammerVFXSprite2:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_n3qrh"]
 resource_name = "X"
@@ -841,6 +877,18 @@ tracks/17/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("HammerVFXSprite:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.48887253, 0.63069165, 0.71428573),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 0.3137255), Color(2.454227, 2.454227, 2.454227, 0.3137255), Color(2.454227, 2.454227, 2.454227, 0.3137255), Color(2.454227, 2.454227, 2.454227, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i60d1"]

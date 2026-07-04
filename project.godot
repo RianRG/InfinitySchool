@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 
 Global="*res://Global.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
+FootstepsSoundManager="*uid://c18hysasw5goo"
 
 [display]
 

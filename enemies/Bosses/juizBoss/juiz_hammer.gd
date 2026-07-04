@@ -47,7 +47,10 @@ func attack():
 		baseframe.frame = 2
 	if attackcounter == 20:
 		baseframe.frame = 3
-	
+
+func stop():
+	toAttackTimer.stop()
+	toRetreatTimer.stop()
 #func _on_hammer_vfx_animation_animation_finished(anim_name: StringName) -> void:
 	#if anim_name == "X":
 		#print()
