@@ -286,6 +286,7 @@ color_ramp = SubResource("Gradient_pc0i7")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2026012165]
 modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
+y_sort_enabled = true
 texture = ExtResource("2_01vvq")
 hframes = 8
 
@@ -297,7 +298,6 @@ shape = SubResource("RectangleShape2D_4wgg5")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1991064392]
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=366494525]
-z_as_relative = false
 y_sort_enabled = true
 range_item_cull_mask = 5
 texture = SubResource("GradientTexture2D_wubi2")
