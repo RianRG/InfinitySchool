@@ -1766,6 +1766,8 @@ autostart = true
 
 [node name="Sprite2D" parent="." index="1" unique_id=2097465531]
 modulate = Color(1.0309138, 1.0309138, 1.0309138, 1)
+light_mask = 19
+visibility_layer = 19
 y_sort_enabled = true
 texture = ExtResource("2_8bmxj")
 hframes = 15
@@ -1825,24 +1827,35 @@ metadata/_custom_type_script = "uid://cwcijpfuwv840"
 wait_time = 0.05
 
 [node name="PointLight2D4" type="PointLight2D" parent="." index="12" unique_id=1534715481]
+light_mask = 16
+y_sort_enabled = true
 position = Vector2(-21.75, -43.5)
 scale = Vector2(1.2999995, 1.2999995)
 energy = 4.0
 texture = SubResource("GradientTexture2D_82dab")
 
 [node name="PointLight2D2" type="PointLight2D" parent="PointLight2D4" index="0" unique_id=1305503139]
+light_mask = 16
+visibility_layer = 16
+y_sort_enabled = true
 position = Vector2(-1.9230843, 5.769232)
 scale = Vector2(1.0000001, 1.0000001)
 energy = 4.0
 texture = SubResource("GradientTexture2D_82dab")
 
 [node name="PointLight2D5" type="PointLight2D" parent="PointLight2D4" index="1" unique_id=962938666]
+light_mask = 16
+visibility_layer = 16
+y_sort_enabled = true
 position = Vector2(2.884616, 5.769232)
 scale = Vector2(0.9999999, 0.9999999)
 energy = 4.0
 texture = SubResource("GradientTexture2D_82dab")
 
 [node name="PointLight2D" type="PointLight2D" parent="." index="13" unique_id=2042320740]
+light_mask = 16
+visibility_layer = 16
+y_sort_enabled = true
 position = Vector2(25.5, -25.5)
 scale = Vector2(1.2999995, 1.2999995)
 energy = 3.0
@@ -1850,6 +1863,9 @@ texture = SubResource("GradientTexture2D_msdht")
 texture_scale = 2.0
 
 [node name="PointLight2D3" type="PointLight2D" parent="PointLight2D" index="0" unique_id=1886625465]
+light_mask = 16
+visibility_layer = 16
+y_sort_enabled = true
 position = Vector2(-4.8076944, 0)
 scale = Vector2(0.9999999, 0.9999999)
 energy = 3.0

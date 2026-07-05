@@ -18,15 +18,6 @@ colors = PackedColorArray(1, 0.9275334, 0.89165515, 1, 1, 0.29748532, 0, 1, 1, 0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wgg5"]
 size = Vector2(22.500006, 28.250004)
 
-[sub_resource type="Gradient" id="Gradient_1lx0a"]
-colors = PackedColorArray(1, 0, 0, 0.84300005, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_wubi2"]
-gradient = SubResource("Gradient_1lx0a")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.7991453, 0.26495728)
-
 [sub_resource type="Animation" id="Animation_wubi2"]
 length = 0.001
 tracks/0/type = "value"
@@ -258,6 +249,15 @@ _data = {
 &"idle": SubResource("Animation_1lx0a")
 }
 
+[sub_resource type="Gradient" id="Gradient_1lx0a"]
+colors = PackedColorArray(1, 0, 0, 0.84300005, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wubi2"]
+gradient = SubResource("Gradient_1lx0a")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.7991453, 0.26495728)
+
 [node name="Bullet" type="Area2D" unique_id=984799299]
 modulate = Color(0.67851543, 0.67851543, 0.67851543, 1)
 z_index = 1
@@ -297,11 +297,6 @@ shape = SubResource("RectangleShape2D_4wgg5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1991064392]
 
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=366494525]
-y_sort_enabled = true
-range_item_cull_mask = 5
-texture = SubResource("GradientTexture2D_wubi2")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=717594728]
 libraries/ = SubResource("AnimationLibrary_wubi2")
 autoplay = &"idle"
@@ -321,6 +316,11 @@ hframes = 14
 [node name="exitLimitSprite" type="Sprite2D" parent="." unique_id=914003095]
 texture = ExtResource("5_mkfp5")
 hframes = 3
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=366494525]
+scale = Vector2(0.9999997, 0.9999997)
+range_item_cull_mask = 5
+texture = SubResource("GradientTexture2D_wubi2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

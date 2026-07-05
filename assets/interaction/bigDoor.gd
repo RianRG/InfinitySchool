@@ -30,10 +30,12 @@ func _ready():
 		collisionClosed.disabled = !collisionClosed.disabled
 		collisionOpen.disabled=!collisionOpen.disabled
 		collisionOpen2.disabled=!collisionOpen2.disabled
-		$LightOccluder2D.visible = true
+		#$LightOccluder2D.visible = true
+		#$LightOccluder2D3.visible = true
 		$LightOccluder2D2.visible = false
 	else: 
-		$LightOccluder2D.visible = false
+		#$LightOccluder2D.visible = false
+		#$LightOccluder2D3.visible = false
 		$LightOccluder2D2.visible = true
 
 func toggle():
@@ -47,7 +49,8 @@ func toggle():
 		collisionClosed.disabled = !collisionClosed.disabled
 		collisionOpen.disabled=!collisionOpen.disabled
 		collisionOpen2.disabled=!collisionOpen2.disabled
-		$LightOccluder2D.visible = true
+		#$LightOccluder2D.visible = true
+		#$LightOccluder2D3.visible = true
 		$LightOccluder2D2.visible = false
 		var tween = create_tween()
 		tween.tween_property(ceilling, "modulate:a", 0.0, 0.5)
@@ -55,7 +58,8 @@ func toggle():
 		animation.play("closed")
 		collisionClosed.disabled = !collisionClosed.disabled
 		collisionOpen2.disabled=!collisionOpen2.disabled
-		$LightOccluder2D.visible = false
+		#$LightOccluder2D.visible = false
+		#$LightOccluder2D3.visible = false
 		$LightOccluder2D2.visible = true
 		var tween = create_tween()
 		tween.tween_property(ceilling, "modulate:a", 1, 0.5)
