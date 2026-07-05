@@ -50,6 +50,7 @@ func attack():
 
 func startTimer():
 	toAttackTimer.start()
+	toAttackTimer.autostart=true
 func stop():
 	toAttackTimer.stop()
 	toRetreatTimer.stop()

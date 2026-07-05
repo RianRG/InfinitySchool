@@ -2844,12 +2844,13 @@ disabled = true
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=305568012]
 modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
 position = Vector2(0, -22.352942)
+scale = Vector2(0.5, 1)
 emitting = false
-amount = 200
+amount = 10
 texture = ExtResource("6_tryrn")
-lifetime = 0.6
+lifetime = 0.3
 emission_shape = 1
-emission_sphere_radius = 20.0
+emission_sphere_radius = 16.0
 spread = 0.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 300.0

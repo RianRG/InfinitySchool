@@ -4,7 +4,7 @@ var playerEntered: bool = false
 @onready var interactButton: Node2D = $"../buttonSprite"
 @onready var interactButtonFather: Node2D = $".."
 
-@onready var door: Door = $"../.."
+@onready var door: Door = null
 
 
 
