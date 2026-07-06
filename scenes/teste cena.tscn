@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://bfs5mfy6151e1" path="res://enemies/baseBoss/juiz.tscn" id="3_d2yjx"]
 [ext_resource type="PackedScene" uid="uid://b25qg3uermyxk" path="res://prota/player.tscn" id="4_4vyth"]
 [ext_resource type="TileSet" uid="uid://dxj02uipe2fmp" path="res://terrains/GeneralTerrains/TileSets/Chao.tres" id="5_lnyy8"]
-[ext_resource type="TileSet" uid="uid://beph2ivdwlhnc" path="res://terrains/GeneralTerrains/TileSets/Paredenova1.tres" id="19_hq2t1"]
 [ext_resource type="Script" uid="uid://ch6gilxo87qpn" path="res://characters/scripts/camera_2d.gd" id="23_w5sdy"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="24_gix2x"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="25_sllsw"]
@@ -15,7 +14,6 @@
 [ext_resource type="TileSet" uid="uid://c53eo3s5om72n" path="res://terrains/GeneralTerrains/TileSets/ParedenovaJuizBoss.tres" id="29_stwsr"]
 [ext_resource type="TileSet" uid="uid://crewjdph5stbd" path="res://terrains/Decoração/TileStes/Juizprops.tres" id="30_stwsr"]
 [ext_resource type="Texture2D" uid="uid://hvoyj72cuj3l" path="res://terrains/Decoração/ParalaxTry.png" id="31_jvykn"]
-[ext_resource type="TileSet" uid="uid://dhwhcslugue1y" path="res://terrains/GeneralTerrains/TileSets/JuizBorders.tres" id="32_d2yjx"]
 [ext_resource type="PackedScene" uid="uid://kx3snxy3xuak" path="res://enemies/Bosses/juizBoss/pilastra.tscn" id="33_4vyth"]
 [ext_resource type="PackedScene" uid="uid://e5f5w4xxhld7" path="res://assets/dialogue/dialogue_mechanic.tscn" id="35_oc16y"]
 [ext_resource type="PackedScene" uid="uid://d3hj5fgdjtdiq" path="res://assets/interaction/bigDoor.tscn" id="36_ms1cf"]
@@ -213,18 +211,10 @@ texture = SubResource("GradientTexture2D_jvykn")
 offset = Vector2(0, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=187328413]
-visible = false
 z_index = 4
 position = Vector2(2943, -1032.0001)
 scale = Vector2(0.92, 0.96)
 texture = ExtResource("31_jvykn")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1949766185]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(-16, 0)
-scale = Vector2(2, 2)
-tile_set = ExtResource("32_d2yjx")
 
 [node name="Pilastra" parent="." unique_id=1108521031 instance=ExtResource("33_4vyth")]
 position = Vector2(2720, -968)
@@ -246,9 +236,6 @@ energy = 0.5
 shadow_enabled = true
 shadow_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_0mymv")
-
-[node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=1211847245]
-tile_set = ExtResource("19_hq2t1")
 
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
 
