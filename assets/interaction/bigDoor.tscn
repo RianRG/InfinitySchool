@@ -12,7 +12,7 @@ size = Vector2(300, 72)
 size = Vector2(4, 133.5)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qjfpb"]
-polygon = PackedVector2Array(-12, -52, -19, -52, -19, 27, -12, 27)
+polygon = PackedVector2Array(-12, -91, -19, -91, -19, 27, -12, 27)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tp573"]
 cull_mode = 1
@@ -112,18 +112,27 @@ disabled = true
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1294714927]
 visible = false
+light_mask = 3
+visibility_layer = 3
 position = Vector2(-13, 2)
 occluder = SubResource("OccluderPolygon2D_qjfpb")
+occluder_light_mask = 3
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="." unique_id=153561552]
 visible = false
+light_mask = 3
+visibility_layer = 3
 position = Vector2(44, 2)
 occluder = SubResource("OccluderPolygon2D_qjfpb")
+occluder_light_mask = 3
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1610768339]
 visible = false
+light_mask = 3
+visibility_layer = 3
 position = Vector2(0, -66)
 occluder = SubResource("OccluderPolygon2D_tp573")
+occluder_light_mask = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1359562227]
 libraries/ = SubResource("AnimationLibrary_amge4")

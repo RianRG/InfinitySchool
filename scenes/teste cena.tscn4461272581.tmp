@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bfs5mfy6151e1" path="res://enemies/baseBoss/juiz.tscn" id="3_d2yjx"]
 [ext_resource type="PackedScene" uid="uid://b25qg3uermyxk" path="res://prota/player.tscn" id="4_4vyth"]
 [ext_resource type="TileSet" uid="uid://dxj02uipe2fmp" path="res://terrains/GeneralTerrains/TileSets/Chao.tres" id="5_lnyy8"]
+[ext_resource type="Script" uid="uid://6o7qrudn471c" path="res://scenes/area_2d_2.gd" id="18_6afs7"]
 [ext_resource type="Script" uid="uid://ch6gilxo87qpn" path="res://characters/scripts/camera_2d.gd" id="23_w5sdy"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="24_gix2x"]
 [ext_resource type="Script" uid="uid://bhexx6mj1xv3q" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="25_sllsw"]
@@ -38,6 +39,9 @@ adjustment_contrast = 1.1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoljt"]
 size = Vector2(800, 870)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8cxyx"]
+size = Vector2(802, 495)
+
 [sub_resource type="Resource" id="Resource_ylo3c"]
 script = ExtResource("26_ir3w1")
 
@@ -61,6 +65,9 @@ height = 800
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.7564103, 0.22222224)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mymv"]
+size = Vector2(75, 20)
 
 [node name="Node2D" type="Node2D" unique_id=1154151293]
 y_sort_enabled = true
@@ -128,6 +135,12 @@ position = Vector2(303, -306)
 shape = SubResource("RectangleShape2D_aoljt")
 disabled = true
 debug_color = Color(0, 0.60038817, 0.69789743, 0.60800004)
+
+[node name="Bounds2" type="CollisionShape2D" parent="cameraBounds" unique_id=1686045612]
+position = Vector2(302, -493)
+shape = SubResource("RectangleShape2D_8cxyx")
+disabled = true
+debug_color = Color(0, 0.60038817, 0.70000815, 0)
 
 [node name="bossCamera" type="Node2D" parent="." unique_id=2026303458 node_paths=PackedStringArray("follow_target")]
 top_level = true
@@ -226,6 +239,10 @@ health = 16
 [node name="dialogueMechanic" parent="." unique_id=602747879 instance=ExtResource("35_oc16y")]
 position = Vector2(1276, 139)
 
+[node name="bigdoor" parent="." unique_id=1992437991 instance=ExtResource("36_ms1cf")]
+position = Vector2(2944, -704)
+isOpen = true
+
 [node name="PointLight2D5" type="PointLight2D" parent="." unique_id=1572857033]
 visible = false
 position = Vector2(2952, -552)
@@ -235,10 +252,15 @@ shadow_enabled = true
 shadow_item_cull_mask = 7
 texture = SubResource("GradientTexture2D_0mymv")
 
-[node name="bigdoor" parent="." unique_id=1992437991 instance=ExtResource("36_ms1cf")]
-position = Vector2(2944, -704)
-isOpen = true
+[node name="Area2D2" type="Area2D" parent="." unique_id=862612632]
+position = Vector2(2734, -634)
+script = ExtResource("18_6afs7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=153030754]
+position = Vector2(210.5, -138)
+shape = SubResource("RectangleShape2D_0mymv")
 
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D2" to="Area2D2" method="_on_body_entered"]
 
 [editable path="Juiz"]
