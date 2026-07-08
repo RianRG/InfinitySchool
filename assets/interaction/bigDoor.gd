@@ -6,7 +6,7 @@ class_name BigDoor
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var interactButton = $InteractButton
-
+var isBlocked=false
 
 @export var isOpen := false
 @onready var sprite: Sprite2D = $Sprite2D
@@ -16,7 +16,7 @@ class_name BigDoor
 
 
 func _input(event):
-	if event.is_action_pressed("interact") and interactButton.canStartDialog:
+	if event.is_action_pressed("interact") and interactButton.canStartDialog and !isBlocked:
 		toggle()
 		
 
@@ -63,3 +63,15 @@ func toggle():
 		$LightOccluder2D2.visible = true
 		var tween = create_tween()
 		tween.tween_property(ceilling, "modulate:a", 1, 0.5)
+
+func block():
+	isBlocked=true
+	animation.play("closed")
+	collisionClosed.disabled = !collisionClosed.disabled
+	collisionOpen2.disabled=!collisionOpen2.disabled
+	$LightOccluder2D.visible = false
+	$LightOccluder2D3.visible = false
+	$LightOccluder2D2.visible = true
+	var tween = create_tween()
+	tween.tween_property(ceilling, "modulate:a", 1, 0.5)
+	

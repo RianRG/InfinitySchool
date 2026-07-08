@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://d3hj5fgdjtdiq" path="res://assets/interaction/bigDoor.tscn" id="36_ms1cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh3x3"]
-size = Vector2(768, 464)
+size = Vector2(768, 540)
 
 [sub_resource type="Resource" id="Resource_syhfa"]
 script = ExtResource("26_ir3w1")
@@ -33,10 +33,11 @@ glow_intensity = 0.45
 glow_bloom = 0.05
 glow_hdr_threshold = 1.5
 adjustment_enabled = true
+adjustment_brightness = 0.9
 adjustment_contrast = 1.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoljt"]
-size = Vector2(800, 870)
+size = Vector2(800, 500)
 
 [sub_resource type="Resource" id="Resource_ylo3c"]
 script = ExtResource("26_ir3w1")
@@ -68,8 +69,7 @@ script = ExtResource("1_stwsr")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1025512872]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=553732040]
-visible = false
+[node name="BossAnimationBounds" type="CollisionShape2D" parent="Area2D" unique_id=553732040]
 position = Vector2(2944, -1032)
 shape = SubResource("RectangleShape2D_bh3x3")
 debug_color = Color(1, 0.007843138, 0.07058824, 0.2)
@@ -79,7 +79,7 @@ z_index = 1
 position = Vector2(2944, -1080)
 
 [node name="Juiz" parent="." unique_id=644742827 instance=ExtResource("3_d2yjx")]
-position = Vector2(2944, -928)
+position = Vector2(2942, -1068)
 
 [node name="player" parent="." unique_id=1149914169 instance=ExtResource("4_4vyth")]
 position = Vector2(2956, -512.00006)
@@ -90,13 +90,14 @@ color = Color(0.37851202, 0.269558, 0.2883701, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(2944, -635)
+position = Vector2(2944, -514)
 zoom = Vector2(0.8, 0.8)
+process_callback = 0
 limit_enabled = false
 limit_left = 2544
-limit_top = -1280
+limit_top = -789
 limit_right = 3344
-limit_bottom = -410
+limit_bottom = -289
 script = ExtResource("23_w5sdy")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
@@ -106,7 +107,7 @@ script = ExtResource("24_gix2x")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2944, -635)
+position = Vector2(2944, -514)
 script = ExtResource("25_sllsw")
 priority = 2
 follow_mode = 2
@@ -117,6 +118,18 @@ follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
 limit_target = NodePath("../cameraBounds/Bounds")
 
+[node name="bossFightPhantom" type="Node2D" parent="." unique_id=1863549838 node_paths=PackedStringArray("follow_target")]
+top_level = true
+position = Vector2(2944, -975)
+script = ExtResource("25_sllsw")
+follow_mode = 2
+follow_target = NodePath("../player")
+zoom = Vector2(0.8, 0.8)
+tween_resource = SubResource("Resource_syhfa")
+follow_damping = true
+follow_damping_value = Vector2(0.3, 0.3)
+limit_target = NodePath("../AreaEnteredBossFight/BossFightBounds")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=498581441]
 environment = SubResource("Environment_m5ask")
 
@@ -124,14 +137,14 @@ environment = SubResource("Environment_m5ask")
 position = Vector2(2641, -539)
 
 [node name="Bounds" type="CollisionShape2D" parent="cameraBounds" unique_id=377826437]
-position = Vector2(303, -306)
+position = Vector2(303, 0)
 shape = SubResource("RectangleShape2D_aoljt")
 disabled = true
 debug_color = Color(0, 0.60038817, 0.69789743, 0.60800004)
 
-[node name="bossCamera" type="Node2D" parent="." unique_id=2026303458 node_paths=PackedStringArray("follow_target")]
+[node name="bossAnimationPhantom" type="Node2D" parent="." unique_id=2026303458 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2944, -928)
+position = Vector2(2942, -1068)
 script = ExtResource("25_sllsw")
 follow_mode = 2
 follow_target = NodePath("../Juiz")
@@ -239,6 +252,15 @@ texture = SubResource("GradientTexture2D_0mymv")
 position = Vector2(2944, -704)
 isOpen = true
 
+[node name="AreaEnteredBossFight" type="Area2D" parent="." unique_id=1510807105]
+position = Vector2(2641, -1000)
+
+[node name="BossFightBounds" type="CollisionShape2D" parent="AreaEnteredBossFight" unique_id=875748412]
+position = Vector2(303, 0)
+shape = SubResource("RectangleShape2D_aoljt")
+debug_color = Color(0, 0.60038817, 0.69789743, 0.60800004)
+
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="AreaEnteredBossFight" to="." method="_on_area_body_entered"]
 
 [editable path="Juiz"]

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dmd2y7fj4i2ql" path="res://terrains/Portas/BigDoortop.png" id="4_24jkl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfpb"]
-size = Vector2(300, 72)
+size = Vector2(300, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp573"]
 size = Vector2(4, 133.5)
@@ -73,7 +73,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qjfpb"]
-radius = 130.0
+radius = 30.0
 
 [node name="Door" type="CharacterBody2D" unique_id=241297043]
 z_index = 1
@@ -95,7 +95,6 @@ region_rect = Rect2(0, 0, 192, 192)
 
 [node name="CollisionClosed" type="CollisionShape2D" parent="." unique_id=783950894]
 visibility_layer = 3
-position = Vector2(0, -26)
 shape = SubResource("RectangleShape2D_qjfpb")
 
 [node name="CollisionOpen" type="CollisionShape2D" parent="." unique_id=85219722]
@@ -142,13 +141,13 @@ autoplay = &"closed"
 position = Vector2(0, -61)
 
 [node name="buttonSprite" parent="InteractButton" index="0"]
+visible = false
 position = Vector2(0, -56)
 
 [node name="CollisionShape2D" parent="InteractButton/Area2D" index="0"]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(0, -13)
-scale = Vector2(0.4, 0.4)
+position = Vector2(0, 40)
 shape = SubResource("CircleShape2D_qjfpb")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=451176098]
