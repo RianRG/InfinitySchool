@@ -1120,7 +1120,7 @@ texture = ExtResource("5_esk6i")
 hframes = 13
 
 [node name="HammerBase" type="Sprite2D" parent="." unique_id=1534253002]
-z_index = -1
+z_index = -2
 y_sort_enabled = true
 position = Vector2(0, 103)
 texture = ExtResource("6_n3qrh")

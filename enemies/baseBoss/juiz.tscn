@@ -1776,6 +1776,7 @@ frame = 15
 
 [node name="shadow" type="Sprite2D" parent="." index="2" unique_id=1191370424]
 modulate = Color(1, 1, 1, 0.4627451)
+z_as_relative = false
 y_sort_enabled = true
 position = Vector2(2, 37)
 scale = Vector2(1.3, 1.3)

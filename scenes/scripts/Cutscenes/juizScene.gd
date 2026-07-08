@@ -21,9 +21,6 @@ func _process(delta: float) -> void:
 	
 func startCutscene():
 	cutscenePlayed=true
-	player.set_physics_process(false)
-	player.set_process_input(false)
-	boss.set_physics_process(false)
 	await get_tree().create_timer(.4).timeout
 	#playerPhantom.set_tween_ease(1)
 	#bossAnimationPhantom.set_tween_ease(1)
@@ -48,12 +45,18 @@ func endCutscene():
 	
 
 func switchToBossFightCamera():
+	
 	bossFightPhantom.priority=10
 	playerPhantom.priority=0
 func _on_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character") and !cutscenePlayed:
 		bigDoor.block()
 		player._change_state(player.PlayerState.IDLE)
+		
+		player.set_physics_process(false)
+		player.set_process_input(false)
+		boss.set_physics_process(false)
+		
 		switchToBossFightCamera()
 		await get_tree().create_timer(2).timeout
 		startCutscene()
