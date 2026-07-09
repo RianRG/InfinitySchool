@@ -2805,14 +2805,13 @@ z_index = -1
 texture = ExtResource("5_1jxqw")
 
 [node name="circleDeath" type="Sprite2D" parent="." unique_id=1036490393]
-visible = false
 modulate = Color(2.454227, 2.454227, 2.454227, 1)
 z_index = 10
 position = Vector2(0, -35.52)
 scale = Vector2(4, 4)
 texture = ExtResource("3_i3pqv")
 hframes = 16
-frame = 15
+frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=891681292]
 libraries/ = SubResource("AnimationLibrary_sweqy")

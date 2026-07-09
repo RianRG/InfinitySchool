@@ -13,7 +13,7 @@ func _ready() -> void:
 	bossFightPhantom.set_tween_transition(5)
 	
 	bossFightPhantom.set_tween_duration(1)
-	playerPhantom.set_tween_duration(3)
+	playerPhantom.set_tween_duration(2)
 	bossAnimationPhantom.set_tween_duration(3)
 
 func _process(delta: float) -> void:
@@ -42,6 +42,8 @@ func endCutscene():
 	
 	bossFightPhantom.priority=10
 	bossAnimationPhantom.priority=0
+	boss.finitestate.change_state("follow")
+	boss.hammer.startTimer()
 	
 
 func switchToBossFightCamera():
@@ -51,8 +53,8 @@ func switchToBossFightCamera():
 func _on_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character") and !cutscenePlayed:
 		bigDoor.block()
-		player._change_state(player.PlayerState.IDLE)
-		
+		await get_tree().create_timer(.6).timeout
+		player.force_idle()
 		player.set_physics_process(false)
 		player.set_process_input(false)
 		boss.set_physics_process(false)

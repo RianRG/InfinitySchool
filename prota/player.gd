@@ -96,7 +96,7 @@ var healthEnergyCost = 6
 @export var combo_window := 1.0
 
 @export_category("Knockback Settings")
-@export var knockback_decay := 900.0
+@export var knockback_decay := 1500.0
 
 
 @export_category("Kokusen Settings")
@@ -295,8 +295,9 @@ func _handle_input():
 # ===============================
 # MOVEMENT
 # ===============================
+var direction
 func _process_movement(delta: float):
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	var onWhatStair = getTileName()  # local, calculado todo frame
 	if onWhatStair == "stairRight":
@@ -560,7 +561,7 @@ func _update_animation():
 			freezeFrame(0.5, 3.0)
 			_stateMachine.travel("death")
 			
-			whiteout(140)			
+			whiteout(100)			
 			#set_physics_process(false)
 			set_process(false)
 		
@@ -804,3 +805,8 @@ func whiteout(duration := 0.5):
 	# fade para branco
 	var tween = create_tween()
 	tween.tween_property(rect, "color", Color(1,1,1,1), duration)
+
+func force_idle():
+	move_velocity = Vector2.ZERO
+	external_velocity = Vector2.ZERO
+	_stateMachine.travel("idle")

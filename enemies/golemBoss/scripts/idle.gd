@@ -16,7 +16,7 @@ func enter():
 
 
 
-func _on_player_detection_body_entered(body: Node2D) -> void:
-	if body.is_in_group("character"):
-		owner.hammer.startTimer()
-		get_parent().change_state("follow")
+#func _on_player_detection_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("character"):
+		#owner.hammer.startTimer()
+		#get_parent().change_state("follow")
