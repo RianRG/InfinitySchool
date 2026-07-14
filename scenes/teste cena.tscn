@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://d3hj5fgdjtdiq" path="res://assets/interaction/bigDoor.tscn" id="36_ms1cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh3x3"]
-size = Vector2(768, 540)
+size = Vector2(768, 511)
 
 [sub_resource type="Resource" id="Resource_syhfa"]
 script = ExtResource("26_ir3w1")
@@ -37,7 +37,7 @@ adjustment_brightness = 0.9
 adjustment_contrast = 1.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoljt"]
-size = Vector2(800, 500)
+size = Vector2(800, 496)
 
 [sub_resource type="Resource" id="Resource_ylo3c"]
 script = ExtResource("26_ir3w1")
@@ -70,7 +70,7 @@ script = ExtResource("1_stwsr")
 [node name="Area2D" type="Area2D" parent="." unique_id=1025512872]
 
 [node name="BossAnimationBounds" type="CollisionShape2D" parent="Area2D" unique_id=553732040]
-position = Vector2(2944, -1032)
+position = Vector2(2944, -1017.5)
 shape = SubResource("RectangleShape2D_bh3x3")
 debug_color = Color(1, 0.007843138, 0.07058824, 0.2)
 
@@ -90,14 +90,14 @@ color = Color(0.37851202, 0.269558, 0.2883701, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(2944, -514)
+position = Vector2(2944, -523)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 limit_enabled = false
 limit_left = 2544
-limit_top = -789
+limit_top = -778
 limit_right = 3344
-limit_bottom = -289
+limit_bottom = -298
 script = ExtResource("23_w5sdy")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
@@ -107,7 +107,7 @@ script = ExtResource("24_gix2x")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2944, -514)
+position = Vector2(2944, -523)
 script = ExtResource("25_sllsw")
 priority = 2
 follow_mode = 2
@@ -120,7 +120,7 @@ limit_target = NodePath("../cameraBounds/Bounds")
 
 [node name="bossFightPhantom" type="Node2D" parent="." unique_id=1863549838 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2944, -975)
+position = Vector2(2944, -1025)
 script = ExtResource("25_sllsw")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -137,7 +137,7 @@ environment = SubResource("Environment_m5ask")
 position = Vector2(2641, -539)
 
 [node name="Bounds" type="CollisionShape2D" parent="cameraBounds" unique_id=377826437]
-position = Vector2(303, 0)
+position = Vector2(303, 1.5)
 shape = SubResource("RectangleShape2D_aoljt")
 disabled = true
 debug_color = Color(0, 0.60038817, 0.69789743, 0.60800004)
@@ -174,7 +174,7 @@ tile_set = ExtResource("29_stwsr")
 [node name="JuizProps" type="TileMapLayer" parent="." unique_id=1730852400]
 z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AACgAL//AAAAAAAAAACgAMz/AAAAAAAAAAClALL/AAAbAAoAAACpALj/AAAbAAAAAACwALL/AAAbAAoAAAC4ALr/AAAIAAEAAAC/ALL/AAAbAAoAAADFALj/AAAbAAAAAADKALL/AAAbAAoAAADPAL//AAAgAAAAAADPAMz/AAAgAAAAAADIAMP/AAAbAA8AAADHAML/AAAbAA8AAADIAML/AAAbABAAAADKAMX/AAAbABAAAADHAMb/AAAbABAAAADEAMP/AAAbABAAAADEAMb/AAAaAA8AAADJAML/AAAaAA8AAADDALj/AAAbABAAAACoAMb/AAAbABAAAACiAMz/AAAaAA8AAACrALj/AAAdAA8AAADEALv/AAAaABEAAACtAMH/AAAgABAAAAC+ALr/AAAeAAkAAAClAMH/AAAaABQAAADDAMb/AAAeABMAAADLAMj/AAAaABQAAADFAMv/AAAhABEAAAC1ANX/AAANAA0AAAC6ANX/AAATAA0AAACgANb/AAAbAAAAAADOANb/AAAbAAAAAAA=")
+tile_map_data = PackedByteArray("AACgAL//AAAAAAAAAACgAMz/AAAAAAAAAAClALL/AAAbAAoAAACpALj/AAAbAAAAAACwALL/AAAbAAoAAAC4ALr/AAAIAAEAAAC/ALL/AAAbAAoAAADFALj/AAAbAAAAAADKALL/AAAbAAoAAADPAL//AAAgAAAAAADPAMz/AAAgAAAAAADIAMP/AAAbAA8AAADHAML/AAAbAA8AAADIAML/AAAbABAAAADKAMX/AAAbABAAAADHAMb/AAAbABAAAADEAMP/AAAbABAAAADEAMb/AAAaAA8AAADJAML/AAAaAA8AAADDALj/AAAbABAAAACoAMb/AAAbABAAAACiAMz/AAAaAA8AAACrALj/AAAdAA8AAADEALv/AAAaABEAAACtAMH/AAAgABAAAAC+ALr/AAAeAAkAAAClAMH/AAAaABQAAADDAMb/AAAeABMAAADLAMj/AAAaABQAAADFAMv/AAAhABEAAAC1ANX/AAANAA0AAAC6ANX/AAATAA0AAAChANb/AAAbAAAAAADNANb/AAAbAAAAAAA=")
 tile_set = ExtResource("30_stwsr")
 
 [node name="PointLight2D9" type="PointLight2D" parent="." unique_id=136386738]
@@ -225,8 +225,7 @@ offset = Vector2(0, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=187328413]
 z_index = 4
-position = Vector2(2943, -1032.0001)
-scale = Vector2(0.92, 0.96)
+position = Vector2(2944, -912)
 texture = ExtResource("31_jvykn")
 
 [node name="Pilastra" parent="." unique_id=1108521031 instance=ExtResource("33_4vyth")]
@@ -255,7 +254,7 @@ isOpen = true
 position = Vector2(2641, -1000)
 
 [node name="BossFightBounds" type="CollisionShape2D" parent="AreaEnteredBossFight" unique_id=875748412]
-position = Vector2(303, 0)
+position = Vector2(303, -32)
 shape = SubResource("RectangleShape2D_aoljt")
 debug_color = Color(0, 0.60038817, 0.69789743, 0.60800004)
 

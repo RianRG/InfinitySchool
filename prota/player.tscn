@@ -2805,6 +2805,7 @@ z_index = -1
 texture = ExtResource("5_1jxqw")
 
 [node name="circleDeath" type="Sprite2D" parent="." unique_id=1036490393]
+visible = false
 modulate = Color(2.454227, 2.454227, 2.454227, 1)
 z_index = 10
 position = Vector2(0, -35.52)
