@@ -90,14 +90,14 @@ color = Color(0.37851202, 0.269558, 0.2883701, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(2944, -523)
+position = Vector2(2944, -515)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
 limit_enabled = false
 limit_left = 2544
-limit_top = -778
+limit_top = -786
 limit_right = 3344
-limit_bottom = -298
+limit_bottom = -290
 script = ExtResource("23_w5sdy")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
@@ -107,7 +107,7 @@ script = ExtResource("24_gix2x")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2944, -523)
+position = Vector2(2944, -515)
 script = ExtResource("25_sllsw")
 priority = 2
 follow_mode = 2
@@ -120,7 +120,7 @@ limit_target = NodePath("../cameraBounds/Bounds")
 
 [node name="bossFightPhantom" type="Node2D" parent="." unique_id=1863549838 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2944, -1025)
+position = Vector2(2944, -1009)
 script = ExtResource("25_sllsw")
 follow_mode = 2
 follow_target = NodePath("../player")
