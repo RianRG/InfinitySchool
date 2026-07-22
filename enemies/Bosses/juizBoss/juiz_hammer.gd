@@ -41,11 +41,11 @@ func _on_to_attack_timeout() -> void:
 func attack():
 	camera.screenShake(15, 0.5)
 	attackcounter += 1
-	if attackcounter == 2:
+	if attackcounter == 5:
 		baseframe.frame = 1
-	if attackcounter == 18:
+	if attackcounter == 10:
 		baseframe.frame = 2
-	if attackcounter == 20:
+	if attackcounter == 15:
 		baseframe.frame = 3
 
 func startTimer():
