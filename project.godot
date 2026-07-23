@@ -45,6 +45,7 @@ enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://MenuVisuals/": "purple",
 "res://addons/": "gray",
 "res://assets/": "purple",
 "res://characters/": "red",
