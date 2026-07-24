@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://ddrhdihvftnvy"]
+
+[ext_resource type="Script" uid="uid://b6k7epptnvpgl" path="res://scripts/menu_scene.gd" id="1_u4hxd"]
+[ext_resource type="FontFile" uid="uid://c5urm0b8a1tit" path="res://assets/fonts/hf-free-complete/futile-pro-v1/FutilePro.otf" id="1_vrre2"]
+[ext_resource type="Texture2D" uid="uid://dyqbh8dh0cxej" path="res://MenuVisuals/Menubackground.png" id="2_o71fo"]
+[ext_resource type="Texture2D" uid="uid://do3cygw4qo75v" path="res://MenuVisuals/Button1.png" id="3_6wmco"]
+[ext_resource type="AudioStream" uid="uid://dkn3dcyqwken5" path="res://MenuVisuals/menuAudio.mp3" id="4_482oc"]
+[ext_resource type="Script" uid="uid://n61e00kshak6" path="res://scripts/button.gd" id="5_6od1f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o71fo"]
+texture = ExtResource("2_o71fo")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_520ac"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vjll7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6od1f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6wmco"]
+texture = ExtResource("3_6wmco")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wmco"]
+bg_color = Color(1.2521582, 1.2399914, 1.2430228, 0.278)
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="Animation" id="Animation_u4hxd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("play:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yfxa8"]
+resource_name = "enterHoverExit"
+step = 0.14285715
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("play:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.42960078),
+"transitions": PackedFloat32Array(0.39229214, 0.39229214),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_6od1f"]
+resource_name = "enterHoverplay"
+step = 0.14285715
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("play:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.42960078),
+"transitions": PackedFloat32Array(0.39229214, 0.39229214),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfxa8"]
+_data = {
+&"RESET": SubResource("Animation_u4hxd"),
+&"enterHoverExit": SubResource("Animation_yfxa8"),
+&"enterHoverplay": SubResource("Animation_6od1f")
+}
+
+[node name="MenuScreen" type="Control" unique_id=436457199]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u4hxd")
+
+[node name="Panel" type="Panel" parent="." unique_id=904239060]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_o71fo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1440793150]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = 23.0
+offset_right = -67.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="play" type="Button" parent="VBoxContainer" unique_id=1711158384]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vrre2")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_520ac")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vjll7")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_6od1f")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_6od1f")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_6od1f")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_6od1f")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6od1f")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_6od1f")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6od1f")
+text = "Jogar"
+script = ExtResource("5_6od1f")
+
+[node name="options" type="Button" parent="VBoxContainer" unique_id=2143670425]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vrre2")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_6wmco")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6wmco")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6wmco")
+text = "Opções"
+
+[node name="exit" type="Button" parent="VBoxContainer" unique_id=330146376]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_vrre2")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_6wmco")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6wmco")
+text = "Sair"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VBoxContainer" unique_id=1743319151]
+libraries/ = SubResource("AnimationLibrary_yfxa8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=649225500]
+stream = ExtResource("4_482oc")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/exit" to="." method="_on_quit_button_pressed"]
