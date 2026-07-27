@@ -98,6 +98,7 @@ limit_left = 2544
 limit_top = -786
 limit_right = 3344
 limit_bottom = -290
+editor_draw_limits = true
 script = ExtResource("23_w5sdy")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" unique_id=738500782]
@@ -116,6 +117,7 @@ zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_syhfa")
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
+draw_limits = true
 limit_target = NodePath("../cameraBounds/Bounds")
 
 [node name="bossFightPhantom" type="Node2D" parent="." unique_id=1863549838 node_paths=PackedStringArray("follow_target")]
@@ -128,6 +130,7 @@ zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_syhfa")
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
+draw_limits = true
 limit_target = NodePath("../AreaEnteredBossFight/BossFightBounds")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=498581441]
@@ -151,6 +154,7 @@ follow_target = NodePath("../Juiz")
 tween_resource = SubResource("Resource_ylo3c")
 follow_damping = true
 follow_damping_value = Vector2(4, 4)
+draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="Chao" type="TileMapLayer" parent="." unique_id=165317892]

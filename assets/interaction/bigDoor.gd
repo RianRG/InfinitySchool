@@ -21,7 +21,7 @@ func _input(event):
 		
 
 func _ready():
-		
+		 
 	if spriteTexture:
 		sprite.texture = spriteTexture
 		
@@ -39,7 +39,7 @@ func _ready():
 		$LightOccluder2D2.visible = true
 
 func toggle():
-	if not interactButton.canStartDialog:
+	if not interactButton.canStartDialog or isBlocked:
 		return
 
 	isOpen = !isOpen
@@ -58,6 +58,7 @@ func toggle():
 		animation.play("closed")
 		collisionClosed.disabled = !collisionClosed.disabled
 		collisionOpen2.disabled=!collisionOpen2.disabled
+		collisionOpen.disabled=!collisionOpen.disabled
 		#$LightOccluder2D.visible = false
 		#$LightOccluder2D3.visible = false
 		$LightOccluder2D2.visible = true
@@ -65,13 +66,15 @@ func toggle():
 		tween.tween_property(ceilling, "modulate:a", 1, 0.5)
 
 func block():
-	isBlocked=true
+	isBlocked = true
 	animation.play("closed")
-	collisionClosed.disabled = !collisionClosed.disabled
-	collisionOpen2.disabled=!collisionOpen2.disabled
-	#$LightOccluder2D.visible = false
-	#$LightOccluder2D3.visible = false
+	collisionClosed.set_deferred("disabled", false)
+	collisionOpen2.set_deferred("disabled", true)
+	collisionOpen.set_deferred("disabled", true)
 	$LightOccluder2D2.visible = true
-	var tween = create_tween()
-	tween.tween_property(ceilling, "modulate:a", 1, 0.5)
 	
+	if ceilling:
+		var tween = create_tween()
+		tween.tween_property(ceilling, "modulate:a", 1, 0.5)
+	else:
+		push_warning("BigDoor: 'ceilling' não foi atribuído no Inspector!")

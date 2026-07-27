@@ -29,9 +29,9 @@ func startCutscene():
 	# 2. Transfere a câmera para a cena (ou faz ela seguir um ponto)
 	playerPhantom.priority=0
 	bossAnimationPhantom.priority=10
-	await get_tree().create_timer(2).timeout
-	camera.screenShake(7,5 )
-	await get_tree().create_timer(5).timeout
+	await get_tree().create_timer(1).timeout
+	camera.screenShake(7,5)
+	await get_tree().create_timer(3).timeout
 	endCutscene()
 	# 6. Shake da câmera
 	
@@ -60,5 +60,5 @@ func _on_area_body_entered(body: Node2D) -> void:
 		boss.set_physics_process(false)
 		
 		switchToBossFightCamera()
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(1).timeout
 		startCutscene()
