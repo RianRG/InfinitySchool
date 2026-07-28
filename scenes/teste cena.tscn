@@ -243,6 +243,7 @@ health = 16
 position = Vector2(1276, 139)
 
 [node name="PointLight2D5" type="PointLight2D" parent="." unique_id=1572857033]
+visible = false
 position = Vector2(2952, -552)
 color = Color(1, 0.7624408, 0.63891435, 1)
 energy = 0.5
