@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dfcnpfrfanq2b" path="res://assets/vfx/dash.png" id="6_tryrn"]
 [ext_resource type="Texture2D" uid="uid://di8olutp2r3o8" path="res://assets/vfx/firetexture.png" id="8_hi6va"]
 [ext_resource type="Texture2D" uid="uid://kctsa3ibkk7j" path="res://assets/vfx/AtackVFX.png" id="9_sgpap"]
+[ext_resource type="Script" uid="uid://drgqtnhfwn1ux" path="res://prota/water_trail_line.gd" id="10_kckl3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 13.5714)
@@ -2566,6 +2567,18 @@ colors = PackedColorArray(0.11756595, 0, 0.63066405, 1, 1, 1, 1, 1)
 offsets = PackedFloat32Array(0, 0.64204544)
 colors = PackedColorArray(0.5729883, 0.5729883, 0.5729883, 1, 1, 1, 1, 1)
 
+[sub_resource type="Curve" id="Curve_wpvyx"]
+_data = [Vector2(0.17, 1), 0.0, 0.0, 0, 0, Vector2(0.9499999, 0.20224726), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_kckl3"]
+
+[sub_resource type="Gradient" id="Gradient_wpvyx"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kckl3"]
+gradient = SubResource("Gradient_wpvyx")
+repeat = 1
+
 [node name="player" type="CharacterBody2D" unique_id=1149914169 node_paths=PackedStringArray("_animationTree") groups=["character"]]
 z_index = 1
 scale = Vector2(0.85, 0.85)
@@ -2706,6 +2719,19 @@ position = Vector2(0, -28.235294)
 texture = ExtResource("9_sgpap")
 hframes = 4
 vframes = 16
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=5538550]
+
+[node name="WaterTrailLine" type="Line2D" parent="SubViewport" unique_id=561581514 node_paths=PackedStringArray("subViewport", "parent")]
+scale = Vector2(0.85, 0.85)
+width_curve = SubResource("Curve_wpvyx")
+gradient = SubResource("Gradient_kckl3")
+texture = SubResource("GradientTexture2D_kckl3")
+script = ExtResource("10_kckl3")
+subViewport = NodePath("..")
+parent = NodePath("../..")
+smallestTipWidth = 1.0
+largestTipWidth = 3.0
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

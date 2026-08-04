@@ -363,7 +363,7 @@ func _play_footstep():
 # DASH
 # ===============================
 func _try_dash():
-	if not canDash or current_state in [PlayerState.SPINNING || PlayerState.HEALING]:
+	if not canDash or current_state in [PlayerState.SPINNING, PlayerState.HEALING]:
 		return
 	_change_state(PlayerState.DASHING)
 	canDash = false
