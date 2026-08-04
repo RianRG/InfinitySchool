@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	length = 0.0
-
+	print(parent.global_position)
 	var pos: Vector2 = parent.global_position + Vector2(offset)
 	queue.append(pos)
 	if queue.size() > MAX_LENGTH and queue.size() > 2:
