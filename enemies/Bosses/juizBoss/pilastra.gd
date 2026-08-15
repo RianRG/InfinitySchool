@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var health = 61
 
 @onready var sprite: Sprite2D = $texture
+@onready var reflexion: Sprite2D = $reflexion
 @onready var isDead = false
 @onready var colision: CollisionShape2D = $CollisionShape2D
 @onready var camera = get_parent().get_node("Camera2D")
@@ -39,6 +40,7 @@ func _ready() -> void:
 		sprite.z_index = 0
 	atualframe = sprite.frame
 	oldframe = sprite.frame
+	reflexion.frame = sprite.frame
 
 func takeDamage(damage: int):
 	hitFlash()
@@ -67,7 +69,8 @@ func takeDamage(damage: int):
 		ocluder3.set_deferred("visible",false)
 		sprite.z_index = 0
 		
-		
+	reflexion.frame = sprite.frame
+	
 func spritechange(frame: int):
 	oldframe = atualframe
 	sprite.frame = frame
@@ -79,7 +82,7 @@ func spritechange(frame: int):
 		camera.screenShake(3, 0.3)
 		particles.emitting = true
 		
-	
+	reflexion.frame = sprite.frame
 
 
 func hitFlash():

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dbf307o7y750c" path="res://terrains/Portas/GradeBigDoor.png" id="5_bwsod"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfpb"]
-size = Vector2(300, 50)
+size = Vector2(300, 90)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp573"]
 size = Vector2(4, 133.5)

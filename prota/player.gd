@@ -5,6 +5,7 @@ class_name Player
 # NODES
 # ===============================
 @onready var sprite: Sprite2D = $texture
+@onready var reflexion: Sprite2D = $reflexion
 @onready var camera = get_parent().get_node("Camera2D")
 @onready var particles = $CPUParticles2D
 @onready var loseStreak: Timer = $loseStreakTimer
@@ -165,7 +166,7 @@ func _ready():
 	originalColor = sprite.modulate
 	_setup_timers()
 	stairMaps = get_tree().get_nodes_in_group("stairs")
-	
+	reflexion.frame = sprite.frame
 
 func _setup_timers():
 	# Dash timer
@@ -240,6 +241,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Update animation
 	_update_animation()
+	reflexion.frame = sprite.frame
 
 # ===============================
 # STATE MACHINE LOGIC
@@ -299,6 +301,8 @@ var direction
 func _process_movement(delta: float):
 	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
+	
+	var typeFloor = getTileName()
 	var onWhatStair = getTileName()  # local, calculado todo frame
 	if onWhatStair == "stairRight":
 		if direction.x < 0:
@@ -320,6 +324,7 @@ func _process_movement(delta: float):
 		
 		if is_moving:
 			if not was_moving:
+				
 				walkstart.emitting = true
 				walkidle.emitting = true
 				was_moving = true

@@ -68,12 +68,26 @@ func _on_area_body_entered(body: Node2D) -> void:
 		
 		
 		switchToBossFightCamera()
-		branco.create_tween().tween_property(branco, "modulate:a" ,1,0.4)
-		await get_tree().create_timer(.4).timeout
-		branco.create_tween().tween_property(branco, "modulate:a" ,0,1.5)
-		luz2.create_tween().tween_property(luz2 ,"energy" ,0.0,2)
-		luz3.create_tween().tween_property(luz3 ,"energy" ,0.0,2)
-		await get_tree().create_timer(.6).timeout
+		var layer = CanvasLayer.new()
+		layer.layer = 20 
+	
+		get_tree().root.add_child(layer)
+	
+		# cria retângulo branco fullscreen
+		var rect = ColorRect.new()
+		rect.color = Color(1, 1, 1, 0) 
+	
+		rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+	
+		layer.add_child(rect)
+	
+		var tween = create_tween()
+		tween.tween_property(rect, "color", Color(1,1,1,1), 0.5)
+		await get_tree().create_timer(1.5).timeout
+		var tween2 = create_tween()
+		tween2.tween_property(rect, "color", Color(1,1,1,0), 1)
+		tween2.tween_property(luz2 ,"energy" ,0.0,1)
+		tween2.tween_property(luz3 ,"energy" ,0.0,1)
 		startCutscene()
 		
 		

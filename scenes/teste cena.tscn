@@ -19,7 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://d3hj5fgdjtdiq" path="res://assets/interaction/bigDoor.tscn" id="36_ms1cf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh3x3"]
-size = Vector2(768, 511)
+size = Vector2(800, 496)
 
 [sub_resource type="Resource" id="Resource_syhfa"]
 script = ExtResource("26_ir3w1")
@@ -31,7 +31,6 @@ tonemap_mode = 4
 glow_enabled = true
 glow_intensity = 0.4
 glow_bloom = 0.05
-glow_hdr_threshold = 2.0
 adjustment_enabled = true
 adjustment_brightness = 0.9
 adjustment_contrast = 1.1
@@ -53,7 +52,7 @@ fill_to = Vector2(0.5, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aoljt"]
-size = Vector2(800, 496)
+size = Vector2(800, 568)
 
 [sub_resource type="Gradient" id="Gradient_6afs7"]
 offsets = PackedFloat32Array(0.15224913, 0.4117647, 1)
@@ -95,7 +94,7 @@ script = ExtResource("1_stwsr")
 
 [node name="BossAnimationBounds" type="CollisionShape2D" parent="Area2D" unique_id=553732040]
 visible = false
-position = Vector2(2944, -1017.5)
+position = Vector2(2944, -1032)
 shape = SubResource("RectangleShape2D_bh3x3")
 debug_color = Color(1, 0.007843138, 0.07058824, 0.2)
 
@@ -110,7 +109,7 @@ position = Vector2(2942, -1068)
 position = Vector2(2936, 312.00018)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
-color = Color(0.39924505, 0.28685752, 0.30867857, 1)
+color = Color(0.4525417, 0.3277911, 0.353506, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
@@ -156,7 +155,7 @@ tween_resource = SubResource("Resource_syhfa")
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
 draw_limits = true
-limit_target = NodePath("../AreaEnteredBossFight/BossFightBounds")
+limit_target = NodePath("../Area2D/BossAnimationBounds")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=498581441]
 environment = SubResource("Environment_m5ask")
@@ -303,7 +302,7 @@ isOpen = true
 position = Vector2(2640, -1000)
 
 [node name="BossFightBounds" type="CollisionShape2D" parent="AreaEnteredBossFight" unique_id=875748412]
-position = Vector2(304, -32)
+position = Vector2(304, 5)
 shape = SubResource("RectangleShape2D_aoljt")
 debug_color = Color(0, 0.60038817, 0.69789743, 0.60800004)
 
@@ -331,7 +330,9 @@ occluder = SubResource("OccluderPolygon2D_1287d")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=731381179]
 modulate = Color(18.892157, 18.892157, 18.892157, 0)
-z_index = 10
+top_level = true
+visibility_layer = 7
+z_index = 20
 position = Vector2(2944, -801)
 scale = Vector2(13.906249, 16.390627)
 texture = SubResource("GradientTexture2D_jfhai")
