@@ -6,6 +6,10 @@ extends Node2D
 @onready var bossAnimationPhantom: PhantomCamera2D = $bossAnimationPhantom
 @onready var bossFightPhantom: PhantomCamera2D = $bossFightPhantom
 @onready var bigDoor: BigDoor = $bigdoor
+@onready var luz2 = $PointLight2D3
+@onready var luz3 = $PointLight2D4
+@onready var branco = $Sprite2D2
+
 var cutscenePlayed:=false
 func _ready() -> void:
 	playerPhantom.set_tween_transition(5)
@@ -39,6 +43,7 @@ func endCutscene():
 	player.set_physics_process(true)
 	player.set_process_input(true)
 	boss.set_physics_process(true)
+	bigDoor.block()
 	
 	bossFightPhantom.priority=10
 	bossAnimationPhantom.priority=0
@@ -52,13 +57,23 @@ func switchToBossFightCamera():
 	playerPhantom.priority=0
 func _on_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character") and !cutscenePlayed:
-		bigDoor.block()
+		
 		await get_tree().create_timer(.6).timeout
 		player.force_idle()
 		player.set_physics_process(false)
 		player.set_process_input(false)
 		boss.set_physics_process(false)
 		
+		
+		
+		
 		switchToBossFightCamera()
-		await get_tree().create_timer(1).timeout
+		branco.create_tween().tween_property(branco, "modulate:a" ,1,0.4)
+		await get_tree().create_timer(.4).timeout
+		branco.create_tween().tween_property(branco, "modulate:a" ,0,1.5)
+		luz2.create_tween().tween_property(luz2 ,"energy" ,0.0,2)
+		luz3.create_tween().tween_property(luz3 ,"energy" ,0.0,2)
+		await get_tree().create_timer(.6).timeout
 		startCutscene()
+		
+		

@@ -46,7 +46,6 @@ texture = ExtResource("1_16d8b")
 10:0/0/terrains_peering_bit/top_side = 0
 10:0/0/terrains_peering_bit/top_right_corner = 0
 10:0/0/custom_data_0 = "juiz"
-2:2/0 = 0
 6:2/size_in_atlas = Vector2i(2, 2)
 6:2/0 = 0
 6:2/0/z_index = -1
@@ -107,6 +106,13 @@ texture = ExtResource("1_16d8b")
 4:0/size_in_atlas = Vector2i(2, 2)
 4:0/0 = 0
 4:0/0/z_index = -1
+2:2/size_in_atlas = Vector2i(2, 2)
+2:2/0 = 0
+2:2/0/z_index = -1
+2:2/0/custom_data_0 = "juiz"
+4:2/size_in_atlas = Vector2i(2, 2)
+4:2/0 = 0
+4:2/0/z_index = -1
 
 [resource]
 tile_size = Vector2i(32, 32)

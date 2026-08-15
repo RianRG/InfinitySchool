@@ -26,6 +26,9 @@ polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_75mfj"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_40pgu"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_bto0j"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
@@ -406,6 +409,7 @@ texture = ExtResource("1_h5kde")
 18:2/0/z_index = 2
 18:2/0/terrain_set = 0
 18:2/0/terrain = 1
+18:2/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_40pgu")
 18:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 18:2/0/terrains_peering_bit/bottom_side = 1
 18:2/0/terrains_peering_bit/top_side = 1
@@ -552,7 +556,7 @@ texture = ExtResource("1_h5kde")
 17:7/0/terrains_peering_bit/left_side = 1
 
 [resource]
-occlusion_layer_0/light_mask = 1
+occlusion_layer_0/light_mask = 5
 physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0

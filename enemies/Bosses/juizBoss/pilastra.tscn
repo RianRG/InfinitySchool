@@ -82,18 +82,15 @@ color_initial_ramp = SubResource("Gradient_ow35r")
 position = Vector2(0, -32)
 occluder = SubResource("OccluderPolygon2D_0mymv")
 sdf_collision = false
-occluder_light_mask = 3
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1711255735]
 visible = false
 position = Vector2(0, -32)
 occluder = SubResource("OccluderPolygon2D_4vyth")
 sdf_collision = false
-occluder_light_mask = 3
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="." unique_id=1262324831]
 visible = false
 position = Vector2(0, -32)
 occluder = SubResource("OccluderPolygon2D_ohhka")
 sdf_collision = false
-occluder_light_mask = 3

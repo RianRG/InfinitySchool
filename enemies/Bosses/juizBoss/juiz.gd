@@ -13,9 +13,9 @@ var DEF = 0
 var onAttackCooldown := false
 var stateMachine
 
-var speed := 120
-var defaultSpeed:=120
-var slowSpeed:=100
+var speed := 180
+var defaultSpeed:=180
+var slowSpeed:=160
 
 var originalColor := Color.WHITE
 var isDead:=false

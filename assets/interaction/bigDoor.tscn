@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvy7pq3rvtffe" path="res://terrains/Portas/BigDoor.png" id="2_kt6av"]
 [ext_resource type="PackedScene" uid="uid://o08f2kqjkjfm" path="res://assets/dialogue/interactButton.tscn" id="3_bwsod"]
 [ext_resource type="Texture2D" uid="uid://dmd2y7fj4i2ql" path="res://terrains/Portas/BigDoortop.png" id="4_24jkl"]
+[ext_resource type="Texture2D" uid="uid://dbf307o7y750c" path="res://terrains/Portas/GradeBigDoor.png" id="5_bwsod"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfpb"]
 size = Vector2(300, 50)
@@ -155,5 +156,12 @@ light_mask = 0
 z_index = 2
 position = Vector2(0, -88)
 texture = ExtResource("4_24jkl")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1158399028]
+modulate = Color(0.17997457, 0.17997457, 0.17997457, 1)
+light_mask = 0
+z_index = 2
+position = Vector2(0, -66)
+texture = ExtResource("5_bwsod")
 
 [editable path="InteractButton"]

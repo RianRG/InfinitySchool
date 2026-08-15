@@ -560,8 +560,8 @@ func _update_animation():
 		PlayerState.DEAD:
 			freezeFrame(0.5, 3.0)
 			_stateMachine.travel("death")
-			
-			whiteout(100)			
+			await get_tree().create_timer(0.8).timeout
+			whiteout(10)			
 			#set_physics_process(false)
 			set_process(false)
 		
@@ -789,7 +789,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func whiteout(duration := 0.5):
 	# cria CanvasLayer acima de tudo
 	var layer = CanvasLayer.new()
-	layer.layer = 999  # maior que qualquer outro
+	layer.layer = 20  # maior que qualquer outro
 	
 	get_tree().root.add_child(layer)
 	
