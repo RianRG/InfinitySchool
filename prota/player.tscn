@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dfcnpfrfanq2b" path="res://assets/vfx/dash.png" id="6_tryrn"]
 [ext_resource type="Texture2D" uid="uid://di8olutp2r3o8" path="res://assets/vfx/firetexture.png" id="8_hi6va"]
 [ext_resource type="Texture2D" uid="uid://kctsa3ibkk7j" path="res://assets/vfx/AtackVFX.png" id="9_sgpap"]
+[ext_resource type="Texture2D" uid="uid://15dbxl5vt1r3" path="res://assets/vfx/waterwalkingeffect.png" id="11_wpvyx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 13.5714)
@@ -2573,6 +2574,12 @@ colors = PackedColorArray(0.11756595, 0, 0.63066405, 1, 1, 1, 1, 1)
 offsets = PackedFloat32Array(0, 0.64204544)
 colors = PackedColorArray(0.5729883, 0.5729883, 0.5729883, 1, 1, 1, 1, 1)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0mymv"]
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [node name="player" type="CharacterBody2D" unique_id=1149914169 node_paths=PackedStringArray("_animationTree") groups=["character"]]
 z_index = 1
 scale = Vector2(0.85, 0.85)
@@ -2725,6 +2732,18 @@ position = Vector2(0, -28.235294)
 texture = ExtResource("9_sgpap")
 hframes = 4
 vframes = 16
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=1657285948]
+z_index = -3
+material = SubResource("CanvasItemMaterial_0mymv")
+position = Vector2(0, -3.5294116)
+emitting = false
+amount = 1
+texture = ExtResource("11_wpvyx")
+lifetime = 0.3
+gravity = Vector2(0, 0)
+anim_speed_min = 1.5
+anim_speed_max = 1.5
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

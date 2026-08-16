@@ -13,6 +13,7 @@ class_name Player
 @onready var walkstart = $WalkStart
 @onready var walkidle = $Walkidle
 @onready var flash = CanvasLayer.new()
+@onready var waterparticles = $CPUParticles2D2
 
 
 
@@ -25,6 +26,7 @@ class_name Player
 @onready var energySprite = $PlayerHUD/CanvasLayer/EnergySprite
 
 var stairMaps: Array = [];
+var tile: Array = [];
 
 func getTileName() -> String:
 	var searchPosition = global_position + Vector2(0, 10)
@@ -324,9 +326,11 @@ func _process_movement(delta: float):
 		
 		if is_moving:
 			if not was_moving:
-				
+				#if typeFloor != "water":
 				walkstart.emitting = true
 				walkidle.emitting = true
+				#else:
+				waterparticles.emitting = true
 				was_moving = true
 		
 		move_velocity.x = lerp(move_velocity.x, direction.normalized().x * SPEED, acc)
@@ -342,6 +346,7 @@ func _process_movement(delta: float):
 	else:
 		move_velocity = Vector2.ZERO
 		walkidle.emitting = false
+		waterparticles.emitting = false
 		was_moving = false
 		
 		#move_velocity.x = lerp(move_velocity.x, 0.0, friction)
