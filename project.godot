@@ -66,6 +66,7 @@ enemy="enemies"
 ambient=""
 stairs=""
 quebravel=""
+tilemap="tilemap"
 
 [input]
 

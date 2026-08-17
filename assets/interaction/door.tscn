@@ -72,7 +72,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qjfpb"]
-radius = 80.0
+radius = 39.31
 
 [node name="Door" type="CharacterBody2D" unique_id=241297043]
 z_index = 1
@@ -95,7 +95,7 @@ region_rect = Rect2(0, 0, 240, 240)
 
 [node name="CollisionClosed" type="CollisionShape2D" parent="." unique_id=783950894]
 visibility_layer = 3
-position = Vector2(0, -14.5)
+position = Vector2(-7.13, -14.5)
 shape = SubResource("RectangleShape2D_qjfpb")
 
 [node name="CollisionOpen" type="CollisionShape2D" parent="." unique_id=85219722]
@@ -126,7 +126,7 @@ position = Vector2(0, -17)
 [node name="CollisionShape2D" parent="InteractButton/Area2D" index="0"]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(0, 2.999999)
+position = Vector2(-12.765, 3)
 scale = Vector2(0.4, 0.4)
 shape = SubResource("CircleShape2D_qjfpb")
 

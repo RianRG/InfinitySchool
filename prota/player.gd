@@ -27,16 +27,29 @@ class_name Player
 
 var stairMaps: Array = [];
 var tile: Array = [];
-
+var currentTileName;
 func getTileName() -> String:
-	var searchPosition = global_position + Vector2(0, 10)
-	for stairMap in stairMaps:
-		var tilePos = stairMap.local_to_map(stairMap.to_local(searchPosition))
-		var tileData = stairMap.get_cell_tile_data(tilePos)
-		if tileData:
-			var tileName = str(tileData.get_custom_data("tileName"))
-			if tileName != "":
-				return tileName
+	var search_position := global_position + Vector2(0, 10)
+
+	for node in get_tree().get_nodes_in_group("tilemap"):
+		if not node is TileMapLayer:
+			continue
+
+		var tile_map := node as TileMapLayer
+		var tile_pos := tile_map.local_to_map(
+			tile_map.to_local(search_position)
+		)
+
+		var tile_data := tile_map.get_cell_tile_data(tile_pos)
+
+		if tile_data == null:
+			continue
+
+		var floor_type = tile_data.get_custom_data("floor_type")
+
+		if floor_type != null and str(floor_type) != "":
+			return str(floor_type)
+
 	return ""
 
 # Timers gerenciados
@@ -304,14 +317,13 @@ func _process_movement(delta: float):
 	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	
-	var typeFloor = getTileName()
-	var onWhatStair = getTileName()  # local, calculado todo frame
-	if onWhatStair == "stairRight":
+	currentTileName = getTileName()
+	if currentTileName == "stairRight":
 		if direction.x < 0:
 			position.y += delta * 100
 		elif direction.x > 0:
 			position.y -= delta * 100
-	elif onWhatStair == "stairLeft":
+	elif currentTileName == "stairLeft":
 		if direction.x < 0:
 			position.y -= delta * 100
 		elif direction.x > 0:
@@ -325,13 +337,13 @@ func _process_movement(delta: float):
 		var is_moving = direction != Vector2.ZERO
 		
 		if is_moving:
-			if not was_moving:
-				#if typeFloor != "water":
-				walkstart.emitting = true
-				walkidle.emitting = true
-				#else:
-				waterparticles.emitting = true
-				was_moving = true
+			if not was_moving: 
+				if currentTileName != "water":
+					walkstart.emitting = true
+					walkidle.emitting = true
+				else:
+					waterparticles.emitting = true
+					was_moving = true
 		
 		move_velocity.x = lerp(move_velocity.x, direction.normalized().x * SPEED, acc)
 		move_velocity.y = lerp(move_velocity.y, direction.normalized().y * SPEED, acc)
