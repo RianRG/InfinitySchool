@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bq75d2hxuj5qu"]
+
+[ext_resource type="Shader" uid="uid://cfjr3rrreg01a" path="res://assets/vfx/HiddenCover.gdshader" id="1_l4vnb"]
+[ext_resource type="Script" uid="uid://d1xhq0wtjh8bc" path="res://assets/vfx/area_2d.gd" id="2_c64ml"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mymv"]
+resource_local_to_scene = true
+shader = ExtResource("1_l4vnb")
+shader_parameter/player_entry_point = Vector2(0.5, 0.5)
+shader_parameter/reveal_progress = 0.0
+shader_parameter/smoothness = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mymv"]
+resource_local_to_scene = true
+size = Vector2(320, 208)
+
+[node name="Cover" type="Node2D" unique_id=1220590698]
+z_index = 10
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=958219527]
+material = SubResource("ShaderMaterial_0mymv")
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1744336046]
+script = ExtResource("2_c64ml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=361844034]
+shape = SubResource("RectangleShape2D_0mymv")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

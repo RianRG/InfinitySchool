@@ -3,6 +3,7 @@ extends Node2D
 @onready var camera: Camera2D = $Camera2D
 @onready var player = $player
 @onready var playerPhantom: PhantomCamera2D = $PhantomCamera2D
+@onready var playerPhantom2: PhantomCamera2D = $PhantomCamera2D2
 @onready var bossAnimationPhantom: PhantomCamera2D = $bossAnimationPhantom
 @onready var bossFightPhantom: PhantomCamera2D = $bossFightPhantom
 @onready var bigDoor: BigDoor = $bigdoor
@@ -54,6 +55,7 @@ func endCutscene():
 func switchToBossFightCamera():
 	
 	bossFightPhantom.priority=10
+	playerPhantom2.priority=0
 	playerPhantom.priority=0
 func _on_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character") and !cutscenePlayed:
@@ -91,3 +93,16 @@ func _on_area_body_entered(body: Node2D) -> void:
 		startCutscene()
 		
 		
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body.is_in_group("character") and !cutscenePlayed:
+		playerPhantom2.priority=10
+		playerPhantom.priority=0
+	
+
+
+func _on_area_2d_2_body_exited(body: Node2D) -> void:
+	if body.is_in_group("character") and !cutscenePlayed:
+		playerPhantom2.priority=0
+		playerPhantom.priority=9
