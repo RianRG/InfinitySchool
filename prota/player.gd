@@ -14,6 +14,7 @@ class_name Player
 @onready var walkidle = $Walkidle
 @onready var flash = CanvasLayer.new()
 @onready var waterparticles = $CPUParticles2D2
+@onready var menuScreen: Control = $MenuScreen
 
 
 
@@ -710,12 +711,30 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 		_die()
 
 func _die():
-	canTakeDamage=false
+
+	
+	canTakeDamage = false
 	canHeal = false
 	await get_tree().create_timer(1).timeout
 	_change_state(PlayerState.DEAD)
-
-
+	
+	await get_tree().create_timer(0.8).timeout
+	whiteout(10)
+	
+	await get_tree().create_timer(3).timeout
+	
+	var menuLayer = CanvasLayer.new()
+	menuLayer.process_mode = Node.PROCESS_MODE_ALWAYS  # <- continua funcionando mesmo pausado
+	menuLayer.layer = 21
+	
+	menuScreen.get_parent().remove_child(menuScreen)
+	menuLayer.add_child(menuScreen)
+	get_tree().root.add_child(menuLayer)
+	
+	menuScreen.set_anchors_preset(Control.PRESET_FULL_RECT)
+	menuScreen.visible = true
+	
+	get_tree().paused = true   # <- só pausa aqui, DEPOIS do menu já estar pronto
 func _on_invincible_timer_timeout():
 	canTakeDamage=true
 # ===============================
@@ -811,13 +830,14 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 func whiteout(duration := 0.5):
 	# cria CanvasLayer acima de tudo
 	var layer = CanvasLayer.new()
-	layer.layer = 20  # maior que qualquer outro
+	layer.layer = 10  # maior que qualquer outro
 	
 	get_tree().root.add_child(layer)
 	
 	# cria retângulo branco fullscreen
 	var rect = ColorRect.new()
 	rect.color = Color(1, 1, 1, 0) # começa transparente
+	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
 	# fullscreen garantido
 	rect.set_anchors_preset(Control.PRESET_FULL_RECT)
