@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="first topdown"
-run/main_scene="uid://b8kas6yhuo3au"
+run/main_scene="uid://ddrhdihvftnvy"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/use_filter=false
