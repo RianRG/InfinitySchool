@@ -17,6 +17,7 @@ extends CharacterBody2D
 @onready var oldframe: int
 
 func _ready() -> void:
+	ocluder.set_deferred("visible",true)
 	if health > 50:
 		sprite.frame = 0
 	elif health < 50 && health > 40:
@@ -29,6 +30,8 @@ func _ready() -> void:
 		ocluder2.set_deferred("visible",true)
 	elif health < 20 && health > 10:
 		sprite.frame = 4
+		ocluder.set_deferred("visible",false)
+		ocluder2.set_deferred("visible",true)
 	elif health < 10 && health > 1:
 		sprite.frame = 5
 		ocluder2.set_deferred("visible",false)
@@ -59,6 +62,8 @@ func takeDamage(damage: int):
 		ocluder2.set_deferred("visible",true)
 	elif health < 20 && health > 10:
 		spritechange(4)
+		ocluder.set_deferred("visible",false)
+		ocluder2.set_deferred("visible",true)
 	elif health < 10 && health > 1:
 		spritechange(5)
 		ocluder2.set_deferred("visible",false)

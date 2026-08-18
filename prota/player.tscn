@@ -1328,7 +1328,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_634y6"]
 resource_name = "death"
-length = 1.5555611227009445
+length = 2.0
 step = 0.055555556
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2682,13 +2682,14 @@ z_index = -1
 texture = ExtResource("5_1jxqw")
 
 [node name="circleDeath" type="Sprite2D" parent="." unique_id=1036490393]
+visible = false
 modulate = Color(3.2944162, 3.2944162, 3.2944162, 1)
 z_index = 10
 position = Vector2(0, -35.52)
 scale = Vector2(4, 4)
 texture = ExtResource("3_i3pqv")
 hframes = 16
-frame = 14
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=891681292]
 libraries/ = SubResource("AnimationLibrary_sweqy")

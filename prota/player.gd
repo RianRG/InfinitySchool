@@ -170,7 +170,7 @@ var canHeal=true
 var canTakeDamage=true
 var ignoreInvincible=false
 var was_moving = false
-
+var is_dead = false
 
 
 # ===============================
@@ -584,7 +584,7 @@ func _update_animation():
 			freezeFrame(0.5, 3.0)
 			_stateMachine.travel("death")
 			await get_tree().create_timer(0.8).timeout
-			whiteout(10)			
+			
 			#set_physics_process(false)
 			set_process(false)
 		
@@ -708,21 +708,20 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	camera.screenShake(5, 0.3)
 	if health<=0:
 		freezeFrame(0.3, 1.0)
-		_die()
+		if is_dead == false:
+			_die()
 
 func _die():
 
-	
+	print("morreu")
 	canTakeDamage = false
 	canHeal = false
 	await get_tree().create_timer(1).timeout
 	_change_state(PlayerState.DEAD)
-	
-	await get_tree().create_timer(0.8).timeout
-	whiteout(10)
-	
-	await get_tree().create_timer(3).timeout
-	
+	await get_tree().create_timer(1).timeout
+	whiteout()
+	is_dead = true
+	await get_tree().create_timer(4).timeout
 	var menuLayer = CanvasLayer.new()
 	menuLayer.process_mode = Node.PROCESS_MODE_ALWAYS  # <- continua funcionando mesmo pausado
 	menuLayer.layer = 21
@@ -827,26 +826,27 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	pass # Replace with function body.
 
 
-func whiteout(duration := 0.5):
-	# cria CanvasLayer acima de tudo
-	var layer = CanvasLayer.new()
-	layer.layer = 10  # maior que qualquer outro
+func whiteout(duration := 1):
+	if is_dead == false:
+		# cria CanvasLayer acima de tudo
+		var layer = CanvasLayer.new()
+		layer.layer = 10  # maior que qualquer outro
+		
+		get_tree().root.add_child(layer)
 	
-	get_tree().root.add_child(layer)
+		# cria retângulo branco fullscreen
+		var rect = ColorRect.new()
+		rect.color = Color(1, 1, 1, 0) # começa transparente
+		rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
-	# cria retângulo branco fullscreen
-	var rect = ColorRect.new()
-	rect.color = Color(1, 1, 1, 0) # começa transparente
-	rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		# fullscreen garantido
+		rect.set_anchors_preset(Control.PRESET_FULL_RECT)
 	
-	# fullscreen garantido
-	rect.set_anchors_preset(Control.PRESET_FULL_RECT)
+		layer.add_child(rect)
 	
-	layer.add_child(rect)
-	
-	# fade para branco
-	var tween = create_tween()
-	tween.tween_property(rect, "color", Color(1,1,1,1), duration)
+		# fade para branco
+		var tween = create_tween()
+		tween.tween_property(rect, "color", Color(1,1,1,1), duration)
 
 func force_idle():
 	move_velocity = Vector2.ZERO

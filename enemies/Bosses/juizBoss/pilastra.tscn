@@ -19,13 +19,13 @@ radius = 20.0
 colors = PackedColorArray(0.5153816, 0.3563713, 0.2507548, 1, 1, 1, 1, 1)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0mymv"]
-polygon = PackedVector2Array(0, 8, 16, 56, -16, 56)
+polygon = PackedVector2Array(16, 56, -16, 56, -10, -10, 0, -16, 10, -10)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4vyth"]
-polygon = PackedVector2Array(0, 32, -8, 56, 8, 56)
+polygon = PackedVector2Array(0, 8, -15, 56, 15, 56)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ohhka"]
-polygon = PackedVector2Array(0, 42, -3, 56, 3, 56)
+polygon = PackedVector2Array(0, 39, -12, 56, 12, 56)
 
 [node name="Pilastra" type="CharacterBody2D" unique_id=1108521031 groups=["quebravel"]]
 collision_layer = 7
@@ -97,16 +97,19 @@ scale_amount_min = 0.2
 color_initial_ramp = SubResource("Gradient_ow35r")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=211693506]
+visible = false
 position = Vector2(0, -32)
 occluder = SubResource("OccluderPolygon2D_0mymv")
 sdf_collision = false
 
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1711255735]
+visible = false
 position = Vector2(0, -32)
 occluder = SubResource("OccluderPolygon2D_4vyth")
 sdf_collision = false
 
 [node name="LightOccluder2D3" type="LightOccluder2D" parent="." unique_id=1262324831]
+visible = false
 position = Vector2(0, -32)
 occluder = SubResource("OccluderPolygon2D_ohhka")
 sdf_collision = false
