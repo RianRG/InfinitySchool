@@ -10,6 +10,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func _on_start_button_pressed() -> void:
-	get_tree().paused=false
+func _on_restart_button_pressed() -> void:
+	get_tree().paused = false
+	
+	for node in get_tree().get_nodes_in_group("whiteout_layer"):
+		node.queue_free()
+	
 	get_tree().reload_current_scene()

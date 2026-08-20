@@ -170,6 +170,7 @@ libraries/ = SubResource("AnimationLibrary_yfxa8")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=649225500]
 stream = ExtResource("4_482oc")
+volume_db = -18.667
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/play" to="." method="_on_start_button_pressed"]

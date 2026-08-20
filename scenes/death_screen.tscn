@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://c5cs5dx4nxmxh"]
+
+[ext_resource type="Script" uid="uid://bnp6yxtbx7r27" path="res://scenes/death_screen_canvas.gd" id="1_7ns25"]
+[ext_resource type="FontFile" uid="uid://c5urm0b8a1tit" path="res://assets/fonts/hf-free-complete/futile-pro-v1/FutilePro.otf" id="1_dwo6e"]
+[ext_resource type="Script" uid="uid://cymcgi6lyga7m" path="res://prota/death_menu.gd" id="2_7ns25"]
+[ext_resource type="Script" uid="uid://n61e00kshak6" path="res://scripts/button.gd" id="2_mqh5l"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7ns25"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gwety"]
+texture = SubResource("CanvasTexture_7ns25")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wfw3d"]
+
+[sub_resource type="Animation" id="Animation_u4hxd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("play:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yfxa8"]
+resource_name = "enterHoverExit"
+step = 0.14285715
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("play:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.42960078),
+"transitions": PackedFloat32Array(0.39229214, 0.39229214),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3)]
+}
+
+[sub_resource type="Animation" id="Animation_6od1f"]
+resource_name = "enterHoverplay"
+step = 0.14285715
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("play:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.42960078),
+"transitions": PackedFloat32Array(0.39229214, 0.39229214),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wtkkp"]
+_data = {
+&"RESET": SubResource("Animation_u4hxd"),
+&"enterHoverExit": SubResource("Animation_yfxa8"),
+&"enterHoverplay": SubResource("Animation_6od1f")
+}
+
+[node name="DeathScreen" type="CanvasLayer" unique_id=324862880]
+layer = 21
+script = ExtResource("1_7ns25")
+
+[node name="Control" type="Control" parent="." unique_id=707478783]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1342660568]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -135.0
+offset_top = 23.0
+offset_right = -67.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_7ns25")
+
+[node name="play" type="Button" parent="Control/VBoxContainer" unique_id=1463374829]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_dwo6e")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wfw3d")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/focus = SubResource("StyleBoxTexture_gwety")
+text = "Recomeçar"
+script = ExtResource("2_mqh5l")
+
+[node name="options" type="Button" parent="Control/VBoxContainer" unique_id=1455569622]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_dwo6e")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/focus = SubResource("StyleBoxTexture_gwety")
+text = "Opções"
+script = ExtResource("2_mqh5l")
+
+[node name="exit" type="Button" parent="Control/VBoxContainer" unique_id=2070176800]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_dwo6e")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_gwety")
+theme_override_styles/focus = SubResource("StyleBoxTexture_gwety")
+text = "Sair"
+script = ExtResource("2_mqh5l")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Control/VBoxContainer" unique_id=62075931]
+libraries/ = SubResource("AnimationLibrary_wtkkp")
+
+[connection signal="pressed" from="Control/VBoxContainer/play" to="Control/VBoxContainer" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/exit" to="Control/VBoxContainer" method="_on_quit_button_pressed"]

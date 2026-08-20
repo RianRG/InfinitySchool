@@ -11,9 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://di8olutp2r3o8" path="res://assets/vfx/firetexture.png" id="8_hi6va"]
 [ext_resource type="Texture2D" uid="uid://kctsa3ibkk7j" path="res://assets/vfx/AtackVFX.png" id="9_sgpap"]
 [ext_resource type="Texture2D" uid="uid://15dbxl5vt1r3" path="res://assets/vfx/waterwalkingeffect.png" id="11_wpvyx"]
-[ext_resource type="Script" uid="uid://cymcgi6lyga7m" path="res://prota/death_menu.gd" id="12_opqux"]
-[ext_resource type="FontFile" uid="uid://c5urm0b8a1tit" path="res://assets/fonts/hf-free-complete/futile-pro-v1/FutilePro.otf" id="13_rynvi"]
-[ext_resource type="Script" uid="uid://n61e00kshak6" path="res://scripts/button.gd" id="14_1jppa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 11.764718)
@@ -2583,36 +2580,6 @@ particles_anim_h_frames = 7
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_6afs7"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ex8gh"]
-texture = SubResource("CanvasTexture_6afs7")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opqux"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_rynvi"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iwv1p"]
-texture = SubResource("CanvasTexture_rynvi")
-
-[sub_resource type="Animation" id="Animation_u4hxd"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_yfxa8"]
-resource_name = "enterHoverExit"
-step = 0.14285715
-
-[sub_resource type="Animation" id="Animation_6od1f"]
-resource_name = "enterHoverplay"
-step = 0.14285715
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfxa8"]
-_data = {
-&"RESET": SubResource("Animation_u4hxd"),
-&"enterHoverExit": SubResource("Animation_yfxa8"),
-&"enterHoverplay": SubResource("Animation_6od1f")
-}
-
 [node name="player" type="CharacterBody2D" unique_id=1149914169 node_paths=PackedStringArray("_animationTree") groups=["character"]]
 z_index = 1
 scale = Vector2(0.8, 0.8)
@@ -2651,7 +2618,6 @@ z_index = -1
 texture = ExtResource("5_1jxqw")
 
 [node name="circleDeath" type="Sprite2D" parent="." unique_id=1036490393]
-visible = false
 modulate = Color(3.2944162, 3.2944162, 3.2944162, 1)
 z_index = 10
 position = Vector2(0, -35.52)
@@ -2779,99 +2745,6 @@ scale_amount_max = 1.5
 anim_speed_min = 1.5
 anim_speed_max = 1.5
 
-[node name="MenuScreen" type="Control" parent="." unique_id=436457199]
-visible = false
-z_index = 11
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("12_opqux")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MenuScreen" unique_id=1440793150]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -35.000008
-offset_top = -31.249996
-offset_right = 32.999992
-offset_bottom = 36.750004
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="play" type="Button" parent="MenuScreen/VBoxContainer" unique_id=1090945669]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("13_rynvi")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxTexture_ex8gh")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_ex8gh")
-theme_override_styles/hover = SubResource("StyleBoxTexture_ex8gh")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_ex8gh")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_ex8gh")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_opqux")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_ex8gh")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_ex8gh")
-theme_override_styles/focus = SubResource("StyleBoxTexture_ex8gh")
-text = "Recomeçar"
-script = ExtResource("14_1jppa")
-
-[node name="options" type="Button" parent="MenuScreen/VBoxContainer" unique_id=2107262304]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("13_rynvi")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/hover = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/focus = SubResource("StyleBoxTexture_iwv1p")
-text = "Opções"
-script = ExtResource("14_1jppa")
-
-[node name="exit" type="Button" parent="MenuScreen/VBoxContainer" unique_id=1208934500]
-layout_mode = 2
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("13_rynvi")
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/hover = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_iwv1p")
-theme_override_styles/focus = SubResource("StyleBoxTexture_iwv1p")
-text = "Sair"
-script = ExtResource("14_1jppa")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MenuScreen/VBoxContainer" unique_id=1743319151]
-libraries/ = SubResource("AnimationLibrary_yfxa8")
-
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="timeout" from="loseStreakTimer" to="." method="_on_lose_streak_timer_timeout"]
-[connection signal="pressed" from="MenuScreen/VBoxContainer/play" to="MenuScreen" method="_on_start_button_pressed"]
-[connection signal="pressed" from="MenuScreen/VBoxContainer/exit" to="MenuScreen" method="_on_quit_button_pressed"]

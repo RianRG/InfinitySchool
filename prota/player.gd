@@ -14,7 +14,7 @@ class_name Player
 @onready var walkidle = $Walkidle
 @onready var flash = CanvasLayer.new()
 @onready var waterparticles = $CPUParticles2D2
-@onready var menuScreen: Control = $MenuScreen
+
 
 
 
@@ -710,10 +710,10 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 		freezeFrame(0.3, 1.0)
 		if is_dead == false:
 			_die()
-
+			
+var gameOverScreenScene: PackedScene = preload("res://scenes/death_screen.tscn")
 func _die():
 
-	print("morreu")
 	canTakeDamage = false
 	canHeal = false
 	await get_tree().create_timer(1).timeout
@@ -722,18 +722,12 @@ func _die():
 	whiteout()
 	is_dead = true
 	await get_tree().create_timer(4).timeout
-	var menuLayer = CanvasLayer.new()
-	menuLayer.process_mode = Node.PROCESS_MODE_ALWAYS  # <- continua funcionando mesmo pausado
-	menuLayer.layer = 21
 	
-	menuScreen.get_parent().remove_child(menuScreen)
-	menuLayer.add_child(menuScreen)
-	get_tree().root.add_child(menuLayer)
-	
-	menuScreen.set_anchors_preset(Control.PRESET_FULL_RECT)
-	menuScreen.visible = true
-	
-	get_tree().paused = true   # <- só pausa aqui, DEPOIS do menu já estar pronto
+	var game_over_screen = gameOverScreenScene.instantiate()
+	print("instanciado: ", game_over_screen)
+	get_tree().current_scene.add_child(game_over_screen)
+	print("adicionado, esta na arvore: ", game_over_screen.is_inside_tree())
+	get_tree().paused = true
 func _on_invincible_timer_timeout():
 	canTakeDamage=true
 # ===============================
@@ -828,18 +822,16 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 
 func whiteout(duration := 1):
 	if is_dead == false:
-		# cria CanvasLayer acima de tudo
 		var layer = CanvasLayer.new()
-		layer.layer = 10  # maior que qualquer outro
+		layer.add_to_group("whiteout_layer")
+		layer.layer = 10 
 		
 		get_tree().root.add_child(layer)
 	
-		# cria retângulo branco fullscreen
 		var rect = ColorRect.new()
-		rect.color = Color(1, 1, 1, 0) # começa transparente
+		rect.color = Color(1, 1, 1, 0)
 		rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	
-		# fullscreen garantido
 		rect.set_anchors_preset(Control.PRESET_FULL_RECT)
 	
 		layer.add_child(rect)
