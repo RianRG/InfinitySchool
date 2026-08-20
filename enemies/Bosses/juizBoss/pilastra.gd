@@ -71,6 +71,7 @@ func takeDamage(damage: int):
 	elif health <1:
 		spritechange(6)
 		colision.set_deferred("disabled",true)
+		ocluder2.set_deferred("visible",false)
 		ocluder3.set_deferred("visible",false)
 		sprite.z_index = 0
 		

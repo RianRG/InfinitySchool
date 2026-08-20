@@ -146,6 +146,7 @@ position = Vector2(2942, -1068)
 
 [node name="player" parent="." unique_id=1149914169 instance=ExtResource("4_4vyth")]
 position = Vector2(2946.9998, -456.99994)
+totalHealth = 12
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
 color = Color(0.4525417, 0.3277911, 0.353506, 1)
