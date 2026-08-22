@@ -490,6 +490,7 @@ texture = SubResource("GradientTexture2D_xuxf8")
 
 [node name="Theme" type="AudioStreamPlayer" parent="." unique_id=72398597]
 stream = ExtResource("25_dlx1y")
+volume_db = -10.0
 
 [node name="BossScream" type="AudioStreamPlayer" parent="." unique_id=404825226]
 stream = ExtResource("26_tv1vq")
@@ -497,6 +498,7 @@ volume_db = -10.0
 
 [node name="Entrada" type="AudioStreamPlayer" parent="." unique_id=1176423587]
 stream = ExtResource("27_v6rg0")
+volume_db = -10.0
 
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="AreaEnteredBossFight" to="." method="_on_area_body_entered"]
