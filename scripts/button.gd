@@ -16,22 +16,25 @@ var original_position: Vector2
 
 func _ready() -> void:
 	pressed.connect(_button_press)
-	mouse_entered.connect(_button_hover)
-	mouse_exited.connect(_button_un_hover)
-	
-	focus_entered.connect(_button_hover)
-	focus_exited.connect(_button_un_hover)
+	resized.connect(_update_original_position)
 	pivot_offset_ratio = Vector2.ONE / 2.0
 	
-	resized.connect(_update_original_position)
-	
-	# fallback: garante que já existe um valor válido mesmo antes do primeiro resize
-	await get_tree().process_frame
 	original_position = position
+	scale = Vector2.ONE
+	
+	call_deferred("_connect_hover_signals")
+
+
+func _connect_hover_signals() -> void:
+	original_position = position  # captura de novo, garantido, após tudo assentar
+	mouse_entered.connect(_button_hover)
+	mouse_exited.connect(_button_un_hover)
+	focus_entered.connect(_button_hover)
+	focus_exited.connect(_button_un_hover)
+
 
 func _update_original_position() -> void:
 	original_position = position
-
 func _button_press() -> void:
 	if tween:
 		tween.kill()

@@ -131,6 +131,11 @@ const spinVfxScene = preload("res://assets/vfx/SpinVFX.tscn")
 @export var _animationTree: AnimationTree = null
 @export var invencibleTime:=2.0
 
+@export_category("Footsteps")
+@export var footstep_distance := 24.0 
+
+var _footstep_accumulator := 0.0
+var _last_footstep_position := Vector2.ZERO
 
 
 var originalColor:=Color.WHITE
@@ -345,6 +350,13 @@ func _process_movement(delta: float):
 				else:
 					waterparticles.emitting = true
 					was_moving = true
+		
+		_footstep_accumulator += global_position.distance_to(_last_footstep_position)
+		if _footstep_accumulator >= footstep_distance:
+			_footstep_accumulator = 0.0
+			_play_footstep()
+		_last_footstep_position = global_position
+		
 		
 		move_velocity.x = lerp(move_velocity.x, direction.normalized().x * SPEED, acc)
 		move_velocity.y = lerp(move_velocity.y, direction.normalized().y * SPEED, acc)
@@ -703,9 +715,8 @@ func _die():
 	await get_tree().create_timer(4).timeout
 	
 	var game_over_screen = gameOverScreenScene.instantiate()
-	print("instanciado: ", game_over_screen)
 	get_tree().current_scene.add_child(game_over_screen)
-	print("adicionado, esta na arvore: ", game_over_screen.is_inside_tree())
+	game_over_screen.show_menu()
 	get_tree().paused = true
 func _on_invincible_timer_timeout():
 	canTakeDamage=true

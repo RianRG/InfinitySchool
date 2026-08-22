@@ -4,15 +4,20 @@ extends Node
 var tilemaps: Array[TileMapLayer] = []
 # preload sounds file for each tilemap
 const footstep_sounds = {
-	#"juiz": [
-		#preload("")
-	#],
+	"water": [
+		preload("res://assets/Sounds/passoagua.mp3")
+	],
+	"juiz": [
+		preload("res://assets/Sounds/passonormal.mp3")
+	]
 	
 }
 
 func play_footstep(position: Vector2):
 	var tile_data = []
 	for tilemap in tilemaps:
+		if not is_instance_valid(tilemap):
+			continue
 		var tile_position = tilemap.local_to_map(position)
 		var data = tilemap.get_cell_tile_data(tile_position)
 		if data:
