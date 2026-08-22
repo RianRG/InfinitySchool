@@ -13,7 +13,7 @@ func _on_body_entered(body: Node2D) -> void:
 		#body.freezeFrame(0, .15)	
 		animation.play("explosion")
 	elif body.is_in_group("quebravel"):
-		body.takeDamage(15)
+		body.takeDamage(5)
 		animation.play("explosion")
 		
 

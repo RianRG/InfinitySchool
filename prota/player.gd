@@ -94,7 +94,10 @@ var energy:
 # Energy costs
 var kokusenEnergyCost = 6
 var spinEnergyCost = 5
-var healthEnergyCost = 6
+var healthEnergyCost = 3
+
+@onready var hit: AudioStreamPlayer = $Hit
+
 
 @export_category("Movement")
 @export var SPEED: float = 190.0
@@ -176,6 +179,7 @@ var canTakeDamage=true
 var ignoreInvincible=false
 var was_moving = false
 var is_dead = false
+@onready var defense = 0
 
 
 # ===============================
@@ -442,6 +446,8 @@ func _try_attack():
 		return
 	
 	_change_state(PlayerState.ATTACKING)
+	hit.pitch_scale = randi_range(0.5,1.5)
+	hit.play()
 	canAttack = false
 	
 	var attackDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -474,7 +480,7 @@ func _try_heal():
 	if energy<healthEnergyCost or current_state == PlayerState.DEAD: return
 	
 	energy-=healthEnergyCost
-	health+=4
+	health+=3
 	
 
 	_change_state(PlayerState.HEALING)
@@ -536,6 +542,7 @@ func _try_spin():
 func _on_spin_timer_timeout():
 	# Fase 2: SPINNING (se move normalmente)
 	_change_state(PlayerState.SPINNING)
+	defense = 1
 	await get_tree().create_timer(0.18).timeout
 	var spinVfx = spinVfxScene.instantiate()
 	$texture.add_child(spinVfx)
@@ -549,6 +556,7 @@ func _on_spin_timer_timeout():
 func _on_spin_end_timer_timeout():
 	# Fase 3: RECOVERY (parado de novo)
 	_change_state(PlayerState.SPIN_END)
+	defense = 0
 	_animationTree.set("parameters/conditions/finishedSpin", true)
 	SPEED-=100.0
 	
@@ -683,7 +691,7 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	canTakeDamage=false
 	invincible_timer.start(1.5)
 	
-	health -= damage
+	health -= damage - defense
 	hitFlash()
 	
 	# Cancel dash on hit
@@ -728,7 +736,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		if current_state == PlayerState.KOKUSEN:
 			body.takeDamage(20)
 		if current_state == PlayerState.SPINNING:
-			body.takeDamage(10)
+			body.takeDamage(5)
 		if current_state == PlayerState.ATTACKING:
 			body.takeDamage(5)
 		apply_knockback(body.global_position, 350)

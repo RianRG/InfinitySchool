@@ -42,7 +42,7 @@ func _on_to_attack_timeout() -> void:
 
 
 func attack():
-	hit.pitch_scale = randi_range(0.5,0.8)
+	hit.pitch_scale = randi_range(0.6,0.9)
 	hit.play()
 	camera.screenShake(15, 0.5)
 	attackcounter += 1

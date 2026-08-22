@@ -2571,7 +2571,7 @@ collision_mask = 12
 script = ExtResource("1_4flbx")
 bulletNode = ExtResource("2_1jxqw")
 _animationTree = NodePath("AnimationTree")
-footstep_distance = 60.0
+footstep_distance = 65.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042372997]
 position = Vector2(6.2741705e-08, -4.705883)

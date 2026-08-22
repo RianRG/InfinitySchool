@@ -1126,8 +1126,8 @@ hframes = 4
 
 [node name="Hit" type="AudioStreamPlayer" parent="." unique_id=596294875]
 stream = ExtResource("7_i60d1")
-volume_db = -5.0
-pitch_scale = 0.8
+volume_db = -10.0
+pitch_scale = 0.9
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

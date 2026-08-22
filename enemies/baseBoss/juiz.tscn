@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bavvhirgf0mie" path="res://enemies/Bosses/juizBoss/meleeAttack.gd" id="5_xokln"]
 [ext_resource type="PackedScene" uid="uid://m637yjf5k2jd" path="res://enemies/Bosses/juizBoss/bullet.tscn" id="8_186p5"]
 [ext_resource type="AudioStream" uid="uid://ggyrojaxv5ms" path="res://enemies/Bosses/juizBoss/hitboos.mp3" id="9_msdht"]
+[ext_resource type="AudioStream" uid="uid://bimtoxpav4ld" path="res://enemies/Bosses/juizBoss/gritoboss.mp3" id="10_82dab"]
 
 [sub_resource type="Animation" id="Animation_ybu1o"]
 length = 0.033333335
@@ -1883,6 +1884,11 @@ one_shot = true
 [node name="damage" type="AudioStreamPlayer" parent="." index="15" unique_id=1770305268]
 stream = ExtResource("9_msdht")
 volume_db = -2.0
+
+[node name="BossScream" type="AudioStreamPlayer" parent="." index="16" unique_id=490131945]
+stream = ExtResource("10_82dab")
+volume_db = -20.0
+pitch_scale = 0.8
 
 [connection signal="timeout" from="cooldownAttack" to="FiniteStateMachine/follow" method="_on_cooldown_attack_timeout"]
 [connection signal="body_entered" from="attackArea" to="FiniteStateMachine/meleeAttack" method="_on_attack_area_body_entered"]
