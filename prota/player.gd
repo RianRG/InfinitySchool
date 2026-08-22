@@ -80,28 +80,21 @@ var health:
 		return _health
 	set(value):
 		var clamped = clamp(value, 0, totalHealth)
-		await updateHUD(clamped, energy)
+		await updateHealthHUD(clamped)
 		_health = clamped
+
 var _energy = 0
 var energy:
 	get:
 		return _energy
 	set(value):
 		var clamped = clamp(value, 0, totalEnergy)
-		await updateHUD(health, clamped)
+		await updateEnergyHUD(clamped)
 		_energy = clamped
-
 # Energy costs
 var kokusenEnergyCost = 6
 var spinEnergyCost = 5
-var healthEnergyCost = 3
-
-var defense = 0
-
-#sounds
-@onready var hit: AudioStreamPlayer = $Hit
-@onready var pitch
-
+var healthEnergyCost = 6
 
 @export_category("Movement")
 @export var SPEED: float = 190.0
@@ -437,8 +430,6 @@ func _try_attack():
 		return
 	
 	_change_state(PlayerState.ATTACKING)
-	hit.pitch_scale = randi_range(0.5,1.5)
-	hit.play()
 	canAttack = false
 	
 	var attackDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -470,8 +461,8 @@ func _try_heal():
 		
 	if energy<healthEnergyCost or current_state == PlayerState.DEAD: return
 	
-	health+=3
 	energy-=healthEnergyCost
+	health+=4
 	
 
 	_change_state(PlayerState.HEALING)
@@ -526,7 +517,6 @@ func _try_spin():
 	
 	# Fase 1: STARTUP (parado)
 	_change_state(PlayerState.SPINNING_STARTUP)
-	defense = 1
 	spin_started = false
 	SPEED+=100.0
 	spin_timer.start(spin_startup_duration)  # 0.6s parado
@@ -559,7 +549,6 @@ func _on_spin_end_timer_timeout():
 
 func _on_spin_complete():
 	_animationTree.set("parameters/conditions/finishedSpin", false)
-	defense = 0
 	_change_state(PlayerState.IDLE)
 # ===============================
 # STATE TRANSITIONS
@@ -635,66 +624,45 @@ func apply_knockback(from_position: Vector2, knockback_strength):
 	
 
 
-func updateHUD(newHealth: int, newEnergy: int):
-	if newEnergy < 0 or newHealth < 0:
-		return 
+func updateHealthHUD(newHealth: int):
+	if newHealth < 0:
+		return
 	
-	# ===== VIDA =====
-	if newHealth!=health: # animate health sprite
+	if newHealth != health:
 		var originalSpriteColor = healthSprite.modulate
 		healthSprite.modulate = Color(2, 2, 2, 1)
 		var tween = create_tween()
-		tween.tween_property(
-			healthSprite,
-			"modulate",
-			originalSpriteColor,
-			0.1
-		)
+		tween.tween_property(healthSprite, "modulate", originalSpriteColor, 0.1)
+	
 	var oldHealth = health
 	if newHealth > oldHealth:
-		# aumentando vida
 		for i in range(oldHealth, newHealth+1):
 			healthSprite.frame = totalHealth - i
 			await get_tree().create_timer(0.1).timeout
 	else:
 		healthSprite.frame = totalHealth - newHealth
-		
-	
-	
 
+func updateEnergyHUD(newEnergy: int):
+	if newEnergy < 0:
+		return
 	
-	# ===== ENERGIA (frame 0 = cheia) =====
-	
-	if newEnergy!=energy: # animate energy sprite
+	if newEnergy != energy:
 		var originalSpriteColor = energySprite.modulate
 		energySprite.modulate = Color(2, 2, 2, 1)
 		var tween = create_tween()
-		tween.tween_property(
-			energySprite,
-			"modulate",
-			originalSpriteColor,
-			0.1
-		)
+		tween.tween_property(energySprite, "modulate", originalSpriteColor, 0.1)
 	
 	var oldEnergy = energy
-	
 	if newEnergy < oldEnergy:
-		# diminuindo energia
 		for i in range(oldEnergy, newEnergy, -1):
 			energySprite.frame = totalEnergy - i
 			await get_tree().create_timer(0.1).timeout
 	else:
-		# aumentando energia
 		for i in range(oldEnergy, newEnergy):
 			energySprite.frame = totalEnergy - i
 			await get_tree().create_timer(0.05).timeout
 	
-	# garante frame final correto
 	energySprite.frame = totalEnergy - newEnergy
-	
-	# ===== FLASH VIDA =====
-	
-
 
 
 func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
@@ -703,7 +671,7 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	canTakeDamage=false
 	invincible_timer.start(1.5)
 	
-	health -= damage - defense
+	health -= damage
 	hitFlash()
 	
 	# Cancel dash on hit

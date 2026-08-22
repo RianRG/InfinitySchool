@@ -148,7 +148,7 @@ position = Vector2(2944, -1080)
 position = Vector2(2942, -1068)
 
 [node name="player" parent="." unique_id=1149914169 instance=ExtResource("4_4vyth")]
-position = Vector2(168, 152)
+position = Vector2(2946.0002, -541.00006)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
 color = Color(0.4525417, 0.3277911, 0.353506, 1)
@@ -156,7 +156,7 @@ color = Color(0.4525417, 0.3277911, 0.353506, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(355.55557, 152)
+position = Vector2(1564.4445, 24)
 zoom = Vector2(0.9, 0.9)
 process_callback = 0
 limit_enabled = false
@@ -174,7 +174,7 @@ script = ExtResource("24_gix2x")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(355.55557, 152)
+position = Vector2(1564.4445, 24)
 script = ExtResource("25_sllsw")
 priority = 3
 follow_mode = 2
@@ -470,7 +470,7 @@ shape = SubResource("RectangleShape2D_0mymv")
 
 [node name="PhantomCamera2D2" type="Node2D" parent="." unique_id=1976626821 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2275.5557, 152)
+position = Vector2(2946.0002, -541.00006)
 script = ExtResource("25_sllsw")
 follow_mode = 2
 follow_target = NodePath("../player")
