@@ -10,6 +10,10 @@ extends Node2D
 @onready var luz2 = $PointLight2D3
 @onready var luz3 = $PointLight2D4
 @onready var branco = $Sprite2D2
+@onready var theme: AudioStreamPlayer = $Theme
+@onready var boss_scream: AudioStreamPlayer = $BossScream
+@onready var entrada: AudioStreamPlayer = $Entrada
+
 
 var cutscenePlayed:=false
 func _ready() -> void:
@@ -36,7 +40,8 @@ func startCutscene():
 	bossAnimationPhantom.priority=10
 	await get_tree().create_timer(1).timeout
 	camera.screenShake(7,5)
-	await get_tree().create_timer(3).timeout
+	boss_scream.play()
+	await get_tree().create_timer(1.5).timeout
 	endCutscene()
 	# 6. Shake da câmera
 	
@@ -85,8 +90,10 @@ func _on_area_body_entered(body: Node2D) -> void:
 	
 		var tween = create_tween()
 		tween.tween_property(rect, "color", Color(1,1,1,1), 0.5)
+		entrada.play()
 		await get_tree().create_timer(1.5).timeout
 		var tween2 = create_tween()
+		theme.play()
 		tween2.tween_property(rect, "color", Color(1,1,1,0), 1)
 		tween2.tween_property(luz2 ,"energy" ,0.0,1)
 		tween2.tween_property(luz3 ,"energy" ,0.0,1)

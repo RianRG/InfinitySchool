@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://di8olutp2r3o8" path="res://assets/vfx/firetexture.png" id="8_hi6va"]
 [ext_resource type="Texture2D" uid="uid://kctsa3ibkk7j" path="res://assets/vfx/AtackVFX.png" id="9_sgpap"]
 [ext_resource type="Texture2D" uid="uid://15dbxl5vt1r3" path="res://assets/vfx/waterwalkingeffect.png" id="11_wpvyx"]
+[ext_resource type="AudioStream" uid="uid://dgdusju1w5ocd" path="res://assets/Sounds/hit.mp3" id="12_f7obg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 11.764718)
@@ -2586,7 +2587,6 @@ scale = Vector2(0.85, 0.85)
 collision_mask = 12
 script = ExtResource("1_4flbx")
 bulletNode = ExtResource("2_1jxqw")
-totalHealth = 2
 _animationTree = NodePath("AnimationTree")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042372997]
@@ -2745,6 +2745,10 @@ gravity = Vector2(0, 0)
 scale_amount_max = 1.5
 anim_speed_min = 1.5
 anim_speed_max = 1.5
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=348841514]
+stream = ExtResource("12_f7obg")
+volume_db = -4.0
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

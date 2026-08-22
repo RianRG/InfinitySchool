@@ -94,7 +94,14 @@ var energy:
 # Energy costs
 var kokusenEnergyCost = 6
 var spinEnergyCost = 5
-var healthEnergyCost = 6
+var healthEnergyCost = 3
+
+var defense = 0
+
+#sounds
+@onready var hit: AudioStreamPlayer = $Hit
+@onready var pitch
+
 
 @export_category("Movement")
 @export var SPEED: float = 190.0
@@ -430,6 +437,8 @@ func _try_attack():
 		return
 	
 	_change_state(PlayerState.ATTACKING)
+	hit.pitch_scale = randi_range(0.5,1.5)
+	hit.play()
 	canAttack = false
 	
 	var attackDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -461,7 +470,7 @@ func _try_heal():
 		
 	if energy<healthEnergyCost or current_state == PlayerState.DEAD: return
 	
-	health+=4
+	health+=3
 	energy-=healthEnergyCost
 	
 
@@ -517,6 +526,7 @@ func _try_spin():
 	
 	# Fase 1: STARTUP (parado)
 	_change_state(PlayerState.SPINNING_STARTUP)
+	defense = 1
 	spin_started = false
 	SPEED+=100.0
 	spin_timer.start(spin_startup_duration)  # 0.6s parado
@@ -549,6 +559,7 @@ func _on_spin_end_timer_timeout():
 
 func _on_spin_complete():
 	_animationTree.set("parameters/conditions/finishedSpin", false)
+	defense = 0
 	_change_state(PlayerState.IDLE)
 # ===============================
 # STATE TRANSITIONS
@@ -692,7 +703,7 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	canTakeDamage=false
 	invincible_timer.start(1.5)
 	
-	health -= damage
+	health -= damage - defense
 	hitFlash()
 	
 	# Cancel dash on hit

@@ -8,6 +8,9 @@ extends CharacterBody2D
 @onready var baseframe: Sprite2D = $HammerBase
 @onready var toAttackTimer: Timer = $toAttack
 @onready var animation: AnimationPlayer = $AnimationPlayer
+@onready var hit: AudioStreamPlayer = $Hit
+
+
 enum PossibleAttacks {
 	X, PLUS
 }
@@ -39,6 +42,8 @@ func _on_to_attack_timeout() -> void:
 
 
 func attack():
+	hit.pitch_scale = randi_range(0.5,0.8)
+	hit.play()
 	camera.screenShake(15, 0.5)
 	attackcounter += 1
 	if attackcounter == 5:

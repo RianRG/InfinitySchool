@@ -16,7 +16,7 @@ offsets = PackedFloat32Array(0, 0.46153846, 0.6495727, 0.85897434)
 colors = PackedColorArray(1, 0.9275334, 0.89165515, 1, 1, 0.29748532, 0, 1, 1, 0, 0, 1, 0.14767182, 0.14767179, 0.14767179, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wgg5"]
-size = Vector2(22.500006, 28.250004)
+size = Vector2(20.000011, 20.000011)
 
 [sub_resource type="Animation" id="Animation_wubi2"]
 length = 0.001
@@ -282,8 +282,8 @@ texture = ExtResource("2_01vvq")
 hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=544907962]
-position = Vector2(2.2351738e-07, 4.6249976)
-scale = Vector2(0.9999995, 0.9999995)
+position = Vector2(5.8859547e-07, 0)
+scale = Vector2(0.9999992, 0.9999992)
 shape = SubResource("RectangleShape2D_4wgg5")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1991064392]

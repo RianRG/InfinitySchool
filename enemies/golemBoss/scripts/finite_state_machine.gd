@@ -34,3 +34,9 @@ func change_state(state):
 	
 	current_state = new_state       # Muda para o novo estado
 	current_state.enter()  
+	
+func getname():
+	
+	var nome: String = previous_state.name
+	
+	return nome

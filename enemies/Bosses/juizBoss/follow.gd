@@ -1,6 +1,7 @@
 extends "res://enemies/baseBoss/follow.gd"
 
 var phaseRolled:=false
+var previous_state: State
 
 func enter():
 	super.enter()
@@ -17,8 +18,8 @@ func transition():
 	if distance<=135 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
 		get_parent().change_state("meleeAttack")
 		$"../../followtimer".stop()
-		
-	elif distance>150 && !owner.bulletPhaseDecided && !phaseRolled:
+	
+	elif distance>150 && !owner.bulletPhaseDecided && !phaseRolled && get_parent().getname() != "bulletPhase" :
 		phaseRolled=true
 		var chosenPhase = randi()%6
 		if chosenPhase==1:	

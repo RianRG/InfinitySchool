@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ckwgwe8b7k1la" path="res://enemies/Bosses/juizBoss/HammerVFX2.png" id="4_cbh05"]
 [ext_resource type="Texture2D" uid="uid://d2pbbixrgjcou" path="res://enemies/Bosses/juizBoss/HammerVFX1.png" id="5_esk6i"]
 [ext_resource type="Texture2D" uid="uid://odwjmyf3odhy" path="res://enemies/Bosses/juizBoss/Hammerbase.png" id="6_n3qrh"]
+[ext_resource type="AudioStream" uid="uid://bsgutim6xtvk0" path="res://enemies/Bosses/juizBoss/impactomartelo.mp3" id="7_i60d1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj86u"]
 size = Vector2(20, 16.545454)
@@ -204,7 +205,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jmf3b"]
-radius = 86.023254
+radius = 64.05553
 
 [sub_resource type="Animation" id="Animation_i60d1"]
 resource_name = "+"
@@ -1122,6 +1123,11 @@ position = Vector2(0, 103)
 texture = ExtResource("6_n3qrh")
 offset = Vector2(0, 1)
 hframes = 4
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=596294875]
+stream = ExtResource("7_i60d1")
+volume_db = -5.0
+pitch_scale = 0.8
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

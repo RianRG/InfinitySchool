@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var animationTree: AnimationTree = $AnimationTree
 @onready var finitestate: Node2D = $FiniteStateMachine
 @onready var hammer: CharacterBody2D = $"../JuizHammer"
+@onready var damage: AudioStreamPlayer = $damage
 
 var direction: Vector2 = Vector2.ZERO
 var target_direction: Vector2 = Vector2.ZERO
@@ -42,7 +43,7 @@ var min_follow_distance := 60.0
 # Bullet Scene
 @export var bulletScene: PackedScene
 
-var health = 1000:
+var health = 600:
 	set(value):
 		health = value
 		if value <= 0:
@@ -141,6 +142,8 @@ const purpleAttackVfx = preload("res://assets/vfx/purpleAttackVfx.tscn")
 
 func takeDamage(dano: int):
 	health -= 5 + dano - DEF
+	damage.pitch_scale = randi_range(0.7,1.7)
+	damage.play()
 	
 	if isDead: knockback_strength = 400.0 # tomar knockback maior no ultimo hit
 	# Spawn do VFX
