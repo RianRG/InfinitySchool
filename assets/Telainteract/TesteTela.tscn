@@ -32,16 +32,15 @@ z_index = 4
 centered = false
 
 [node name="Sair" type="Button" parent="CanvasLayer/Tela" unique_id=784509153]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -17.0
-offset_right = 7.0
-offset_bottom = 24.0
-grow_horizontal = 0
-rotation = 0.7853982
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -17.0
+offset_right = 20.0
+offset_bottom = 7.0
+grow_vertical = 0
 offset_transform_enabled = true
 flat = true
-expand_icon = true
 
 [editable path="InteractButton"]

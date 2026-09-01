@@ -28,7 +28,9 @@
 [ext_resource type="TileSet" uid="uid://crewjdph5stbd" path="res://terrains/Decoração/TileStes/Juizprops.tres" id="30_stwsr"]
 [ext_resource type="PackedScene" uid="uid://dnmnvj6tomy22" path="res://scenes/thoughts/thoughts.tscn" id="31_d2yjx"]
 [ext_resource type="Texture2D" uid="uid://hvoyj72cuj3l" path="res://terrains/Decoração/ParalaxTry.png" id="31_jvykn"]
+[ext_resource type="PackedScene" uid="uid://3ifycd3hhgcj" path="res://assets/Telainteract/TesteTela.tscn" id="32_iuk3r"]
 [ext_resource type="PackedScene" uid="uid://kx3snxy3xuak" path="res://enemies/Bosses/juizBoss/pilastra.tscn" id="33_4vyth"]
+[ext_resource type="Texture2D" uid="uid://cyx6nwp5r5jg0" path="res://assets/Telainteract/tela teste.png" id="33_ivjdt"]
 [ext_resource type="PackedScene" uid="uid://e5f5w4xxhld7" path="res://assets/dialogue/dialogue_mechanic.tscn" id="35_oc16y"]
 [ext_resource type="PackedScene" uid="uid://d3hj5fgdjtdiq" path="res://assets/interaction/bigDoor.tscn" id="36_ms1cf"]
 
@@ -707,7 +709,7 @@ scale = Vector2(1.5, 1.5)
 text = "Lá fora ta tudo escuro..."
 
 [node name="Thoughts9" parent="." unique_id=292632098 instance=ExtResource("31_d2yjx")]
-position = Vector2(2168, 96)
+position = Vector2(2223.0002, 90)
 scale = Vector2(10, 10)
 text = "Que desgraça de lugar é esse??!"
 
@@ -717,9 +719,18 @@ scale = Vector2(10, 10)
 text = "Esse lugar me parece familiar... e não me vem nenhum sentimento bom quanto a isso..."
 display_duration = 3.0
 
+[node name="Tela" parent="." unique_id=393671626 instance=ExtResource("32_iuk3r")]
+position = Vector2(878, -50)
+imagem = ExtResource("33_ivjdt")
+
+[node name="Tela" parent="Tela/CanvasLayer" parent_id_path=PackedInt32Array(393671626, 1238202995) index="0" unique_id=698589086]
+scale = Vector2(2, 2)
+
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="AreaEnteredBossFight" to="." method="_on_area_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
 
 [editable path="Juiz"]
+[editable path="Tela"]
+[editable path="Tela/InteractButton"]
