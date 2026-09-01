@@ -116,6 +116,7 @@ var healthEnergyCost = 3
 
 var RUNSPEED: float = 190.0
 var WALKSPEED: float = 110.0
+var SPINSPEED: float = 260.0
 
 @export_category("Movement")
 @export var SPEED: float = 190.0
@@ -386,8 +387,15 @@ func _process_movement(delta: float):
 			_play_footstep()
 		_last_footstep_position = global_position
 		
-		if isRunning: SPEED=RUNSPEED
-		else: SPEED=WALKSPEED
+		if isRunning: 
+			SPEED=RUNSPEED 
+			footstep_distance = 65
+		else: 
+			SPEED=WALKSPEED
+			footstep_distance = 42
+		if current_state == PlayerState.SPINNING:
+			SPEED=SPINSPEED
+			footstep_distance = 100000000
 		
 		move_velocity.x = lerp(move_velocity.x, direction.normalized().x * SPEED, acc)
 		move_velocity.y = lerp(move_velocity.y, direction.normalized().y * SPEED, acc)
@@ -559,13 +567,13 @@ func _try_spin():
 	# Fase 1: STARTUP (parado)
 	_change_state(PlayerState.SPINNING_STARTUP)
 	spin_started = false
-	SPEED+=150.0
 	spin_timer.start(spin_startup_duration)  # 0.6s parado
 
 func _on_spin_timer_timeout():
 	# Fase 2: SPINNING (se move normalmente)
 	_change_state(PlayerState.SPINNING)
 	defense = 1
+	SPEED=SPINSPEED
 	await get_tree().create_timer(0.18).timeout
 	var spinVfx = spinVfxScene.instantiate()
 	$texture.add_child(spinVfx)

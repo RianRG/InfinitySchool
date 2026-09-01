@@ -317,7 +317,8 @@ color = Color(0.4592806, 0.33611038, 0.359933, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(320, 180)
+position = Vector2(290.9091, 180)
+zoom = Vector2(1.1, 1.1)
 process_callback = 0
 limit_enabled = false
 limit_left = 0
@@ -334,11 +335,12 @@ script = ExtResource("24_gix2x")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(320, 180)
+position = Vector2(290.9091, 180)
 script = ExtResource("25_sllsw")
 priority = 3
 follow_mode = 2
 follow_target = NodePath("../player")
+zoom = Vector2(1.1, 1.1)
 tween_resource = SubResource("Resource_syhfa")
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
@@ -468,7 +470,21 @@ position = Vector2(2264, 280)
 health = 51
 
 [node name="dialogueMechanic" parent="." unique_id=602747879 instance=ExtResource("35_oc16y")]
-position = Vector2(1088, -104)
+position = Vector2(1105, -106)
+dialogData = {
+0: {
+"dialog": "",
+"title": ""
+},
+1: {
+"dialog": "",
+"title": ""
+},
+2: {
+"dialog": "",
+"title": ""
+}
+}
 
 [node name="bigdoor" parent="." unique_id=1992437991 instance=ExtResource("36_ms1cf")]
 position = Vector2(2944, -704)
@@ -616,7 +632,7 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 [node name="PointLight2D14" type="PointLight2D" parent="." unique_id=1555672600]
 position = Vector2(464, 80)
 color = Color(1, 0.7607843, 0.6431373, 1)
-energy = 0.4
+energy = 0.5
 texture = SubResource("GradientTexture2D_xuxf8")
 
 [node name="Theme" type="AudioStreamPlayer" parent="." unique_id=72398597]
@@ -655,12 +671,12 @@ text = "Que lugar é esse?"
 display_duration = 3.0
 
 [node name="Thoughts2" parent="." unique_id=1759098157 instance=ExtResource("31_d2yjx")]
-position = Vector2(424.00003, 128)
+position = Vector2(560, 127)
 scale = Vector2(1.5, 1.5)
 text = "Funcionou?"
 
 [node name="Thoughts3" parent="." unique_id=116486404 instance=ExtResource("31_d2yjx")]
-position = Vector2(816, 136)
+position = Vector2(994, 134)
 scale = Vector2(1.5, 1.5)
 text = "Parece a escola, só que... meio diferente"
 display_duration = 3.0
@@ -681,8 +697,8 @@ scale = Vector2(1.5, 1.5)
 text = "Aqui não era minha sala do setimo ano?"
 
 [node name="Thoughts7" parent="." unique_id=2046783585 instance=ExtResource("31_d2yjx")]
-position = Vector2(888, -56)
-scale = Vector2(1.5, 1.5)
+position = Vector2(877, -57)
+scale = Vector2(0.5, 0.5)
 text = "Luca Lombardi? esse é o nome do professor do meu irmão"
 
 [node name="Thoughts8" parent="." unique_id=2094238796 instance=ExtResource("31_d2yjx")]
