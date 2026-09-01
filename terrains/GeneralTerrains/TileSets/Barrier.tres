@@ -1,0 +1,14 @@
+[gd_resource type="TileSet" format=3 uid="uid://d373llop4uk6x"]
+
+[ext_resource type="Texture2D" uid="uid://cmi4cdpe7rix6" path="res://terrains/Barrier.png" id="1_fccp0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ceqw"]
+texture = ExtResource("1_fccp0")
+0:0/0 = 0
+0:0/0/z_index = -2
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[resource]
+physics_layer_0/collision_layer = 4
+physics_layer_0/collision_mask = 3
+sources/0 = SubResource("TileSetAtlasSource_3ceqw")

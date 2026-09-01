@@ -1,0 +1,74 @@
+extends State
+
+@onready var bulletSpeedTimer: Timer = $"../../bulletSpeed"
+@onready var bulletPhaseTimer: Timer = $"../../endBulletPhase"
+@onready var _animationTree: AnimationTree = $"../../AnimationTree"
+var timerIsOut:=false
+
+var theta = 0.0
+@export_range(0,2*PI) var alpha: float = 0.0
+@onready var bulletScene: PackedScene = owner.bulletScene
+
+var _active:=true
+var bullet
+func enter():
+	super.enter()
+	_active=true
+	_animationTree.set("parameters/conditions/timerIsOut", false)
+	owner.cannotTakeKnockback=true
+	bulletPhaseTimer.start(10)
+	owner.stateMachine.travel("bulletPhaseStart")
+	await get_tree().create_timer(1).timeout
+	
+	if !_active:
+		return
+	
+	bulletSpeedTimer.start()
+
+func exit():
+	_active=false
+	_animationTree.set("parameters/conditions/timerIsOut", false)
+	bulletSpeedTimer.stop()
+	bulletPhaseTimer.stop()
+	owner.bulletPhaseDecided=false
+	super.exit()
+
+func transition():
+	pass
+func _on_end_bullet_phase_timeout() -> void:
+	_animationTree.set("parameters/conditions/timerIsOut", true)
+
+func endBulletPhase():
+	print("=== END BULLET PHASE CHAMADO ===")
+	_animationTree.set("parameters/conditions/timerIsOut", false)
+	owner.cannotTakeKnockback=false
+	get_parent().change_state("follow")
+
+func get_vector(angle):
+	theta = angle+alpha
+	return Vector2(cos(theta), sin(theta))
+	 
+func shoot(angle):
+	bullet = bulletScene.instantiate()
+	var radius = 40
+	var offset = Vector2(cos(angle), sin(angle)) * radius
+	
+	bullet.position = owner.global_position + offset
+	bullet.direction = get_vector(angle)
+	
+	get_tree().current_scene.add_child(bullet)
+
+
+func _on_bullet_speed_timeout() -> void:
+	if !_active:
+		return
+	shoot(theta)
+
+
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	var anim = area.get_node_or_null("AnimationPlayer")
+	var pointLight = area.get_node_or_null("PointLight2D")
+	if anim:
+		anim.play("exitLimit")
+		area.set_physics_process(false)

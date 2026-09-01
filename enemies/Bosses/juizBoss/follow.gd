@@ -1,0 +1,36 @@
+extends "res://enemies/baseBoss/follow.gd"
+
+var phaseRolled:=false
+var previous_state: State
+
+func enter():
+	super.enter()
+	phaseRolled=false
+	owner.canMove=true
+	owner.cannotTakeKnockback=false
+	
+
+
+func transition():
+	
+	var distance = owner.position.distance_to(player.position)
+	if distance<=135 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
+		get_parent().change_state("meleeAttack")
+		$"../../followtimer".stop()
+	
+	elif distance>150 && !owner.bulletPhaseDecided && !phaseRolled && get_parent().getname() != "bulletPhase" :
+		phaseRolled=true
+		var chosenPhase = randi()%6
+		if chosenPhase==1:	
+			owner.bulletPhaseDecided=true
+			get_parent().change_state("bulletPhase")
+		else:
+			$"../../followtimer".start(5)
+			
+		
+	
+	
+
+
+func _on_cooldown_attack_timeout() -> void:
+	timerIsOut=true

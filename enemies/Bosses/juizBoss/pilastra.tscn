@@ -1,0 +1,115 @@
+[gd_scene format=3 uid="uid://kx3snxy3xuak"]
+
+[ext_resource type="Texture2D" uid="uid://box4eiek2vcei" path="res://enemies/Bosses/juizBoss/BossPilaster.png" id="1_dpccm"]
+[ext_resource type="Script" uid="uid://c46uoot2ymynj" path="res://enemies/Bosses/juizBoss/pilastra.gd" id="1_ow35r"]
+[ext_resource type="Texture2D" uid="uid://c3wkvmtld3dfj" path="res://enemies/Bosses/juizBoss/BossPilasterreflexion.png" id="3_8sd0j"]
+[ext_resource type="Shader" uid="uid://rsvsixdps6ls" path="res://assets/vfx/water.gdshader" id="3_h2cef"]
+[ext_resource type="Texture2D" uid="uid://6i6fdkb56wmq" path="res://enemies/Bosses/juizBoss/RockParticle.png" id="3_ohhka"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sgpap"]
+shader = ExtResource("3_h2cef")
+shader_parameter/wave_strength = 0.005
+shader_parameter/wave_speed = 1.5
+shader_parameter/wave_frequency = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8cxyx"]
+radius = 20.0
+
+[sub_resource type="Gradient" id="Gradient_ow35r"]
+colors = PackedColorArray(0.5153816, 0.3563713, 0.2507548, 1, 1, 1, 1, 1)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0mymv"]
+polygon = PackedVector2Array(16, 56, -16, 56, -18, -69, 19, -69)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4vyth"]
+polygon = PackedVector2Array(-3, -24, -12, -17, -15, 56, 15, 56, 12, -16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ohhka"]
+polygon = PackedVector2Array(-4, 21, -13, 30, -14, 56, 15, 56, 14, 31)
+
+[node name="Pilastra" type="CharacterBody2D" unique_id=1108521031 groups=["quebravel"]]
+collision_layer = 7
+collision_mask = 3
+script = ExtResource("1_ow35r")
+
+[node name="texture" type="Sprite2D" parent="." unique_id=2120513030]
+z_index = 1
+y_sort_enabled = true
+texture = ExtResource("1_dpccm")
+offset = Vector2(0, -33)
+hframes = 7
+frame = 5
+
+[node name="reflexion" type="Sprite2D" parent="." unique_id=1159416984]
+modulate = Color(1, 1, 1, 0.3)
+z_index = -3
+material = SubResource("ShaderMaterial_sgpap")
+position = Vector2(0, 96)
+texture = ExtResource("3_8sd0j")
+offset = Vector2(0, -33)
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131496562]
+visible = false
+z_index = 1
+position = Vector2(0, 17)
+shape = SubResource("CircleShape2D_8cxyx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1872537664]
+z_index = 1
+position = Vector2(0, -8)
+emitting = false
+amount = 5
+texture = ExtResource("3_ohhka")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(12, 50)
+direction = Vector2(0, -1)
+spread = 100.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.2
+scale_amount_max = 0.8
+color_initial_ramp = SubResource("Gradient_ow35r")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="." unique_id=1928667954]
+z_index = 1
+position = Vector2(0, -8)
+emitting = false
+amount = 12
+texture = ExtResource("3_ohhka")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(12, 50)
+direction = Vector2(0, -1)
+spread = 100.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angle_min = -720.0
+angle_max = 720.0
+scale_amount_min = 0.2
+color_initial_ramp = SubResource("Gradient_ow35r")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=211693506]
+visible = false
+position = Vector2(0, -32)
+occluder = SubResource("OccluderPolygon2D_0mymv")
+sdf_collision = false
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="." unique_id=1711255735]
+visible = false
+position = Vector2(0, -32)
+occluder = SubResource("OccluderPolygon2D_4vyth")
+sdf_collision = false
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="." unique_id=1262324831]
+visible = false
+position = Vector2(0, -32)
+occluder = SubResource("OccluderPolygon2D_ohhka")
+sdf_collision = false

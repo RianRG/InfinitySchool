@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://o08f2kqjkjfm"]
+
+[ext_resource type="PackedScene" uid="uid://bsm7lf61fjqgi" path="res://assets/dialogue/interact_button.tscn" id="1_7u4fi"]
+[ext_resource type="Script" uid="uid://cojc11txluxot" path="res://assets/dialogue/interactButtonFather.gd" id="1_p3yka"]
+[ext_resource type="Script" uid="uid://crg2f2quf835g" path="res://assets/dialogue/area_detection.gd" id="2_xci7l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xci7l"]
+radius = 88.1419
+
+[node name="InteractButton" type="Node2D" unique_id=1296896029]
+z_index = 3
+script = ExtResource("1_p3yka")
+
+[node name="buttonSprite" parent="." unique_id=2135049160 instance=ExtResource("1_7u4fi")]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1039393303]
+position = Vector2(0, 50)
+script = ExtResource("2_xci7l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1857469891]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_xci7l")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

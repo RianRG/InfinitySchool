@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dnmnvj6tomy22"]
+
+[ext_resource type="Script" uid="uid://dgsu2c2jgu57o" path="res://scenes/thoughts/thoughts.gd" id="1_qag6t"]
+[ext_resource type="FontFile" uid="uid://dx2nict7kcawc" path="res://assets/fonts/hf-free-complete/compass-pro-v1.1/CompassPro.woff" id="2_2hhch"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7s6l"]
+radius = 22.022715
+
+[sub_resource type="Theme" id="Theme_jvykn"]
+default_font = ExtResource("2_2hhch")
+
+[node name="Thoughts" type="Area2D" unique_id=744922961]
+script = ExtResource("1_qag6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=164009919]
+shape = SubResource("CircleShape2D_o7s6l")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=376718463]
+
+[node name="HintLabel" type="Label" parent="CanvasLayer" unique_id=396926166]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -40)
+theme = SubResource("Theme_jvykn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

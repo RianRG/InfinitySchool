@@ -1,0 +1,332 @@
+[gd_scene format=3 uid="uid://bfvpwdopnsn1j"]
+
+[ext_resource type="Script" uid="uid://bcu5ri4uote2d" path="res://scenes/options_menu.gd" id="1_liyum"]
+[ext_resource type="FontFile" uid="uid://c5urm0b8a1tit" path="res://assets/fonts/hf-free-complete/futile-pro-v1/FutilePro.otf" id="2_ijpji"]
+[ext_resource type="Shader" uid="uid://bf4sq5e5736i6" path="res://scenes/options_menu.gdshader" id="2_lfjc7"]
+[ext_resource type="Script" uid="uid://n61e00kshak6" path="res://scripts/button.gd" id="3_hm4m4"]
+[ext_resource type="Texture2D" uid="uid://do3cygw4qo75v" path="res://MenuVisuals/Button1.png" id="4_3xsyx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hm4m4"]
+shader = ExtResource("2_lfjc7")
+shader_parameter/blur_amount = 1.7550000833625
+
+[sub_resource type="Theme" id="Theme_hm4m4"]
+default_font = ExtResource("2_ijpji")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7s6l"]
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 40.0
+bg_color = Color(0, 0, 0, 0.77254903)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3xsyx"]
+diffuse_texture = ExtResource("4_3xsyx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dhn0l"]
+texture = SubResource("CanvasTexture_3xsyx")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k61yy"]
+
+[node name="OptionsMenu" type="Control" unique_id=1430362385]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_liyum")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=641120596]
+material = SubResource("ShaderMaterial_hm4m4")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003125
+anchor_top = -0.05
+anchor_right = 1.003125
+anchor_bottom = 0.95
+offset_left = 14.0
+offset_top = 27.0
+offset_right = -23.333313
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_hm4m4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_o7s6l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1569531336]
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_constants/separation = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1923145747]
+layout_mode = 2
+
+[node name="volumeLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=544363586]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Volume"
+
+[node name="volume" type="HSlider" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=1626004026]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+scrollable = false
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=595072401]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="resolutionLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1686915694]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Resolução"
+
+[node name="Resolutions" type="OptionButton" parent="PanelContainer/VBoxContainer/HBoxContainer2" unique_id=1526399504]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+alignment = 1
+selected = 3
+item_count = 4
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1280x720"
+popup/item_2/id = 2
+popup/item_3/text = "640x360"
+popup/item_3/id = 3
+
+[node name="ButtonSlot" type="Control" parent="PanelContainer/VBoxContainer" unique_id=269862111]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="seeBinds" type="Button" parent="PanelContainer/VBoxContainer/ButtonSlot" unique_id=1872523929]
+custom_minimum_size = Vector2(120, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 54.0
+offset_right = 61.0
+offset_bottom = 74.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ijpji")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_k61yy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dhn0l")
+text = "Ver botões"
+script = ExtResource("3_hm4m4")
+default_focus = true
+
+[node name="close2" type="Button" parent="PanelContainer/VBoxContainer/ButtonSlot" unique_id=1422373765]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 86.0
+offset_right = 40.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ijpji")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_k61yy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dhn0l")
+text = "Fechar"
+script = ExtResource("3_hm4m4")
+default_focus = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1645859933]
+material = SubResource("ShaderMaterial_hm4m4")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003125
+anchor_top = -0.05
+anchor_right = 1.003125
+anchor_bottom = 0.95
+offset_left = 14.0
+offset_top = 27.0
+offset_right = -23.333313
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_hm4m4")
+theme_override_styles/panel = SubResource("StyleBoxFlat_o7s6l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2" unique_id=1925239192]
+layout_mode = 2
+offset_transform_enabled = true
+theme_override_constants/separation = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer2/VBoxContainer" unique_id=1035868071]
+layout_mode = 2
+
+[node name="volumeLabel" type="Label" parent="PanelContainer2/VBoxContainer/HBoxContainer" unique_id=987651369]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Botões"
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer2/VBoxContainer" unique_id=492609595]
+custom_maximum_size = Vector2(500, -1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(20, 0)
+localize_numeral_system = false
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="volumeLabel" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=1312240269]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Andar"
+
+[node name="volumeLabel2" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=275946134]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(20, 0)
+theme_override_colors/font_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "W A S D"
+
+[node name="volumeLabel3" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=973818174]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Esquiva"
+
+[node name="volumeLabel4" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=1355597022]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(20, 0)
+theme_override_colors/font_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Espaço"
+
+[node name="volumeLabel5" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=1282346887]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Atacar"
+
+[node name="volumeLabel6" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=879147026]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(20, 0)
+theme_override_colors/font_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Botão 1"
+
+[node name="volumeLabel7" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=2082425007]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Explosão"
+
+[node name="volumeLabel8" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=1623489576]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(20, 0)
+theme_override_colors/font_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "F"
+
+[node name="volumeLabel9" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=1291323010]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Spin"
+
+[node name="volumeLabel10" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=829150700]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(20, 0)
+theme_override_colors/font_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "R"
+
+[node name="volumeLabel11" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=466618618]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Curar"
+
+[node name="volumeLabel12" type="Label" parent="PanelContainer2/VBoxContainer/GridContainer" unique_id=996656834]
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(20, 0)
+theme_override_colors/font_color = Color(0.63375676, 0.6337568, 0.63375676, 1)
+theme_override_fonts/font = ExtResource("2_ijpji")
+text = "Q"
+
+[node name="ButtonSlot" type="Control" parent="PanelContainer2/VBoxContainer" unique_id=1679016265]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+
+[node name="close2" type="Button" parent="PanelContainer2/VBoxContainer/ButtonSlot" unique_id=1488815087]
+custom_minimum_size = Vector2(80, 20)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = 36.0
+offset_right = 40.0
+offset_bottom = 56.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ijpji")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_k61yy")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_dhn0l")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dhn0l")
+text = "Fechar"
+script = ExtResource("3_hm4m4")
+default_focus = true
+
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/HBoxContainer/volume" to="." method="_on_volume_value_changed"]
+[connection signal="item_selected" from="PanelContainer/VBoxContainer/HBoxContainer2/Resolutions" to="." method="_on_resolutions_item_selected"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonSlot/seeBinds" to="." method="_on_see_binds_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/ButtonSlot/close2" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="PanelContainer2/VBoxContainer/ButtonSlot/close2" to="." method="_on_close_2_pressed"]

@@ -1,0 +1,1137 @@
+[gd_scene format=3 uid="uid://c4x1k556vy0tn"]
+
+[ext_resource type="Script" uid="uid://d0mfpjb6qmgr5" path="res://enemies/Bosses/juizBoss/juiz_hammer.gd" id="1_hj86u"]
+[ext_resource type="Texture2D" uid="uid://cbp1dgjabdlbx" path="res://enemies/Bosses/juizBoss/Hammer.png" id="1_jmf3b"]
+[ext_resource type="Texture2D" uid="uid://cnjkqq3hiu4bf" path="res://terrains/Decoração/HammerRocks.png" id="3_e7pds"]
+[ext_resource type="Texture2D" uid="uid://ckwgwe8b7k1la" path="res://enemies/Bosses/juizBoss/HammerVFX2.png" id="4_cbh05"]
+[ext_resource type="Texture2D" uid="uid://d2pbbixrgjcou" path="res://enemies/Bosses/juizBoss/HammerVFX1.png" id="5_esk6i"]
+[ext_resource type="Texture2D" uid="uid://odwjmyf3odhy" path="res://enemies/Bosses/juizBoss/Hammerbase.png" id="6_n3qrh"]
+[ext_resource type="AudioStream" uid="uid://bsgutim6xtvk0" path="res://enemies/Bosses/juizBoss/impactomartelo.mp3" id="7_i60d1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hj86u"]
+size = Vector2(20, 16.545454)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ni2"]
+size = Vector2(12, 117)
+
+[sub_resource type="Animation" id="Animation_hj86u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collisionUp:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("collisionDown:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v1ni2"]
+resource_name = "attack"
+length = 0.6000067
+step = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.26666668, 0.33333334, 0.40000004, 0.4666667, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.27214873, 0.33344346, 0.5810743),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.33333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attack"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("collisionUp:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3405825, 0.3488364),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("collisionDown:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3410169, 0.34970522),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CPUParticles2D:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_52yem"]
+resource_name = "reset"
+length = 0.6000067
+step = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.20000002, 0.26666668, 0.33333334, 0.40000004, 0.4666667, 0.53333336),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("collisionDown:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2676005, 0.285846),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("collisionUp:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26586285, 0.2854116),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f2rfw"]
+_data = {
+&"RESET": SubResource("Animation_hj86u"),
+&"attack": SubResource("Animation_v1ni2"),
+&"reset": SubResource("Animation_52yem")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmf3b"]
+radius = 64.05553
+
+[sub_resource type="Animation" id="Animation_i60d1"]
+resource_name = "+"
+length = 1.4285786
+step = 0.071428575
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerVFXSprite2:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14280213, 0.35664654, 0.643686, 0.71428573, 0.7857143, 0.8571429, 0.92857146, 1, 1.0714287, 1.1428572, 1.2142857, 1.2859368, 1.3571429),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VfxArea/collisionVfx:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7121323, 0.7161614, 1.1091198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VfxArea/collisionVfx:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.71049213, 0.71536005, 0.9285714),
+"transitions": PackedFloat32Array(1, 1.1892072, 1.1892072),
+"update": 0,
+"values": [Vector2(-57.272728, 76.36363), Vector2(0, 165), Vector2(0, 250)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VfxArea/collisionVfx2:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7106662, 0.71211475, 0.71660304, 0.71698266, 1.2337899),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VfxArea/collisionVfx2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.71103305, 0.7164418, 0.9285714, 1.1428572),
+"transitions": PackedFloat32Array(1, 1.5157166, 1, 1.5157166),
+"update": 0,
+"values": [Vector2(70, 130), Vector2(70, 95), Vector2(230, 95), Vector2(400, 95)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VfxArea/collisionVfx3:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7111943, 0.71714395, 1.2342241),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VfxArea/collisionVfx3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.71428573, 0.7196945, 0.9285714, 1.1428572),
+"transitions": PackedFloat32Array(1, 1.5157166, 1, 1.5157166),
+"update": 0,
+"values": [Vector2(70, 130), Vector2(-70, 95), Vector2(-230, 95), Vector2(-400, 95)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HammerVFXSprite2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.005726382),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VfxArea/collisionVfx/PointLight2D:enabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.78571427, 1.0714285),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("VfxArea/collisionVfx2/PointLight2D:enabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.78571427, 1.2142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VfxArea/collisionVfx3/PointLight2D:enabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.78571427, 1.2142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("VfxArea/collisionVfx/CPUParticles2D:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("VfxArea/collisionVfx2/CPUParticles2D:emitting")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("VfxArea/collisionVfx3/CPUParticles2D:emitting")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("HammerVFXSprite2:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.48887253, 0.63069165, 0.71428573),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 0.3137255), Color(2.454227, 2.454227, 2.454227, 0.5), Color(2.454227, 2.454227, 2.454227, 0.5), Color(2.454227, 2.454227, 2.454227, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_esk6i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerVFXSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VfxArea/collisionVfx:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VfxArea/collisionVfx2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VfxArea/collisionVfx3:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VfxArea/collisionVfx4:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VfxArea/collisionVfx:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-57.272728, 76.36363)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VfxArea/collisionVfx2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(67.27273, 137.27272)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VfxArea/collisionVfx3:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(66.36363, 72.72727)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VfxArea/collisionVfx4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-58.18182, 138.18182)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HammerVFXSprite2:frame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HammerVFXSprite2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HammerVFXSprite:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("VfxArea/collisionVfx/PointLight2D:enabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("VfxArea/collisionVfx2/PointLight2D:enabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("VfxArea/collisionVfx3/PointLight2D:enabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("VfxArea/collisionVfx4/PointLight2D:enabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("VfxArea/collisionVfx/CPUParticles2D:emitting")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("VfxArea/collisionVfx2/CPUParticles2D:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("VfxArea/collisionVfx3/CPUParticles2D:emitting")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("VfxArea/collisionVfx4/CPUParticles2D:emitting")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("HammerVFXSprite:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 1)]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("HammerVFXSprite2:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n3qrh"]
+resource_name = "X"
+length = 1.4285786
+step = 0.071428575
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HammerVFXSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14285715, 0.35973638, 0.6468337, 0.71428573, 0.7857143, 0.8571429, 0.92857146, 1, 1.0714285, 1.1428572, 1.2142857, 1.2857144, 1.356704),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VfxArea/collisionVfx:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.70698965, 0.7156437, 1.3080198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VfxArea/collisionVfx2:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7075305, 0.71618456, 1.3080198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VfxArea/collisionVfx3:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.70644873, 0.71456194, 1.3080198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VfxArea/collisionVfx4:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7059079, 0.7156437, 1.3080198),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VfxArea/collisionVfx:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7163874, 1.1428572),
+"transitions": PackedFloat32Array(1.5691683, 1.5691683),
+"update": 0,
+"values": [Vector2(-57.248, 60), Vector2(-380, -75)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("VfxArea/collisionVfx2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.71428573, 1.1428572),
+"transitions": PackedFloat32Array(1.5691683, 1.5691683),
+"update": 0,
+"values": [Vector2(60, 110), Vector2(380, 265)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VfxArea/collisionVfx3:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.71428573, 1.1428572),
+"transitions": PackedFloat32Array(1.5691683, 1.5691683),
+"update": 0,
+"values": [Vector2(62, 60), Vector2(380, -75)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("VfxArea/collisionVfx4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.71428573, 1.1428572),
+"transitions": PackedFloat32Array(1.5691683, 1.5691683),
+"update": 0,
+"values": [Vector2(-58, 110), Vector2(-380, 265)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HammerVFXSprite:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.005726382),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("VfxArea/collisionVfx/PointLight2D:enabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2857143),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("VfxArea/collisionVfx2/PointLight2D:enabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2857143),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("VfxArea/collisionVfx3/PointLight2D:enabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2857143),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("VfxArea/collisionVfx4/PointLight2D:enabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2857143),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("VfxArea/collisionVfx/CPUParticles2D:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("VfxArea/collisionVfx2/CPUParticles2D:emitting")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("VfxArea/collisionVfx3/CPUParticles2D:emitting")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("VfxArea/collisionVfx4/CPUParticles2D:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.71428573, 1.2142857),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("HammerVFXSprite:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 0.48887253, 0.63069165, 0.71428573),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(2.454227, 2.454227, 2.454227, 0.3137255), Color(2.454227, 2.454227, 2.454227, 0.5), Color(2.454227, 2.454227, 2.454227, 0.5), Color(2.454227, 2.454227, 2.454227, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i60d1"]
+_data = {
+&"+": SubResource("Animation_i60d1"),
+&"RESET": SubResource("Animation_esk6i"),
+&"X": SubResource("Animation_n3qrh")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbh05"]
+size = Vector2(35, 35)
+
+[sub_resource type="Gradient" id="Gradient_esk6i"]
+offsets = PackedFloat32Array(0, 0.10084034, 0.6260504, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.9327731, 0, 0, 1, 0.41563982, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n3qrh"]
+gradient = SubResource("Gradient_esk6i")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8333333, 0.31623933)
+
+[sub_resource type="Gradient" id="Gradient_n3qrh"]
+offsets = PackedFloat32Array(0.11111111, 0.21367522, 0.35897437, 0.64529914)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 0.733002, 2.7554854e-06, 6.738305e-07, 1, 0.38920352, 0, 0.12525514, 1)
+
+[node name="JuizHammer" type="CharacterBody2D" unique_id=1073351496]
+y_sort_enabled = true
+collision_layer = 8
+script = ExtResource("1_hj86u")
+
+[node name="collisionUp" type="CollisionShape2D" parent="." unique_id=1397959150]
+position = Vector2(0, -6.272726)
+shape = SubResource("RectangleShape2D_hj86u")
+
+[node name="collisionDown" type="CollisionShape2D" parent="." unique_id=1314436036]
+position = Vector2(0, 48.5)
+shape = SubResource("RectangleShape2D_v1ni2")
+disabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=714764582]
+modulate = Color(1.0015246, 1.0015246, 1.0015246, 1)
+y_sort_enabled = true
+texture = ExtResource("1_jmf3b")
+offset = Vector2(0, 16)
+hframes = 9
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1829070797]
+libraries/ = SubResource("AnimationLibrary_f2rfw")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=521055508]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=947144572]
+position = Vector2(0, 106.66666)
+shape = SubResource("CircleShape2D_jmf3b")
+disabled = true
+
+[node name="toAttack" type="Timer" parent="." unique_id=1858052533]
+wait_time = 3.0
+one_shot = true
+
+[node name="toRetreat" type="Timer" parent="." unique_id=2033247081]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1706004416]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(0, 21.81818)
+emitting = false
+amount = 10
+texture = ExtResource("3_e7pds")
+one_shot = true
+explosiveness = 0.9
+emission_shape = 3
+emission_rect_extents = Vector2(430, 200)
+direction = Vector2(0, -1)
+spread = 0.0
+scale_amount_min = 0.2
+scale_amount_max = 1.2
+
+[node name="HammerVFXSprite" type="Sprite2D" parent="." unique_id=380233170]
+visible = false
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
+y_sort_enabled = true
+position = Vector2(0, 95)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("4_cbh05")
+hframes = 13
+frame = 1
+
+[node name="HammerVFXAnimation" type="AnimationPlayer" parent="." unique_id=63026478]
+libraries/ = SubResource("AnimationLibrary_i60d1")
+speed_scale = 1.1
+
+[node name="VfxArea" type="Area2D" parent="." unique_id=1326452870]
+scale = Vector2(1.2, 1.2)
+
+[node name="collisionVfx" type="CollisionShape2D" parent="VfxArea" unique_id=1458773140]
+position = Vector2(-57.272728, 76.36363)
+scale = Vector2(1.6, 1.6)
+shape = SubResource("RectangleShape2D_cbh05")
+disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="VfxArea/collisionVfx" unique_id=1709080380]
+position = Vector2(0.28409576, 0.094696045)
+enabled = false
+color = Color(1, 0, 0, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_n3qrh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx" unique_id=712237791]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
+emitting = false
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 7.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+radial_accel_min = 10.0
+radial_accel_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_initial_ramp = SubResource("Gradient_n3qrh")
+
+[node name="collisionVfx2" type="CollisionShape2D" parent="VfxArea" unique_id=1180862566]
+position = Vector2(67.27273, 137.27272)
+scale = Vector2(1.6, 1.6)
+shape = SubResource("RectangleShape2D_cbh05")
+disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="VfxArea/collisionVfx2" unique_id=1396882830]
+position = Vector2(0.28409576, 0.094696045)
+enabled = false
+color = Color(1, 0, 0, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_n3qrh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx2" unique_id=1996207252]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
+emitting = false
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 7.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+radial_accel_min = 10.0
+radial_accel_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_initial_ramp = SubResource("Gradient_n3qrh")
+
+[node name="collisionVfx3" type="CollisionShape2D" parent="VfxArea" unique_id=993165551]
+position = Vector2(66.36363, 72.72727)
+scale = Vector2(1.6, 1.6)
+shape = SubResource("RectangleShape2D_cbh05")
+disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="VfxArea/collisionVfx3" unique_id=1322004641]
+position = Vector2(0.28409576, 0.094696045)
+enabled = false
+color = Color(1, 0, 0, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_n3qrh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx3" unique_id=1012686063]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
+emitting = false
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 7.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+radial_accel_min = 10.0
+radial_accel_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_initial_ramp = SubResource("Gradient_n3qrh")
+
+[node name="collisionVfx4" type="CollisionShape2D" parent="VfxArea" unique_id=1625476903]
+position = Vector2(-58.18182, 138.18182)
+scale = Vector2(1.6, 1.6)
+shape = SubResource("RectangleShape2D_cbh05")
+disabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="VfxArea/collisionVfx4" unique_id=1892611640]
+position = Vector2(0.28409576, 0.094696045)
+enabled = false
+color = Color(1, 0, 0, 1)
+energy = 0.5
+texture = SubResource("GradientTexture2D_n3qrh")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VfxArea/collisionVfx4" unique_id=1217904454]
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
+emitting = false
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 7.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 40.0
+radial_accel_min = 10.0
+radial_accel_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_initial_ramp = SubResource("Gradient_n3qrh")
+
+[node name="HammerVFXSprite2" type="Sprite2D" parent="." unique_id=472885807]
+visible = false
+modulate = Color(2.454227, 2.454227, 2.454227, 1)
+y_sort_enabled = true
+position = Vector2(0, 95)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("5_esk6i")
+hframes = 13
+
+[node name="HammerBase" type="Sprite2D" parent="." unique_id=1534253002]
+light_mask = 3
+z_index = -2
+position = Vector2(0, 103)
+texture = ExtResource("6_n3qrh")
+offset = Vector2(0, 1)
+hframes = 4
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=596294875]
+stream = ExtResource("7_i60d1")
+volume_db = -10.0
+pitch_scale = 0.9
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="toAttack" to="." method="_on_to_attack_timeout"]
+[connection signal="timeout" from="toRetreat" to="." method="_on_to_retreat_timeout"]
+[connection signal="animation_finished" from="HammerVFXAnimation" to="." method="_on_hammer_vfx_animation_animation_finished"]
+[connection signal="body_entered" from="VfxArea" to="." method="_on_vfx_area_body_entered"]

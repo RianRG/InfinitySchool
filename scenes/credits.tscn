@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://bppx5lvny8087"]
+
+[ext_resource type="Script" uid="uid://63ujodhikmek" path="res://scenes/credits.gd" id="1_0ctdu"]
+[ext_resource type="FontFile" uid="uid://c5urm0b8a1tit" path="res://assets/fonts/hf-free-complete/futile-pro-v1/FutilePro.otf" id="2_2fbfq"]
+[ext_resource type="FontFile" uid="uid://dx2nict7kcawc" path="res://assets/fonts/hf-free-complete/compass-pro-v1.1/CompassPro.woff" id="3_8gwij"]
+[ext_resource type="AudioStream" uid="uid://dkn3dcyqwken5" path="res://MenuVisuals/menuAudio.mp3" id="4_2fbfq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bpdh"]
+bg_color = Color(0, 0, 0, 0.36078432)
+
+[node name="ScrollContainer" type="ScrollContainer" unique_id=2125967319 node_paths=PackedStringArray("text_node")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0bpdh")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("1_0ctdu")
+text_node = NodePath("MarginContainer/RichTextLabel")
+scroll_speed = 30.0
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1673190858]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=83961073]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_2fbfq")
+theme_override_fonts/bold_font = ExtResource("3_8gwij")
+bbcode_enabled = true
+text = "[center]
+[b][u]CRÉDITOS[/u][/b]
+
+[b] Direção técnica [/b]
+M. Gabriel Rocha
+Rian Gomes
+
+
+
+
+
+[b] Efeitos visuais e arte [/b]
+M. Gabriel Rocha
+
+
+
+
+
+[b] Programação [/b]
+Rian Gomes
+
+
+
+
+
+[b] Música e efeitos sonoros [/b]
+Estevão Xavier
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[b] Pai... Mãe... Eram vocês? Mal lembro seus rostos. [/b]"
+fit_content = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1145624347]
+stream = ExtResource("4_2fbfq")
+volume_db = -25.521
+autoplay = true
+
+[node name="Timer" type="Timer" parent="." unique_id=790375008]
+wait_time = 32.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsycaxcj74u6j"]
+
+[ext_resource type="Texture2D" uid="uid://csi7l6gupqwnx" path="res://Tiny Swords (Free Pack)/Tiny Swords (Free Pack)/Buildings/Blue Buildings/Castle.png" id="1_oco7m"]
+[ext_resource type="Texture2D" uid="uid://mf2abp2ujhyi" path="res://Tiny Swords (Free Pack)/Tiny Swords (Free Pack)/Buildings/Blue Buildings/House1.png" id="2_en427"]
+[ext_resource type="Texture2D" uid="uid://dwu31swhlwi1j" path="res://Tiny Swords (Free Pack)/Tiny Swords (Free Pack)/Buildings/Blue Buildings/House2.png" id="3_4xjvv"]
+[ext_resource type="Texture2D" uid="uid://cfuvje3ccils" path="res://Tiny Swords (Free Pack)/Tiny Swords (Free Pack)/Buildings/Blue Buildings/House3.png" id="4_x8eaq"]
+[ext_resource type="Texture2D" uid="uid://dlr6x5axbkggf" path="res://Tiny Swords (Free Pack)/Tiny Swords (Free Pack)/Buildings/Blue Buildings/Tower.png" id="5_k32dd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oco7m"]
+texture = ExtResource("1_oco7m")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(5, 4)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 80)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-118.822, -41.4888, 135.191, -36.973, 131.805, -3.10461, 1.41118, 18.3454, -134.063, -0.846718)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_en427"]
+texture = ExtResource("2_en427")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(2, 3)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 60)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-38.6665, -84.3888, 35.8441, -86.6467, 40.9244, -27.377, 11.2895, -20.8855, -10.725, -25.4013, -42.0533, -29.0704)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4xjvv"]
+texture = ExtResource("3_4xjvv")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(2, 3)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 40)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-53.3428, -37.5375, 18.3454, -53.3428, 52.7783, -33.0217, 44.8757, -12.7007, -7.05592, 13.8296, -43.7467, -8.74935)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x8eaq"]
+texture = ExtResource("4_x8eaq")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(2, 3)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 20)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1nddt"]
+texture = ExtResource("5_k32dd")
+texture_region_size = Vector2i(64, 64)
+0:0/size_in_atlas = Vector2i(2, 4)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 50)
+
+[sub_resource type="TileSet" id="TileSet_5ht76"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_oco7m")
+sources/2 = SubResource("TileSetAtlasSource_en427")
+sources/3 = SubResource("TileSetAtlasSource_4xjvv")
+sources/4 = SubResource("TileSetAtlasSource_x8eaq")
+sources/5 = SubResource("TileSetAtlasSource_1nddt")
+
+[node name="builds" type="TileMap"]
+y_sort_enabled = true
+tile_set = SubResource("TileSet_5ht76")
+format = 2
+layer_0/y_sort_enabled = true
