@@ -15,12 +15,13 @@ extends Node2D
 @onready var entrada: AudioStreamPlayer = $Entrada
 @onready var judge_title: AnimatedSprite2D = $JudgeTitle
 @onready var escMenu: Control = $CanvasLayer/EscMenu
+@onready var music: AudioStreamPlayer = $Music
 
 const creditsScene: PackedScene = preload("res://scenes/credits.tscn")
 
 var cutscenePlayed:=false
 func _ready() -> void:
-	
+	music.play()
 	playerPhantom.set_tween_transition(5)
 	bossAnimationPhantom.set_tween_transition(5)
 	bossFightPhantom.set_tween_transition(5)
@@ -77,6 +78,7 @@ func switchToBossFightCamera():
 
 func _on_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("character") and !cutscenePlayed:
+		music.stop()
 		cutscenePlayed=true
 		bigDoor.block()
 		player.force_idle()

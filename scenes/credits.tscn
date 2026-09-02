@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://63ujodhikmek" path="res://scenes/credits.gd" id="1_0ctdu"]
 [ext_resource type="FontFile" uid="uid://c5urm0b8a1tit" path="res://assets/fonts/hf-free-complete/futile-pro-v1/FutilePro.otf" id="2_2fbfq"]
 [ext_resource type="FontFile" uid="uid://dx2nict7kcawc" path="res://assets/fonts/hf-free-complete/compass-pro-v1.1/CompassPro.woff" id="3_8gwij"]
-[ext_resource type="AudioStream" uid="uid://dkn3dcyqwken5" path="res://MenuVisuals/menuAudio.mp3" id="4_2fbfq"]
+[ext_resource type="AudioStream" uid="uid://c5g6itu8x07d4" path="res://assets/Sounds/musicainicio.mp3" id="4_2fbfq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0bpdh"]
 bg_color = Color(0, 0, 0, 0.36078432)
@@ -91,7 +91,7 @@ fit_content = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1145624347]
 stream = ExtResource("4_2fbfq")
-volume_db = -25.521
+volume_db = -35.0
 autoplay = true
 
 [node name="Timer" type="Timer" parent="." unique_id=790375008]
