@@ -108,8 +108,8 @@ var energy:
 		await updateEnergyHUD(clamped)
 		_energy = clamped
 # Energy costs
-var kokusenEnergyCost = 6
-var spinEnergyCost = 5
+var kokusenEnergyCost = 5
+var spinEnergyCost = 4
 var healthEnergyCost = 3
 
 @onready var hit: AudioStreamPlayer = $Hit
@@ -779,9 +779,9 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group("enemy"):
 		if current_state == PlayerState.KOKUSEN:
-			body.takeDamage(20)
+			body.takeDamage(30)
 		if current_state == PlayerState.SPINNING:
-			body.takeDamage(5)
+			body.takeDamage(3)
 		if current_state == PlayerState.ATTACKING:
 			body.takeDamage(5)
 		attackCounter += 1

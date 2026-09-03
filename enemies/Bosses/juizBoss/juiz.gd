@@ -45,7 +45,7 @@ var min_follow_distance := 60.0
 # Bullet Scene
 @export var bulletScene: PackedScene
 
-var health = 400:
+var health = 200:
 	set(value):
 		health = value
 		if value <= 0:
