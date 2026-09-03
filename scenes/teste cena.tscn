@@ -308,7 +308,7 @@ position = Vector2(2944, -1080)
 position = Vector2(2942, -1068)
 
 [node name="player" parent="." unique_id=1149914169 instance=ExtResource("4_4vyth")]
-position = Vector2(68, 178)
+position = Vector2(60, 179)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
 color = Color(0.4592806, 0.33611038, 0.359933, 1)
@@ -316,7 +316,7 @@ color = Color(0.4592806, 0.33611038, 0.359933, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(320, 178)
+position = Vector2(320, 179)
 process_callback = 0
 limit_enabled = false
 limit_left = 0
@@ -333,7 +333,7 @@ script = ExtResource("24_gix2x")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(320, 178)
+position = Vector2(320, 179)
 script = ExtResource("25_sllsw")
 priority = 3
 follow_mode = 2
@@ -596,7 +596,7 @@ shape = SubResource("RectangleShape2D_0mymv")
 
 [node name="PhantomCamera2D2" type="Node2D" parent="." unique_id=1976626821 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2236, 178)
+position = Vector2(2236, 179)
 script = ExtResource("25_sllsw")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -643,7 +643,7 @@ position = Vector2(2947, -614)
 visible = false
 
 [node name="Thoughts" parent="." unique_id=744922961 instance=ExtResource("31_d2yjx")]
-position = Vector2(161, 169)
+position = Vector2(177, 150)
 scale = Vector2(3, 3)
 text = "Que lugar é esse?"
 display_duration = 3.0

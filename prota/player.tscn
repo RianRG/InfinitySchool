@@ -1943,7 +1943,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wpvyx"]
-radius = 1.0
+radius = 0.7
 
 [sub_resource type="Animation" id="Animation_pgbbb"]
 resource_name = "spinAttackLoop"
@@ -1972,7 +1972,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(20, -35), Vector2(-3.8146973e-06, -40), Vector2(-18.82353, -35.294117), Vector2(-11.764706, -12.941172), Vector2(14.117647, -14.117646)]
+"values": [Vector2(25, -35), Vector2(-3.8146973e-06, -40), Vector2(-25, -35.294), Vector2(-15, -12.941), Vector2(14.117647, -14.117646)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false

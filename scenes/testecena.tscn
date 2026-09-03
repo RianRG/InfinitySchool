@@ -28,7 +28,10 @@
 [ext_resource type="TileSet" uid="uid://crewjdph5stbd" path="res://terrains/Decoração/TileStes/Juizprops.tres" id="30_stwsr"]
 [ext_resource type="PackedScene" uid="uid://dnmnvj6tomy22" path="res://scenes/thoughts/thoughts.tscn" id="31_d2yjx"]
 [ext_resource type="Texture2D" uid="uid://hvoyj72cuj3l" path="res://terrains/Decoração/ParalaxTry.png" id="31_jvykn"]
+[ext_resource type="PackedScene" uid="uid://3ifycd3hhgcj" path="res://assets/Telainteract/TesteTela.tscn" id="32_iuk3r"]
 [ext_resource type="PackedScene" uid="uid://kx3snxy3xuak" path="res://enemies/Bosses/juizBoss/pilastra.tscn" id="33_4vyth"]
+[ext_resource type="Texture2D" uid="uid://cyx6nwp5r5jg0" path="res://assets/Telainteract/tela teste.png" id="33_ivjdt"]
+[ext_resource type="AudioStream" uid="uid://c5g6itu8x07d4" path="res://assets/Sounds/musicainicio.mp3" id="34_ivjdt"]
 [ext_resource type="PackedScene" uid="uid://e5f5w4xxhld7" path="res://assets/dialogue/dialogue_mechanic.tscn" id="35_oc16y"]
 [ext_resource type="PackedScene" uid="uid://d3hj5fgdjtdiq" path="res://assets/interaction/bigDoor.tscn" id="36_ms1cf"]
 
@@ -50,7 +53,7 @@ adjustment_brightness = 0.9
 adjustment_contrast = 1.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6afs7"]
-size = Vector2(1939, 560)
+size = Vector2(1920, 560)
 
 [sub_resource type="Resource" id="Resource_ylo3c"]
 script = ExtResource("26_ir3w1")
@@ -131,7 +134,7 @@ fill_from = Vector2(0.50473934, 0.52428913)
 fill_to = Vector2(1, 0.49763033)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mymv"]
-size = Vector2(1428, 1184)
+size = Vector2(1424, 1184)
 
 [sub_resource type="Gradient" id="Gradient_xpqno"]
 offsets = PackedFloat32Array(0)
@@ -309,7 +312,7 @@ position = Vector2(2944, -1080)
 position = Vector2(2942, -1068)
 
 [node name="player" parent="." unique_id=1149914169 instance=ExtResource("4_4vyth")]
-position = Vector2(90.99999, 182.99998)
+position = Vector2(74, 180)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=882122763]
 color = Color(0.4592806, 0.33611038, 0.359933, 1)
@@ -317,12 +320,13 @@ color = Color(0.4592806, 0.33611038, 0.359933, 1)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2075773471]
 physics_interpolation_mode = 1
 top_level = true
-position = Vector2(320, 182.99998)
+position = Vector2(290.9091, 180)
+zoom = Vector2(1.1, 1.1)
 process_callback = 0
 limit_enabled = false
 limit_left = 0
 limit_top = -176
-limit_right = 1939
+limit_right = 1920
 limit_bottom = 384
 editor_draw_limits = true
 script = ExtResource("23_w5sdy")
@@ -334,11 +338,12 @@ script = ExtResource("24_gix2x")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." unique_id=505723844 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(320, 182.99998)
+position = Vector2(290.9091, 180)
 script = ExtResource("25_sllsw")
 priority = 3
 follow_mode = 2
 follow_target = NodePath("../player")
+zoom = Vector2(1.1, 1.1)
 tween_resource = SubResource("Resource_syhfa")
 follow_damping = true
 follow_damping_value = Vector2(0.3, 0.3)
@@ -365,7 +370,7 @@ environment = SubResource("Environment_m5ask")
 position = Vector2(2641, -539)
 
 [node name="Bounds" type="CollisionShape2D" parent="cameraBounds" unique_id=377826437]
-position = Vector2(-1671.5, 643)
+position = Vector2(-1681, 643)
 shape = SubResource("RectangleShape2D_6afs7")
 disabled = true
 debug_color = Color(0, 0.60038817, 0.69789743, 0.60800004)
@@ -468,7 +473,21 @@ position = Vector2(2264, 280)
 health = 51
 
 [node name="dialogueMechanic" parent="." unique_id=602747879 instance=ExtResource("35_oc16y")]
-position = Vector2(1088, -104)
+position = Vector2(1105, -106)
+dialogData = {
+0: {
+"dialog": "",
+"title": ""
+},
+1: {
+"dialog": "",
+"title": ""
+},
+2: {
+"dialog": "",
+"title": ""
+}
+}
 
 [node name="bigdoor" parent="." unique_id=1992437991 instance=ExtResource("36_ms1cf")]
 position = Vector2(2944, -704)
@@ -597,12 +616,12 @@ script = ExtResource("27_wjxqt")
 position = Vector2(2320, -240)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=1976423964]
-position = Vector2(310, 32)
+position = Vector2(312, 32)
 shape = SubResource("RectangleShape2D_0mymv")
 
 [node name="PhantomCamera2D2" type="Node2D" parent="." unique_id=1976626821 node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2236, 182.99998)
+position = Vector2(2240, 180)
 script = ExtResource("25_sllsw")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -616,7 +635,7 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 [node name="PointLight2D14" type="PointLight2D" parent="." unique_id=1555672600]
 position = Vector2(464, 80)
 color = Color(1, 0.7607843, 0.6431373, 1)
-energy = 0.4
+energy = 0.5
 texture = SubResource("GradientTexture2D_xuxf8")
 
 [node name="Theme" type="AudioStreamPlayer" parent="." unique_id=72398597]
@@ -649,18 +668,18 @@ position = Vector2(2947, -614)
 visible = false
 
 [node name="Thoughts" parent="." unique_id=744922961 instance=ExtResource("31_d2yjx")]
-position = Vector2(161, 169)
+position = Vector2(169, 163)
 scale = Vector2(3, 3)
 text = "Que lugar é esse?"
 display_duration = 3.0
 
 [node name="Thoughts2" parent="." unique_id=1759098157 instance=ExtResource("31_d2yjx")]
-position = Vector2(424.00003, 128)
+position = Vector2(560, 127)
 scale = Vector2(1.5, 1.5)
 text = "Funcionou?"
 
 [node name="Thoughts3" parent="." unique_id=116486404 instance=ExtResource("31_d2yjx")]
-position = Vector2(816, 136)
+position = Vector2(994, 134)
 scale = Vector2(1.5, 1.5)
 text = "Parece a escola, só que... meio diferente"
 display_duration = 3.0
@@ -681,8 +700,8 @@ scale = Vector2(1.5, 1.5)
 text = "Aqui não era minha sala do setimo ano?"
 
 [node name="Thoughts7" parent="." unique_id=2046783585 instance=ExtResource("31_d2yjx")]
-position = Vector2(888, -56)
-scale = Vector2(1.5, 1.5)
+position = Vector2(877, -57)
+scale = Vector2(0.5, 0.5)
 text = "Luca Lombardi? esse é o nome do professor do meu irmão"
 
 [node name="Thoughts8" parent="." unique_id=2094238796 instance=ExtResource("31_d2yjx")]
@@ -691,7 +710,7 @@ scale = Vector2(1.5, 1.5)
 text = "Lá fora ta tudo escuro..."
 
 [node name="Thoughts9" parent="." unique_id=292632098 instance=ExtResource("31_d2yjx")]
-position = Vector2(2168, 96)
+position = Vector2(2223.0002, 90)
 scale = Vector2(10, 10)
 text = "Que desgraça de lugar é esse??!"
 
@@ -701,9 +720,23 @@ scale = Vector2(10, 10)
 text = "Esse lugar me parece familiar... e não me vem nenhum sentimento bom quanto a isso..."
 display_duration = 3.0
 
+[node name="Tela" parent="." unique_id=393671626 instance=ExtResource("32_iuk3r")]
+position = Vector2(878, -50)
+imagem = ExtResource("33_ivjdt")
+
+[node name="Tela" parent="Tela/CanvasLayer" parent_id_path=PackedInt32Array(393671626, 1238202995) index="0" unique_id=698589086]
+scale = Vector2(2, 2)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=524183724]
+stream = ExtResource("34_ivjdt")
+volume_db = -30.0
+parameters/looping = true
+
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="AreaEnteredBossFight" to="." method="_on_area_body_entered"]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
 [connection signal="body_exited" from="Area2D2" to="." method="_on_area_2d_2_body_exited"]
 
 [editable path="Juiz"]
+[editable path="Tela"]
+[editable path="Tela/InteractButton"]
