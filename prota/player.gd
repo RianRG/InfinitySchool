@@ -123,9 +123,9 @@ var SPINSPEED: float = 260.0
 @export var JUMP_VELOCITY = -400.0
 
 @export_category("Dash Settings")
-@export var dash_speed := 600.0
-@export var dash_time := 0.15
-@export var dash_cooldown := 0.8
+@export var dash_speed := 700.0
+@export var dash_time := 0.20
+@export var dash_cooldown := 0.7
 
 @export_category("Attack Settings")
 @export var base_attack_cooldown := 0.4

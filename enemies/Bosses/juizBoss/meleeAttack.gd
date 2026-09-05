@@ -22,7 +22,7 @@ func _on_attack_area_body_entered(body: Node2D):
 
 func spinAttack():
 	currentAttack = juizAttacks.SPIN
-	owner.knockback_velocity = owner.target_direction * 800
+	owner.knockback_velocity = owner.target_direction * 650
  
 
 func endSpinAttack():

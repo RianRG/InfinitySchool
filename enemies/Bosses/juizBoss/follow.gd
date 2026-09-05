@@ -14,7 +14,7 @@ func enter():
 func transition():
 	
 	var distance = owner.position.distance_to(player.position)
-	if distance<=135 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
+	if distance<=150 && owner.direction != Vector2.ZERO && !owner.onAttackCooldown && timerIsOut:
 		get_parent().change_state("meleeAttack")
 		$"../../followtimer".stop()
 	
