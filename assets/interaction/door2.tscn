@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://codxk1rm7j4ep"]
+
+[ext_resource type="Texture2D" uid="uid://bb3ehgjwvmrw0" path="res://terrains/Portas/portas1.png" id="1_3nlj6"]
+[ext_resource type="Script" uid="uid://c4tnllm1r2e30" path="res://assets/interaction/door_2.gd" id="1_021so"]
+[ext_resource type="PackedScene" uid="uid://o08f2kqjkjfm" path="res://assets/dialogue/interactButton.tscn" id="2_a4ty8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mymv"]
+size = Vector2(6, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nlj6"]
+size = Vector2(6, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4ty8"]
+size = Vector2(32, 13)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0mymv"]
+polygon = PackedVector2Array(-14, -50, -14, 30, -8, 30, -8, -50)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3nlj6"]
+polygon = PackedVector2Array(18, -50, 12, -50, 12, 30, 18, 30)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_a4ty8"]
+polygon = PackedVector2Array(-14, -50, -14, -44, 18, -44, 18, -50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_021so"]
+radius = 59.999996
+
+[node name="Door2" type="CharacterBody2D" unique_id=893026901]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_021so")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1375958557]
+position = Vector2(8, 0)
+texture = ExtResource("1_3nlj6")
+offset = Vector2(0, 16)
+hframes = 4
+
+[node name="CollisionOpen1" type="CollisionShape2D" parent="." unique_id=141315108]
+visible = false
+position = Vector2(-11, 1)
+shape = SubResource("RectangleShape2D_0mymv")
+disabled = true
+
+[node name="CollisionOpen2" type="CollisionShape2D" parent="." unique_id=1291583748]
+visible = false
+position = Vector2(16, 1)
+shape = SubResource("RectangleShape2D_3nlj6")
+disabled = true
+
+[node name="CollisionClosed1" type="CollisionShape2D" parent="." unique_id=1549564607]
+visible = false
+position = Vector2(2, -8)
+shape = SubResource("RectangleShape2D_a4ty8")
+disabled = true
+
+[node name="OccluderOpen1" type="LightOccluder2D" parent="." unique_id=1956773003]
+visible = false
+occluder = SubResource("OccluderPolygon2D_0mymv")
+
+[node name="OccluderOpen2" type="LightOccluder2D" parent="." unique_id=840177233]
+visible = false
+occluder = SubResource("OccluderPolygon2D_3nlj6")
+
+[node name="OccluderClosed1" type="LightOccluder2D" parent="." unique_id=351417226]
+visible = false
+occluder = SubResource("OccluderPolygon2D_a4ty8")
+
+[node name="InteractButton" parent="." unique_id=1296896029 instance=ExtResource("2_a4ty8")]
+position = Vector2(0, -61)
+
+[node name="buttonSprite" parent="InteractButton" index="0" unique_id=2135049160]
+position = Vector2(0, -17)
+
+[node name="CollisionShape2D" parent="InteractButton/Area2D" parent_id_path=PackedInt32Array(1296896029, 1039393303) index="0" unique_id=1857469891]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(1.9999999, 5.9999995)
+scale = Vector2(0.4, 0.4)
+shape = SubResource("CircleShape2D_021so")
+
+[editable path="InteractButton"]
