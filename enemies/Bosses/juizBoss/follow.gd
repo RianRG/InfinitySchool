@@ -25,7 +25,7 @@ func transition():
 			owner.bulletPhaseDecided=true
 			get_parent().change_state("bulletPhase")
 		else:
-			$"../../followtimer".start(5)
+			$"../../followtimer".start(4)
 			
 		
 	
