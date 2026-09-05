@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://codxk1rm7j4ep" path="res://assets/interaction/door2.tscn" id="35_k7c5b"]
 [ext_resource type="PackedScene" uid="uid://e5f5w4xxhld7" path="res://assets/dialogue/dialogue_mechanic.tscn" id="35_oc16y"]
 [ext_resource type="PackedScene" uid="uid://d3hj5fgdjtdiq" path="res://assets/interaction/bigDoor.tscn" id="36_ms1cf"]
+[ext_resource type="Texture2D" uid="uid://b2juuy0a5s3om" path="res://terrains/Portas/door3.png" id="36_su4nj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bh3x3"]
 size = Vector2(800, 496)
@@ -732,6 +733,7 @@ parameters/looping = true
 position = Vector2(216, 130)
 IsOpen = true
 OpenLeft = true
+spriteTexture = ExtResource("36_su4nj")
 
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="AreaEnteredBossFight" to="." method="_on_area_body_entered"]

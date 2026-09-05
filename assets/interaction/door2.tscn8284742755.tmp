@@ -11,7 +11,7 @@ size = Vector2(6, 40)
 size = Vector2(6, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a4ty8"]
-size = Vector2(32, 6.5)
+size = Vector2(32, 13)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0mymv"]
 polygon = PackedVector2Array(-14, -50, -14, 30, -8, 30, -8, -50)
@@ -51,7 +51,8 @@ shape = SubResource("RectangleShape2D_3nlj6")
 disabled = true
 
 [node name="CollisionClosed1" type="CollisionShape2D" parent="." unique_id=1549564607]
-position = Vector2(2, -4.75)
+visible = false
+position = Vector2(2, -8)
 shape = SubResource("RectangleShape2D_a4ty8")
 disabled = true
 

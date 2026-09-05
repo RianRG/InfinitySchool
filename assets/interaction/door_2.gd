@@ -45,6 +45,10 @@ func open1():
 	occludeopen2.visible = false
 	occluderclosed.visible = false
 	
+	if spriteTexture != null:
+		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
+			occluderopen.visible = false
+	
 func open2():
 	sprite.frame = 3
 	collisionopen1.disabled = true
@@ -54,6 +58,10 @@ func open2():
 	occluderopen.visible = false
 	occludeopen2.visible = true
 	occluderclosed.visible = false
+	
+	if spriteTexture != null:
+		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
+			occludeopen2.visible = false
 	
 func closed1():
 	sprite.frame = 0
@@ -65,6 +73,10 @@ func closed1():
 	occludeopen2.visible = false
 	occluderclosed.visible = true
 	
+	if spriteTexture != null:
+		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
+			occluderclosed.visible = false
+	
 func closed2():
 	sprite.frame = 2
 	collisionopen1.disabled = true
@@ -74,6 +86,10 @@ func closed2():
 	occluderopen.visible = false
 	occludeopen2.visible = false
 	occluderclosed.visible = true
+	
+	if spriteTexture != null:
+		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
+			occluderclosed.visible = false
 
 func toggle():
 	if sprite.frame == 1:
