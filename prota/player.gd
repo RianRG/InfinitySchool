@@ -125,7 +125,7 @@ var SPINSPEED: float = 260.0
 @export var JUMP_VELOCITY = -400.0
 
 @export_category("Dash Settings")
-@export var dash_speed := 650.0
+@export var dash_speed := 550.0
 @export var dash_time := 0.25
 @export var dash_cooldown := 0.7
 
@@ -470,8 +470,8 @@ func _try_dash():
 func _on_dash_timer_timeout():
 	particles.emitting = false
 	dash_velocity = Vector2.ZERO
-	ghost_timer.stop()
 	_change_state(PlayerState.IDLE)
+	ghost_timer.stop()
 
 func _on_dash_cooldown_timeout():
 	canDash = true

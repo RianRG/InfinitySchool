@@ -9,10 +9,10 @@
 [ext_resource type="AudioStream" uid="uid://bsgutim6xtvk0" path="res://enemies/Bosses/juizBoss/impactomartelo.mp3" id="7_i60d1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hj86u"]
-size = Vector2(20, 16.545454)
+size = Vector2(10, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v1ni2"]
-size = Vector2(12, 117)
+size = Vector2(16, 111)
 
 [sub_resource type="Animation" id="Animation_hj86u"]
 length = 0.001
@@ -922,11 +922,11 @@ collision_layer = 8
 script = ExtResource("1_hj86u")
 
 [node name="collisionUp" type="CollisionShape2D" parent="." unique_id=1397959150]
-position = Vector2(0, -6.272726)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_hj86u")
 
 [node name="collisionDown" type="CollisionShape2D" parent="." unique_id=1314436036]
-position = Vector2(0, 48.5)
+position = Vector2(0, 54.5)
 shape = SubResource("RectangleShape2D_v1ni2")
 disabled = true
 
