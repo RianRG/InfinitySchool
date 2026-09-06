@@ -14,7 +14,9 @@ class_name Player
 @onready var walkidle = $Walkidle
 @onready var flash = CanvasLayer.new()
 @onready var waterparticles = $CPUParticles2D2
-
+@onready var rastro: GPUParticles2D = $GPUParticles2D
+@export var ghost_node : PackedScene
+@onready var ghost_timer: Timer = $ghostTimer
 
 
 
@@ -123,8 +125,8 @@ var SPINSPEED: float = 260.0
 @export var JUMP_VELOCITY = -400.0
 
 @export_category("Dash Settings")
-@export var dash_speed := 700.0
-@export var dash_time := 0.20
+@export var dash_speed := 650.0
+@export var dash_time := 0.25
 @export var dash_cooldown := 0.7
 
 @export_category("Attack Settings")
@@ -190,7 +192,7 @@ var lastDirection = Vector2.LEFT
 
 var attackCounter = 0
 var isRunning = false
-var canDash = false
+var canDash = true
 var canAttack = true
 var spin_started = false
 var canHeal=true
@@ -217,6 +219,7 @@ func _ready():
 	stairMaps = get_tree().get_nodes_in_group("stairs")
 	reflexion.frame = sprite.frame
 	await fade_out_whiteout()
+	
 
 func _setup_timers():
 	# Dash timer
@@ -440,6 +443,7 @@ func _try_dash():
 	if not canDash or current_state in [PlayerState.SPINNING, PlayerState.HEALING]:
 		return
 	_change_state(PlayerState.DASHING)
+	ghost_timer.start()
 	canDash = false
 	
 	var dashDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -459,14 +463,14 @@ func _try_dash():
 	external_velocity = Vector2.ZERO
 	move_velocity = Vector2.ZERO
 	
-	
-	particles.emitting = true
+	particles.emitting = false
 	dash_timer.start(dash_time)
 	dash_cooldown_timer.start(dash_time + dash_cooldown)
 
 func _on_dash_timer_timeout():
 	particles.emitting = false
 	dash_velocity = Vector2.ZERO
+	ghost_timer.stop()
 	_change_state(PlayerState.IDLE)
 
 func _on_dash_cooldown_timeout():
@@ -731,6 +735,7 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 		dash_timer.stop()
 		dash_velocity = Vector2.ZERO
 		_change_state(PlayerState.IDLE)
+		ghost_timer.stop()
 	
 	#external_velocity = dir * knockback_strength
 	apply_knockback(fromPosition, knockback_strength)
@@ -895,3 +900,14 @@ func force_idle():
 	move_velocity = Vector2.ZERO
 	external_velocity = Vector2.ZERO
 	_stateMachine.travel("idle")
+	
+func addGhost():
+	var ghost = ghost_node.instantiate()
+	ghost.global_position = global_position + Vector2(0,-11)
+	ghost.setframe(sprite.frame)
+	get_tree().current_scene.add_child(ghost)
+	
+
+
+func _on_ghost_timer_timeout() -> void:
+	addGhost()

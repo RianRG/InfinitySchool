@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b56wr0kl3oh4b"]
+
+[ext_resource type="Texture2D" uid="uid://blc7div4v8mwg" path="res://prota/tudo3.png" id="1_dcwwb"]
+[ext_resource type="Script" uid="uid://crb6lfgcxsi6s" path="res://assets/vfx/ghost.gd" id="1_nwvej"]
+
+[node name="Ghost" type="Sprite2D" unique_id=59259711]
+texture = ExtResource("1_dcwwb")
+hframes = 10
+vframes = 49
+script = ExtResource("1_nwvej")

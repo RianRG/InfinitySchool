@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://kctsa3ibkk7j" path="res://assets/vfx/AtackVFX.png" id="9_sgpap"]
 [ext_resource type="Texture2D" uid="uid://15dbxl5vt1r3" path="res://assets/vfx/waterwalkingeffect.png" id="11_wpvyx"]
 [ext_resource type="AudioStream" uid="uid://dgdusju1w5ocd" path="res://assets/Sounds/hit.mp3" id="12_f7obg"]
+[ext_resource type="PackedScene" uid="uid://b56wr0kl3oh4b" path="res://assets/vfx/ghost.tscn" id="13_a5rql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 11.764718)
@@ -1367,7 +1368,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_dw050"]
 resource_name = "idleDown"
-length = 0.9091
+length = 0.90909094
 loop_mode = 1
 step = 0.0909091
 tracks/0/type = "value"
@@ -2557,6 +2558,7 @@ z_index = 1
 scale = Vector2(0.85, 0.85)
 collision_mask = 12
 script = ExtResource("1_4flbx")
+ghost_node = ExtResource("13_a5rql")
 bulletNode = ExtResource("2_1jxqw")
 _animationTree = NodePath("AnimationTree")
 footstep_distance = 42.0
@@ -2575,14 +2577,14 @@ scale = Vector2(1.0000001, 1.0000001)
 texture = ExtResource("3_ubwyu")
 flip_v = true
 hframes = 10
-vframes = 44
+vframes = 49
 
 [node name="texture" type="Sprite2D" parent="." unique_id=86597027]
 y_sort_enabled = true
 position = Vector2(0, -27.8571)
 texture = ExtResource("3_ubwyu")
 hframes = 10
-vframes = 44
+vframes = 49
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=636522755]
 modulate = Color(1, 1, 1, 0.6)
@@ -2627,7 +2629,7 @@ shape = SubResource("CircleShape2D_ubwyu")
 disabled = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=305568012]
-modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
+modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -22.352942)
 scale = Vector2(0.5, 1)
 emitting = false
@@ -2722,6 +2724,10 @@ anim_speed_max = 1.5
 stream = SubResource("AudioStreamRandomizer_a5rql")
 volume_db = -10.0
 
+[node name="ghostTimer" type="Timer" parent="." unique_id=1983068477]
+wait_time = 0.009999999999999998
+
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
 [connection signal="timeout" from="loseStreakTimer" to="." method="_on_lose_streak_timer_timeout"]
+[connection signal="timeout" from="ghostTimer" to="." method="_on_ghost_timer_timeout"]
