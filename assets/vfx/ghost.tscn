@@ -7,7 +7,7 @@
 blend_mode = 1
 
 [node name="Ghost" type="Sprite2D" unique_id=59259711]
-modulate = Color(0.2250466, 0, 2.454227, 1)
+modulate = Color(1.853, 0, 5.913, 0.784)
 z_index = 1
 y_sort_enabled = true
 material = SubResource("CanvasItemMaterial_dcwwb")

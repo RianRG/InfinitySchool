@@ -16,8 +16,6 @@ class_name Player
 @onready var waterparticles = $CPUParticles2D2
 @onready var rastro: GPUParticles2D = $GPUParticles2D
 
-@onready var ghost_timer: Timer = $ghostTimer
-
 
 
 # ========== 
@@ -465,30 +463,29 @@ func _try_dash():
 	var dashDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	if dashDirection == Vector2.ZERO:
 		dashDirection = lastDirection
-	var direction = snapped(rad_to_deg(dashDirection.angle()), 0.01)
-	particles.direction = dashDirection*-1
+	#var direction = snapped(rad_to_deg(dashDirection.angle()), 0.01)
+	#particles.direction = dashDirection*-1
 	
-	if direction == 45 || direction == -45 || direction == 135 || direction == -135:
-		direction += 90
+	#if direction == 45 || direction == -45 || direction == 135 || direction == -135:
+		#direction += 90
 	
-	particles.angle_max = direction
-	particles.angle_min = direction 
+	#particles.angle_max = direction
+	#particles.angle_min = direction 
 	
 	
 	dash_velocity = dashDirection.normalized() * dash_speed
 	external_velocity = Vector2.ZERO
 	move_velocity = Vector2.ZERO
 	
-	particles.emitting = false
+	#particles.emitting = false
 	dash_timer.start(dash_time)
 	dash_cooldown_timer.start(dash_time + dash_cooldown)
 
 func _on_dash_timer_timeout():
-	particles.emitting = false
+	#particles.emitting = false
 	dash_velocity = Vector2.ZERO
 	_change_state(PlayerState.IDLE)
 	is_dashing = false
-	ghost_timer.stop()
 
 func _on_dash_cooldown_timeout():
 	canDash = true
@@ -756,7 +753,7 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 		dash_timer.stop()
 		dash_velocity = Vector2.ZERO
 		_change_state(PlayerState.IDLE)
-		ghost_timer.stop()
+		is_dashing = false
 	
 	#external_velocity = dir * knockback_strength
 	apply_knockback(fromPosition, knockback_strength)
