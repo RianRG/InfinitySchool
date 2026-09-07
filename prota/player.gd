@@ -15,7 +15,7 @@ class_name Player
 @onready var flash = CanvasLayer.new()
 @onready var waterparticles = $CPUParticles2D2
 @onready var rastro: GPUParticles2D = $GPUParticles2D
-@export var ghost_node : PackedScene
+
 @onready var ghost_timer: Timer = $ghostTimer
 
 
@@ -125,8 +125,8 @@ var SPINSPEED: float = 260.0
 @export var JUMP_VELOCITY = -400.0
 
 @export_category("Dash Settings")
-@export var dash_speed := 550.0
-@export var dash_time := 0.25
+@export var dash_speed := 600.0
+@export var dash_time := 0.20
 @export var dash_cooldown := 0.7
 
 @export_category("Attack Settings")
@@ -160,6 +160,13 @@ const spinVfxScene = preload("res://assets/vfx/SpinVFX.tscn")
 
 var _footstep_accumulator := 0.0
 var _last_footstep_position := Vector2.ZERO
+
+@export_category("Ghost")
+@export var ghost_distance := 60.0 
+@export var ghost_node : PackedScene
+
+var _ghost_accumulator := 0.0
+var _last_ghost_position := Vector2.ZERO
 
 
 var originalColor:=Color.WHITE
@@ -200,6 +207,7 @@ var canTakeDamage=true
 var ignoreInvincible=false
 var was_moving = false
 var is_dead = false
+var is_dashing = false
 @onready var defense = 0
 
 
@@ -295,6 +303,12 @@ func _physics_process(delta: float) -> void:
 	# Update animation
 	_update_animation()
 	reflexion.frame = sprite.frame
+	if is_dashing:
+		_ghost_accumulator += global_position.distance_to(_last_ghost_position)
+		if _ghost_accumulator >= ghost_distance:
+			_ghost_accumulator = 0.0
+			addGhost()
+		_last_ghost_position = global_position
 
 # ===============================
 # STATE MACHINE LOGIC
@@ -390,6 +404,7 @@ func _process_movement(delta: float):
 			_play_footstep()
 		_last_footstep_position = global_position
 		
+		
 		if isRunning: 
 			SPEED=RUNSPEED 
 			footstep_distance = 65
@@ -443,7 +458,8 @@ func _try_dash():
 	if not canDash or current_state in [PlayerState.SPINNING, PlayerState.HEALING]:
 		return
 	_change_state(PlayerState.DASHING)
-	ghost_timer.start()
+	is_dashing = true
+	#ghost_timer.start()
 	canDash = false
 	
 	var dashDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -471,6 +487,7 @@ func _on_dash_timer_timeout():
 	particles.emitting = false
 	dash_velocity = Vector2.ZERO
 	_change_state(PlayerState.IDLE)
+	is_dashing = false
 	ghost_timer.stop()
 
 func _on_dash_cooldown_timeout():
@@ -576,7 +593,7 @@ func _try_spin():
 func _on_spin_timer_timeout():
 	# Fase 2: SPINNING (se move normalmente)
 	_change_state(PlayerState.SPINNING)
-	defense = 1
+	defense = 2
 	SPEED=SPINSPEED
 	await get_tree().create_timer(0.18).timeout
 	var spinVfx = spinVfxScene.instantiate()
@@ -727,7 +744,11 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	canTakeDamage=false
 	invincible_timer.start(1.5)
 	
-	health -= damage - defense
+	if defense > damage:
+		health += 0
+	else:
+		health -= damage - defense
+	
 	hitFlash()
 	
 	# Cancel dash on hit
