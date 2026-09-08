@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://15dbxl5vt1r3" path="res://assets/vfx/waterwalkingeffect.png" id="11_wpvyx"]
 [ext_resource type="AudioStream" uid="uid://dgdusju1w5ocd" path="res://assets/Sounds/hit.mp3" id="12_f7obg"]
 [ext_resource type="PackedScene" uid="uid://b56wr0kl3oh4b" path="res://assets/vfx/ghost.tscn" id="13_a5rql"]
+[ext_resource type="Texture2D" uid="uid://bpme6r0loh2qv" path="res://assets/vfx/damage on player-sheet.png" id="14_ex8gh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
 size = Vector2(16.8421, 11.764718)
@@ -2553,6 +2554,101 @@ random_pitch = 1.0717734
 streams_count = 1
 stream_0/stream = ExtResource("12_f7obg")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex8gh"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(0, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opqux"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(448, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rynvi"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(896, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jppa"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(1344, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q23ac"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(1792, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ps10v"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(2240, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bo432"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(2688, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7o64s"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(3136, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vien"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(3584, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqfiq"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(4032, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fkn2"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(4480, 0, 448, 448)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsqf6"]
+atlas = ExtResource("14_ex8gh")
+region = Rect2(4928, 0, 448, 448)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0mymv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ex8gh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opqux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rynvi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jppa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q23ac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ps10v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bo432")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7o64s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vien")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqfiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fkn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsqf6")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="player" type="CharacterBody2D" unique_id=1149914169 node_paths=PackedStringArray("_animationTree") groups=["character"]]
 z_index = 1
 scale = Vector2(0.85, 0.85)
@@ -2724,6 +2820,13 @@ anim_speed_max = 1.5
 [node name="Hit" type="AudioStreamPlayer" parent="." unique_id=348841514]
 stream = SubResource("AudioStreamRandomizer_a5rql")
 volume_db = -10.0
+
+[node name="DamageEffect" type="AnimatedSprite2D" parent="." unique_id=174823822]
+modulate = Color(1, 1, 1, 0.23921569)
+position = Vector2(0, -21.176472)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_0mymv")
+speed_scale = 10.0
 
 [connection signal="animation_finished" from="AnimationTree" to="." method="_on_animation_tree_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

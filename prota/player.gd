@@ -15,6 +15,7 @@ class_name Player
 @onready var flash = CanvasLayer.new()
 @onready var waterparticles = $CPUParticles2D2
 @onready var rastro: GPUParticles2D = $GPUParticles2D
+@onready var damage_effect: AnimatedSprite2D = $DamageEffect
 
 
 
@@ -758,8 +759,9 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	#external_velocity = dir * knockback_strength
 	apply_knockback(fromPosition, knockback_strength)
 	
-	
-	camera.screenShake(5, 0.3)
+	damage_effect.play()
+	freezeFrame(0.2,0.3)
+	camera.screenShake(10, 1)
 	if health<=0:
 		freezeFrame(0.3, 1.0)
 		if is_dead == false:
@@ -851,7 +853,7 @@ func _on_lose_streak_timer_timeout() -> void:
 # EFFECTS
 # ===============================
 func hitFlash():
-	sprite.self_modulate = Color(2, 2, 2, 3)
+	sprite.self_modulate = Color(4, 4, 4, 3)
 	await get_tree().create_timer(0.1).timeout
 	sprite.self_modulate = originalColor
 
