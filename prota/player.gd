@@ -742,13 +742,15 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	canTakeDamage=false
 	invincible_timer.start(1.5)
 	
-	if defense > damage:
+	if defense >= damage:
 		health += 0
 	else:
 		health -= damage - defense
+		damage_effect.play()
+		freezeFrame(0.2,0.3)
 	
 	hitFlash()
-	
+	camera.screenShake(10, 1)
 	# Cancel dash on hit
 	if current_state == PlayerState.DASHING:
 		dash_timer.stop()
@@ -759,9 +761,7 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	#external_velocity = dir * knockback_strength
 	apply_knockback(fromPosition, knockback_strength)
 	
-	damage_effect.play()
-	freezeFrame(0.2,0.3)
-	camera.screenShake(10, 1)
+	
 	if health<=0:
 		freezeFrame(0.3, 1.0)
 		if is_dead == false:

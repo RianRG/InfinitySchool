@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dbf307o7y750c" path="res://terrains/Portas/GradeBigDoor.png" id="5_bwsod"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfpb"]
-size = Vector2(300, 90)
+size = Vector2(405, 125)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tp573"]
 size = Vector2(4, 133.5)
@@ -96,6 +96,7 @@ region_rect = Rect2(0, 0, 192, 192)
 
 [node name="CollisionClosed" type="CollisionShape2D" parent="." unique_id=783950894]
 visibility_layer = 3
+position = Vector2(-3.5, -49.5)
 shape = SubResource("RectangleShape2D_qjfpb")
 
 [node name="CollisionOpen" type="CollisionShape2D" parent="." unique_id=85219722]
@@ -141,11 +142,11 @@ autoplay = &"closed"
 [node name="InteractButton" parent="." unique_id=257144103 instance=ExtResource("3_bwsod")]
 position = Vector2(0, -61)
 
-[node name="buttonSprite" parent="InteractButton" index="0"]
+[node name="buttonSprite" parent="InteractButton" index="0" unique_id=2135049160]
 visible = false
 position = Vector2(0, -56)
 
-[node name="CollisionShape2D" parent="InteractButton/Area2D" index="0"]
+[node name="CollisionShape2D" parent="InteractButton/Area2D" parent_id_path=PackedInt32Array(257144103, 1039393303) index="0" unique_id=1857469891]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(0, 40)

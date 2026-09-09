@@ -2657,7 +2657,7 @@ script = ExtResource("1_4flbx")
 bulletNode = ExtResource("2_1jxqw")
 _animationTree = NodePath("AnimationTree")
 footstep_distance = 42.0
-ghost_distance = 10.0
+ghost_distance = 5.0
 ghost_node = ExtResource("13_a5rql")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2042372997]
