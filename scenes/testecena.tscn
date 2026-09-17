@@ -613,7 +613,7 @@ volume_db = -10.0
 
 [node name="BossScream" type="AudioStreamPlayer" parent="." unique_id=404825226]
 stream = ExtResource("26_tv1vq")
-volume_db = -15.0
+volume_db = -20.0
 
 [node name="Entrada" type="AudioStreamPlayer" parent="." unique_id=1176423587]
 stream = ExtResource("27_v6rg0")
