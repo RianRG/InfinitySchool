@@ -32,7 +32,7 @@ func play_footstep(position: Vector2):
 			var audio_player = AudioStreamPlayer2D.new()
 			audio_player.stream = footstep_sounds[tile_type].pick_random()
 			audio_player.pitch_scale = randf_range(pitch_min, pitch_max)
-			audio_player.volume_db = -14.0
+			audio_player.volume_db = -15.0
 			get_tree().root.add_child(audio_player)
 			audio_player.global_position = position
 			audio_player.play()
