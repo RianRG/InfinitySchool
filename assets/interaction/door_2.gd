@@ -25,21 +25,32 @@ func _ready() -> void:
 	
 	if IsOpen && !OpenLeft && !OpenUp :
 		open1()
+		button.position = Vector2(-13, -82)
+		
 		
 	if IsOpen && OpenLeft && !OpenUp :
 		open2()
+		button.position = Vector2(12, -61)
+		
 		
 	if IsOpen && !OpenLeft && OpenUp :
 		open3()
+		button.position = Vector2(-13, -82)
+		
 		
 	if IsOpen && OpenLeft && OpenUp :
 		open4()
+		button.position = Vector2(12, -82)
+		
 		
 	if !IsOpen && !OpenLeft :
 		closed1()
+		button.position = Vector2(0, -61)
+		
 		
 	if !IsOpen && OpenLeft :
 		closed2()
+		button.position = Vector2(0, -61)
 		
 	
 	
@@ -67,7 +78,6 @@ func open1():
 	occluderopen3.visible = false
 	occluderopen4.visible = false
 	occluderclosed.visible = false
-	button.position = Vector2(-13, -82)
 	
 	if spriteTexture != null:
 		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
@@ -86,7 +96,6 @@ func open3():
 	occluderopen3.visible = true
 	occluderopen4.visible = false
 	occluderclosed.visible = false
-	button.position = Vector2(-13, -82)
 	
 	if spriteTexture != null:
 		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
@@ -105,7 +114,6 @@ func open2():
 	occluderopen3.visible = false
 	occluderopen4.visible = false
 	occluderclosed.visible = false
-	button.position = Vector2(12, -61)
 	
 	if spriteTexture != null:
 		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
@@ -124,7 +132,6 @@ func open4():
 	occluderopen3.visible = false
 	occluderopen4.visible = true
 	occluderclosed.visible = false
-	button.position = Vector2(12, -82)
 	
 	if spriteTexture != null:
 		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
@@ -143,7 +150,6 @@ func closed1():
 	occluderopen3.visible = false
 	occluderopen4.visible = false
 	occluderclosed.visible = true
-	button.position = Vector2(0, -61)
 	
 	if spriteTexture != null:
 		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
@@ -162,7 +168,7 @@ func closed2():
 	occluderopen3.visible = false
 	occluderopen4.visible = false
 	occluderclosed.visible = true
-	button.position = Vector2(0, -61)
+	
 	
 	if spriteTexture != null:
 		if spriteTexture.resource_path == "res://terrains/Portas/GlassDoor.png":
