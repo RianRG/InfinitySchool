@@ -198,7 +198,7 @@ var lastDirection = Vector2.LEFT
 
 var attackCounter = 0
 var isRunning = false
-var canDash = false
+var canDash = true
 var canAttack = true
 var spin_started = false
 var canHeal=true

@@ -2726,7 +2726,6 @@ shape = SubResource("CircleShape2D_ubwyu")
 disabled = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=305568012]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -22.352942)
 scale = Vector2(0.5, 1)
 emitting = false
