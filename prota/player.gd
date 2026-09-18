@@ -131,7 +131,7 @@ var SPINSPEED: float = 260.0
 @export_category("Attack Settings")
 @export var base_attack_cooldown := 0.4
 @export var combo_attack_cooldown := 0.8
-@export var attack_dash_speed := 210.0
+@export var attack_dash_speed := 100.0
 @export var attack_duration := 0.5
 @export var combo_window := 1.0
 
@@ -513,7 +513,7 @@ func _try_attack():
 	else:
 		_stateMachine.travel("attack")
 	
-	move_velocity = attackDirection.normalized() * attack_dash_speed
+	move_velocity = attackDirection.normalized() * (SPEED + attack_dash_speed)
 	attack_cooldown_timer.start(base_attack_cooldown)
 func _on_attack_cooldown_timeout():
 	canAttack = true
@@ -747,10 +747,15 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	else:
 		health -= damage - defense
 		damage_effect.play()
-		freezeFrame(0.2,0.3)
+		if damage <= 2:
+			freezeFrame(0.5,0.1)
+			camera.screenShake(8, 1)
+		else:
+			freezeFrame(0.1,0.2)
+			camera.screenShake(15, 1.5)
 	
 	hitFlash()
-	camera.screenShake(10, 1)
+	
 	# Cancel dash on hit
 	if current_state == PlayerState.DASHING:
 		dash_timer.stop()
@@ -807,7 +812,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 			body.takeDamage(1)
 		if current_state == PlayerState.ATTACKING:
 			body.takeDamage(1)
-		apply_knockback(body.global_position, 350)
+		apply_knockback(body.global_position, 400)
 	
 	
 	if body.is_in_group("enemy"):
@@ -827,6 +832,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		if current_state == PlayerState.ATTACKING && body.is_in_group("enemy"):
 			if !body.isDead:
 				energy = energy +1
+				
 		
 		# Reseta o timer a cada acerto
 		loseStreak.start(combo_window)
