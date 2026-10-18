@@ -2660,14 +2660,14 @@ scale = Vector2(1.0000001, 1.0000001)
 texture = ExtResource("3_ubwyu")
 flip_v = true
 hframes = 10
-vframes = 49
+vframes = 73
 
 [node name="texture" type="Sprite2D" parent="." unique_id=86597027]
 y_sort_enabled = true
 position = Vector2(0, -27.8571)
 texture = ExtResource("3_ubwyu")
 hframes = 10
-vframes = 49
+vframes = 73
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=636522755]
 modulate = Color(1, 1, 1, 0.6)
