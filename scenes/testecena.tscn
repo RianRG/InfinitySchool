@@ -603,7 +603,7 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="PointLight2D14" type="PointLight2D" parent="." unique_id=1555672600]
 position = Vector2(464, 80)
-color = Color(1, 0.7607843, 0.6431373, 1)
+color = Color(0.99999946, 0.69933224, 0.5493013, 1)
 energy = 0.5
 texture = SubResource("GradientTexture2D_xuxf8")
 
