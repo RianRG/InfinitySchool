@@ -24,6 +24,10 @@ shader_parameter/wave_strength = 0.003
 shader_parameter/wave_speed = 2.0
 shader_parameter/wave_frequency = 100.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ivjdt"]
+blend_mode = 3
+light_mode = 1
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ubwyu"]
 radius = 1.5
 
@@ -2670,8 +2674,8 @@ hframes = 10
 vframes = 73
 
 [node name="shadow" type="Sprite2D" parent="." unique_id=636522755]
-modulate = Color(1, 1, 1, 0.6)
 z_index = -1
+material = SubResource("CanvasItemMaterial_ivjdt")
 texture = ExtResource("5_1jxqw")
 
 [node name="circleDeath" type="Sprite2D" parent="." unique_id=1036490393]

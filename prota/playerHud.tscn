@@ -21,7 +21,7 @@ texture = ExtResource("1_dhe2m")
 hframes = 13
 
 [node name="EnergySprite" type="Sprite2D" parent="CanvasLayer" unique_id=547016255]
-position = Vector2(60, 30)
+position = Vector2(61, 30)
 texture = ExtResource("2_wvdcq")
 hframes = 11
 frame = 10
