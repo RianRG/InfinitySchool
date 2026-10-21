@@ -5,12 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://c3wkvmtld3dfj" path="res://enemies/Bosses/juizBoss/BossPilasterreflexion.png" id="3_8sd0j"]
 [ext_resource type="Shader" uid="uid://rsvsixdps6ls" path="res://assets/vfx/water.gdshader" id="3_h2cef"]
 [ext_resource type="Texture2D" uid="uid://6i6fdkb56wmq" path="res://enemies/Bosses/juizBoss/RockParticle.png" id="3_ohhka"]
+[ext_resource type="Texture2D" uid="uid://b5ughx51x7hbv" path="res://enemies/Bosses/juizBoss/BossPilasterShadow.png" id="5_qa5po"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sgpap"]
 shader = ExtResource("3_h2cef")
 shader_parameter/wave_strength = 0.005
 shader_parameter/wave_speed = 1.5
 shader_parameter/wave_frequency = 20.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ivjdt"]
+blend_mode = 3
+light_mode = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8cxyx"]
 radius = 20.0
@@ -19,13 +24,13 @@ radius = 20.0
 colors = PackedColorArray(0.5153816, 0.3563713, 0.2507548, 1, 1, 1, 1, 1)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0mymv"]
-polygon = PackedVector2Array(16, 56, -16, 56, -18, -69, 19, -69)
+polygon = PackedVector2Array(16, 56, -16, 56, -14, -69, 15, -69)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4vyth"]
-polygon = PackedVector2Array(-3, -24, -12, -17, -15, 56, 15, 56, 12, -16)
+polygon = PackedVector2Array(-9, -4, -13, -11, -15, 56, 15, 56, 11, -3, 3, -11)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ohhka"]
-polygon = PackedVector2Array(-4, 21, -13, 30, -14, 56, 15, 56, 14, 31)
+polygon = PackedVector2Array(-8, 47, -14, 34, -14, 56, 15, 56, 15, 47, 3.9398346, 38.316498)
 
 [node name="Pilastra" type="CharacterBody2D" unique_id=1108521031 groups=["quebravel"]]
 collision_layer = 7
@@ -46,6 +51,14 @@ z_index = -3
 material = SubResource("ShaderMaterial_sgpap")
 position = Vector2(0, 96)
 texture = ExtResource("3_8sd0j")
+offset = Vector2(0, -33)
+hframes = 7
+
+[node name="shadow" type="Sprite2D" parent="." unique_id=506181596]
+material = SubResource("CanvasItemMaterial_ivjdt")
+position = Vector2(0, 157)
+scale = Vector2(1, 2)
+texture = ExtResource("5_qa5po")
 offset = Vector2(0, -33)
 hframes = 7
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4y5kk8gcvew4"
-path="res://.godot/imported/JuizBossProps.png-cc8fca88f64cf4df4003e7dcc0939e9b.ctex"
+uid="uid://b5ughx51x7hbv"
+path="res://.godot/imported/BossPilasterShadow.png-554e6dec67f93e2ee979c6fac7c59707.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://terrains/Decoração/JuizBossProps.png"
-dest_files=["res://.godot/imported/JuizBossProps.png-cc8fca88f64cf4df4003e7dcc0939e9b.ctex"]
+source_file="res://enemies/Bosses/juizBoss/BossPilasterShadow.png"
+dest_files=["res://.godot/imported/BossPilasterShadow.png-554e6dec67f93e2ee979c6fac7c59707.ctex"]
 
 [params]
 

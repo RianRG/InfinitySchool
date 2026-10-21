@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @onready var sprite: Sprite2D = $texture
 @onready var reflexion: Sprite2D = $reflexion
+@onready var shadow: Sprite2D = $shadow
 @onready var isDead = false
 @onready var colision: CollisionShape2D = $CollisionShape2D
 @onready var camera = get_parent().get_node("Camera2D")
@@ -42,6 +43,7 @@ func _ready() -> void:
 	atualframe = sprite.frame
 	oldframe = sprite.frame
 	reflexion.frame = sprite.frame
+	shadow.frame = sprite.frame
 
 func takeDamage(damage: int):
 	hitFlash()
@@ -72,6 +74,7 @@ func takeDamage(damage: int):
 		sprite.z_index = 0
 		
 	reflexion.frame = sprite.frame
+	shadow.frame = sprite.frame
 	
 func spritechange(frame: int):
 	oldframe = atualframe
@@ -85,6 +88,7 @@ func spritechange(frame: int):
 		particles.emitting = true
 		
 	reflexion.frame = sprite.frame
+	shadow.frame = sprite.frame
 
 
 func hitFlash():
