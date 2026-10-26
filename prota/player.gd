@@ -130,7 +130,7 @@ var SPINSPEED: float = 260.0
 
 @export_category("Attack Settings")
 @export var base_attack_cooldown := 0.4
-@export var combo_attack_cooldown := 0.8
+@export var combo_attack_cooldown := 0.6
 @export var attack_dash_speed := 100.0
 @export var attack_duration := 0.5
 @export var combo_window := 1.0
@@ -445,6 +445,7 @@ func _update_animation_blend_positions(direction: Vector2):
 	_animationTree["parameters/dash/blend_position"] = direction
 	_animationTree["parameters/attack/blend_position"] = direction
 	_animationTree["parameters/combo/blend_position"] = direction
+	_animationTree["parameters/kick/blend_position"] = direction
 	
 
 func _play_footstep():
@@ -508,10 +509,17 @@ func _try_attack():
 		attackDirection = lastDirection
 	
 	
-	if attackCounter == 2:  # 2 porque ainda não incrementou
+	if attackCounter == 0: 
+		_stateMachine.travel("attack")
+	elif attackCounter == 1:
 		_stateMachine.travel("combo")
 	else:
-		_stateMachine.travel("attack")
+		_stateMachine.travel("kick")
+	
+	if attackCounter == 2:
+		attackCounter=0
+	else:
+		attackCounter += 1
 	
 	move_velocity = attackDirection.normalized() * (SPEED + attack_dash_speed)
 	attack_cooldown_timer.start(base_attack_cooldown)
@@ -822,7 +830,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 			body.takeDamage(3)
 		if current_state == PlayerState.ATTACKING:
 			body.takeDamage(5)
-		attackCounter += 1
+		#attackCounter += 1
 		if current_state == PlayerState.KOKUSEN:
 			
 			freezeFrame(0.1, 0.3)
@@ -884,7 +892,7 @@ func freezeFrame(timeScale: float, time: float):
 
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	if "attack" in anim_name || "combo" in anim_name:
+	if "attack" in anim_name || "combo" in anim_name || "kick" in anim_name:
 		if current_state == PlayerState.ATTACKING:
 			_change_state(PlayerState.IDLE)
 		
