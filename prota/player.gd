@@ -520,7 +520,7 @@ func _try_attack():
 		attackCounter=0
 	else:
 		attackCounter += 1
-	
+#asdsadf
 	move_velocity = attackDirection.normalized() * (SPEED + attack_dash_speed)
 	attack_cooldown_timer.start(base_attack_cooldown)
 func _on_attack_cooldown_timeout():
