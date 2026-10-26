@@ -79,6 +79,8 @@ var spin_timer: Timer
 var spin_end_timer: Timer
 var heal_timer: Timer
 var invincible_timer: Timer
+var parry_timer: Timer
+var parry_cooldown_timer: Timer
 
 # ===============================
 # EXPORTS
@@ -125,15 +127,22 @@ var SPINSPEED: float = 260.0
 
 @export_category("Dash Settings")
 @export var dash_speed := 600.0
-@export var dash_time := 0.20
+@export var dash_time := 0.12
 @export var dash_cooldown := 0.7
 
 @export_category("Attack Settings")
 @export var base_attack_cooldown := 0.4
 @export var combo_attack_cooldown := 0.6
-@export var attack_dash_speed := 100.0
+@export var attack_dash_speed := 60.0
 @export var attack_duration := 0.5
 @export var combo_window := 1.0
+
+@export_category("Parry Settings")
+@export var parry_duration := 0.3   # tempo da janela de parry
+@export var parry_cooldown := 0.8   # espera DEPOIS do parry terminar para usar de novo
+@onready var parryBox: CollisionShape2D = $parryBox/parryBox
+var parriedEnemy: bool = false
+var canParry: bool = true
 
 @export_category("Knockback Settings")
 @export var knockback_decay := 1500.0
@@ -178,6 +187,7 @@ enum PlayerState {
 	DASHING,
 	ATTACKING,
 	KOKUSEN,
+	PARRYING,
 	SPINNING_STARTUP,
 	SPINNING,
 	SPIN_END,
@@ -225,6 +235,10 @@ func _ready():
 	_setup_timers()
 	stairMaps = get_tree().get_nodes_in_group("stairs")
 	reflexion.frame = sprite.frame
+	
+	# Garante que a parryBox começa desligada
+	parryBox.set_deferred("disabled", true)
+	
 	await fade_out_whiteout()
 	
 
@@ -276,6 +290,19 @@ func _setup_timers():
 	invincible_timer.one_shot=true
 	invincible_timer.timeout.connect(_on_invincible_timer_timeout)
 	add_child(invincible_timer)
+	
+	# Parry Timer (duração da janela)
+	parry_timer = Timer.new()
+	parry_timer.one_shot=true
+	parry_timer.timeout.connect(_on_parry_timer_timeout)
+	add_child(parry_timer)
+	
+	# Parry cooldown (impede spam)
+	parry_cooldown_timer = Timer.new()
+	parry_cooldown_timer.one_shot=true
+	parry_cooldown_timer.timeout.connect(_on_parry_cooldown_timeout)
+	add_child(parry_cooldown_timer)
+	
 
 # ===============================
 # PHYSICS PROCESS
@@ -324,6 +351,9 @@ func _process_state(delta: float):
 			# Movement is set when entering attack state
 			pass
 		
+		PlayerState.PARRYING:
+			velocity=Vector2.ZERO
+		
 		PlayerState.KOKUSEN:
 			# Frozen during kokusen
 			velocity = Vector2.ZERO
@@ -358,6 +388,9 @@ func _handle_input():
 		
 	if Input.is_action_just_pressed("heal"):
 		_try_heal()
+	
+	if Input.is_action_just_pressed("parry"):
+		_try_parry()
 	
 
 
@@ -446,6 +479,7 @@ func _update_animation_blend_positions(direction: Vector2):
 	_animationTree["parameters/attack/blend_position"] = direction
 	_animationTree["parameters/combo/blend_position"] = direction
 	_animationTree["parameters/kick/blend_position"] = direction
+	_animationTree["parameters/parry/blend_position"] = direction
 	
 
 func _play_footstep():
@@ -520,12 +554,53 @@ func _try_attack():
 		attackCounter=0
 	else:
 		attackCounter += 1
-#asdsadf
+
 	move_velocity = attackDirection.normalized() * (SPEED + attack_dash_speed)
 	attack_cooldown_timer.start(base_attack_cooldown)
 func _on_attack_cooldown_timeout():
 	canAttack = true
 
+# ===============================
+# PARRY
+# ===============================
+func _try_parry():
+	# Só pode dar parry se estiver livre, fora de cooldown e vivo
+	if not canParry or health <= 0:
+		return
+	if current_state not in [PlayerState.IDLE, PlayerState.MOVING]:
+		return
+	
+	canParry = false
+	parriedEnemy = false
+	parryBox.set_deferred("disabled", false)
+	
+	move_velocity = Vector2.ZERO
+	_change_state(PlayerState.PARRYING)
+	
+	parry_timer.start(parry_duration)
+	# O cooldown só termina depois que a janela do parry acabou + o tempo de espera
+	parry_cooldown_timer.start(parry_duration + parry_cooldown)
+
+func _on_parry_timer_timeout():
+	parryBox.set_deferred("disabled", true)
+	parriedEnemy = false
+	# Só sai do estado se ainda estiver em PARRYING (não tira de DEAD, KOKUSEN, etc.)
+	if current_state == PlayerState.PARRYING:
+		_change_state(PlayerState.IDLE)
+
+func _on_parry_cooldown_timeout():
+	canParry = true
+
+func _on_parry_success(from_position: Vector2):
+	parriedEnemy = true
+	freezeFrame(0.3, 0.1)
+	camera.screenShake(4, 0.3)
+	hitFlash()
+	energy+=1
+	# Ideias opcionais:
+	# energy += 1
+	# tocar som/VFX de parry
+	# aplicar knockback ou stun no inimigo
 
 # =======
 # HEAL
@@ -636,6 +711,9 @@ func _change_state(new_state: PlayerState):
 	current_state = new_state
 	if old_state == PlayerState.DASHING and new_state != PlayerState.DASHING:
 		particles.emitting = false
+	# Zera o impulso do ataque ao sair do estado de ataque
+	if old_state == PlayerState.ATTACKING and new_state != PlayerState.ATTACKING:
+		move_velocity = Vector2.ZERO
 	# Debug
 	# print("State changed: %s -> %s" % [PlayerState.keys()[old_state], PlayerState.keys()[new_state]])
 
@@ -646,9 +724,9 @@ func _update_velocity():
 	match current_state:
 		PlayerState.DASHING:
 			velocity = dash_velocity
-		PlayerState.KOKUSEN, PlayerState.SPINNING_STARTUP, PlayerState.SPIN_END, PlayerState.DEAD:
+		PlayerState.KOKUSEN, PlayerState.SPINNING_STARTUP, PlayerState.SPIN_END, PlayerState.DEAD, PlayerState.PARRYING:
 			velocity = Vector2.ZERO
-		PlayerState.SPINNING:  # ← ADICIONE CASO SEPARADO
+		PlayerState.SPINNING:
 			velocity = move_velocity + external_velocity  # SE MOVE!
 		_:
 			velocity = move_velocity + external_velocity
@@ -669,16 +747,16 @@ func _update_animation():
 		PlayerState.DASHING:
 			_stateMachine.travel("dash")
 		
-		PlayerState.SPINNING_STARTUP:  # ← ADICIONE
+		PlayerState.SPINNING_STARTUP:
 			if not spin_started:
 				_stateMachine.travel("spinAttackStart")
 				spin_started = true
 		
-		PlayerState.SPINNING:  # ← MODIFIQUE
+		PlayerState.SPINNING:
 			# Mantém a animação de spin
 			pass
 		
-		PlayerState.SPIN_END:  # ← ADICIONE
+		PlayerState.SPIN_END:
 			# Animação de recovery/finalização
 			pass
 		
@@ -693,6 +771,9 @@ func _update_animation():
 		
 		PlayerState.IDLE:
 			_stateMachine.travel("idle")
+			
+		PlayerState.PARRYING:
+			_stateMachine.travel("parry")
 # ===============================
 # KNOCKBACK & DAMAGE
 # ===============================
@@ -747,6 +828,11 @@ func updateEnergyHUD(newEnergy: int):
 func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 	if !canTakeDamage && !ignoreInvincible: return
 	
+	# PARRY: bloqueia o dano por completo (sem dano, sem knockback, sem invencibilidade)
+	if current_state == PlayerState.PARRYING:
+		_on_parry_success(fromPosition)
+		return
+	
 	canTakeDamage=false
 	invincible_timer.start(1.5)
 	
@@ -771,7 +857,6 @@ func takeDamage(fromPosition: Vector2, knockback_strength: float, damage: int):
 		_change_state(PlayerState.IDLE)
 		is_dashing = false
 	
-	#external_velocity = dir * knockback_strength
 	apply_knockback(fromPosition, knockback_strength)
 	
 	
@@ -809,6 +894,8 @@ func openDeathMenu():
 	deathMenu.open()
 func _on_invincible_timer_timeout():
 	canTakeDamage=true
+	
+	
 # ===============================
 # COMBAT
 # ===============================
@@ -859,7 +946,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 		attack_cooldown_timer.stop()
 		attack_cooldown_timer.start(current_cooldown)
 func _on_lose_streak_timer_timeout() -> void:
-	if attackCounter > 0:  # ← ADICIONE ESTA LINHA
+	if attackCounter > 0:
 		print("Combo perdido! (tempo expirou)")
 	attackCounter = 0
 
@@ -931,10 +1018,40 @@ func fade_out_whiteout(duration := 0.7) -> void:
 		layer.queue_free()
 
 func force_idle():
+	if current_state == PlayerState.DEAD:
+		return
+	
+	# Para os timers que mudam de estado
+	dash_timer.stop()
+	attack_cooldown_timer.stop()
+	kokusen_timer.stop()
+	spin_timer.stop()
+	spin_end_timer.stop()
+	heal_timer.stop()
+	parry_timer.stop()
+	loseStreak.stop()
+	
+	# Reseta flags
+	is_dashing = false
+	canDash = true
+	canAttack = true
+	canHeal = true
+	canParry = true
+	attackCounter = 0
+	spin_started = false
+	defense = 0
+	SPEED = WALKSPEED
+	parriedEnemy = false
+	parryBox.set_deferred("disabled", true)
+	particles.emitting = false
+	_animationTree.set("parameters/conditions/finishedSpin", false)
+	
+	# Reseta movimento e estado
 	move_velocity = Vector2.ZERO
 	external_velocity = Vector2.ZERO
+	dash_velocity = Vector2.ZERO
+	_change_state(PlayerState.IDLE)
 	_stateMachine.travel("idle")
-	
 func addGhost():
 	var ghost = ghost_node.instantiate()
 	ghost.global_position = global_position + Vector2(0,-11)
@@ -945,3 +1062,10 @@ func addGhost():
 
 func _on_ghost_timer_timeout() -> void:
 	addGhost()
+
+
+# Mantido para não quebrar a conexão do sinal na cena.
+# O bloqueio do dano agora é feito direto no takeDamage().
+func _on_parry_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemy"):
+		parriedEnemy = true
