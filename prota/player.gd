@@ -127,15 +127,15 @@ var SPINSPEED: float = 260.0
 
 @export_category("Dash Settings")
 @export var dash_speed := 600.0
-@export var dash_time := 0.12
+@export var dash_time := 0.18
 @export var dash_cooldown := 0.7
 
 @export_category("Attack Settings")
 @export var base_attack_cooldown := 0.4
 @export var combo_attack_cooldown := 0.6
-@export var attack_dash_speed := 60.0
-@export var attack_duration := 0.5
-@export var combo_window := 1.0
+@export var attack_dash_speed := -10.0
+@export var attack_duration := 0.6
+@export var combo_window := 0.6
 
 @export_category("Parry Settings")
 @export var parry_duration := 0.3   # tempo da janela de parry
@@ -593,8 +593,8 @@ func _on_parry_cooldown_timeout():
 
 func _on_parry_success(from_position: Vector2):
 	parriedEnemy = true
-	freezeFrame(0.3, 0.1)
-	camera.screenShake(4, 0.3)
+	freezeFrame(0.3, 0.2)
+	camera.screenShake(4, 0.5)
 	hitFlash()
 	energy+=1
 	# Ideias opcionais:
