@@ -7,6 +7,7 @@ var data: Dictionary = {}
 var typing := false
 var typing_id := 0
 var player = null
+var last_speaker := ""
 @onready var _name: Label = $DialogueScreen/Background/HContainer/VContainer/Name
 @onready var _dialog: RichTextLabel = $DialogueScreen/Background/HContainer/VContainer/RichTextLabel
 @onready var animation: AnimationPlayer = $AnimationPlayer
@@ -24,9 +25,6 @@ func start(dialog_data: Dictionary) -> void:
 	data = dialog_data
 	id = 0
 	
-	# efeito de zoom
-	animation.play("enter")
-	
 	_show_dialog()
 
 func _process(delta):
@@ -37,12 +35,24 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		id+=1
 		if id==data.size():
-			Global.dialogueActive=false
+			get_tree().create_timer(0.1, true, false, true).timeout.connect(
+				func(): Global.dialogueActive = false
+			)
+
 			queue_free()
 			return
 		_show_dialog()
 		
 func _show_dialog():
+	# efeito de zoom só quando o falante muda
+	var speaker: String = data[id].get("speaker", "npc")
+	if speaker != last_speaker:
+		if speaker == "npc":
+			animation.play("enterNpc")
+		else:
+			animation.play("enter")
+		last_speaker = speaker
+	
 	_name.text = data[id]["title"]
 	_dialog.text = data[id]["dialog"]
 	_dialog.visible_characters = 0
@@ -50,5 +60,3 @@ func _show_dialog():
 	while _dialog.visible_ratio < 1:
 		await get_tree().create_timer(step).timeout
 		_dialog.visible_characters+=1
-		
-	
