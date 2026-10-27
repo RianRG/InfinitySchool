@@ -783,7 +783,10 @@ y_sort_enabled = true
 position = Vector2(2459, -351)
 
 [node name="Sprite2D" type="Sprite2D" parent="guitarGuy" unique_id=1372053493]
+z_index = 1
+y_sort_enabled = true
 texture = ExtResource("35_eocef")
+offset = Vector2(0, -30)
 hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="guitarGuy" unique_id=323432022]
@@ -791,8 +794,25 @@ libraries/ = SubResource("AnimationLibrary_eocef")
 autoplay = &"idle"
 
 [node name="dialogueMechanic" parent="guitarGuy" unique_id=317544025 instance=ExtResource("35_oc16y")]
-position = Vector2(2, 21)
+position = Vector2(0, -3)
 spriteTexture = ExtResource("36_eocef")
+dialogData = {
+0: {
+"dialog": "",
+"speaker": "npc",
+"title": "Luca"
+},
+1: {
+"dialog": "",
+"speaker": "npc",
+"title": "Luca"
+},
+2: {
+"dialog": "",
+"speaker": "npc",
+"title": "Luca"
+}
+}
 
 [connection signal="area_exited" from="Area2D" to="Juiz/FiniteStateMachine/bulletPhase" method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="AreaEnteredBossFight" to="." method="_on_area_body_entered"]
@@ -802,3 +822,4 @@ spriteTexture = ExtResource("36_eocef")
 [editable path="Juiz"]
 [editable path="Tela"]
 [editable path="Tela/InteractButton"]
+[editable path="guitarGuy/dialogueMechanic"]

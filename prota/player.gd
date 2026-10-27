@@ -133,8 +133,8 @@ var SPINSPEED: float = 260.0
 @export_category("Attack Settings")
 @export var base_attack_cooldown := 0.4
 @export var combo_attack_cooldown := 0.6
-@export var attack_dash_speed := -10.0
-@export var attack_duration := 0.6
+@export var attack_dash_speed := 30.0
+@export var attack_duration := 0.5
 @export var combo_window := 0.6
 
 @export_category("Parry Settings")
