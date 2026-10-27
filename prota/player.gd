@@ -542,7 +542,7 @@ func _try_attack():
 	if attackDirection == Vector2.ZERO:
 		attackDirection = lastDirection
 	
-	
+	#j
 	loseStreak.start(combo_window)
 	if attackCounter == 0: 
 		_stateMachine.travel("attack")
