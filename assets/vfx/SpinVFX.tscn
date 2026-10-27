@@ -122,7 +122,7 @@ energy = 0.6
 texture = SubResource("GradientTexture2D_0mymv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=5085531]
-modulate = Color(1, 1, 1, 0.78431374)
+modulate = Color(1, 1, 1, 0.39215687)
 y_sort_enabled = true
 position = Vector2(0, 51)
 scale = Vector2(1.2, 1.1)
@@ -131,7 +131,7 @@ offset = Vector2(0, -27)
 hframes = 5
 
 [node name="SpinVFX" type="Sprite2D" parent="." unique_id=369477697]
-modulate = Color(1.3528494, 1.3528494, 1.3528494, 0.78431374)
+modulate = Color(1.3528494, 1.3528494, 1.3528494, 0.5882353)
 y_sort_enabled = true
 position = Vector2(0, -36)
 scale = Vector2(1.2, 1.1)
