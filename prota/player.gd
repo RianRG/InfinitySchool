@@ -543,6 +543,7 @@ func _try_attack():
 		attackDirection = lastDirection
 	
 	
+	loseStreak.start(combo_window)
 	if attackCounter == 0: 
 		_stateMachine.travel("attack")
 	elif attackCounter == 1:
@@ -596,6 +597,7 @@ func _on_parry_success(from_position: Vector2):
 	freezeFrame(0.3, 0.2)
 	camera.screenShake(4, 0.5)
 	hitFlash()
+	apply_knockback(from_position, 200)
 	energy+=1
 	# Ideias opcionais:
 	# energy += 1
@@ -724,7 +726,7 @@ func _update_velocity():
 	match current_state:
 		PlayerState.DASHING:
 			velocity = dash_velocity
-		PlayerState.KOKUSEN, PlayerState.SPINNING_STARTUP, PlayerState.SPIN_END, PlayerState.DEAD, PlayerState.PARRYING:
+		PlayerState.KOKUSEN, PlayerState.SPINNING_STARTUP, PlayerState.SPIN_END, PlayerState.DEAD:
 			velocity = Vector2.ZERO
 		PlayerState.SPINNING:
 			velocity = move_velocity + external_velocity  # SE MOVE!
