@@ -117,7 +117,7 @@ var healthEnergyCost = 3
 
 @onready var hit: AudioStreamPlayer = $Hit
 
-var RUNSPEED: float = 190.0
+var RUNSPEED: float = 180.0
 var WALKSPEED: float = 110.0
 var SPINSPEED: float = 260.0
 
@@ -133,7 +133,7 @@ var SPINSPEED: float = 260.0
 @export_category("Attack Settings")
 @export var base_attack_cooldown := 0.4
 @export var combo_attack_cooldown := 0.6
-@export var attack_dash_speed := 30.0
+@export var attack_dash_speed := 10.0
 @export var attack_duration := 0.5
 @export var combo_window := 0.6
 
@@ -574,13 +574,19 @@ func _try_parry():
 	canParry = false
 	parriedEnemy = false
 	parryBox.set_deferred("disabled", false)
+	var parryDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if parryDirection == Vector2.ZERO:
+		parryDirection = lastDirection
 	
-	move_velocity = Vector2.ZERO
+	move_velocity = parryDirection.normalized() * (SPEED * -1.2)
 	_change_state(PlayerState.PARRYING)
 	
 	parry_timer.start(parry_duration)
 	# O cooldown só termina depois que a janela do parry acabou + o tempo de espera
 	parry_cooldown_timer.start(parry_duration + parry_cooldown)
+	await get_tree().create_timer(0.05).timeout
+	if current_state == PlayerState.PARRYING: 
+		move_velocity = Vector2.ZERO
 
 func _on_parry_timer_timeout():
 	parryBox.set_deferred("disabled", true)
