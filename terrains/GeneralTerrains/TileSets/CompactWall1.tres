@@ -352,6 +352,7 @@ texture = ExtResource("1_8ch6a")
 
 [resource]
 occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
 physics_layer_0/collision_layer = 4
 physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 0
