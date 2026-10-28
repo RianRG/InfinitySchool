@@ -2,8 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://c7jkh75ulaf3r" path="res://terrains/Decoração/Deco.png" id="1_if0jj"]
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_xuxf8"]
+diffuse_texture = ExtResource("1_if0jj")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfqxu"]
-texture = ExtResource("1_if0jj")
+texture = SubResource("CanvasTexture_xuxf8")
 1:0/size_in_atlas = Vector2i(2, 1)
 1:0/0 = 0
 3:0/size_in_atlas = Vector2i(2, 2)
