@@ -2,6 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://c7jkh75ulaf3r" path="res://terrains/Decoração/Deco.png" id="1_if0jj"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tqpn6"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qykwy"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8yps5"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nfpt8"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qbvbo"]
+blend_mode = 1
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_xuxf8"]
 diffuse_texture = ExtResource("1_if0jj")
 
@@ -437,23 +452,65 @@ texture = SubResource("CanvasTexture_xuxf8")
 1:19/size_in_atlas = Vector2i(4, 2)
 1:19/0 = 0
 1:19/0/texture_origin = Vector2i(24, 5)
-1:19/0/modulate = Color(18.892157, 18.892157, 18.892157, 0.2)
+1:19/0/modulate = Color(4.415934, 4.046437, 3.6956642, 0.5)
+1:19/0/material = SubResource("CanvasItemMaterial_nfpt8")
 1:19/0/y_sort_origin = 14
 1:21/size_in_atlas = Vector2i(4, 2)
 1:21/0 = 0
 1:21/0/texture_origin = Vector2i(24, 5)
-1:21/0/modulate = Color(18.892157, 18.892157, 18.892157, 0.2)
+1:21/0/modulate = Color(4.415934, 4.046437, 3.6956642, 0.5)
+1:21/0/material = SubResource("CanvasItemMaterial_nfpt8")
 1:21/0/y_sort_origin = 14
 5:19/size_in_atlas = Vector2i(4, 3)
 5:19/0 = 0
-5:19/0/texture_origin = Vector2i(-24, 5)
-5:19/0/modulate = Color(4.415934, 4.415934, 4.415934, 0.059000004)
+5:19/0/texture_origin = Vector2i(-24, 8)
+5:19/0/modulate = Color(1.8247963, 1.4473904, 1.1127689, 0.4)
+5:19/0/material = SubResource("CanvasItemMaterial_qbvbo")
 5:19/0/z_index = -1
 5:22/size_in_atlas = Vector2i(4, 3)
 5:22/0 = 0
-5:22/0/texture_origin = Vector2i(-24, 5)
-5:22/0/modulate = Color(4.415934, 4.415934, 4.415934, 0.059000004)
+5:22/0/texture_origin = Vector2i(-24, 8)
+5:22/0/modulate = Color(1.8247963, 1.4473904, 1.1127689, 0.4)
+5:22/0/material = SubResource("CanvasItemMaterial_qbvbo")
 5:22/0/z_index = -1
+9:18/size_in_atlas = Vector2i(1, 6)
+9:18/0 = 0
+9:18/0/texture_origin = Vector2i(0, 4)
+9:18/0/modulate = Color(4.415934, 3.768522, 3.311105, 0.5)
+9:18/0/material = SubResource("CanvasItemMaterial_tqpn6")
+9:18/0/y_sort_origin = 80
+10:18/size_in_atlas = Vector2i(1, 6)
+10:18/0 = 0
+10:18/0/texture_origin = Vector2i(0, 4)
+10:18/0/modulate = Color(4.415934, 3.768522, 3.311105, 0.5)
+10:18/0/material = SubResource("CanvasItemMaterial_tqpn6")
+10:18/0/y_sort_origin = 80
+9:24/0 = 0
+9:24/0/texture_origin = Vector2i(0, -20)
+9:24/0/modulate = Color(4.415934, 3.768522, 3.311105, 0.5)
+9:24/0/material = SubResource("CanvasItemMaterial_tqpn6")
+9:24/0/y_sort_origin = 72
+10:24/0 = 0
+10:24/0/texture_origin = Vector2i(0, -20)
+10:24/0/modulate = Color(4.415934, 3.768522, 3.311105, 0.5)
+10:24/0/material = SubResource("CanvasItemMaterial_tqpn6")
+10:24/0/y_sort_origin = 72
+12:24/0 = 0
+12:24/0/texture_origin = Vector2i(0, -24)
+12:24/0/modulate = Color(4.415934, 3.768522, 3.311105, 0.5)
+12:24/0/material = SubResource("CanvasItemMaterial_qykwy")
+11:24/0 = 0
+11:24/0/texture_origin = Vector2i(0, -24)
+11:24/0/modulate = Color(4.415934, 3.768522, 3.311105, 0.5)
+11:24/0/material = SubResource("CanvasItemMaterial_qykwy")
+13:19/size_in_atlas = Vector2i(1, 6)
+13:19/0 = 0
+13:19/0/modulate = Color(4.415934, 3.768522, 3.311105, 0.5)
+13:19/0/material = SubResource("CanvasItemMaterial_8yps5")
+14:19/size_in_atlas = Vector2i(1, 6)
+14:19/0 = 0
+14:19/0/modulate = Color(4.415934, 3.768522, 3.311105, 0.5)
+14:19/0/material = SubResource("CanvasItemMaterial_8yps5")
 
 [resource]
 occlusion_layer_0/light_mask = 1
