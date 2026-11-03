@@ -121,25 +121,6 @@ height = 160
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5019157, 1)
 
-[sub_resource type="Gradient" id="Gradient_akee3"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8cxyx"]
-gradient = SubResource("Gradient_akee3")
-fill_from = Vector2(1, 1)
-fill_to = Vector2(1, 0.2991453)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_f3ak4"]
-gradient = SubResource("Gradient_akee3")
-fill_from = Vector2(1, 1)
-fill_to = Vector2(1, 0.2991453)
-
-[sub_resource type="Gradient" id="Gradient_xhyyn"]
-offsets = PackedFloat32Array(0.53488374, 0.98671097)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_sba1a"]
-gradient = SubResource("Gradient_xhyyn")
-fill_from = Vector2(1, 1)
-
 [sub_resource type="Gradient" id="Gradient_37m1h"]
 offsets = PackedFloat32Array(0, 0.6117318, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.6117319, 0.6117319, 0.6117319, 1, 0, 0, 0, 1)
@@ -747,108 +728,6 @@ tile_set = ExtResource("21_rkw32")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AACIAHYAAAAFABMAAACMAHYAAAAFABMAAACLAHIAAAABABMAAACPAHIAAAABABMAAACbAHwAAAABABMAAACjAHwAAAABABMAAACrAHwAAAABABMAAACrAIMAAAABABMAAACjAIMAAAABABMAAACbAIMAAAABABMAAACDAHIAAAABABMAAAB/AHIAAAABABMAAACYAMYAAAABABMAAACcAMYAAAABABMAAACjAMYAAAABABMAAACnAMYAAAABABMAAACLAMYAAAABABMAAACHAMYAAAABABMAAACDAMYAAAABABMAAABfAMYAAAABABUAAABjAMYAAAABABUAAABqAMYAAAABABUAAABuAMYAAAABABUAAABNAMYAAAABABMAAABRAMYAAAABABMAAABVAMYAAAABABMAAAB8AHYAAAAFABMAAACAAHYAAAAFABMAAABwAHYAAAAFABMAAAB0AHYAAAAFABMAAACYAIAAAAAFABMAAACgAIAAAAAFABMAAACoAIAAAAAFABMAAABLAKQAAAABABUAAABrAMIAAAAFABMAAABnAMIAAAAFABMAAABgAMIAAAAFABMAAABcAMIAAAAFABMAAABKAMIAAAAFABMAAABOAMIAAAAFABMAAABSAMIAAAAFABMAAABzAHIAAAABABMAAAB3AHIAAAABABMAAABVAMMAAAANABMAAABRAMMAAAANABMAAABNAMMAAAANABMAAABIAKQAAAAJABMAAABfAMMAAAANABMAAABjAMMAAAANABMAAABqAMMAAAANABMAAABuAMMAAAANABMAAACMAHIAAAAJABMAAACYAHwAAAAJABMAAACgAHwAAAAJABMAAACoAHwAAAAJABMAAACIAHIAAAAJABMAAACAAHIAAAAJABMAAAB8AHIAAAAJABMAAAB0AHIAAAAJABMAAABwAHIAAAAJABMAAABIAKgAAAAFABYAAACAAMIAAAAFABMAAACEAMIAAAAFABMAAACIAMIAAAAFABMAAACVAMIAAAAFABMAAACZAMIAAAAFABMAAACgAMIAAAAFABMAAACkAMIAAAAFABMAAACDAMMAAAANABMAAACHAMMAAAANABMAAACLAMMAAAANABMAAACnAMMAAAANABMAAACjAMMAAAANABMAAACcAMMAAAANABMAAACYAMMAAAANABMAAAA=")
 tile_set = ExtResource("21_rkw32")
-
-[node name="PointLight2D" type="PointLight2D" parent="Deco/Decoluz" unique_id=221764606]
-visible = false
-position = Vector2(2240, 1850)
-scale = Vector2(1.96875, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_8cxyx")
-
-[node name="PointLight2D2" type="PointLight2D" parent="Deco/Decoluz" unique_id=2069958485]
-visible = false
-position = Vector2(2048, 1850)
-scale = Vector2(1.96875, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_8cxyx")
-
-[node name="PointLight2D3" type="PointLight2D" parent="Deco/Decoluz" unique_id=1312228643]
-visible = false
-position = Vector2(1856, 1850.5)
-scale = Vector2(1.96875, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_8cxyx")
-
-[node name="PointLight2D4" type="PointLight2D" parent="Deco/Decoluz" unique_id=1378319790]
-visible = false
-position = Vector2(2464, 2009.9999)
-scale = Vector2(0.96875006, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_f3ak4")
-
-[node name="PointLight2D5" type="PointLight2D" parent="Deco/Decoluz" unique_id=1040295536]
-visible = false
-position = Vector2(2592.0002, 2011)
-scale = Vector2(0.96875006, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_f3ak4")
-
-[node name="PointLight2D6" type="PointLight2D" parent="Deco/Decoluz" unique_id=1553060691]
-visible = false
-position = Vector2(2720.0002, 2011)
-scale = Vector2(0.96875006, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_f3ak4")
-
-[node name="PointLight2D7" type="PointLight2D" parent="Deco/Decoluz" unique_id=1429699390]
-visible = false
-position = Vector2(1280.2268, 3097)
-rotation = 3.1415927
-scale = Vector2(2.9758377, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_sba1a")
-
-[node name="PointLight2D8" type="PointLight2D" parent="Deco/Decoluz" unique_id=1313986459]
-visible = false
-position = Vector2(2144, 3098)
-rotation = 3.1415927
-scale = Vector2(2.9758377, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_sba1a")
-
-[node name="PointLight2D9" type="PointLight2D" parent="Deco/Decoluz" unique_id=1802416443]
-visible = false
-position = Vector2(1535.9298, 3098)
-rotation = 3.1415927
-scale = Vector2(1.9736476, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_sba1a")
-
-[node name="PointLight2D10" type="PointLight2D" parent="Deco/Decoluz" unique_id=1710816729]
-visible = false
-position = Vector2(1712, 3096.9998)
-rotation = 3.1415927
-scale = Vector2(1.9736476, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_sba1a")
-
-[node name="PointLight2D11" type="PointLight2D" parent="Deco/Decoluz" unique_id=1656380645]
-visible = false
-position = Vector2(2448, 3097)
-rotation = 3.1415927
-scale = Vector2(1.9736476, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_sba1a")
-
-[node name="PointLight2D12" type="PointLight2D" parent="Deco/Decoluz" unique_id=692687003]
-visible = false
-position = Vector2(2624, 3097)
-rotation = 3.1415927
-scale = Vector2(1.9736476, 1.203125)
-color = Color(1, 0.6538066, 0.34409294, 1)
-energy = 0.5
-texture = SubResource("GradientTexture2D_sba1a")
 
 [node name="PointLight2D18" type="PointLight2D" parent="." unique_id=1544375121]
 position = Vector2(2992, 1464.0001)
