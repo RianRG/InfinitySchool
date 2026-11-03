@@ -1,5 +1,6 @@
 [gd_resource type="TileSet" format=3 uid="uid://crewjdph5stbd"]
 
+[ext_resource type="Material" uid="uid://dhkdkwysex6di" path="res://terrains/Decoração/light.tres" id="1_c6ler"]
 [ext_resource type="Texture2D" uid="uid://4y5kk8gcvew4" path="res://terrains/GeneralTerrains/JuizBossProps.png" id="1_iwv1p"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_iwv1p"]
@@ -221,18 +222,24 @@ texture = ExtResource("1_iwv1p")
 9:11/size_in_atlas = Vector2i(4, 6)
 9:11/0 = 0
 9:11/0/texture_origin = Vector2i(0, 20)
-9:11/0/modulate = Color(2.844042, 2.844042, 2.844042, 1)
+9:11/0/modulate = Color(3.2944162, 3.1917396, 3.101049, 1)
+9:11/0/material = ExtResource("1_c6ler")
 9:11/0/y_sort_origin = 40
 9:17/size_in_atlas = Vector2i(4, 12)
 9:17/0 = 0
 9:17/0/texture_origin = Vector2i(0, -8)
-9:17/0/modulate = Color(3.2944162, 3.2944162, 3.2944162, 0.039215688)
+9:17/0/modulate = Color(1.8247963, 1.6685576, 1.4147379, 0.15)
+9:17/0/material = ExtResource("1_c6ler")
 9:17/0/z_index = -2
 4:0/size_in_atlas = Vector2i(3, 9)
 4:0/0 = 0
 4:0/0/texture_origin = Vector2i(7, 48)
 4:0/0/y_sort_origin = -14
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-28, -16, 12, -16, 10, 10, -8, 12, -24, 10)
+5:18/size_in_atlas = Vector2i(4, 17)
+5:18/0 = 0
+5:18/0/modulate = Color(1.8247963, 1.2738663, 0.64995646, 0.1)
+5:18/0/material = ExtResource("1_c6ler")
 
 [resource]
 occlusion_layer_0/light_mask = 1
