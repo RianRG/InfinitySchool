@@ -145,7 +145,7 @@ func _physics_process(delta):
 
 const purpleAttackVfx = preload("res://assets/vfx/purpleAttackVfx.tscn")
 
-func takeDamage(dano: int):
+func takeDamage(dano: int, knockback):
 	health -= 5 + dano - DEF
 	damage.pitch_scale = randf_range(0.7,1.7)
 	damage.play()
@@ -162,7 +162,7 @@ func takeDamage(dano: int):
 	
 	# Só aplica knockback se o boss NÃO estiver atacando/dash
 	if not cannotTakeKnockback:
-		knockback_velocity = direction_from_player * knockback_strength
+		knockback_velocity += direction_from_player * knockback * 0.7
 	else:
 		# Feedback visual para mostrar que ele levou hit no dash
 		sprite.self_modulate = Color(1, 0, 0)

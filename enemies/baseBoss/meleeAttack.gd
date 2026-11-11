@@ -11,7 +11,7 @@ var currentAttack = attacksEnum.MELEE
 
 func enter():
 	super.enter()
-	owner.cannotTakeKnockback = true  # Bloqueia knockback durante ataque
+	owner.cannotTakeKnockback = false  # Bloqueia knockback durante ataque
 	owner.canMove=true
 	
 	owner.target_direction = (player.position - owner.global_position).normalized()
@@ -47,7 +47,7 @@ func startAttackCooldown():
 # ======================
 func dashAttack():
 	currentAttack = attacksEnum.MELEE
-	owner.cannotTakeKnockback = true
+	owner.cannotTakeKnockback = false
 	
 	# Dash define a direção e a velocidade do boss
 	owner.target_direction = (player.position - owner.global_position).normalized()

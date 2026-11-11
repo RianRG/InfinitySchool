@@ -111,7 +111,7 @@ var energy:
 		await updateEnergyHUD(clamped)
 		_energy = clamped
 # Energy costs
-var kokusenEnergyCost = 5
+var kokusenEnergyCost = 0
 var spinEnergyCost = 4
 var healthEnergyCost = 3
 
@@ -920,11 +920,11 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 	
 	if body.is_in_group("enemy"):
 		if current_state == PlayerState.KOKUSEN:
-			body.takeDamage(30)
+			body.takeDamage(30,600)
 		if current_state == PlayerState.SPINNING:
-			body.takeDamage(3)
+			body.takeDamage(3,150)
 		if current_state == PlayerState.ATTACKING:
-			body.takeDamage(5)
+			body.takeDamage(5,200)
 		#attackCounter += 1
 		if current_state == PlayerState.KOKUSEN:
 			
@@ -950,6 +950,7 @@ func _on_attack_area_body_entered(body: Node2D) -> void:
 			current_cooldown = base_attack_cooldown  # Cooldown normal
 			apply_knockback(body.global_position, 350)  # Knockback normal
 			if !body.isDead: camera.screenShake(3, 0.3)
+			
 			
 		attack_cooldown_timer.stop()
 		attack_cooldown_timer.start(current_cooldown)
