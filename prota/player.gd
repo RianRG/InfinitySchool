@@ -17,6 +17,8 @@ class_name Player
 @onready var rastro: GPUParticles2D = $GPUParticles2D
 @onready var damage_effect: AnimatedSprite2D = $DamageEffect
 
+#pegamos o token quando voc esta lendo isso pela segunda vez
+
 
 
 # ========== 
