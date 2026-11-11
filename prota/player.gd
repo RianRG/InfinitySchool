@@ -113,7 +113,7 @@ var energy:
 		await updateEnergyHUD(clamped)
 		_energy = clamped
 # Energy costs
-var kokusenEnergyCost = 0
+var kokusenEnergyCost = 5
 var spinEnergyCost = 4
 var healthEnergyCost = 3
 
