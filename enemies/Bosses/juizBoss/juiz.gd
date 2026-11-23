@@ -162,7 +162,7 @@ func takeDamage(dano: int, knockback):
 	
 	# Só aplica knockback se o boss NÃO estiver atacando/dash
 	if not cannotTakeKnockback:
-		knockback_velocity += direction_from_player * knockback * 0.7
+		knockback_velocity += direction_from_player * knockback * 0.5
 	else:
 		# Feedback visual para mostrar que ele levou hit no dash
 		sprite.self_modulate = Color(1, 0, 0)
